@@ -1,0 +1,68 @@
+{
+  "sbb_version": "0.1.1",
+  "generated_at_utc": "2026-06-20T23:04:02.072716+00:00",
+  "purpose": {
+    "id": "observability",
+    "consumer_id": "obs_vendor",
+    "task_labels": [
+      "failure_mode",
+      "error_stage"
+    ]
+  },
+  "policy": {
+    "id": "obs_policy_v1",
+    "path": "data/policies/obs_policy_v1.json"
+  },
+  "export_kind": "text_redaction",
+  "schema": null,
+  "transform_ladder": [
+    "raw",
+    "redact_bracket",
+    "redact_tokenize",
+    "redact_surrogate",
+    "sem_coarse",
+    "sem_medium",
+    "sem_fine",
+    "redact_llm_substitute",
+    "redact_llm_rephrase"
+  ],
+  "recommended_condition": "redact_bracket",
+  "recommended_condition_rule": "highest failure_mode_macro_f1 (0.673) among conditions with linkage <= redact_bracket (0.358)",
+  "i1_metrics_ref": "outputs/pilot_v2/metrics.json",
+  "split_manifest": "data/ground_truth/splits.json",
+  "hypotheses": {
+    "H1": {
+      "supported": false,
+      "detail": "redact_bracket F1 (0.673) vs raw (0.626); transfer F1 (1.000) vs raw transfer (1.000)",
+      "per_condition": {
+        "supported": false,
+        "detail": "redact_bracket F1 (0.673) vs raw (0.626)"
+      },
+      "transfer": {
+        "supported": false,
+        "detail": "redact_bracket transfer F1 (1.000) vs raw transfer (1.000)"
+      }
+    },
+    "H2": {
+      "supported": false,
+      "detail": "sem_medium F1 (1.000) vs raw (0.626); Trial4 combined_linkage 0.483 vs raw 0.481; note: legacy persona_top1 would support H2 linkage arm (0.000 vs raw 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H3": {
+      "supported": false,
+      "detail": "sem_fine F1 (1.000) vs sem_medium (1.000); Trial4 combined_linkage 0.752 vs 0.483; note: legacy persona_top1 would not support H3 linkage arm (0.000 vs 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H4": {
+      "supported": false,
+      "detail": "substitute F1 (0.599) rephrase F1 (0.583) vs bracket (0.673) sem_medium (1.000); linkage subst 0.525 rephrase 0.537 vs raw 0.481 bracket 0.358 sem_medium 0.483",
+      "substitute": {
+        "utility_ok": false,
+        "linkage_ok": false
+      },
+      "rephrase": {
+        "utility_ok": false,
+        "linkage_ok": false
+      }
+    },
+    "sem_coarse_f1": 0.1650382121415734
+  }
+}

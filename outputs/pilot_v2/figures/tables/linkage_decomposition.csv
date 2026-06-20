@@ -1,0 +1,10 @@
+condition_id,persona,attribute,longitudinal,token
+raw,0.3206,0.5592,0.5619,1.0
+redact_bracket,0.0587,0.489,0.5259,0.0327
+redact_tokenize,0.873,0.4643,0.6485,0.0079
+redact_surrogate,0.1937,0.5188,0.5595,0.0285
+sem_coarse,0.027,0.4023,0.5015,0.0
+sem_medium,0.1667,0.606,0.6753,0.0
+sem_fine,0.6413,0.8431,0.7724,0.0
+redact_llm_substitute,0.527,0.4709,0.5775,0.4087
+redact_llm_rephrase,0.573,0.4752,0.5635,0.5634

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "provenance_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "policy_id": { "type": "string" },
+    "policy_version": { "type": "string" },
+    "schema_id": { "type": "string" },
+    "transform_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "timestamp_utc": { "type": "string" },
+    "fields_suppressed": { "type": "array", "items": { "type": "string" } },
+    "verify_outcome": { "type": "string", "enum": ["pass", "fail"] }
+  },
+  "required": [
+    "policy_id",
+    "policy_version",
+    "schema_id",
+    "transform_id",
+    "event_id",
+    "verify_outcome"
+  ]
+}

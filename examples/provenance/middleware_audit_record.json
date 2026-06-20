@@ -1,0 +1,40 @@
+{
+  "illustrative": true,
+  "disclaimer": "Product shape sketch only. Not a production audit log schema.",
+  "scenario": "Per-request record when Semantic Boundary sits between application and LLM",
+  "pipeline": [
+    "Application",
+    "Semantic Boundary (declare → cross → verify)",
+    "LLM"
+  ],
+  "audit_record": {
+    "request_id": "req_8f3a2c1b-4e5d-6789-a012-3456789abcde",
+    "event_id": "evt_illustrative_004",
+    "timestamp_utc": "2026-06-12T11:22:33Z",
+    "purpose_id": "T_o",
+    "policy_id": "obs_policy_v1",
+    "policy_version": "1.0.0",
+    "transform_id": "sem_medium",
+    "transformations_applied": [
+      "journal_text → typed_obs_fields",
+      "medication_literal → medication_class",
+      "raw_symptom → symptom_type"
+    ],
+    "risk_score_R_z": 0.41,
+    "linkage_budget_R_max": 0.45,
+    "provenance_completeness_tau": 1.0,
+    "verify_outcome": "pass",
+    "export_z_hash": "sha256:illustrative_only",
+    "consumer_id": "llm_triage_vendor"
+  },
+  "governance_dimensions_scored": {
+    "utility_U": "assess_utility(T, z)",
+    "linkage_R": "assess_risk(z)",
+    "governance_tau": "provenance_completeness(z, r)"
+  },
+  "analogous_systems": [
+    "data_lineage_platforms",
+    "governance_catalogs",
+    "compliance_audit_logs"
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "study": "sbb-obs-v0.1.1",
+  "model": "qwen3:8b",
+  "n_bootstrap_utility": 500,
+  "n_bootstrap_linkage": 500,
+  "seed": 42,
+  "conditions": [
+    {
+      "condition_id": "raw",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.6225380426476885,
+        "ci95_lo": 0.5633975023417411,
+        "ci95_hi": 0.6761011584339764,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.6844094310750779,
+        "ci95_lo": 0.6679365829769212,
+        "ci95_hi": 0.701059881580666,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.509151930799652,
+        "ci95_lo": 0.4502460523136545,
+        "ci95_hi": 0.5582438096508202,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "redact_bracket",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.6700027046268058,
+        "ci95_lo": 0.6143575976547179,
+        "ci95_hi": 0.7267779370056937,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.2474886983367358,
+        "ci95_lo": 0.2256425572716264,
+        "ci95_hi": 0.2685929685601559,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.37487036398215384,
+        "ci95_lo": 0.3497732101738238,
+        "ci95_hi": 0.4033964290570689,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "redact_tokenize",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.6598568713186705,
+        "ci95_lo": 0.6068164164064506,
+        "ci95_hi": 0.711692760297451,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.255976910017811,
+        "ci95_lo": 0.21179877438227054,
+        "ci95_hi": 0.3155965230550952,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.6663842840143075,
+        "ci95_lo": 0.636960927368438,
+        "ci95_hi": 0.6899689470370308,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "redact_surrogate",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.6556569879420351,
+        "ci95_lo": 0.5927818908831386,
+        "ci95_hi": 0.7207729517591561,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.5580219457492149,
+        "ci95_lo": 0.5331810265992417,
+        "ci95_hi": 0.5845629501719598,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.4723647778410379,
+        "ci95_lo": 0.42146500361605743,
+        "ci95_hi": 0.5255650502085656,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "sem_coarse",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.16536142527287126,
+        "ci95_lo": 0.13094544584365977,
+        "ci95_hi": 0.20294351720812429,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.12794795013575053,
+        "ci95_lo": 0.11587209612105712,
+        "ci95_hi": 0.13976536107181012,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.3237113197729772,
+        "ci95_lo": 0.30077844600142056,
+        "ci95_hi": 0.36645476975192937,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "sem_medium",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 1.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 1.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.5119008504962719,
+        "ci95_lo": 0.4465902133158897,
+        "ci95_hi": 0.5849467501740118,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "sem_fine",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 1.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 1.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.7632860107777392,
+        "ci95_lo": 0.6506200523249158,
+        "ci95_hi": 0.8461740724428276,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "redact_llm_substitute",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.5932722540226305,
+        "ci95_lo": 0.5338897093687862,
+        "ci95_hi": 0.6609373407980526,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.3256946955746976,
+        "ci95_lo": 0.3058533691718684,
+        "ci95_hi": 0.34469021501063635,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.5588651518051821,
+        "ci95_lo": 0.5194593492838394,
+        "ci95_hi": 0.5944119080779406,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    },
+    {
+      "condition_id": "redact_llm_rephrase",
+      "n_test_events": 630,
+      "n_test_personas": 20,
+      "obs_failure_mode_macro_f1": {
+        "point": 0.5732845206231618,
+        "ci95_lo": 0.5100174578143842,
+        "ci95_hi": 0.6406185665581963,
+        "bootstrap": "event_resample_n630"
+      },
+      "analytics_med_class_macro_f1": {
+        "point": 0.546689058292144,
+        "ci95_lo": 0.4895075774112852,
+        "ci95_hi": 0.6419886131124184,
+        "bootstrap": "event_resample_n630"
+      },
+      "combined_linkage_score": {
+        "point": 0.573903504596415,
+        "ci95_lo": 0.5401618142639437,
+        "ci95_hi": 0.6110390534433627,
+        "bootstrap": "persona_block_resample_n20"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+# Open SBB pilot v0.1.1 — tunable without code changes
+study:
+  name: sbb-obs-v0.1.1
+  purpose_id: observability
+  consumer_id: obs_vendor
+
+persona_count: 100
+
+corpus:
+  persona_count: 100
+  days: 30
+  split_seed: 42
+  train_ratio: 0.70
+  val_ratio: 0.10
+  test_ratio: 0.20
+  # Relaxed floors when persona_count < 50 (validate_corpus.py)
+  smoke:
+    min_events: 80
+    min_failure_labeled: 15
+    min_per_failure_mode: 5
+    min_missed_safety_escalation: 8
+    min_rare_personas: 2
+  paper:
+    # Scaled from 150-persona design (×100/150); generator yields ~39 events/persona → ~3900 at 100
+    min_events: 3800
+    min_failure_labeled: 667
+    min_per_failure_mode: 67
+    min_missed_safety_escalation: 100
+    min_rare_personas: 12
+
+lattice:
+  default_role: primary
+  conditions:
+    - raw
+    - redact_bracket
+    - redact_tokenize
+    - redact_surrogate
+    - sem_coarse
+    - sem_medium
+    - sem_fine
+    - redact_llm_substitute
+    - redact_llm_rephrase
+
+transform:
+  surrogate:
+    seed: 42
+  llm:
+    model: qwen3:8b
+    base_url: http://127.0.0.1:11434/v1
+    temperature: 0
+    timeout_s: 1800
+    cache_dir: data/llm_transform_cache
+    batch_size: 30
+    batch_by_persona: true
+
+paths:
+  raw: data/raw
+  transformed: data/transformed
+  transformed_analytics: data/transformed_analytics
+  ground_truth: data/ground_truth
+  policy: data/policies/obs_policy_v1.json
+  analytics_policy: data/policies/analytics_policy_v1.json
+  schemas:
+    coarse: data/schemas/obs_schema_coarse.json
+    medium: data/schemas/obs_schema_medium.json
+    fine: data/schemas/obs_schema_fine.json
+    analytics_coarse: data/schemas/analytics_schema_coarse.json
+    analytics_medium: data/schemas/analytics_schema_medium.json
+    analytics_fine: data/schemas/analytics_schema_fine.json
+  provenance: data/schemas/provenance_v1.json
+  labels: data/schemas/obs_labels_v1.json
+
+analytics_study:
+  name: sbb-analytics-v0.1.1
+  purpose_id: analytics
+  consumer_id: analytics_vendor
+  policy_id: analytics_policy_v1
+
+eval:
+  primary_metric: failure_mode_macro_f1
+  tier0:
+    random_seed: 42
+    max_tfidf_features: 5000
+  tier1:
+    primary_model: qwen3:8b
+    sensitivity_models:
+      - llama3.1:8b
+      - gemma4:latest
+    ollama_base_url: http://127.0.0.1:11434/v1
+    temperature: 0
+    eval_seeds: [42, 43, 44]
+    run_sensitivity_on_test_only: true
+
+metrics:
+  primary: failure_mode_macro_f1
+
+outputs:
+  pilot_dir: outputs/pilot_v2

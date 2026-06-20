@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "analytics_schema_fine",
+  "description": "Fine analytics surface: Ta-1/2/3 event fields plus Ta-5 cohort_segment and engagement_trend. Omits time_bucket when triple would violate analytics_policy_v1 prohibited_combinations.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "medication_class": {
+      "type": "string",
+      "description": "Ta-1: pharmacologic class attribution."
+    },
+    "symptom_categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ta-2: symptom category tags."
+    },
+    "side_effect_signal": {
+      "type": "string",
+      "enum": ["present", "absent"],
+      "description": "Ta-2: side-effect detection signal."
+    },
+    "adherence_signal": {
+      "type": "string",
+      "enum": ["none", "barrier"],
+      "description": "Ta-3: adherence friction signal."
+    },
+    "cohort_segment": {
+      "type": "string",
+      "description": "Ta-5: persona-level cohort segment (logging × engagement archetype)."
+    },
+    "engagement_trend": {
+      "type": "string",
+      "enum": ["stable", "side-effect-barrier", "missed-dose"],
+      "description": "Ta-5: adherence trajectory / engagement trend for cohort analytics."
+    }
+  },
+  "required": [
+    "medication_class",
+    "symptom_categories",
+    "side_effect_signal",
+    "adherence_signal",
+    "cohort_segment",
+    "engagement_trend"
+  ]
+}

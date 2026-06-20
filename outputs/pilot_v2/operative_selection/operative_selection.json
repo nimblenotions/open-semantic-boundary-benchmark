@@ -1,0 +1,1798 @@
+{
+  "generated_at_utc": "2026-06-06T01:03:16.771427+00:00",
+  "n_conditions": 9,
+  "condition_points": [
+    {
+      "condition_id": "raw",
+      "u_obs": 0.6263286808976464,
+      "u_analytics_med": 0.5468396114664771,
+      "u_analytics_side": 0.9097938144329898,
+      "u_analytics_adherence": 0.7243826560373323,
+      "u_analytics_composite": 0.7270053606455997,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "provenance_completeness": 1.0,
+      "token_recovery": 1.0,
+      "persona_top1": 0.32063492063492066
+    },
+    {
+      "condition_id": "redact_bracket",
+      "u_obs": 0.6731650099289139,
+      "u_analytics_med": 0.197277738074702,
+      "u_analytics_side": 0.5615662115662116,
+      "u_analytics_adherence": 0.718906430496727,
+      "u_analytics_composite": 0.4925834600458802,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.03274711946634324,
+      "persona_top1": 0.05873015873015873
+    },
+    {
+      "condition_id": "redact_tokenize",
+      "u_obs": 0.6618053142346182,
+      "u_analytics_med": 0.23336357622444076,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7756667968480784,
+      "u_analytics_composite": 0.6250412329979477,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.6619591645788753,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.007883565797453002,
+      "persona_top1": 0.873015873015873
+    },
+    {
+      "condition_id": "redact_surrogate",
+      "u_obs": 0.6569965291501275,
+      "u_analytics_med": 0.44535940497894505,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7351351351351352,
+      "u_analytics_composite": 0.6821959553451347,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.4239907589463723,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.02850212249848393,
+      "persona_top1": 0.19365079365079366
+    },
+    {
+      "condition_id": "sem_coarse",
+      "u_obs": 0.1650382121415734,
+      "u_analytics_med": 0.12831858407079647,
+      "u_analytics_side": 1.0,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.7094395280235988,
+      "u_cohort": 0.22830687830687835,
+      "linkage": 0.3102532461599767,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.0,
+      "persona_top1": 0.026984126984126985
+    },
+    {
+      "condition_id": "sem_medium",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.9977491720168491,
+      "u_cohort": 0.27380952380952384,
+      "linkage": 0.48264927923086615,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.0,
+      "persona_top1": 0.16666666666666666
+    },
+    {
+      "condition_id": "sem_fine",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 0.9888250319284801,
+      "u_analytics_composite": 0.9940241826596757,
+      "u_cohort": 0.2956730769230769,
+      "linkage": 0.7522809317662005,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.0,
+      "persona_top1": 0.6412698412698413
+    },
+    {
+      "condition_id": "redact_llm_substitute",
+      "u_obs": 0.5990921382359268,
+      "u_analytics_med": 0.2608521658377333,
+      "u_analytics_side": 0.8603859552703195,
+      "u_analytics_adherence": 0.7336840374815058,
+      "u_analytics_composite": 0.6183073861965195,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5251535450868137,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.40873256519102485,
+      "persona_top1": 0.526984126984127
+    },
+    {
+      "condition_id": "redact_llm_rephrase",
+      "u_obs": 0.5826727812985624,
+      "u_analytics_med": 0.41853001814415963,
+      "u_analytics_side": 0.8285714285714285,
+      "u_analytics_adherence": 0.7461976353816961,
+      "u_analytics_composite": 0.6644330273657614,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5372424860244452,
+      "provenance_completeness": 1.0,
+      "token_recovery": 0.5633717404487568,
+      "persona_top1": 0.573015873015873
+    }
+  ],
+  "risk_constrained": [
+    {
+      "purpose": "observability",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 0.1650382121415734,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.4,
+      "winner": "redact_bracket",
+      "utility": 0.6731650099289139,
+      "linkage": 0.35787478197253214,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.45,
+      "winner": "redact_bracket",
+      "utility": 0.6731650099289139,
+      "linkage": 0.35787478197253214,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.5,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.55,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.6,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.65,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.7,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "observability",
+      "r_max": 0.75,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 0.12831858407079647,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.4,
+      "winner": "redact_bracket",
+      "utility": 0.197277738074702,
+      "linkage": 0.35787478197253214,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.45,
+      "winner": "redact_surrogate",
+      "utility": 0.44535940497894505,
+      "linkage": 0.4239907589463723,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.5,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.55,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.6,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.65,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.7,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_med",
+      "r_max": 0.75,
+      "winner": "sem_medium",
+      "utility": 1.0,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.4,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.45,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.5,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.55,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.6,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.65,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.7,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_side",
+      "r_max": 0.75,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.4,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.45,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.5,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.55,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.6,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.65,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.7,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_adherence",
+      "r_max": 0.75,
+      "winner": "sem_coarse",
+      "utility": 1.0,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 0.7094395280235988,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.4,
+      "winner": "sem_coarse",
+      "utility": 0.7094395280235988,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.45,
+      "winner": "sem_coarse",
+      "utility": 0.7094395280235988,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.5,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.55,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.6,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.65,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.7,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_composite",
+      "r_max": 0.75,
+      "winner": "sem_medium",
+      "utility": 0.9977491720168491,
+      "linkage": 0.48264927923086615,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.35,
+      "winner": "sem_coarse",
+      "utility": 0.22830687830687835,
+      "linkage": 0.3102532461599767,
+      "n_feasible": 1,
+      "feasible_conditions": [
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.4,
+      "winner": "redact_bracket",
+      "utility": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "n_feasible": 2,
+      "feasible_conditions": [
+        "redact_bracket",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.45,
+      "winner": "redact_bracket",
+      "utility": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "n_feasible": 3,
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.5,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 5,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.55,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.6,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.65,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 7,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.7,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    },
+    {
+      "purpose": "analytics_cohort",
+      "r_max": 0.75,
+      "winner": "raw",
+      "utility": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "n_feasible": 8,
+      "feasible_conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ]
+    }
+  ],
+  "dominance_obs": [
+    {
+      "purpose": "observability",
+      "condition_id": "raw",
+      "u_obs": 0.6263286808976464,
+      "u_analytics_med": 0.5468396114664771,
+      "u_analytics_side": 0.9097938144329898,
+      "u_analytics_adherence": 0.7243826560373323,
+      "u_analytics_composite": 0.7270053606455997,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "redact_bracket",
+        "redact_surrogate"
+      ],
+      "n_dominators": 2,
+      "dominates": [
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 2,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "redact_bracket",
+      "u_obs": 0.6731650099289139,
+      "u_analytics_med": 0.197277738074702,
+      "u_analytics_side": 0.5615662115662116,
+      "u_analytics_adherence": 0.718906430496727,
+      "u_analytics_composite": 0.4925834600458802,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "raw",
+        "redact_tokenize",
+        "redact_surrogate",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 5,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "redact_tokenize",
+      "u_obs": 0.6618053142346182,
+      "u_analytics_med": 0.23336357622444076,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7756667968480784,
+      "u_analytics_composite": 0.6250412329979477,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.6619591645788753,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "redact_bracket",
+        "sem_medium"
+      ],
+      "n_dominators": 2,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "redact_surrogate",
+      "u_obs": 0.6569965291501275,
+      "u_analytics_med": 0.44535940497894505,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7351351351351352,
+      "u_analytics_composite": 0.6821959553451347,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.4239907589463723,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "redact_bracket"
+      ],
+      "n_dominators": 1,
+      "dominates": [
+        "raw",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 3,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "sem_coarse",
+      "u_obs": 0.1650382121415734,
+      "u_analytics_med": 0.12831858407079647,
+      "u_analytics_side": 1.0,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.7094395280235988,
+      "u_cohort": 0.22830687830687835,
+      "linkage": 0.3102532461599767,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": false
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "sem_medium",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.9977491720168491,
+      "u_cohort": 0.27380952380952384,
+      "linkage": 0.48264927923086615,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "sem_fine",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 4,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "sem_fine",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 0.9888250319284801,
+      "u_analytics_composite": 0.9940241826596757,
+      "u_cohort": 0.2956730769230769,
+      "linkage": 0.7522809317662005,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "sem_medium"
+      ],
+      "n_dominators": 1,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "redact_llm_substitute",
+      "u_obs": 0.5990921382359268,
+      "u_analytics_med": 0.2608521658377333,
+      "u_analytics_side": 0.8603859552703195,
+      "u_analytics_adherence": 0.7336840374815058,
+      "u_analytics_composite": 0.6183073861965195,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5251535450868137,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_medium"
+      ],
+      "n_dominators": 4,
+      "dominates": [
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 1,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "observability",
+      "condition_id": "redact_llm_rephrase",
+      "u_obs": 0.5826727812985624,
+      "u_analytics_med": 0.41853001814415963,
+      "u_analytics_side": 0.8285714285714285,
+      "u_analytics_adherence": 0.7461976353816961,
+      "u_analytics_composite": 0.6644330273657614,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5372424860244452,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_medium",
+        "redact_llm_substitute"
+      ],
+      "n_dominators": 5,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    }
+  ],
+  "dominance_analytics_med": [
+    {
+      "purpose": "analytics_med",
+      "condition_id": "raw",
+      "u_obs": 0.6263286808976464,
+      "u_analytics_med": 0.5468396114664771,
+      "u_analytics_side": 0.9097938144329898,
+      "u_analytics_adherence": 0.7243826560373323,
+      "u_analytics_composite": 0.7270053606455997,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 3,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "redact_bracket",
+      "u_obs": 0.6731650099289139,
+      "u_analytics_med": 0.197277738074702,
+      "u_analytics_side": 0.5615662115662116,
+      "u_analytics_adherence": 0.718906430496727,
+      "u_analytics_composite": 0.4925834600458802,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "redact_tokenize",
+      "u_obs": 0.6618053142346182,
+      "u_analytics_med": 0.23336357622444076,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7756667968480784,
+      "u_analytics_composite": 0.6250412329979477,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.6619591645788753,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominators": 5,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "redact_surrogate",
+      "u_obs": 0.6569965291501275,
+      "u_analytics_med": 0.44535940497894505,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7351351351351352,
+      "u_analytics_composite": 0.6821959553451347,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.4239907589463723,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 3,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "sem_coarse",
+      "u_obs": 0.1650382121415734,
+      "u_analytics_med": 0.12831858407079647,
+      "u_analytics_side": 1.0,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.7094395280235988,
+      "u_cohort": 0.22830687830687835,
+      "linkage": 0.3102532461599767,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "sem_medium",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.9977491720168491,
+      "u_cohort": 0.27380952380952384,
+      "linkage": 0.48264927923086615,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "sem_fine",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 4,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "sem_fine",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 0.9888250319284801,
+      "u_analytics_composite": 0.9940241826596757,
+      "u_cohort": 0.2956730769230769,
+      "linkage": 0.7522809317662005,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "sem_medium"
+      ],
+      "n_dominators": 1,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "redact_llm_substitute",
+      "u_obs": 0.5990921382359268,
+      "u_analytics_med": 0.2608521658377333,
+      "u_analytics_side": 0.8603859552703195,
+      "u_analytics_adherence": 0.7336840374815058,
+      "u_analytics_composite": 0.6183073861965195,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5251535450868137,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_medium"
+      ],
+      "n_dominators": 3,
+      "dominates": [
+        "redact_tokenize"
+      ],
+      "n_dominated": 1,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_med",
+      "condition_id": "redact_llm_rephrase",
+      "u_obs": 0.5826727812985624,
+      "u_analytics_med": 0.41853001814415963,
+      "u_analytics_side": 0.8285714285714285,
+      "u_analytics_adherence": 0.7461976353816961,
+      "u_analytics_composite": 0.6644330273657614,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5372424860244452,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_medium"
+      ],
+      "n_dominators": 3,
+      "dominates": [
+        "redact_tokenize"
+      ],
+      "n_dominated": 1,
+      "recommend_deploy": false,
+      "never_deploy": true
+    }
+  ],
+  "dominance_analytics_composite": [
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "raw",
+      "u_obs": 0.6263286808976464,
+      "u_analytics_med": 0.5468396114664771,
+      "u_analytics_side": 0.9097938144329898,
+      "u_analytics_adherence": 0.7243826560373323,
+      "u_analytics_composite": 0.7270053606455997,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.48057589546603063,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 3,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "redact_bracket",
+      "u_obs": 0.6731650099289139,
+      "u_analytics_med": 0.197277738074702,
+      "u_analytics_side": 0.5615662115662116,
+      "u_analytics_adherence": 0.718906430496727,
+      "u_analytics_composite": 0.4925834600458802,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.35787478197253214,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "sem_coarse"
+      ],
+      "n_dominators": 1,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "redact_tokenize",
+      "u_obs": 0.6618053142346182,
+      "u_analytics_med": 0.23336357622444076,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7756667968480784,
+      "u_analytics_composite": 0.6250412329979477,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.6619591645788753,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_rephrase"
+      ],
+      "n_dominators": 5,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "redact_surrogate",
+      "u_obs": 0.6569965291501275,
+      "u_analytics_med": 0.44535940497894505,
+      "u_analytics_side": 0.8660933259213237,
+      "u_analytics_adherence": 0.7351351351351352,
+      "u_analytics_composite": 0.6821959553451347,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.4239907589463723,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "sem_coarse"
+      ],
+      "n_dominators": 1,
+      "dominates": [
+        "redact_tokenize",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 3,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "sem_coarse",
+      "u_obs": 0.1650382121415734,
+      "u_analytics_med": 0.12831858407079647,
+      "u_analytics_side": 1.0,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.7094395280235988,
+      "u_cohort": 0.22830687830687835,
+      "linkage": 0.3102532461599767,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 5,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "sem_medium",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 1.0,
+      "u_analytics_composite": 0.9977491720168491,
+      "u_cohort": 0.27380952380952384,
+      "linkage": 0.48264927923086615,
+      "on_pareto_frontier": true,
+      "dominated_by": [],
+      "n_dominators": 0,
+      "dominates": [
+        "redact_tokenize",
+        "sem_fine",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "n_dominated": 4,
+      "recommend_deploy": true,
+      "never_deploy": false
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "sem_fine",
+      "u_obs": 1.0,
+      "u_analytics_med": 1.0,
+      "u_analytics_side": 0.9932475160505472,
+      "u_analytics_adherence": 0.9888250319284801,
+      "u_analytics_composite": 0.9940241826596757,
+      "u_cohort": 0.2956730769230769,
+      "linkage": 0.7522809317662005,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "sem_medium"
+      ],
+      "n_dominators": 1,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "redact_llm_substitute",
+      "u_obs": 0.5990921382359268,
+      "u_analytics_med": 0.2608521658377333,
+      "u_analytics_side": 0.8603859552703195,
+      "u_analytics_adherence": 0.7336840374815058,
+      "u_analytics_composite": 0.6183073861965195,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5251535450868137,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ],
+      "n_dominators": 4,
+      "dominates": [],
+      "n_dominated": 0,
+      "recommend_deploy": false,
+      "never_deploy": true
+    },
+    {
+      "purpose": "analytics_composite",
+      "condition_id": "redact_llm_rephrase",
+      "u_obs": 0.5826727812985624,
+      "u_analytics_med": 0.41853001814415963,
+      "u_analytics_side": 0.8285714285714285,
+      "u_analytics_adherence": 0.7461976353816961,
+      "u_analytics_composite": 0.6644330273657614,
+      "u_cohort": 0.3888888888888889,
+      "linkage": 0.5372424860244452,
+      "on_pareto_frontier": false,
+      "dominated_by": [
+        "raw",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ],
+      "n_dominators": 4,
+      "dominates": [
+        "redact_tokenize"
+      ],
+      "n_dominated": 1,
+      "recommend_deploy": false,
+      "never_deploy": true
+    }
+  ],
+  "task_bundles": [
+    {
+      "bundle_id": "dual_purpose_balanced",
+      "label": "Balanced dual-purpose (obs + med-class under moderate linkage)",
+      "constraints": {
+        "u_obs_min": 0.6,
+        "u_analytics_med_min": 0.5,
+        "u_analytics_composite_min": null,
+        "linkage_max": 0.5,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [
+        "raw",
+        "sem_medium"
+      ],
+      "n_feasible": 2,
+      "empty": false
+    },
+    {
+      "bundle_id": "strict_linkage",
+      "label": "Strict linkage budget (compliance-oriented)",
+      "constraints": {
+        "u_obs_min": 0.55,
+        "u_analytics_med_min": 0.45,
+        "u_analytics_composite_min": null,
+        "linkage_max": 0.4,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [],
+      "n_feasible": 0,
+      "empty": true
+    },
+    {
+      "bundle_id": "observability_first",
+      "label": "Observability-first vendor triage",
+      "constraints": {
+        "u_obs_min": 0.65,
+        "u_analytics_med_min": null,
+        "u_analytics_composite_min": null,
+        "linkage_max": 0.55,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_medium"
+      ],
+      "n_feasible": 3,
+      "empty": false
+    },
+    {
+      "bundle_id": "analytics_med_class",
+      "label": "Analytics med-class priority",
+      "constraints": {
+        "u_obs_min": null,
+        "u_analytics_med_min": 0.5,
+        "u_analytics_composite_min": null,
+        "linkage_max": 0.55,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [
+        "raw",
+        "sem_medium"
+      ],
+      "n_feasible": 2,
+      "empty": false
+    },
+    {
+      "bundle_id": "full_dual_composite",
+      "label": "Full dual-purpose composite utility",
+      "constraints": {
+        "u_obs_min": 0.6,
+        "u_analytics_med_min": null,
+        "u_analytics_composite_min": 0.65,
+        "linkage_max": 0.55,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [
+        "raw",
+        "redact_surrogate",
+        "sem_medium"
+      ],
+      "n_feasible": 3,
+      "empty": false
+    }
+  ],
+  "r_max_grid": [
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75
+  ],
+  "provenance_min": 0.9,
+  "operative_bundle": {
+    "sbb_version": "0.1.1",
+    "artifact_type": "operative_boundary_bundle_v0",
+    "generated_at_utc": "2026-06-06T01:03:16.771490+00:00",
+    "decision_method": "risk_constrained_feasible_set",
+    "tier1_model": "qwen3:8b",
+    "adversary": "trial4_combined_linkage",
+    "purposes_registered": [
+      {
+        "id": "observability",
+        "consumer_id": "obs_vendor"
+      },
+      {
+        "id": "analytics",
+        "consumer_id": "analytics_vendor"
+      }
+    ],
+    "recommended_condition": "sem_medium",
+    "recommended_condition_rule": "No single condition wins both purposes at R_max=0.45; dual_purpose_balanced bundle feasible set: ['raw', 'sem_medium']. Selected `sem_medium` (non-dominated semantic arm when available). Consider purpose-split exports or pick from bundle.",
+    "per_perspective_at_r_max_0_45": {
+      "observability": "redact_bracket",
+      "analytics_med_class": "redact_surrogate",
+      "same_winner": false
+    },
+    "task_bundle_dual_purpose_balanced": {
+      "bundle_id": "dual_purpose_balanced",
+      "label": "Balanced dual-purpose (obs + med-class under moderate linkage)",
+      "constraints": {
+        "u_obs_min": 0.6,
+        "u_analytics_med_min": 0.5,
+        "u_analytics_composite_min": null,
+        "linkage_max": 0.5,
+        "provenance_min": 0.9
+      },
+      "feasible_conditions": [
+        "raw",
+        "sem_medium"
+      ],
+      "n_feasible": 2,
+      "empty": false
+    },
+    "conditions_never_deploy_obs": [
+      "raw",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_fine",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "dominated_strategies": {
+      "observability": [
+        {
+          "condition": "raw",
+          "dominated_by": [
+            "redact_bracket",
+            "redact_surrogate"
+          ]
+        },
+        {
+          "condition": "redact_tokenize",
+          "dominated_by": [
+            "redact_bracket",
+            "sem_medium"
+          ]
+        },
+        {
+          "condition": "redact_surrogate",
+          "dominated_by": [
+            "redact_bracket"
+          ]
+        },
+        {
+          "condition": "sem_fine",
+          "dominated_by": [
+            "sem_medium"
+          ]
+        },
+        {
+          "condition": "redact_llm_substitute",
+          "dominated_by": [
+            "raw",
+            "redact_bracket",
+            "redact_surrogate",
+            "sem_medium"
+          ]
+        },
+        {
+          "condition": "redact_llm_rephrase",
+          "dominated_by": [
+            "raw",
+            "redact_bracket",
+            "redact_surrogate",
+            "sem_medium",
+            "redact_llm_substitute"
+          ]
+        }
+      ],
+      "analytics_med": [
+        {
+          "condition": "redact_tokenize",
+          "dominated_by": [
+            "raw",
+            "redact_surrogate",
+            "sem_medium",
+            "redact_llm_substitute",
+            "redact_llm_rephrase"
+          ]
+        },
+        {
+          "condition": "sem_fine",
+          "dominated_by": [
+            "sem_medium"
+          ]
+        },
+        {
+          "condition": "redact_llm_substitute",
+          "dominated_by": [
+            "raw",
+            "redact_surrogate",
+            "sem_medium"
+          ]
+        },
+        {
+          "condition": "redact_llm_rephrase",
+          "dominated_by": [
+            "raw",
+            "redact_surrogate",
+            "sem_medium"
+          ]
+        }
+      ]
+    },
+    "metrics_ref": {
+      "obs": "outputs/pilot_v2/metrics.json",
+      "analytics": "outputs/pilot_v2/analytics_metrics.json"
+    },
+    "operative_selection_ref": "operative_selection/operative_selection.json"
+  }
+}

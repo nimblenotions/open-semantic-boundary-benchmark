@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "obs_schema_coarse",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "side_effect": { "type": "boolean" },
+    "adherence_barrier": { "type": "boolean" },
+    "risk_level": { "type": "string", "enum": ["low", "elevated", "high"] }
+  },
+  "required": ["side_effect", "adherence_barrier", "risk_level"]
+}

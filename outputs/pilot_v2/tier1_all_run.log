@@ -1,0 +1,29 @@
+[tier1-resume] primary_model=qwen3:8b batch_size=30
+[tier1-resume] raw: cache_hit=630 cache_miss=0 total=630
+[tier1-resume] raw: done in 0.0s f1=0.6263286808976464 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] redact_bracket: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] redact_bracket: done in 302.0s f1=0.6731650099289139 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] redact_tokenize: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] redact_tokenize: done in 296.3s f1=0.6618053142346182 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] redact_surrogate: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] redact_surrogate: done in 299.1s f1=0.6569965291501275 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] sem_coarse: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] sem_coarse: done in 249.8s f1=0.1650382121415734 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] sem_medium: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] sem_medium: done in 302.9s f1=1.0 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] sem_fine: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] sem_fine: done in 275.7s f1=1.0 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] redact_llm_substitute: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] redact_llm_substitute: done in 318.7s f1=0.5990921382359268 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] redact_llm_rephrase: cache_hit=630 cache_miss=0 total=630
+[tier1-resume] redact_llm_rephrase: done in 0.0s f1=0.5826727812985624 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/metrics.json
+[tier1-resume] finished in 2044.9s

@@ -1,0 +1,11 @@
+{
+  "condition_id": "redact_llm_substitute",
+  "event_count": 3894,
+  "format": "events.jsonl",
+  "verify_fail_count": 0,
+  "checksum": "85f7a04b8b9aa8f6",
+  "source": "data/llm_transform_cache/redact_llm_substitute",
+  "cache_format": "cache.jsonl",
+  "purpose_id": "analytics",
+  "policy_id": "analytics_policy_v1"
+}

@@ -1,0 +1,509 @@
+{
+  "job_count": 36,
+  "jobs": [
+    "obs:llama3.1:8b:raw",
+    "obs:llama3.1:8b:redact_bracket",
+    "obs:llama3.1:8b:redact_tokenize",
+    "obs:llama3.1:8b:redact_surrogate",
+    "obs:llama3.1:8b:sem_coarse",
+    "obs:llama3.1:8b:sem_medium",
+    "obs:llama3.1:8b:sem_fine",
+    "obs:llama3.1:8b:redact_llm_substitute",
+    "obs:llama3.1:8b:redact_llm_rephrase",
+    "obs:gemma4:latest:raw",
+    "obs:gemma4:latest:redact_bracket",
+    "obs:gemma4:latest:redact_tokenize",
+    "obs:gemma4:latest:redact_surrogate",
+    "obs:gemma4:latest:sem_coarse",
+    "obs:gemma4:latest:sem_medium",
+    "obs:gemma4:latest:sem_fine",
+    "obs:gemma4:latest:redact_llm_substitute",
+    "obs:gemma4:latest:redact_llm_rephrase",
+    "analytics:llama3.1:8b:raw",
+    "analytics:llama3.1:8b:redact_bracket",
+    "analytics:llama3.1:8b:redact_tokenize",
+    "analytics:llama3.1:8b:redact_surrogate",
+    "analytics:llama3.1:8b:sem_coarse",
+    "analytics:llama3.1:8b:sem_medium",
+    "analytics:llama3.1:8b:sem_fine",
+    "analytics:llama3.1:8b:redact_llm_substitute",
+    "analytics:llama3.1:8b:redact_llm_rephrase",
+    "analytics:gemma4:latest:raw",
+    "analytics:gemma4:latest:redact_bracket",
+    "analytics:gemma4:latest:redact_tokenize",
+    "analytics:gemma4:latest:redact_surrogate",
+    "analytics:gemma4:latest:sem_coarse",
+    "analytics:gemma4:latest:sem_medium",
+    "analytics:gemma4:latest:sem_fine",
+    "analytics:gemma4:latest:redact_llm_substitute",
+    "analytics:gemma4:latest:redact_llm_rephrase"
+  ]
+}
+{
+  "results": [
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_tokenize",
+        "cache_dir": "data/eval_cache/llama3.1_8b/redact_tokenize"
+      },
+      "status": "ok",
+      "metric": 0.49418077708981406,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_surrogate",
+        "cache_dir": "data/eval_cache/llama3.1_8b/redact_surrogate"
+      },
+      "status": "ok",
+      "metric": 0.5517356675619093,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_bracket",
+        "cache_dir": "data/eval_cache/llama3.1_8b/redact_bracket"
+      },
+      "status": "ok",
+      "metric": 0.5557971546693351,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "raw",
+        "cache_dir": "data/eval_cache/llama3.1_8b/raw"
+      },
+      "status": "ok",
+      "metric": 0.5424029626524124,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_fine",
+        "cache_dir": "data/eval_cache/llama3.1_8b/sem_fine"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_medium",
+        "cache_dir": "data/eval_cache/llama3.1_8b/sem_medium"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_llm_substitute",
+        "cache_dir": "data/eval_cache/llama3.1_8b/redact_llm_substitute"
+      },
+      "status": "ok",
+      "metric": 0.49360800358761986,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_coarse",
+        "cache_dir": "data/eval_cache/llama3.1_8b/sem_coarse"
+      },
+      "status": "ok",
+      "metric": 0.2238768473332107,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_llm_rephrase",
+        "cache_dir": "data/eval_cache/llama3.1_8b/redact_llm_rephrase"
+      },
+      "status": "ok",
+      "metric": 0.4315005037067093,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "redact_bracket",
+        "cache_dir": "data/eval_cache/gemma4_latest/redact_bracket"
+      },
+      "status": "ok",
+      "metric": 0.646760306638669,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "redact_tokenize",
+        "cache_dir": "data/eval_cache/gemma4_latest/redact_tokenize"
+      },
+      "status": "ok",
+      "metric": 0.5255553819183184,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "raw",
+        "cache_dir": "data/eval_cache/gemma4_latest/raw"
+      },
+      "status": "ok",
+      "metric": 0.6534067362577216,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "sem_medium",
+        "cache_dir": "data/eval_cache/gemma4_latest/sem_medium"
+      },
+      "status": "ok",
+      "metric": 0.997265102558654,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "sem_coarse",
+        "cache_dir": "data/eval_cache/gemma4_latest/sem_coarse"
+      },
+      "status": "ok",
+      "metric": 0.21255775236456476,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "redact_surrogate",
+        "cache_dir": "data/eval_cache/gemma4_latest/redact_surrogate"
+      },
+      "status": "ok",
+      "metric": 0.6031614444304276,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "sem_fine",
+        "cache_dir": "data/eval_cache/gemma4_latest/sem_fine"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "raw",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/raw"
+      },
+      "status": "ok",
+      "metric": 0.34497706797706795,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_bracket",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/redact_bracket"
+      },
+      "status": "ok",
+      "metric": 0.18898681245557522,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "redact_llm_rephrase",
+        "cache_dir": "data/eval_cache/gemma4_latest/redact_llm_rephrase"
+      },
+      "status": "ok",
+      "metric": 0.5986105778912475,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "obs",
+        "model": "gemma4:latest",
+        "condition_id": "redact_llm_substitute",
+        "cache_dir": "data/eval_cache/gemma4_latest/redact_llm_substitute"
+      },
+      "status": "ok",
+      "metric": 0.6383472443586947,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_coarse",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/sem_coarse"
+      },
+      "status": "ok",
+      "metric": 0.030351866774106902,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_tokenize",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/redact_tokenize"
+      },
+      "status": "ok",
+      "metric": 0.15202088546138537,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_surrogate",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/redact_surrogate"
+      },
+      "status": "ok",
+      "metric": 0.30477620148079626,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_medium",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/sem_medium"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_llm_substitute",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/redact_llm_substitute"
+      },
+      "status": "ok",
+      "metric": 0.2394868037043742,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "sem_fine",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/sem_fine"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "llama3.1:8b",
+        "condition_id": "redact_llm_rephrase",
+        "cache_dir": "data/eval_cache_analytics/llama3.1_8b/redact_llm_rephrase"
+      },
+      "status": "ok",
+      "metric": 0.4210624102029846,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "raw",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/raw"
+      },
+      "status": "ok",
+      "metric": 0.3382245337702249,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "sem_coarse",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/sem_coarse"
+      },
+      "status": "ok",
+      "metric": 0.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "redact_tokenize",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/redact_tokenize"
+      },
+      "status": "ok",
+      "metric": 0.04043010947607531,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "redact_bracket",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/redact_bracket"
+      },
+      "status": "ok",
+      "metric": 0.006688963210702341,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "redact_surrogate",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/redact_surrogate"
+      },
+      "status": "ok",
+      "metric": 0.11309539719939414,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "sem_medium",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/sem_medium"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "sem_fine",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/sem_fine"
+      },
+      "status": "ok",
+      "metric": 1.0,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "redact_llm_rephrase"
+      },
+      "status": "error",
+      "reason": "No JSON in model response: medication_class: SNRI, side_effect_signal: absent, adherence_signal: none"
+    },
+    {
+      "job": {
+        "purpose": "analytics",
+        "model": "gemma4:latest",
+        "condition_id": "redact_llm_substitute",
+        "cache_dir": "data/eval_cache_analytics/gemma4_latest/redact_llm_substitute"
+      },
+      "status": "ok",
+      "metric": 0.13338451452625769,
+      "n_test": 630,
+      "n_parsed": 630,
+      "reason": null
+    }
+  ]
+}

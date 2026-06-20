@@ -1,0 +1,58 @@
+{
+  "illustrative": true,
+  "disclaimer": "Synthetic example only. Not FINRA compliance or legal advice.",
+  "sector": "FINRA",
+  "scenario": "Advisor note abstracted before AI research assistant",
+  "input_excerpt": "Client Jane Doe owns 5,000 shares of XYZ and plans to liquidate next month.",
+  "export_z": {
+    "client_type": "retail",
+    "holding_size_band": "large",
+    "intent": "planned_liquidation",
+    "security_identifier": "abstracted"
+  },
+  "provenance_r": {
+    "policy_id": "FINRA_EXPORT_V2",
+    "policy_version": "2.1.0",
+    "schema_id": "finra_agent_schema_medium",
+    "transform_id": "sem_medium",
+    "event_id": "evt_illustrative_002",
+    "timestamp_utc": "2026-06-12T16:45:00Z",
+    "verify_outcome": "pass",
+    "fields_suppressed": ["client_name", "exact_share_count", "ticker_literal"],
+    "rules_applied": [
+      "Customer name removed",
+      "Exact holdings generalized to size band",
+      "Security identifier abstracted"
+    ],
+    "transformations": [
+      {
+        "field": "client_name",
+        "action": "removed",
+        "reason": "customer_identification"
+      },
+      {
+        "field": "share_count",
+        "action": "generalized",
+        "from": "5000",
+        "to": "large"
+      },
+      {
+        "field": "security",
+        "action": "abstracted",
+        "from": "XYZ",
+        "to": "abstracted"
+      }
+    ]
+  },
+  "audit_questions_answered": [
+    "What information was disclosed to the AI system?",
+    "Can we prove exactly what happened months later?",
+    "Which supervision policy version was active?"
+  ],
+  "finra_priorities": [
+    "supervision",
+    "recordkeeping",
+    "explainability",
+    "auditability"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "condition_id": "sem_medium",
+  "event_count": 3894,
+  "format": "events.jsonl",
+  "verify_fail_count": 0,
+  "checksum": "14e81830af379151"
+}

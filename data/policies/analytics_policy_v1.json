@@ -1,0 +1,81 @@
+{
+  "policy_id": "analytics_policy_v1",
+  "policy_version": "1.0.0",
+  "surface": "analytics",
+  "purpose_id": "analytics",
+  "consumer_id": "analytics_vendor",
+  "status": "registered",
+  "description": "Purpose T_a for RQ-F1: medication_class mix, adverse-event detection, adherence friction, and cohort segmentation — not observability failure_mode triage.",
+  "analytics_tasks": [
+    {
+      "task_id": "ta_med_class",
+      "label_field": "medication_class",
+      "metric": "macro_f1",
+      "level": "event"
+    },
+    {
+      "task_id": "ta_side_effect",
+      "label_field": "side_effect_signal",
+      "metric": "macro_f1",
+      "level": "event"
+    },
+    {
+      "task_id": "ta_adherence",
+      "label_field": "adherence_signal",
+      "metric": "macro_f1",
+      "level": "event"
+    },
+    {
+      "task_id": "ta_cohort_segment",
+      "label_field": "cohort_segment",
+      "metric": "macro_f1",
+      "level": "persona"
+    }
+  ],
+  "granularity_caps": {
+    "sem_coarse": "analytics_schema_coarse",
+    "sem_medium": "analytics_schema_medium",
+    "sem_fine": "analytics_schema_fine"
+  },
+  "primary_task_labels": [
+    "medication_class",
+    "side_effect_signal",
+    "adherence_signal"
+  ],
+  "secondary_task_labels": [
+    "symptom_categories",
+    "cohort_segment",
+    "engagement_trend",
+    "time_bucket"
+  ],
+  "prohibited_in_export": [
+    "raw_journal",
+    "raw_completion",
+    "journal_text",
+    "assistant_text",
+    "user_name",
+    "email",
+    "failure_mode",
+    "error_stage",
+    "input_semantic_type",
+    "policy_action",
+    "specific_medication",
+    "occupation_sector",
+    "symptoms"
+  ],
+  "prohibited_combinations": [
+    {
+      "fields": ["medication_class", "cohort_segment", "time_bucket"],
+      "reason": "small_cell_cohort_linkage"
+    }
+  ],
+  "required_provenance_fields": [
+    "policy_id",
+    "policy_version",
+    "schema_id",
+    "transform_id",
+    "event_id",
+    "verify_outcome"
+  ],
+  "notes": "Same lattice transforms as observability; second consumer registers analytics purpose with task-driven schema family."
+}

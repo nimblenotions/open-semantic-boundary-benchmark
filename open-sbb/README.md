@@ -1,0 +1,78 @@
+# Open SBB — protocol map
+
+Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root. Code, data, and outputs stay in `src/`, `data/`, and `outputs/` for v0.1.1 stability.
+
+**Adopted strategy (advisor):** optimize for **adoption first** — paper parity through docs and examples, not by relocating Python packages.
+
+## Protocol flow
+
+```text
+Synthetic pilot data
+        ↓
+Export lattice  (+ policies π materialize each arm)
+        ↓
+Utility assessment  +  Linkage assessment
+        ↓
+Operative selection
+        ↓
+Transformation provenance (τ, verify)
+```
+
+Policies and consumers are registered **before** scoring: the same lattice arm can yield different typed exports per purpose \(T_o\) vs \(T_a\).
+
+## Module index
+
+| Protocol module | Paper § | README | Role |
+|-----------------|---------|--------|------|
+| Synthetic pilot | §4.3 | [`synthetic_pilot_data/`](synthetic_pilot_data/README.md) | Corpus \(W\), split, labels |
+| Export lattice | §4.1 | [`export_lattice/`](export_lattice/README.md) | Nine frozen conditions \(z,r\) |
+| Policies | §4.2 | [`policies/`](policies/README.md) | Disclosure bundles π, schemas |
+| Consumers | §4.2 | [`consumers/`](consumers/README.md) | Frozen assessor contracts |
+| Utility assessment | §4.4 | [`utility_assessment/`](utility_assessment/README.md) | `assess_utility` → \(U(T,z)\) |
+| Linkage assessment | §4.4 | [`linkage_assessment/`](linkage_assessment/README.md) | `assess_risk` → \(R(z)\) |
+| Operative selection | §4.5 | [`operative_selection/`](operative_selection/README.md) | Pareto, \(R_{\max}\), bundles |
+| Transformation provenance | §4.6 | [`transformation_provenance/`](transformation_provenance/README.md) | \(\tau\), `verify`, BYO \((z,r)\) |
+
+## Paper §4 → current repo locations
+
+| Protocol module | Paper section | Current code | Current data | Current outputs |
+|-----------------|---------------|--------------|--------------|-----------------|
+| Synthetic pilot | §4.3 | `src/generate/` | `data/raw/`, `data/ground_truth/` | — |
+| Export lattice | §4.1 | `src/transform/`, `eval/run_*` (materialize) | `data/transformed/`, `data/transformed_analytics/`, `data/llm_transform_cache/` | (scores in metrics JSON) |
+| Policies | §4.2 | `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | — |
+| Consumers | §4.2 | `src/eval/tier0_consumer.py`, `tier1_consumer.py`, `tier1_analytics_consumer.py` | `data/eval_cache/`, `data/eval_cache_analytics/` | cached predictions |
+| Utility assessment | §4.4 | `src/eval/observability_task.py`, `analytics_task.py`, `eval/run_obs_study.py`, `run_analytics_study.py` | reads lattice + caches | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
+| Linkage assessment | §4.4 | `src/eval/adversary*.py`, `adversary_trial4.py` | same transforms | linkage in metrics + `outputs/pilot_v2/figures/linkage_*` |
+| Operative selection | §4.5 | `src/eval/operative_selection.py`, `eval/run_operative_selection.py` | — | `outputs/pilot_v2/operative_selection/` |
+| Provenance | §4.6 | `src/boundary/verify.py`, `cross.py`, `provenance_score.py` | `examples/provenance/` | `outputs/pilot_v2/boundary_bundle_v0.json` |
+
+## Naming alias
+
+| Name | Meaning |
+|------|---------|
+| **Open SBB v0.1.1** | Citeable protocol release (paper, CITATION.cff) |
+| **`outputs/pilot_v2/`** | Frozen published run for v0.1.1 (historical directory name) |
+| **`configs/pilot_v0.1.1.yaml`** | Primary config for this release |
+
+## Reproduce (no Ollama)
+
+```bash
+make repro-smoke          # verify committed headline metrics
+make eval                 # full obs eval on cached Tier-1 (slow; uses caches)
+make figures              # paper-linked figures from committed metrics
+```
+
+## Further reading
+
+| Doc | Purpose |
+|-----|---------|
+| [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
+| [`../docs/adoption_path.md`](../docs/adoption_path.md) | 1 min → contributor paths |
+| [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |
+| [`../docs/extension_points.md`](../docs/extension_points.md) | How to extend the protocol |
+| [`../examples/README.md`](../examples/README.md) | Domain examples + BYO |
+| [`LAYOUT-PLAN.md`](LAYOUT-PLAN.md) | Long-term layout brainstorm (code move deferred) |
+
+## Not claimed
+
+Open SBB measures utility and linkage on **released exports** under declared assessors. It does not certify HIPAA compliance, OTel conformance, or production safety.

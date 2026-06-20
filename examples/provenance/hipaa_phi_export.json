@@ -1,0 +1,60 @@
+{
+  "illustrative": true,
+  "disclaimer": "Synthetic example only. Not HIPAA compliance or legal advice.",
+  "sector": "HIPAA",
+  "scenario": "Patient journal entry egress to LLM consumer",
+  "input_excerpt": "John Smith took Sertraline 50mg yesterday and experienced dizziness.",
+  "export_z": {
+    "patient_identifier": "removed",
+    "medication_class": "SSRI",
+    "dose_band": "standard",
+    "symptom_type": "vestibular"
+  },
+  "provenance_r": {
+    "policy_id": "HIPAA_phi_export_v1",
+    "policy_version": "1.0.0",
+    "schema_id": "obs_schema_medium",
+    "transform_id": "sem_medium",
+    "event_id": "evt_illustrative_001",
+    "timestamp_utc": "2026-06-12T14:30:00Z",
+    "verify_outcome": "pass",
+    "fields_suppressed": ["patient_name", "medication_literal", "dose_literal"],
+    "transformations": [
+      {
+        "field": "patient_name",
+        "action": "removed",
+        "reason": "HIPAA identifier"
+      },
+      {
+        "field": "medication",
+        "action": "generalized",
+        "from": "Sertraline",
+        "to": "SSRI"
+      },
+      {
+        "field": "dose",
+        "action": "bucketed",
+        "from": "50mg",
+        "to": "standard"
+      },
+      {
+        "field": "symptom",
+        "action": "categorized",
+        "from": "dizziness",
+        "to": "vestibular"
+      }
+    ]
+  },
+  "audit_questions_answered": [
+    "Why was John Smith not exposed to the LLM?",
+    "Which policy version governed this crossing?",
+    "What fields were removed or generalized?",
+    "Did verify pass before release?"
+  ],
+  "audit_trail_steps": [
+    "User submitted data",
+    "Boundary policy HIPAA_phi_export_v1 applied",
+    "Export (z, r) generated",
+    "LLM received export_z only"
+  ]
+}

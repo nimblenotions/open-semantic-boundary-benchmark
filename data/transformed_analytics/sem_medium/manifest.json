@@ -1,0 +1,9 @@
+{
+  "condition_id": "sem_medium",
+  "event_count": 3894,
+  "format": "events.jsonl",
+  "verify_fail_count": 0,
+  "checksum": "3c1d6de73a13fae7",
+  "purpose_id": "analytics",
+  "policy_id": "analytics_policy_v1"
+}

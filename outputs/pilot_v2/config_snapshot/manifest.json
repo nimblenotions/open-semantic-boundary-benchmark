@@ -1,0 +1,11 @@
+{
+  "copied_at_utc": "2026-06-20T23:04:02.073382+00:00",
+  "config_source": "configs/pilot_v0.1.1.yaml",
+  "config_copy": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/config_snapshot/pilot_v0.1.1.yaml",
+  "study": {
+    "name": "sbb-obs-v0.1.1",
+    "purpose_id": "observability",
+    "consumer_id": "obs_vendor"
+  },
+  "persona_count": 100
+}

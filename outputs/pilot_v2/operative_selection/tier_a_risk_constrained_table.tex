@@ -1,0 +1,18 @@
+% Tier-A risk-constrained table (paste into main.tex)
+\begin{table}[t]
+\caption{Risk-constrained winners: $\arg\max U$ subject to $R \leq R_{\max}$ ($\tau \geq 0.9$).}
+\label{tab:risk-constrained}
+\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$R_{\max}$ & Obs winner & $U_{obs}$ & Ana winner & $U_{med}$ & Feas. \\
+\midrule
+0.35 & sem_coarse & 0.165 & sem_coarse & 0.128 & 1/1 ✓ \\
+0.40 & red_bracket & 0.673 & red_bracket & 0.197 & 2/2 ✓ \\
+0.45 & red_bracket & 0.673 & red_surrogate & 0.445 & 3/3 ≠ \\
+0.50 & sem_medium & 1.000 & sem_medium & 1.000 & 5/5 ✓ \\
+0.55 & sem_medium & 1.000 & sem_medium & 1.000 & 7/7 ✓ \\
+0.60 & sem_medium & 1.000 & sem_medium & 1.000 & 7/7 ✓ \\
+\bottomrule
+\end{tabular}
+\end{table}

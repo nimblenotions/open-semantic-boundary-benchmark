@@ -1,0 +1,138 @@
+{
+  "sbb_version": "0.1.1",
+  "artifact_type": "operative_boundary_bundle_v0",
+  "generated_at_utc": "2026-06-06T01:03:16.771490+00:00",
+  "decision_method": "risk_constrained_feasible_set",
+  "tier1_model": "qwen3:8b",
+  "adversary": "trial4_combined_linkage",
+  "purposes_registered": [
+    {
+      "id": "observability",
+      "consumer_id": "obs_vendor"
+    },
+    {
+      "id": "analytics",
+      "consumer_id": "analytics_vendor"
+    }
+  ],
+  "recommended_condition": "sem_medium",
+  "recommended_condition_rule": "No single condition wins both purposes at R_max=0.45; dual_purpose_balanced bundle feasible set: ['raw', 'sem_medium']. Selected `sem_medium` (non-dominated semantic arm when available). Consider purpose-split exports or pick from bundle.",
+  "per_perspective_at_r_max_0_45": {
+    "observability": "redact_bracket",
+    "analytics_med_class": "redact_surrogate",
+    "same_winner": false
+  },
+  "task_bundle_dual_purpose_balanced": {
+    "bundle_id": "dual_purpose_balanced",
+    "label": "Balanced dual-purpose (obs + med-class under moderate linkage)",
+    "constraints": {
+      "u_obs_min": 0.6,
+      "u_analytics_med_min": 0.5,
+      "u_analytics_composite_min": null,
+      "linkage_max": 0.5,
+      "provenance_min": 0.9
+    },
+    "feasible_conditions": [
+      "raw",
+      "sem_medium"
+    ],
+    "n_feasible": 2,
+    "empty": false
+  },
+  "conditions_never_deploy_obs": [
+    "raw",
+    "redact_tokenize",
+    "redact_surrogate",
+    "sem_fine",
+    "redact_llm_substitute",
+    "redact_llm_rephrase"
+  ],
+  "dominated_strategies": {
+    "observability": [
+      {
+        "condition": "raw",
+        "dominated_by": [
+          "redact_bracket",
+          "redact_surrogate"
+        ]
+      },
+      {
+        "condition": "redact_tokenize",
+        "dominated_by": [
+          "redact_bracket",
+          "sem_medium"
+        ]
+      },
+      {
+        "condition": "redact_surrogate",
+        "dominated_by": [
+          "redact_bracket"
+        ]
+      },
+      {
+        "condition": "sem_fine",
+        "dominated_by": [
+          "sem_medium"
+        ]
+      },
+      {
+        "condition": "redact_llm_substitute",
+        "dominated_by": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_medium"
+        ]
+      },
+      {
+        "condition": "redact_llm_rephrase",
+        "dominated_by": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_medium",
+          "redact_llm_substitute"
+        ]
+      }
+    ],
+    "analytics_med": [
+      {
+        "condition": "redact_tokenize",
+        "dominated_by": [
+          "raw",
+          "redact_surrogate",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      {
+        "condition": "sem_fine",
+        "dominated_by": [
+          "sem_medium"
+        ]
+      },
+      {
+        "condition": "redact_llm_substitute",
+        "dominated_by": [
+          "raw",
+          "redact_surrogate",
+          "sem_medium"
+        ]
+      },
+      {
+        "condition": "redact_llm_rephrase",
+        "dominated_by": [
+          "raw",
+          "redact_surrogate",
+          "sem_medium"
+        ]
+      }
+    ]
+  },
+  "metrics_ref": {
+    "obs": "outputs/pilot_v2/metrics.json",
+    "analytics": "outputs/pilot_v2/analytics_metrics.json"
+  },
+  "operative_selection_ref": "operative_selection/operative_selection.json"
+}

@@ -1,0 +1,764 @@
+{
+  "study": "sbb-analytics-v0.1.1",
+  "generated_at_utc": "2026-06-20T23:03:16.051564+00:00",
+  "tier": "1-linkage",
+  "purpose_id": "analytics",
+  "consumer_id": "analytics_vendor",
+  "policy_id": "analytics_policy_v1",
+  "primary_metric": "medication_class_macro_f1",
+  "composite_metric": "composite_utility",
+  "conditions": {
+    "raw": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.5468396114664771,
+        "side_effect_signal_macro_f1": 0.9097938144329897,
+        "adherence_signal_macro_f1": 0.7243826560373323,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.5468396114664771,
+            "side_effect_signal_macro_f1": 0.9097938144329898,
+            "adherence_signal_macro_f1": 0.7243826560373323,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.5468396114664771,
+            "side_effect_signal_macro_f1": 0.9097938144329898,
+            "adherence_signal_macro_f1": 0.7243826560373323,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.5468396114664771,
+            "side_effect_signal_macro_f1": 0.9097938144329898,
+            "adherence_signal_macro_f1": 0.7243826560373323,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.3449770679770679,
+            "side_effect_signal_macro_f1": 0.4843064836888719,
+            "adherence_signal_macro_f1": 0.5563031455614577,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.33822453377022493,
+            "side_effect_signal_macro_f1": 0.3300121962660662,
+            "adherence_signal_macro_f1": 0.5084136610901137,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_bracket": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.19727773807470203,
+        "side_effect_signal_macro_f1": 0.5615662115662116,
+        "adherence_signal_macro_f1": 0.7189064304967271,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.197277738074702,
+            "side_effect_signal_macro_f1": 0.5615662115662116,
+            "adherence_signal_macro_f1": 0.718906430496727,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.197277738074702,
+            "side_effect_signal_macro_f1": 0.5615662115662116,
+            "adherence_signal_macro_f1": 0.718906430496727,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.197277738074702,
+            "side_effect_signal_macro_f1": 0.5615662115662116,
+            "adherence_signal_macro_f1": 0.718906430496727,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.18898681245557522,
+            "side_effect_signal_macro_f1": 0.37867867867867866,
+            "adherence_signal_macro_f1": 0.5716477556554628,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.006688963210702341,
+            "side_effect_signal_macro_f1": 0.41437664958857323,
+            "adherence_signal_macro_f1": 0.7945759967617891,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_tokenize": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.23336357622444073,
+        "side_effect_signal_macro_f1": 0.8660933259213236,
+        "adherence_signal_macro_f1": 0.7756667968480784,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.23336357622444076,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7756667968480784,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.23336357622444076,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7756667968480784,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.23336357622444076,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7756667968480784,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.15202088546138537,
+            "side_effect_signal_macro_f1": 0.5015574641243091,
+            "adherence_signal_macro_f1": 0.565393743257821,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.04043010947607531,
+            "side_effect_signal_macro_f1": 0.3172020404504637,
+            "adherence_signal_macro_f1": 0.5213428468603797,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_surrogate": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.44535940497894505,
+        "side_effect_signal_macro_f1": 0.8660933259213236,
+        "adherence_signal_macro_f1": 0.7351351351351352,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.44535940497894505,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7351351351351352,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.44535940497894505,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7351351351351352,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.44535940497894505,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7351351351351352,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.30477620148079626,
+            "side_effect_signal_macro_f1": 0.38239869492493755,
+            "adherence_signal_macro_f1": 0.558883968626089,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.11309539719939414,
+            "side_effect_signal_macro_f1": 0.3102882124796141,
+            "adherence_signal_macro_f1": 0.5240588949605343,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_coarse": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.12831858407079647,
+        "side_effect_signal_macro_f1": 1.0,
+        "adherence_signal_macro_f1": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.12831858407079647,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.12831858407079647,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.12831858407079647,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.030351866774106905,
+            "side_effect_signal_macro_f1": 0.9684605757196496,
+            "adherence_signal_macro_f1": 0.87951039143185,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 0.997236587580435,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_medium": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 1.0,
+        "side_effect_signal_macro_f1": 0.9932475160505471,
+        "adherence_signal_macro_f1": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9934030722834795,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_fine": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 1.0,
+        "side_effect_signal_macro_f1": 0.9932475160505471,
+        "adherence_signal_macro_f1": 0.9888250319284801,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 0.9888250319284801,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 0.9888250319284801,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 0.9888250319284801,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 0.994493006993007,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_llm_substitute": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.2608521658377333,
+        "side_effect_signal_macro_f1": 0.8603859552703194,
+        "adherence_signal_macro_f1": 0.7336840374815058,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.2608521658377333,
+            "side_effect_signal_macro_f1": 0.8603859552703195,
+            "adherence_signal_macro_f1": 0.7336840374815058,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.2608521658377333,
+            "side_effect_signal_macro_f1": 0.8603859552703195,
+            "adherence_signal_macro_f1": 0.7336840374815058,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.2608521658377333,
+            "side_effect_signal_macro_f1": 0.8603859552703195,
+            "adherence_signal_macro_f1": 0.7336840374815058,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.23948680370437417,
+            "side_effect_signal_macro_f1": 0.35749154838838226,
+            "adherence_signal_macro_f1": 0.5276839204409298,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.13338451452625769,
+            "side_effect_signal_macro_f1": 0.31644427192003494,
+            "adherence_signal_macro_f1": 0.4838807340345532,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_llm_rephrase": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.41853001814415963,
+        "side_effect_signal_macro_f1": 0.8285714285714286,
+        "adherence_signal_macro_f1": 0.7461976353816961,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.41853001814415963,
+            "side_effect_signal_macro_f1": 0.8285714285714285,
+            "adherence_signal_macro_f1": 0.7461976353816961,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "medication_class_macro_f1": 0.41853001814415963,
+            "side_effect_signal_macro_f1": 0.8285714285714285,
+            "adherence_signal_macro_f1": 0.7461976353816961,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "medication_class_macro_f1": 0.41853001814415963,
+            "side_effect_signal_macro_f1": 0.8285714285714285,
+            "adherence_signal_macro_f1": 0.7461976353816961,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.4210624102029847,
+            "side_effect_signal_macro_f1": 0.5103254389598002,
+            "adherence_signal_macro_f1": 0.5553910466000993,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.2348991186036445,
+            "side_effect_signal_macro_f1": 0.26584381307250426,
+            "adherence_signal_macro_f1": 0.4778586593873218,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    }
+  },
+  "notes": {
+    "eval_split": "test",
+    "train_split": "train",
+    "tasks": [
+      "ta_med_class",
+      "ta_side_effect",
+      "ta_adherence",
+      "ta_cohort_segment"
+    ],
+    "transform_root": "data/transformed_analytics",
+    "tier1_consumer": "active"
+  },
+  "dual_purpose": {
+    "points": [
+      {
+        "condition_id": "raw",
+        "linkage": 0.48057589546603063,
+        "u_obs": 0.6263286808976464,
+        "u_analytics": 0.7270053606455997
+      },
+      {
+        "condition_id": "redact_bracket",
+        "linkage": 0.35787478197253214,
+        "u_obs": 0.673165009928914,
+        "u_analytics": 0.4925834600458802
+      },
+      {
+        "condition_id": "redact_tokenize",
+        "linkage": 0.6619591645788753,
+        "u_obs": 0.6618053142346182,
+        "u_analytics": 0.6250412329979476
+      },
+      {
+        "condition_id": "redact_surrogate",
+        "linkage": 0.4239907589463723,
+        "u_obs": 0.6569965291501275,
+        "u_analytics": 0.6821959553451347
+      },
+      {
+        "condition_id": "sem_coarse",
+        "linkage": 0.3102532461599767,
+        "u_obs": 0.1650382121415734,
+        "u_analytics": 0.7094395280235988
+      },
+      {
+        "condition_id": "sem_medium",
+        "linkage": 0.48264927923086615,
+        "u_obs": 1.0,
+        "u_analytics": 0.997749172016849
+      },
+      {
+        "condition_id": "sem_fine",
+        "linkage": 0.7522809317662005,
+        "u_obs": 1.0,
+        "u_analytics": 0.9940241826596757
+      },
+      {
+        "condition_id": "redact_llm_substitute",
+        "linkage": 0.5251535450868137,
+        "u_obs": 0.5990921382359268,
+        "u_analytics": 0.6183073861965195
+      },
+      {
+        "condition_id": "redact_llm_rephrase",
+        "linkage": 0.5372424860244452,
+        "u_obs": 0.5826727812985624,
+        "u_analytics": 0.6644330273657615
+      }
+    ],
+    "conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "sem_fine",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "knees": {
+      "obs_knee": "sem_medium",
+      "analytics_knee": "sem_medium",
+      "same_knee": true,
+      "obs_knee_u": 1.0,
+      "analytics_knee_u": 0.997749172016849,
+      "obs_knee_linkage": 0.48264927923086615,
+      "analytics_knee_linkage": 0.48264927923086615
+    },
+    "advisor_figures": {
+      "conditions": [
+        "raw",
+        "redact_bracket",
+        "redact_tokenize",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "sem_fine",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "r_max": 0.45,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "figures": {
+        "utility_matrix_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.png",
+        "utility_matrix_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.pdf",
+        "linkage_decomposition_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.png",
+        "linkage_decomposition_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.pdf",
+        "cross_purpose_regret_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.png",
+        "cross_purpose_regret_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.pdf"
+      },
+      "tables": {
+        "utility_matrix": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/utility_matrix.csv",
+        "linkage_decomposition": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/linkage_decomposition.csv",
+        "cross_purpose_regret_matrix": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/cross_purpose_regret_matrix.csv"
+      }
+    },
+    "figures": {
+      "aggregate_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto.png",
+      "aggregate_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto.pdf",
+      "per_task_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_per_task.png",
+      "per_task_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_per_task.pdf",
+      "png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/frontier_epsilon_merged.png",
+      "pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/frontier_epsilon_merged.pdf",
+      "dual_pareto_main_threepanel_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_main_threepanel.png",
+      "dual_pareto_main_threepanel_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_main_threepanel.pdf",
+      "dual_pareto_hero_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_hero.png",
+      "dual_pareto_hero_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_hero.pdf",
+      "dual_pareto_obs_vs_analytics_composite_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_obs_vs_analytics_composite.png",
+      "dual_pareto_obs_vs_analytics_composite_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_obs_vs_analytics_composite.pdf",
+      "dual_pareto_composite_purposes_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_composite_purposes.png",
+      "dual_pareto_composite_purposes_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_composite_purposes.pdf",
+      "dual_pareto_triptych_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych.png",
+      "dual_pareto_triptych_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych.pdf",
+      "dual_pareto_triptych_obs_med_side_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_obs_med_side.png",
+      "dual_pareto_triptych_obs_med_side_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_obs_med_side.pdf",
+      "dual_pareto_triptych_analytics_internal_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_analytics_internal.png",
+      "dual_pareto_triptych_analytics_internal_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_analytics_internal.pdf",
+      "winner_mismatch_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_winner_mismatch.png",
+      "winner_mismatch_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_winner_mismatch.pdf",
+      "regret_focal_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_regret_focal.png",
+      "regret_focal_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_regret_focal.pdf",
+      "linkage_channels_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_channels_dual.png",
+      "linkage_channels_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_channels_dual.pdf",
+      "utility_matrix_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.png",
+      "utility_matrix_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.pdf",
+      "linkage_decomposition_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.png",
+      "linkage_decomposition_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.pdf",
+      "cross_purpose_regret_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.png",
+      "cross_purpose_regret_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.pdf"
+    }
+  }
+}

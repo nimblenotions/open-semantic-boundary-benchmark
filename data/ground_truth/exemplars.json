@@ -1,0 +1,20 @@
+{
+  "E1": {
+    "event_id": "evt_000010",
+    "title": "Missed escalation (H1/H2 showcase)",
+    "failure_mode": "missed_safety_escalation"
+  },
+  "E2": {
+    "event_id": "evt_000040",
+    "title": "Rare quasi-ID still linkable under sem_fine",
+    "persona_query": "quasi_id_rarity=rare AND split=test",
+    "persona_id": "persona_004"
+  },
+  "E3": {
+    "event_id": "evt_000041",
+    "title": "Redaction preserves categories, breaks error_stage",
+    "failure_mode_query": "non-assistant_ok with error_stage != none",
+    "failure_mode": "engagement_drop_unaddressed",
+    "error_stage": "response_generation"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "analytics_schema_medium",
+  "description": "Event-level analytics surface: Ta-1 medication_class, Ta-2 side_effect/symptom_categories, Ta-3 adherence_signal + time_bucket.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "medication_class": {
+      "type": "string",
+      "description": "Ta-1: pharmacologic class attribution (SSRI, SNRI, NDRI, etc.)."
+    },
+    "symptom_categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ta-2: coarse symptom category tags for adverse-event analytics."
+    },
+    "side_effect_signal": {
+      "type": "string",
+      "enum": ["present", "absent"],
+      "description": "Ta-2: binary side-effect / adverse-event detection signal."
+    },
+    "adherence_signal": {
+      "type": "string",
+      "enum": ["none", "barrier"],
+      "description": "Ta-3: adherence friction signal (barrier vs none)."
+    },
+    "time_bucket": {
+      "type": "string",
+      "description": "Ta-3: diurnal time bucket for adherence-pattern analytics."
+    }
+  },
+  "required": [
+    "medication_class",
+    "symptom_categories",
+    "side_effect_signal",
+    "adherence_signal",
+    "time_bucket"
+  ]
+}

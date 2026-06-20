@@ -1,0 +1,5 @@
+[tier1-resume] primary_model=qwen3:8b batch_size=30
+[tier1-resume] raw: cache_hit=174 cache_miss=456 total=630
+[tier1-resume] raw: done in 306.7s f1=0.6263286808976464 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/_tier1_raw_scratch.json
+[tier1-resume] finished in 306.7s

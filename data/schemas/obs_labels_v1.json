@@ -1,0 +1,17 @@
+{
+  "failure_modes": [
+    "missed_safety_escalation",
+    "medication_change_misunderstood",
+    "indirect_symptom_not_escalated",
+    "reminder_fatigue_mishandled",
+    "side_effect_concern_dismissed",
+    "engagement_drop_unaddressed",
+    "assistant_ok"
+  ],
+  "error_stages": [
+    "risk_recognition",
+    "response_generation",
+    "policy_routing",
+    "none"
+  ]
+}

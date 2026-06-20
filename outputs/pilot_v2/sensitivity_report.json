@@ -1,0 +1,164 @@
+{
+  "generated_at_utc": "2026-06-06T00:41:22.170627+00:00",
+  "models": [
+    "qwen3:8b",
+    "llama3.1:8b",
+    "gemma4:latest"
+  ],
+  "r_max": 0.45,
+  "obs_failure_mode_f1": [
+    {
+      "condition": "raw",
+      "linkage": 0.48057589546603063,
+      "qwen3:8b": 0.6263286808976464,
+      "llama3.1:8b": 0.5424029626524124,
+      "gemma4:latest": 0.6534067362577216
+    },
+    {
+      "condition": "redact_bracket",
+      "linkage": 0.35787478197253214,
+      "qwen3:8b": 0.6731650099289139,
+      "llama3.1:8b": 0.5557971546693351,
+      "gemma4:latest": 0.646760306638669
+    },
+    {
+      "condition": "redact_tokenize",
+      "linkage": 0.6619591645788753,
+      "qwen3:8b": 0.6618053142346182,
+      "llama3.1:8b": 0.49418077708981406,
+      "gemma4:latest": 0.5255553819183184
+    },
+    {
+      "condition": "redact_surrogate",
+      "linkage": 0.4239907589463723,
+      "qwen3:8b": 0.6569965291501275,
+      "llama3.1:8b": 0.5517356675619093,
+      "gemma4:latest": 0.6031614444304276
+    },
+    {
+      "condition": "sem_coarse",
+      "linkage": 0.3102532461599767,
+      "qwen3:8b": 0.1650382121415734,
+      "llama3.1:8b": 0.2238768473332107,
+      "gemma4:latest": 0.21255775236456476
+    },
+    {
+      "condition": "sem_medium",
+      "linkage": 0.48264927923086615,
+      "qwen3:8b": 1.0,
+      "llama3.1:8b": 1.0,
+      "gemma4:latest": 0.997265102558654
+    },
+    {
+      "condition": "sem_fine",
+      "linkage": 0.7522809317662005,
+      "qwen3:8b": 1.0,
+      "llama3.1:8b": 1.0,
+      "gemma4:latest": 1.0
+    },
+    {
+      "condition": "redact_llm_substitute",
+      "linkage": 0.5251535450868137,
+      "qwen3:8b": 0.5990921382359268,
+      "llama3.1:8b": 0.49360800358761986,
+      "gemma4:latest": 0.6383472443586947
+    },
+    {
+      "condition": "redact_llm_rephrase",
+      "linkage": 0.5372424860244452,
+      "qwen3:8b": 0.5826727812985624,
+      "llama3.1:8b": 0.4315005037067093,
+      "gemma4:latest": 0.5986105778912475
+    }
+  ],
+  "analytics_composite": [
+    {
+      "condition": "raw",
+      "qwen3:8b": 0.7270053606455997,
+      "llama3.1:8b": 0.46186223240913254,
+      "gemma4:latest": 0.3922167970421349
+    },
+    {
+      "condition": "redact_bracket",
+      "qwen3:8b": 0.4925834600458802,
+      "llama3.1:8b": 0.3797710822632389,
+      "gemma4:latest": 0.40521386985368824
+    },
+    {
+      "condition": "redact_tokenize",
+      "qwen3:8b": 0.6250412329979477,
+      "llama3.1:8b": 0.4063240309478385,
+      "gemma4:latest": 0.29299166559563955
+    },
+    {
+      "condition": "redact_surrogate",
+      "qwen3:8b": 0.6821959553451347,
+      "llama3.1:8b": 0.4153529550106076,
+      "gemma4:latest": 0.3158141682131808
+    },
+    {
+      "condition": "sem_coarse",
+      "qwen3:8b": 0.7094395280235988,
+      "llama3.1:8b": 0.6261076113085354,
+      "gemma4:latest": 0.6657455291934783
+    },
+    {
+      "condition": "sem_medium",
+      "qwen3:8b": 0.9977491720168491,
+      "llama3.1:8b": 0.9978010240944931,
+      "gemma4:latest": 1.0
+    },
+    {
+      "condition": "sem_fine",
+      "qwen3:8b": 0.9940241826596757,
+      "llama3.1:8b": 0.9981643356643356,
+      "gemma4:latest": 1.0
+    },
+    {
+      "condition": "redact_llm_substitute",
+      "qwen3:8b": 0.6183073861965195,
+      "llama3.1:8b": 0.37488742417789545,
+      "gemma4:latest": 0.3112365068269486
+    },
+    {
+      "condition": "redact_llm_rephrase",
+      "qwen3:8b": 0.6644330273657614,
+      "llama3.1:8b": 0.49559296525429475,
+      "gemma4:latest": 0.3262005303544902
+    }
+  ],
+  "risk_constrained_winners": {
+    "qwen3:8b": {
+      "obs_winner": "redact_bracket",
+      "obs_utility": 0.6731650099289139,
+      "analytics_winner": "sem_coarse",
+      "analytics_composite": 0.7094395280235988
+    },
+    "llama3.1:8b": {
+      "obs_winner": "redact_bracket",
+      "obs_utility": 0.5557971546693351,
+      "analytics_winner": "sem_coarse",
+      "analytics_composite": 0.6261076113085354
+    },
+    "gemma4:latest": {
+      "obs_winner": "redact_bracket",
+      "obs_utility": 0.646760306638669,
+      "analytics_winner": "sem_coarse",
+      "analytics_composite": 0.6657455291934783
+    }
+  },
+  "decision_robustness": {
+    "obs_winner_stable": true,
+    "analytics_winner_stable": true,
+    "obs_winners_by_model": {
+      "qwen3:8b": "redact_bracket",
+      "llama3.1:8b": "redact_bracket",
+      "gemma4:latest": "redact_bracket"
+    },
+    "analytics_winners_by_model": {
+      "qwen3:8b": "sem_coarse",
+      "llama3.1:8b": "sem_coarse",
+      "gemma4:latest": "sem_coarse"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Open Semantic Boundary Benchmark (Open SBB-Obs)"
+message: "If you use this benchmark, please cite it."
+authors:
+  - family-names: "TBD"
+    given-names: "TBD"
+repository-code: "https://github.com/nimblenotions/open-semantic-boundary-benchmark"
+license: Apache-2.0
+version: 0.1.1
+date-released: 2026-06-27

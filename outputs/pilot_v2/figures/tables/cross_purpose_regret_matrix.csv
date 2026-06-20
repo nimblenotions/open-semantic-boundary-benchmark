@@ -1,0 +1,6 @@
+winner_for,winner_for_label,winner_condition,regret_on_observability,regret_on_analytics_med,regret_on_analytics_side,regret_on_analytics_adherence,regret_on_analytics_cohort
+observability,T_o,redact_bracket,0.0,0.2481,0.4384,0.2811,0.0
+analytics_med,Ta-1 med-class,redact_surrogate,0.0162,0.0,0.1339,0.2649,0.0
+analytics_side,Ta-2 side-effect,sem_coarse,0.5081,0.317,0.0,0.0,0.0
+analytics_adherence,Ta-3 adherence,sem_coarse,0.5081,0.317,0.0,0.0,0.0
+analytics_cohort,Ta-5 cohort,redact_bracket,0.0,0.2481,0.4384,0.2811,0.0

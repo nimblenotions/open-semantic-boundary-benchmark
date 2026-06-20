@@ -1,0 +1,7 @@
+r_max,composite_winner,obs_winner,med_class_winner,cohort_winner,disagreeing_tasks,n_disagree,all_tasks_same
+0.35,sem_coarse,sem_coarse,sem_coarse,sem_coarse,,0,yes
+0.4,sem_coarse,redact_bracket,redact_bracket,redact_bracket,med-class;cohort,2,no
+0.45,sem_coarse,redact_bracket,redact_surrogate,redact_bracket,med-class;cohort,2,no
+0.5,sem_medium,sem_medium,sem_medium,raw,side-effect;adherence;cohort,3,no
+0.55,sem_medium,sem_medium,sem_medium,raw,side-effect;adherence;cohort,3,no
+0.6,sem_medium,sem_medium,sem_medium,raw,side-effect;adherence;cohort,3,no

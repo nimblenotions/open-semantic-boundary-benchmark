@@ -1,0 +1,6 @@
+condition,combined_linkage,persona_top1,attribute_combined_macro_f1,longitudinal_linkage_auc,medication_class_macro_f1,occupation_sector_macro_f1,symptom_categories_macro_f1,quasi_id_rarity_macro_f1,time_bucket_macro_f1
+raw,0.4806,0.3206,0.5592,0.5619,0.479,0.3851,1.0,0.3725,0.3419
+redact_bracket,0.3579,0.0587,0.489,0.5259,0.4154,0.1681,1.0,0.3725,0.3684
+redact_tokenize,0.662,0.873,0.4643,0.6485,0.2787,0.2061,1.0,0.3725,0.4727
+sem_medium,0.4826,0.1667,0.606,0.6753,1.0,0.0515,1.0,0.3725,0.0748
+sem_fine,0.7523,0.6413,0.8431,0.7724,1.0,1.0,1.0,0.3725,0.0499

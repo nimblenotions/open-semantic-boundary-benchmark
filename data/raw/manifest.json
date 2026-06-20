@@ -1,0 +1,22 @@
+{
+  "status": "generated",
+  "study": "sbb-obs-v0.1.1",
+  "persona_count": 100,
+  "event_count": 3894,
+  "failure_labeled_count": 667,
+  "failure_mode_counts": {
+    "missed_safety_escalation": 145,
+    "medication_change_misunderstood": 108,
+    "indirect_symptom_not_escalated": 104,
+    "reminder_fatigue_mishandled": 101,
+    "side_effect_concern_dismissed": 104,
+    "engagement_drop_unaddressed": 105,
+    "assistant_ok": 3227
+  },
+  "rare_persona_count": 12,
+  "checksums": {
+    "events.jsonl": "17ac8f7b2c38a5f0",
+    "labels.jsonl": "6d53e7f90bd27f9d"
+  },
+  "seed": 42
+}

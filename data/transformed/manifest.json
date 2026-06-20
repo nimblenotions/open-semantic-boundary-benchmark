@@ -1,0 +1,13 @@
+{
+  "conditions": {
+    "redact_llm_substitute": {
+      "condition_id": "redact_llm_substitute",
+      "event_count": 3894,
+      "format": "events.jsonl",
+      "verify_fail_count": 0,
+      "checksum": "035fc5e947ffe161"
+    }
+  },
+  "verify_failures": 0,
+  "event_count": 3894
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "obs_schema_medium",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "medication_class": { "type": "string" },
+    "symptom_categories": { "type": "array", "items": { "type": "string" } },
+    "failure_mode": { "type": "string" },
+    "error_stage": { "type": "string" },
+    "input_semantic_type": { "type": "string" },
+    "policy_action": { "type": "string" }
+  },
+  "required": [
+    "medication_class",
+    "symptom_categories",
+    "failure_mode",
+    "error_stage",
+    "input_semantic_type",
+    "policy_action"
+  ]
+}

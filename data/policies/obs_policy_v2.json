@@ -1,0 +1,74 @@
+{
+  "policy_id": "obs_policy_v2",
+  "policy_version": "2.0.0",
+  "surface": "observability",
+  "purpose_id": "observability",
+  "status": "appendix_candidate",
+  "description": "Stricter observability π than v1: explicit allowlists per granularity, no free-text export fields, tighter linkage combos for sem_fine.",
+  "granularity_caps": {
+    "sem_coarse": "obs_schema_coarse",
+    "sem_medium": "obs_schema_medium",
+    "sem_fine": "obs_schema_fine"
+  },
+  "allowed_fields_by_schema": {
+    "obs_schema_coarse": [
+      "side_effect",
+      "adherence_barrier",
+      "risk_level"
+    ],
+    "obs_schema_medium": [
+      "medication_class",
+      "symptom_categories",
+      "failure_mode",
+      "error_stage",
+      "input_semantic_type",
+      "policy_action"
+    ],
+    "obs_schema_fine": [
+      "specific_medication",
+      "symptoms",
+      "occupation_sector",
+      "time_bucket",
+      "failure_mode"
+    ]
+  },
+  "prohibited_in_export": [
+    "raw_journal",
+    "raw_completion",
+    "user_name",
+    "email",
+    "note",
+    "free_text",
+    "journal_excerpt",
+    "assistant_excerpt"
+  ],
+  "prohibited_combinations": [
+    {
+      "fields": ["specific_medication", "occupation_sector", "time_bucket"],
+      "reason": "high_linkage_triple"
+    },
+    {
+      "fields": ["specific_medication", "occupation_sector"],
+      "reason": "quasi_identifier_pair"
+    },
+    {
+      "fields": ["occupation_sector", "time_bucket"],
+      "reason": "workplace_shift_linkage"
+    }
+  ],
+  "required_provenance_fields": [
+    "policy_id",
+    "policy_version",
+    "schema_id",
+    "transform_id",
+    "event_id",
+    "verify_outcome",
+    "fields_suppressed"
+  ],
+  "break_glass": {
+    "allowed_in_zone_in_only": true,
+    "allowed_in_vendor_export": false
+  },
+  "supersedes": "obs_policy_v1",
+  "notes": "Not wired in v0.1 lattice (frozen on obs_policy_v1). Use for appendix policy ablation or boundary_bundle v0.2 sketches."
+}

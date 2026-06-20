@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "obs_schema_fine",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "specific_medication": { "type": "string" },
+    "symptoms": { "type": "array", "items": { "type": "string" } },
+    "occupation_sector": { "type": "string" },
+    "time_bucket": { "type": "string" },
+    "failure_mode": { "type": "string" }
+  },
+  "required": [
+    "specific_medication",
+    "symptoms",
+    "occupation_sector",
+    "time_bucket",
+    "failure_mode"
+  ]
+}

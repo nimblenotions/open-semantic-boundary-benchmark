@@ -1,0 +1,26 @@
+{
+  "policy_id": "obs_policy_v1",
+  "policy_version": "1.0.0",
+  "surface": "observability",
+  "purpose_id": "observability",
+  "granularity_caps": {
+    "sem_coarse": "obs_schema_coarse",
+    "sem_medium": "obs_schema_medium",
+    "sem_fine": "obs_schema_fine"
+  },
+  "prohibited_in_export": ["raw_journal", "raw_completion", "user_name", "email"],
+  "prohibited_combinations": [
+    {
+      "fields": ["specific_medication", "occupation_sector", "time_bucket"],
+      "reason": "high_linkage_triple"
+    }
+  ],
+  "required_provenance_fields": [
+    "policy_id",
+    "policy_version",
+    "schema_id",
+    "transform_id",
+    "event_id",
+    "verify_outcome"
+  ]
+}

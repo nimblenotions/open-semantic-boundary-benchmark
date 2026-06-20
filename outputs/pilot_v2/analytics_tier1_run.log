@@ -1,0 +1,29 @@
+[tier1-analytics-resume] primary_model=qwen3:8b batch_size=30
+[tier1-analytics-resume] raw: cache_hit=630 cache_miss=0 total=630
+[tier1-analytics-resume] raw: done in 0.0s med=0.5468396114664771 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] redact_bracket: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] redact_bracket: done in 348.8s med=0.197277738074702 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] redact_tokenize: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] redact_tokenize: done in 351.6s med=0.23336357622444076 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] redact_surrogate: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] redact_surrogate: done in 338.6s med=0.44535940497894505 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] sem_coarse: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] sem_coarse: done in 328.0s med=0.12831858407079647 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] sem_medium: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] sem_medium: done in 349.9s med=1.0 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] sem_fine: cache_hit=174 cache_miss=456 total=630
+[tier1-analytics-resume] sem_fine: done in 405.3s med=1.0 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] redact_llm_substitute: cache_hit=0 cache_miss=630 total=630
+[tier1-analytics-resume] redact_llm_substitute: done in 485.0s med=0.2608521658377333 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] redact_llm_rephrase: cache_hit=0 cache_miss=630 total=630
+[tier1-analytics-resume] redact_llm_rephrase: done in 483.9s med=0.41853001814415963 parsed=630/630
+[tier1-analytics-resume] wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/analytics_metrics.json
+[tier1-analytics-resume] finished in 3091.8s

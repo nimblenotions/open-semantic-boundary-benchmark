@@ -1,0 +1,11 @@
+{
+  "condition_id": "redact_llm_rephrase",
+  "event_count": 3894,
+  "format": "events.jsonl",
+  "verify_fail_count": 0,
+  "checksum": "8d6e59881297d043",
+  "source": "data/llm_transform_cache/redact_llm_rephrase",
+  "cache_format": "cache.jsonl",
+  "purpose_id": "analytics",
+  "policy_id": "analytics_policy_v1"
+}

@@ -1,0 +1,5 @@
+Wrote /Users/gb/dev/semantic-boundary/outputs/pilot_v2/metrics.json
+  H1: no — redact_bracket F1 (0.000) vs raw (0.000); transfer F1 (1.000) vs raw transfer (1.000)
+  H2: no — sem_medium F1 (0.000) vs raw (0.000); Trial4 combined_linkage 0.483 vs raw 0.481; note: legacy persona_top1 would support H2 linkage arm (0.000 vs raw 0.000); Trial4 combined_linkage verdict differs
+  H3: no — sem_fine F1 (0.000) vs sem_medium (0.000); Trial4 combined_linkage 0.752 vs 0.483; note: legacy persona_top1 would not support H3 linkage arm (0.000 vs 0.000); Trial4 combined_linkage verdict differs
+  H4: no — substitute F1 (0.000) rephrase F1 (0.000) vs bracket (0.000) sem_medium (0.000); linkage subst 0.525 rephrase 0.537 vs raw 0.481 bracket 0.358 sem_medium 0.483

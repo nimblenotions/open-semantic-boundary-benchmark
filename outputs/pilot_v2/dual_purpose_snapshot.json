@@ -1,0 +1,146 @@
+{
+  "points": [
+    {
+      "condition_id": "raw",
+      "linkage": 0.48057589546603063,
+      "u_obs": 0.6263286808976464,
+      "u_analytics": 0.7270053606455997
+    },
+    {
+      "condition_id": "redact_bracket",
+      "linkage": 0.35787478197253214,
+      "u_obs": 0.673165009928914,
+      "u_analytics": 0.4925834600458802
+    },
+    {
+      "condition_id": "redact_tokenize",
+      "linkage": 0.6619591645788753,
+      "u_obs": 0.6618053142346182,
+      "u_analytics": 0.6250412329979476
+    },
+    {
+      "condition_id": "redact_surrogate",
+      "linkage": 0.4239907589463723,
+      "u_obs": 0.6569965291501275,
+      "u_analytics": 0.6821959553451347
+    },
+    {
+      "condition_id": "sem_coarse",
+      "linkage": 0.3102532461599767,
+      "u_obs": 0.1650382121415734,
+      "u_analytics": 0.7094395280235988
+    },
+    {
+      "condition_id": "sem_medium",
+      "linkage": 0.48264927923086615,
+      "u_obs": 1.0,
+      "u_analytics": 0.997749172016849
+    },
+    {
+      "condition_id": "sem_fine",
+      "linkage": 0.7522809317662005,
+      "u_obs": 1.0,
+      "u_analytics": 0.9940241826596757
+    },
+    {
+      "condition_id": "redact_llm_substitute",
+      "linkage": 0.5251535450868137,
+      "u_obs": 0.5990921382359268,
+      "u_analytics": 0.6183073861965195
+    },
+    {
+      "condition_id": "redact_llm_rephrase",
+      "linkage": 0.5372424860244452,
+      "u_obs": 0.5826727812985624,
+      "u_analytics": 0.6644330273657615
+    }
+  ],
+  "conditions": [
+    "raw",
+    "redact_bracket",
+    "redact_tokenize",
+    "redact_surrogate",
+    "sem_coarse",
+    "sem_medium",
+    "sem_fine",
+    "redact_llm_substitute",
+    "redact_llm_rephrase"
+  ],
+  "knees": {
+    "obs_knee": "sem_medium",
+    "analytics_knee": "sem_medium",
+    "same_knee": true,
+    "obs_knee_u": 1.0,
+    "analytics_knee_u": 0.997749172016849,
+    "obs_knee_linkage": 0.48264927923086615,
+    "analytics_knee_linkage": 0.48264927923086615
+  },
+  "advisor_figures": {
+    "conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "sem_fine",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "r_max": 0.45,
+    "regret_winners": {
+      "observability": "redact_bracket",
+      "analytics_med": "redact_surrogate",
+      "analytics_side": "sem_coarse",
+      "analytics_adherence": "sem_coarse",
+      "analytics_cohort": "redact_bracket"
+    },
+    "figures": {
+      "utility_matrix_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.png",
+      "utility_matrix_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.pdf",
+      "linkage_decomposition_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.png",
+      "linkage_decomposition_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.pdf",
+      "cross_purpose_regret_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.png",
+      "cross_purpose_regret_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.pdf"
+    },
+    "tables": {
+      "utility_matrix": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/utility_matrix.csv",
+      "linkage_decomposition": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/linkage_decomposition.csv",
+      "cross_purpose_regret_matrix": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/tables/cross_purpose_regret_matrix.csv"
+    }
+  },
+  "figures": {
+    "aggregate_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto.png",
+    "aggregate_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto.pdf",
+    "per_task_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_per_task.png",
+    "per_task_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_per_task.pdf",
+    "png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/frontier_epsilon_merged.png",
+    "pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/frontier_epsilon_merged.pdf",
+    "dual_pareto_main_threepanel_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_main_threepanel.png",
+    "dual_pareto_main_threepanel_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_main_threepanel.pdf",
+    "dual_pareto_hero_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_hero.png",
+    "dual_pareto_hero_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_hero.pdf",
+    "dual_pareto_obs_vs_analytics_composite_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_obs_vs_analytics_composite.png",
+    "dual_pareto_obs_vs_analytics_composite_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_obs_vs_analytics_composite.pdf",
+    "dual_pareto_composite_purposes_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_composite_purposes.png",
+    "dual_pareto_composite_purposes_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_composite_purposes.pdf",
+    "dual_pareto_triptych_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych.png",
+    "dual_pareto_triptych_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych.pdf",
+    "dual_pareto_triptych_obs_med_side_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_obs_med_side.png",
+    "dual_pareto_triptych_obs_med_side_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_obs_med_side.pdf",
+    "dual_pareto_triptych_analytics_internal_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_analytics_internal.png",
+    "dual_pareto_triptych_analytics_internal_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/dual_pareto_triptych_analytics_internal.pdf",
+    "winner_mismatch_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_winner_mismatch.png",
+    "winner_mismatch_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_winner_mismatch.pdf",
+    "regret_focal_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_regret_focal.png",
+    "regret_focal_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/operative_regret_focal.pdf",
+    "linkage_channels_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_channels_dual.png",
+    "linkage_channels_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_channels_dual.pdf",
+    "utility_matrix_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.png",
+    "utility_matrix_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/utility_matrix_heatmap.pdf",
+    "linkage_decomposition_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.png",
+    "linkage_decomposition_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/linkage_decomposition.pdf",
+    "cross_purpose_regret_png": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.png",
+    "cross_purpose_regret_pdf": "/Users/gb/dev/semantic-boundary/open-semantic-boundary-benchmark/outputs/pilot_v2/figures/cross_purpose_regret_matrix.pdf"
+  }
+}

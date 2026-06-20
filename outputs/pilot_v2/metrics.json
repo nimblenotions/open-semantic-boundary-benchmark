@@ -1,0 +1,867 @@
+{
+  "study": "sbb-obs-v0.1.1",
+  "generated_at_utc": "2026-06-20T23:01:14.980904+00:00",
+  "tier": "1-linkage",
+  "primary_metric": "failure_mode_macro_f1",
+  "conditions": {
+    "raw": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.32063492063492066,
+        "persona_top5": 0.638095238095238,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.47899036059237915,
+        "occupation_sector_macro_f1": 0.385142210444987,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.34186803391955217,
+        "attribute_combined_macro_f1": 0.5591606327991822,
+        "longitudinal_linkage_auc": 0.5619321329639889,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.32063492063492066,
+        "token_recovery_rate": 1.0,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.48057589546603063
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "raw",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6263286808976464,
+        "error_stage_accuracy": 0.8936507936507937,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6263286808976464,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.6263286808976464,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.6263286808976464,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5424029626524124,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6534067362577216,
+            "error_stage_accuracy": 0.8984126984126984,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_bracket": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.05873015873015873,
+        "persona_top5": 0.3238095238095238,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.41540696229230506,
+        "occupation_sector_macro_f1": 0.16806218086872035,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.3684206085378292,
+        "attribute_combined_macro_f1": 0.488994775830097,
+        "longitudinal_linkage_auc": 0.5258994113573408,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.05873015873015873,
+        "token_recovery_rate": 0.03274711946634324,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.35787478197253214
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_bracket",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.673165009928914,
+        "error_stage_accuracy": 0.9,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6731650099289139,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.6731650099289139,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.6731650099289139,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5557971546693351,
+            "error_stage_accuracy": 0.8698412698412699,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.646760306638669,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_tokenize": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.873015873015873,
+        "persona_top5": 0.9349206349206349,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.278701393655225,
+        "occupation_sector_macro_f1": 0.20608692962243924,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.4727093861042686,
+        "attribute_combined_macro_f1": 0.4643245708592567,
+        "longitudinal_linkage_auc": 0.6485370498614959,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.873015873015873,
+        "token_recovery_rate": 0.007883565797453002,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.6619591645788753
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_tokenize",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6618053142346182,
+        "error_stage_accuracy": 0.8936507936507937,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6618053142346182,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.6618053142346182,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.6618053142346182,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.49418077708981406,
+            "error_stage_accuracy": 0.834920634920635,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5255553819183184,
+            "error_stage_accuracy": 0.8761904761904762,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_surrogate": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.19365079365079366,
+        "persona_top5": 0.6253968253968254,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.5321867241319534,
+        "occupation_sector_macro_f1": 0.1704798301794277,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.3292513871062815,
+        "attribute_combined_macro_f1": 0.5187941286176859,
+        "longitudinal_linkage_auc": 0.5595273545706372,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.19365079365079366,
+        "token_recovery_rate": 0.02850212249848393,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.4239907589463723
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_surrogate",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6569965291501275,
+        "error_stage_accuracy": 0.9,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6569965291501275,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.6569965291501275,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.6569965291501275,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5517356675619093,
+            "error_stage_accuracy": 0.8984126984126984,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6031614444304276,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_coarse": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.026984126984126985,
+        "persona_top5": 0.1492063492063492,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.2163568651713973,
+        "occupation_sector_macro_f1": 0.0883219496041521,
+        "symptom_categories_macro_f1": 0.9318645020732308,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.1586690111542127,
+        "attribute_combined_macro_f1": 0.40226331925203573,
+        "longitudinal_linkage_auc": 0.5015122922437674,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.026984126984126985,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.3102532461599767
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_coarse",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8253968253968254,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.1650382121415734,
+        "error_stage_accuracy": 0.8365079365079365,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.1650382121415734,
+            "error_stage_accuracy": 0.8365079365079365,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.1650382121415734,
+            "error_stage_accuracy": 0.8365079365079365,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.1650382121415734,
+            "error_stage_accuracy": 0.8365079365079365,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.2238768473332107,
+            "error_stage_accuracy": 0.8952380952380953,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.21255775236456476,
+            "error_stage_accuracy": 0.8444444444444444,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_medium": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.16666666666666666,
+        "persona_top5": 0.665079365079365,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 1.0,
+        "occupation_sector_macro_f1": 0.05153439153439153,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.07476388741724938,
+        "attribute_combined_macro_f1": 0.6060110879234386,
+        "longitudinal_linkage_auc": 0.6752700831024931,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.16666666666666666,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.48264927923086615
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_medium",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8253968253968254,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 1.0,
+        "error_stage_accuracy": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.997265102558654,
+            "error_stage_accuracy": 0.9968253968253968,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "sem_fine": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.6412698412698413,
+        "persona_top5": 0.9698412698412698,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 1.0,
+        "occupation_sector_macro_f1": 1.0,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.049885342105455956,
+        "attribute_combined_macro_f1": 0.8431274900398407,
+        "longitudinal_linkage_auc": 0.7724454639889197,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.6412698412698413,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.7522809317662005
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_fine",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8571428571428571,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 1.0,
+        "error_stage_accuracy": 0.873015873015873,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.9079365079365079,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.9142857142857143,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_llm_substitute": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.526984126984127,
+        "persona_top5": 0.8253968253968254,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.3436213049286037,
+        "occupation_sector_macro_f1": 0.24848442853438663,
+        "symptom_categories_macro_f1": 0.9191656857432908,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.30139380420392686,
+        "attribute_combined_macro_f1": 0.47094534484141093,
+        "longitudinal_linkage_auc": 0.5775311634349031,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.526984126984127,
+        "token_recovery_rate": 0.40873256519102485,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.5251535450868137
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_substitute",
+        "transfer_failure_mode_macro_f1": 0.922234543786268,
+        "transfer_error_stage_accuracy": 0.9698412698412698,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.5990921382359268,
+        "error_stage_accuracy": 0.873015873015873,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.5990921382359268,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.5990921382359268,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.5990921382359268,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.49360800358761986,
+            "error_stage_accuracy": 0.8825396825396825,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6383472443586947,
+            "error_stage_accuracy": 0.8809523809523809,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    },
+    "redact_llm_rephrase": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.573015873015873,
+        "persona_top5": 0.8587301587301587,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.4234478212804433,
+        "occupation_sector_macro_f1": 0.2061360005185647,
+        "symptom_categories_macro_f1": 0.8986078214293755,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.3102293365622811,
+        "attribute_combined_macro_f1": 0.47517540084693655,
+        "longitudinal_linkage_auc": 0.5635361842105263,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.573015873015873,
+        "token_recovery_rate": 0.5633717404487568,
+        "n_test": 630,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "combined_linkage_score": 0.5372424860244452
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_rephrase",
+        "transfer_failure_mode_macro_f1": 0.870215815758512,
+        "transfer_error_stage_accuracy": 0.9428571428571428,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.5826727812985624,
+        "error_stage_accuracy": 0.8682539682539683,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.5826727812985624,
+            "error_stage_accuracy": 0.8682539682539683,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "43": {
+            "failure_mode_macro_f1": 0.5826727812985624,
+            "error_stage_accuracy": 0.8682539682539683,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          },
+          "44": {
+            "failure_mode_macro_f1": 0.5826727812985624,
+            "error_stage_accuracy": 0.8682539682539683,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.4315005037067093,
+            "error_stage_accuracy": 0.8380952380952381,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5986105778912475,
+            "error_stage_accuracy": 0.8746031746031746,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "reason": null
+          }
+        }
+      }
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "supported": false,
+      "detail": "redact_bracket F1 (0.673) vs raw (0.626); transfer F1 (1.000) vs raw transfer (1.000)",
+      "per_condition": {
+        "supported": false,
+        "detail": "redact_bracket F1 (0.673) vs raw (0.626)"
+      },
+      "transfer": {
+        "supported": false,
+        "detail": "redact_bracket transfer F1 (1.000) vs raw transfer (1.000)"
+      }
+    },
+    "H2": {
+      "supported": false,
+      "detail": "sem_medium F1 (1.000) vs raw (0.626); Trial4 combined_linkage 0.483 vs raw 0.481; note: legacy persona_top1 would support H2 linkage arm (0.000 vs raw 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H3": {
+      "supported": false,
+      "detail": "sem_fine F1 (1.000) vs sem_medium (1.000); Trial4 combined_linkage 0.752 vs 0.483; note: legacy persona_top1 would not support H3 linkage arm (0.000 vs 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H4": {
+      "supported": false,
+      "detail": "substitute F1 (0.599) rephrase F1 (0.583) vs bracket (0.673) sem_medium (1.000); linkage subst 0.525 rephrase 0.537 vs raw 0.481 bracket 0.358 sem_medium 0.483",
+      "substitute": {
+        "utility_ok": false,
+        "linkage_ok": false
+      },
+      "rephrase": {
+        "utility_ok": false,
+        "linkage_ok": false
+      }
+    },
+    "sem_coarse_f1": 0.1650382121415734
+  },
+  "notes": {
+    "eval_split": "test",
+    "train_split": "train",
+    "primary_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "sem_fine",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "llm_conditions": [
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "appendix_conditions_evaluated": [],
+    "hypotheses_scope": "7 lattice (H1\u2013H3) + LLM arms (H4)",
+    "tier1_consumer": "active",
+    "linkage_tier": true
+  }
+}

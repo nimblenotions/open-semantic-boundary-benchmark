@@ -1,0 +1,47 @@
+{
+  "illustrative": true,
+  "disclaimer": "Synthetic example only. Not GDPR compliance or legal advice.",
+  "sector": "GDPR",
+  "scenario": "Demographic field minimized for analytics export",
+  "input_excerpt": "User profile: age 34, city Berlin, interest health_tracking.",
+  "export_z": {
+    "age_range": "30-39",
+    "region": "EU",
+    "interest_category": "wellness"
+  },
+  "provenance_r": {
+    "policy_id": "gdpr_analytics_min_v2",
+    "policy_version": "2.0.0",
+    "schema_id": "analytics_schema_medium",
+    "transform_id": "sem_medium",
+    "event_id": "evt_illustrative_003",
+    "timestamp_utc": "2026-06-12T09:15:00Z",
+    "verify_outcome": "pass",
+    "fields_suppressed": ["exact_age", "city_literal"],
+    "transformations": [
+      {
+        "field": "age",
+        "action": "bucketed",
+        "from": "34",
+        "to": "30-39",
+        "rule": "demographic_minimization"
+      },
+      {
+        "field": "city",
+        "action": "generalized",
+        "from": "Berlin",
+        "to": "EU",
+        "rule": "purpose_limitation_analytics"
+      }
+    ]
+  },
+  "gdpr_principles_supported": [
+    "data_minimization",
+    "purpose_limitation",
+    "accountability"
+  ],
+  "audit_questions_answered": [
+    "Why does this export contain age range but not exact age?",
+    "Was processing intentional and policy-bound rather than arbitrary?"
+  ]
+}

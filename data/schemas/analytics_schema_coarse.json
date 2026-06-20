@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "analytics_schema_coarse",
+  "description": "Population-level analytics signals (no medication class). Ta-2 side-effect presence, Ta-3 adherence friction, risk stratification.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "side_effect_present": {
+      "type": "boolean",
+      "description": "Ta-2: binary adverse-event / side-effect signal at population granularity."
+    },
+    "adherence_friction_present": {
+      "type": "boolean",
+      "description": "Ta-3: adherence barrier or friction signal (missed dose, side-effect barrier)."
+    },
+    "risk_band": {
+      "type": "string",
+      "enum": ["low", "elevated", "high"],
+      "description": "Population risk stratification band derived from event risk_level."
+    }
+  },
+  "required": ["side_effect_present", "adherence_friction_present", "risk_band"]
+}

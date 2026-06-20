@@ -1,0 +1,7 @@
+{
+  "condition_id": "redact_surrogate",
+  "event_count": 3894,
+  "format": "events.jsonl",
+  "verify_fail_count": 0,
+  "checksum": "7013a3a2a82f356a"
+}

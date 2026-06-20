@@ -1,0 +1,5 @@
+[tier1-resume] primary_model=qwen3:8b batch_size=30
+[tier1-resume] redact_llm_rephrase: cache_hit=0 cache_miss=630 total=630
+[tier1-resume] redact_llm_rephrase: done in 442.3s f1=0.5826727812985624 parsed=630/630
+[tier1-resume] wrote outputs/pilot_v2/tier1_rephrase_dev.json
+[tier1-resume] finished in 442.3s
