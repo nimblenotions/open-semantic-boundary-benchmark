@@ -4,14 +4,17 @@ Thanks for helping improve the Open Semantic Boundary Benchmark.
 
 ## Development setup
 
+Use a project virtual environment — do not install into system Python.
+
 ```bash
 uv venv
+source .venv/bin/activate
 uv pip install -e ".[dev]"
 make test
 make lint
 ```
 
-`make` targets use `.venv/bin/` when the venv exists; activation is optional unless you invoke `python`/`pytest` directly.
+Activate before interactive work (`python`, `pytest`, editors). `make` targets also resolve `.venv/bin/` when the venv exists, so a quick `make repro-smoke` works even if you forgot to activate.
 
 ## What to contribute
 

@@ -46,8 +46,11 @@ Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`). Regenerat
 
 ## Quick start
 
+Use a **project virtual environment** (`.venv/`) — do not install into system Python.
+
 ```bash
 uv venv
+source .venv/bin/activate
 uv pip install -e ".[dev]"
 
 make repro-smoke    # verify headline metrics; no Ollama
@@ -55,7 +58,9 @@ make test
 make lint
 ```
 
-The `Makefile` uses `.venv/bin/python`, `pytest`, and `ruff` automatically when `.venv/` exists — you do **not** need `source .venv/bin/activate` for `make` targets. Activate the venv only if you run `python` or `pytest` directly in your shell.
+**Why activate?** Standard Python practice: your shell then uses the venv’s `python`, `pytest`, and installed packages. That matters when you run scripts or tests outside `make`.
+
+**Without activation:** `make` targets still work if `.venv/` exists — the `Makefile` calls `.venv/bin/python`, `.venv/bin/pytest`, and `.venv/bin/ruff` directly. CI uses global `pip install` (no `.venv`); locally, create `.venv` first as above.
 
 Optional — rescore from cached LLM consumer predictions:
 
