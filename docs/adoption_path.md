@@ -10,7 +10,7 @@ Time labels below are **realistic wall-clock estimates** for someone new to the 
 
 1. Clone the repo and create a venv (`uv venv`, `uv pip install -e ".[dev]"`) — **~5–10 min** (depends on network and clone size).
 2. Skim [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md) and the [root README](../README.md) — **~10 min**.
-3. Run `make repro-smoke` — **seconds** (no Ollama).
+3. Run `make repro-smoke` — **seconds** (no Ollama). Checks observability **and** analytics headline **tier1** F1 plus linkage **R(z)** against the paper table.
 
 Optional: skim [`open-sbb/README.md`](../open-sbb/README.md) for protocol flow — add **~10 min**.
 
@@ -18,7 +18,7 @@ Optional: skim [`open-sbb/README.md`](../open-sbb/README.md) for protocol flow �
 
 1. Complete quick repro path.
 2. Read [`examples/README.md`](../examples/README.md) — **~10 min**.
-3. Inspect headline numbers:
+3. Inspect headline numbers (or trust `make repro-smoke` from the step above):
 
 ```bash
 # observability failure_mode macro-F1 (JSON key tier1 in metrics.json)
@@ -45,7 +45,7 @@ For early enthusiasts who want to **run assessors**, not just read frozen output
 
 1. Complete understand-the-protocol path.
 2. Read [`examples/provenance/`](../examples/provenance/README.md) — `(z, r)` shape — **~15 min**.
-3. Run rescoring on cached LLM consumer predictions (no Ollama if caches present):
+3. Run rescoring on cached LLM consumer predictions (no Ollama if caches present). **Both commands** needed for the full paper utility table:
 
 ```bash
 make eval CONFIG=configs/pilot_v0.1.1.yaml          # observability lattice — typically a few minutes

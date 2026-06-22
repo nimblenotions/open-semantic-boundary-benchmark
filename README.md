@@ -19,7 +19,7 @@ Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.c
 | **What is Semantic Boundary?** | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
 | New to the benchmark | [`open-sbb/README.md`](open-sbb/README.md) |
 | Looking for use cases | [`examples/README.md`](examples/README.md) |
-| Reproducing the paper (supported path) | Run `make repro-smoke` (below) |
+| Reproducing the paper | [`Paper reproduction cheatsheet`](#paper-reproduction-cheatsheet) below |
 | BYO exports (advanced; YMMV) | [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md) — productized in v0.2 |
 | Mapping paper §4 → repo | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
 | Extending the protocol | [`docs/extension_points.md`](docs/extension_points.md) |
@@ -63,15 +63,18 @@ make lint
 
 **Without activation:** `make` targets still work if `.venv/` exists — the `Makefile` calls `.venv/bin/python`, `.venv/bin/pytest`, and `.venv/bin/ruff` directly. CI uses global `pip install` (no `.venv`); locally, create `.venv` first as above.
 
-Optional — rescore from cached LLM consumer predictions:
+### Paper reproduction cheatsheet
 
-```bash
-make eval CONFIG=configs/pilot_v0.1.1.yaml
-make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
-make figures
-make operative-selection
-make bootstrap-cis
-```
+Headline utility F1 in the paper comes from the **Tier-1 LLM consumer** (`qwen3:8b`, JSON key `tier1` in metrics) — not Tier-0 (`make eval TIER=0`).
+
+| Goal | Command | Output / notes |
+|------|---------|----------------|
+| **Verify** published numbers (start here) | `make repro-smoke` | Checks committed obs + analytics **tier1** F1 and linkage **R(z)** vs paper table (±0.02); **seconds**; no Ollama |
+| **Rescore** observability utility + linkage | `make eval` | Recomputes from `data/eval_cache/` → `outputs/pilot_v2/metrics.json`; typically **a few minutes** |
+| **Rescore** analytics utility | `make eval-analytics` | Recomputes from `data/eval_cache_analytics/` → `analytics_metrics.json` |
+| Regenerate figures / CIs (optional) | `make figures`, `make bootstrap-cis`, … | Uses metrics JSON; see Makefile |
+
+Use **`make repro-smoke` alone** to audit the frozen release. Use **`make eval` + `make eval-analytics`** when you want to recompute headlines from cached LLM predictions (both commands needed for the full paper table).
 
 Full regen (`make pipeline`) requires Ollama with `qwen3:8b` for the frozen LLM utility consumers.
 
@@ -84,7 +87,7 @@ Paper headline numbers do **not** require a live LLM at audit time. v0.1.1 ships
 | Observability consumer | `data/eval_cache/` | Per-model, per-export-condition `predictions.jsonl` (primary: `qwen3_8b/`) |
 | Analytics consumer | `data/eval_cache_analytics/` | Same layout for analytics prompts |
 
-When you run `make eval` or `make eval-analytics`, assessors **read these cached completions** and compute metrics (F1, linkage, etc.) — they do not call Ollama unless a cache entry is missing. `make repro-smoke` skips inference entirely and checks committed `outputs/pilot_v2/metrics.json` against expected headline tolerances.
+When you run `make eval` or `make eval-analytics`, assessors **read these cached completions** and compute metrics (F1, linkage, etc.) — they do not call Ollama unless a cache entry is missing. `make repro-smoke` skips rescoring entirely and checks committed `outputs/pilot_v2/metrics.json` and `analytics_metrics.json` against expected headline tolerances.
 
 To **regenerate** LLM consumer predictions (optional, heavy), you need Ollama + `qwen3:8b` and `make pipeline` or the observability/analytics study scripts; new runs can be consolidated back into `data/eval_cache*` via `scripts/consolidate_eval_cache.py`.
 

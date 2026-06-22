@@ -54,18 +54,23 @@ Policies and consumers are registered **before** scoring: the same export condit
 
 ## Reproduce (no Ollama)
 
+See the [paper reproduction cheatsheet](../README.md#paper-reproduction-cheatsheet) in the root README. Short form:
+
 ```bash
-make repro-smoke          # verify committed headline metrics
-make eval                 # full obs eval on cached LLM consumer predictions (slow; uses caches)
+make repro-smoke          # verify obs + analytics tier1 F1 + linkage R(z) — seconds
+make eval                 # rescore observability from data/eval_cache/
+make eval-analytics       # rescore analytics from data/eval_cache_analytics/
 make figures              # paper-linked figures from committed metrics
 ```
+
+Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not Tier-0.
 
 ## Further reading
 
 | Doc | Purpose |
 |-----|---------|
 | [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
-| [`../docs/adoption_path.md`](../docs/adoption_path.md) | 1 min → contributor paths |
+| [`../docs/adoption_path.md`](../docs/adoption_path.md) | Onboarding paths (quick repro → rescore → contributor) |
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |
 | [`../docs/extension_points.md`](../docs/extension_points.md) | How to extend the protocol |
 | [`../examples/README.md`](../examples/README.md) | Domain examples + BYO |
