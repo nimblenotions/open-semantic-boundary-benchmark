@@ -39,7 +39,7 @@ def test_build_boundary_bundle(metrics, cfg):
     bundle = build_boundary_bundle(metrics, cfg)
     assert bundle["sbb_version"] == "0.1.1"
     assert bundle["recommended_condition"] in cfg["lattice"]["conditions"]
-    assert bundle["split_manifest"].endswith("splits.json")
+    assert bundle["split_manifest"].endswith("split_manifest_v0.json")
     rec = bundle["recommended_condition"]
     if rec.startswith("sem_"):
         assert bundle["schema"] is not None

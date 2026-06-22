@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from datetime import UTC, datetime
 from pathlib import Path
+
+from sbb.frozen_tier import SPLIT_MANIFEST_V0
 from typing import Any
 
 from eval.study import LATTICE_RULE_SEMANTIC, _condition_trial4, _utility_f1
@@ -100,7 +102,7 @@ def build_boundary_bundle(
             Path(cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2"))
             / "metrics.json"
         ),
-        "split_manifest": str(Path(cfg["paths"]["ground_truth"]) / "splits.json"),
+        "split_manifest": SPLIT_MANIFEST_V0,
         "hypotheses": metrics.get("hypotheses", {}),
     }
     return bundle

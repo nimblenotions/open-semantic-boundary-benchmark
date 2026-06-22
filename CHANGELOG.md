@@ -11,12 +11,8 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 - **`docs/`** — repo_map, paper_to_repo, extension_points, adoption_path
 - **`make repro-smoke`** — verify frozen headline metrics without Ollama
 - Standalone benchmark layout; pilot_v2 frozen tier (100 personas, 630 test events)
-
-### Known gaps (v0.1.1)
-
-- `split_manifest_v0.json` + README checksum
-- `boundary_bundle_v0.schema.json`
-- External reproduction smoke test record
+- **`data/ground_truth/split_manifest_v0.json`** — frozen split audit manifest + README SHA256
+- **`data/schemas/boundary_bundle_v0.schema.json`** — JSON Schema for `boundary_bundle_v0.json`
 
 ## [0.1.0] — internal pilot
 

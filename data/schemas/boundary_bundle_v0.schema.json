@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "boundary_bundle_v0",
+  "description": "Open SBB v0.1.1 observability boundary bundle (I1 metrics export).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sbb_version": { "type": "string" },
+    "generated_at_utc": { "type": "string" },
+    "purpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "consumer_id": { "type": "string" },
+        "task_labels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      },
+      "required": ["id", "consumer_id", "task_labels"]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "path": { "type": "string" }
+      },
+      "required": ["id", "path"]
+    },
+    "export_kind": {
+      "type": "string",
+      "enum": ["semantic", "text_redaction"]
+    },
+    "schema": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": { "type": "string" },
+            "path": { "type": "string" }
+          },
+          "required": ["id", "path"]
+        }
+      ]
+    },
+    "transform_ladder": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "recommended_condition": { "type": "string" },
+    "recommended_condition_rule": { "type": "string" },
+    "i1_metrics_ref": { "type": "string" },
+    "split_manifest": { "type": "string" },
+    "hypotheses": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "sbb_version",
+    "generated_at_utc",
+    "purpose",
+    "policy",
+    "export_kind",
+    "schema",
+    "transform_ladder",
+    "recommended_condition",
+    "recommended_condition_rule",
+    "i1_metrics_ref",
+    "split_manifest",
+    "hypotheses"
+  ]
+}

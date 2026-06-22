@@ -29,7 +29,7 @@
   "recommended_condition": "redact_bracket",
   "recommended_condition_rule": "highest failure_mode_macro_f1 (0.673) among conditions with linkage <= redact_bracket (0.358)",
   "i1_metrics_ref": "outputs/pilot_v2/metrics.json",
-  "split_manifest": "data/ground_truth/splits.json",
+  "split_manifest": "data/ground_truth/split_manifest_v0.json",
   "hypotheses": {
     "H1": {
       "supported": false,

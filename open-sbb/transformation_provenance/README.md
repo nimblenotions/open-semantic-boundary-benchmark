@@ -20,6 +20,7 @@ Code:
 Data:
 
 - `data/schemas/provenance_v1.json`
+- `data/schemas/boundary_bundle_v0.schema.json`
 - `examples/provenance/hipaa_phi_export.json`
 - `examples/provenance/finra_advisor_export.json`
 - `examples/provenance/gdpr_minimization_export.json`

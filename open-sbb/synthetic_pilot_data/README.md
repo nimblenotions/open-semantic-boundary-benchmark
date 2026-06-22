@@ -22,6 +22,7 @@ Data:
 
 - `data/raw/events.jsonl`
 - `data/ground_truth/splits.json`
+- `data/ground_truth/split_manifest_v0.json` — frozen audit manifest (persona counts, 630 test events, SHA256 in root README)
 - `data/ground_truth/persona_table.jsonl`
 - `data/ground_truth/labels.jsonl`
 - `data/ground_truth/provenance_targets.jsonl`

@@ -33,6 +33,16 @@ Public home (at release): [`nimblenotions/open-semantic-boundary-benchmark`](htt
 | Published run | **`outputs/pilot_v2/`** (= v0.1.1 frozen outputs; historical dir name) |
 | Config | `configs/pilot_v0.1.1.yaml` |
 
+### Frozen-tier checksums
+
+Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`). Regenerate with `python scripts/build_split_manifest_v0.py`.
+
+| Artifact | Path | SHA256 |
+|----------|------|--------|
+| Split manifest v0 | `data/ground_truth/split_manifest_v0.json` | `b15f4cebc5570a36171eb18ddca5d65d109ad18cb334268d45f43f84e15cfac0` |
+
+`data/ground_truth/splits.json` remains the loader source for code; `split_manifest_v0.json` is the frozen audit manifest (persona counts, test-event count, checksum).
+
 ## Quick start
 
 ```bash
