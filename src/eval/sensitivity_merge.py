@@ -356,7 +356,7 @@ def write_sensitivity_report_md(report: dict[str, Any], path: Path) -> None:
         + "."
     )
     lines.append(
-        f"- Analytics composite winner at same budget: "
+        "- Analytics composite winner at same budget: "
         + ", ".join(f"{m} → `{ana_w[m]}`" for m in models)
         + (" (**stable**)" if dr["analytics_winner_stable"] else " (**varies by model**)")
         + "."

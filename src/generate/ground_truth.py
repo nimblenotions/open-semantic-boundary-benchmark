@@ -181,7 +181,6 @@ def label_record(slot: EventSlot, event_id: str) -> dict[str, Any]:
 
     med_class = ha["medication_class"]
     brand = ha["medication_brand"]
-    generic = ha["medication_generic"]
     specific_med = f"{med_class}_class_{brand.lower()}"
 
     return {

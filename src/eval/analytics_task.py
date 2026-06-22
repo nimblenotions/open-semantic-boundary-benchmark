@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import f1_score
 
 from eval.observability_task import condition_kind, consumer_input
 from eval.tier0_consumer import _fit_predict

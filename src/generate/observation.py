@@ -61,7 +61,7 @@ def render_journal(slot: EventSlot, rng: random.Random) -> str:
     # assistant_ok
     templates = [
         f"Took {dose} on time. Feeling okay today.",
-        f"Quick check-in: meds done, mood stable.",
+        "Quick check-in: meds done, mood stable.",
         f"Logged dose. No major issues before {work}.",
     ]
     return rng.choice(templates)

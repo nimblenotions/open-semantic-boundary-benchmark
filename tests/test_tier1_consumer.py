@@ -3,13 +3,11 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import httpx
 import pytest
 
 from eval.tier1_consumer import (
-    PROMPT_VERSION,
     build_batch_user_message,
     build_triage_system_prompt,
     evaluate_tier1,

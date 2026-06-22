@@ -342,7 +342,6 @@ def plot_tier_a_task_bundles(
     """Task-bundle feasibility: bar count + condition×bundle matrix."""
     _apply_style()
     bundles = task_bundle_feasibility(points)
-    bundle_ids = [b["bundle_id"] for b in bundles]
     n_feas = [b["n_feasible"] for b in bundles]
     labels = [b["bundle_id"].replace("_", "\n") for b in bundles]
 
@@ -645,7 +644,6 @@ def plot_epsilon_sweep_condition_bands(
     ordered = [p for cid in PRIMARY_LATTICE if (p := next((x for x in points if x.condition_id == cid), None))]
 
     for ax, (purpose, util_attr, title, _) in zip(axes, PURPOSE_SPECS):
-        y_positions = np.arange(len(ordered))
         for yi, pt in enumerate(ordered):
             if pt.provenance_completeness < provenance_min:
                 continue
@@ -778,7 +776,7 @@ def plot_provenance_gate_ablation(
                 )
                 data[i, j] = row["n_feasible"]
 
-        im = ax.imshow(
+        ax.imshow(
             data,
             aspect="auto",
             origin="lower",

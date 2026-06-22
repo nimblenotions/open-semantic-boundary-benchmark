@@ -15,7 +15,7 @@ import numpy as np  # noqa: E402
 
 from eval.advisor_figures import run_advisor_figures
 from eval.analytics_task import composite_utility
-from eval.figures import LLM_CONDITIONS, PRIMARY_LATTICE
+from eval.figures import PRIMARY_LATTICE
 from eval.granular_figures import (
     FAMILY_MARKERS,
     TASK_COLORS,

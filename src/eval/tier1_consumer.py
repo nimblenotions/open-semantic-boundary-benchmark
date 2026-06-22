@@ -10,6 +10,13 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+import httpx
+from sklearn.metrics import accuracy_score, f1_score
+
+from eval.eval_cache_io import eval_condition_cache_dir, get_eval_cache_entry, upsert_eval_cache_entries
+from eval.observability_task import serialize_for_storage
+from transform.llm_sanitize import _extract_json_payload
+
 OLLAMA_LOCK_PATH = Path("/tmp/sbb-ollama.lock")
 
 
@@ -35,13 +42,6 @@ def _ollama_lock():
             yield
         finally:
             fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
-
-import httpx
-from sklearn.metrics import accuracy_score, f1_score
-
-from eval.eval_cache_io import eval_condition_cache_dir, get_eval_cache_entry, upsert_eval_cache_entries
-from eval.observability_task import serialize_for_storage
-from transform.llm_sanitize import _extract_json_payload
 
 PROMPT_VERSION = "triage_v1"
 DEFAULT_BATCH_SIZE = 30

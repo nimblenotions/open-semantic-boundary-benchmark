@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-import json
-from pathlib import Path
 
 import pytest
 
 from eval.adversary import token_recovery_rate
 from eval.io import join_eval_rows, load_labels, load_splits
-from transform.io import condition_has_exports, load_condition_exports
+from transform.io import load_condition_exports
 from eval.observability_task import condition_kind, consumer_input, serialize_text_export
 from eval.provenance_score import provenance_complete
 from eval.io import load_raw_events

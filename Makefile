@@ -94,4 +94,4 @@ repro-smoke:
 	@python scripts/repro_smoke.py
 
 lint:
-	ruff check src tests eval
+	.venv/bin/ruff check src tests eval

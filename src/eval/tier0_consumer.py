@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import numpy as np
 from sklearn.dummy import DummyClassifier
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer

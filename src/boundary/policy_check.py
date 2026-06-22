@@ -13,7 +13,6 @@ def policy_check(z: dict[str, Any], policy: dict[str, Any], schema_id: str) -> t
             violations.append(f"prohibited_field:{field}")
 
     caps = policy.get("granularity_caps", {})
-    expected_schema = caps.get(schema_id.replace("obs_schema_", "sem_").replace("sem_", "sem_"))
     # schema_id passed as obs_schema_medium or sem_medium
     for gran_key, allowed_schema in caps.items():
         if schema_id.endswith(gran_key.split("_")[-1]) or schema_id == allowed_schema:

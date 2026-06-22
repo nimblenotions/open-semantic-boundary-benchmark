@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
 from eval.analytics_task import composite_utility
-from eval.figures import FROZEN_LATTICE, LLM_CONDITIONS, PRIMARY_LATTICE
+from eval.figures import LLM_CONDITIONS, PRIMARY_LATTICE
 
 FIG_DPI = 300
 

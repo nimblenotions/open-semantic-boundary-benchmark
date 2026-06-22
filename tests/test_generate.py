@@ -3,12 +3,10 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import pytest
 
 from generate.corpus import generate_corpus
-from generate.ground_truth import BENIGN_MODE, FAILURE_MODES
 from generate.validate import validate_corpus
 from sbb.config import load_config, repo_root
 
@@ -62,7 +60,7 @@ def test_labels_align_with_events(tmp_corpus):
         for line in (root / cfg["paths"]["ground_truth"] / "labels.jsonl").read_text().splitlines()
         if line.strip()
     ]
-    assert {e["event_id"] for e in events} == {l["event_id"] for l in labels}
+    assert {e["event_id"] for e in events} == {label["event_id"] for label in labels}
 
 
 def test_anchor_failure_mode_present(tmp_corpus):
@@ -72,9 +70,9 @@ def test_anchor_failure_mode_present(tmp_corpus):
         for line in (root / cfg["paths"]["ground_truth"] / "labels.jsonl").read_text().splitlines()
         if line.strip()
     ]
-    modes = {l["failure_mode"] for l in labels}
+    modes = {label["failure_mode"] for label in labels}
     assert "missed_safety_escalation" in modes
-    anchor = [l for l in labels if l["failure_mode"] == "missed_safety_escalation"][0]
+    anchor = [label for label in labels if label["failure_mode"] == "missed_safety_escalation"][0]
     assert anchor["error_stage"] == "risk_recognition"
 
 

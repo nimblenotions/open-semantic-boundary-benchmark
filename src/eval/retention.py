@@ -7,7 +7,6 @@ information loss across the lattice.
 
 from __future__ import annotations
 
-import json
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -15,10 +14,7 @@ from typing import Any
 import numpy as np
 
 from eval.embeddings import (
-    DEFAULT_MODEL,
     Embedder,
-    MockEmbedder,
-    SentenceTransformerEmbedder,
     cosine_similarity,
 )
 from eval.export_text import export_text_for_embedding

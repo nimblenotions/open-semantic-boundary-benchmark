@@ -231,8 +231,6 @@ def _persona_inference_test_loo(
             else:
                 profile_vecs.append(_mean_pool(embeddings_test[oidx]))
 
-        profiles = np.vstack(profile_vecs)
-
         if len(indices) == 1:
             hold_idx = indices[0]
             other_profiles = []
@@ -429,7 +427,6 @@ def _longitudinal_linkage_auc(
             a, b = rng.choice(indices, size=2, replace=False)
             positive_pairs.append((int(a), int(b)))
 
-    persona_list = list(by_persona.keys())
     negative_pairs: list[tuple[int, int]] = []
     all_indices = list(range(len(test_rows)))
     target_neg = max(len(positive_pairs), 1)

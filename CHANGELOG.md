@@ -19,6 +19,7 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 ### Changed
 
 - Plain-language documentation sweep — retired internal labels (Tier-1, I0/I1, frozen tier) in public docs and report generators; code JSON keys and module names unchanged
+- Ruff lint clean (`make lint`) — unused imports, ambiguous loop names, dead assignments
 
 ## [0.1.0] — pre-release prototype
 

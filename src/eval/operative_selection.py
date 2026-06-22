@@ -377,7 +377,6 @@ def build_operative_boundary_bundle(
     selection: dict[str, Any],
 ) -> dict[str, Any]:
     """Decision deliverable: recommendations per perspective + trace."""
-    points = build_condition_points(obs_metrics, analytics_metrics)
     obs_at_045 = [
         r for r in selection["risk_constrained"] if r["purpose"] == "observability" and r["r_max"] == 0.45
     ]

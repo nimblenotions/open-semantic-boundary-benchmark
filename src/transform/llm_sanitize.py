@@ -11,7 +11,6 @@ import httpx
 
 from transform.llm_cache_io import (
     get_llm_cache_z,
-    has_llm_cache_entry,
     llm_condition_cache_dir,
     upsert_llm_cache_entry,
     upsert_llm_cache_entries,

@@ -111,7 +111,6 @@ def plot_epsilon_sweep_winner_trace(
     task_spec = tasks or [(k, lbl) for k, lbl, _ in TASK_COLUMNS]
 
     fig, ax = plt.subplots(figsize=(9.0, 5.0))
-    conds = PRIMARY_LATTICE
     y_base = np.arange(len(task_spec))
 
     for i, (col, label) in enumerate(task_spec):
@@ -530,7 +529,6 @@ def build_falsification_summary(
                 (getattr(p, attr) for p in feasible if p.condition_id in text_ids),
                 default=None,
             )
-            best_overall = max(getattr(p, attr) for p in feasible)
             winner = max(feasible, key=lambda p: getattr(p, attr)).condition_id
             record[f"{task_name}_winner"] = winner
             record[f"{task_name}_best_sem"] = best_sem_u
@@ -552,11 +550,11 @@ def build_falsification_summary(
             "beats sem on all core tasks."
         ),
         "finding": (
-            f"At R_max ∈ {{0.40, 0.45}}, text/redaction **Pareto-beats all sem_* "
-            f"on obs, med-class, and cohort among feasible transforms** — a partial "
-            f"falsifier for universal semantic exports under tight linkage. "
-            f"At R_max ≥ 0.50, sem_medium enters the feasible set and wins obs + med-class; "
-            f"cohort still prefers text/raw. Coarse sem alone is never competitive on obs."
+            "At R_max ∈ {0.40, 0.45}, text/redaction **Pareto-beats all sem_* "
+            "on obs, med-class, and cohort among feasible transforms** — a partial "
+            "falsifier for universal semantic exports under tight linkage. "
+            "At R_max ≥ 0.50, sem_medium enters the feasible set and wins obs + med-class; "
+            "cohort still prefers text/raw. Coarse sem alone is never competitive on obs."
         ),
         "text_beats_sem_all_tasks_at": [r["r_max"] for r in text_wins_all],
         "by_r_max": by_r,

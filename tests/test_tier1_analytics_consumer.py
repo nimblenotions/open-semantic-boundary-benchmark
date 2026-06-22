@@ -3,13 +3,11 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import httpx
 import pytest
 
 from eval.tier1_analytics_consumer import (
-    PROMPT_VERSION,
     _parse_batch_predictions,
     _validate_labels,
     build_analytics_system_prompt,

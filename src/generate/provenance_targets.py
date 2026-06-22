@@ -158,7 +158,7 @@ def build_provenance_row(
 
 def _pick_e1(labels: list[dict[str, Any]]) -> str:
     preferred = "evt_000010"
-    if any(l["event_id"] == preferred for l in labels):
+    if any(label["event_id"] == preferred for label in labels):
         return preferred
     for label in labels:
         if label.get("failure_mode") == "missed_safety_escalation":
@@ -170,7 +170,7 @@ def _pick_e2(
     labels: list[dict[str, Any]],
     persona_table: dict[str, dict[str, Any]],
 ) -> str:
-    test_labels = [l for l in labels if l.get("split") == "test"]
+    test_labels = [label for label in labels if label.get("split") == "test"]
     for label in test_labels:
         persona = persona_table.get(label["persona_id"], {})
         if persona.get("quasi_id_rarity") == "rare":
@@ -179,7 +179,7 @@ def _pick_e2(
 
 
 def _pick_e3(labels: list[dict[str, Any]]) -> str:
-    test_labels = [l for l in labels if l.get("split") == "test"]
+    test_labels = [label for label in labels if label.get("split") == "test"]
     for label in test_labels:
         if label.get("failure_mode") != "assistant_ok" and label.get("error_stage") != "none":
             return label["event_id"]
@@ -196,9 +196,9 @@ def build_exemplars(
     e2_id = _pick_e2(labels, persona_table)
     e3_id = _pick_e3(labels)
 
-    e1_label = next(l for l in labels if l["event_id"] == e1_id)
-    e2_label = next(l for l in labels if l["event_id"] == e2_id)
-    e3_label = next(l for l in labels if l["event_id"] == e3_id)
+    e1_label = next(label for label in labels if label["event_id"] == e1_id)
+    e2_label = next(label for label in labels if label["event_id"] == e2_id)
+    e3_label = next(label for label in labels if label["event_id"] == e3_id)
 
     return {
         "E1": {
