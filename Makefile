@@ -93,5 +93,7 @@ repro-smoke:
 	@echo "Checking baseline artifact parity (no Ollama)..."
 	@python scripts/repro_smoke.py
 
+RUFF ?= $(if $(wildcard .venv/bin/ruff),.venv/bin/ruff,ruff)
+
 lint:
-	.venv/bin/ruff check src tests eval
+	$(RUFF) check src tests eval
