@@ -11,7 +11,7 @@ Quick navigation for newcomers. Implementation stays at the repo root for v0.1.1
 | Reproduce full eval | `make eval`, `make eval-analytics` |
 | Regenerate figures | `make figures`, `make operative-selection` |
 | See domain use cases | [`examples/README.md`](../examples/README.md) |
-| Evaluate my own exports | [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) |
+| Evaluate my own exports (advanced) | [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — enthusiast path; **YMMV** until v0.2 |
 | Map paper → repo | [`paper_to_repo.md`](paper_to_repo.md) |
 | Extend the benchmark | [`extension_points.md`](extension_points.md) |
 | Onboarding paths | [`adoption_path.md`](adoption_path.md) |

@@ -32,12 +32,12 @@ head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 
 4. Open `outputs/pilot_v2/figures/utility_matrix_heatmap.png` (if present) or regenerate with `make figures`.
 
-## 1-hour path
+## 1-hour path (early enthusiasts)
 
 1. Complete 30-minute path.
-2. Read [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md).
-3. Compare `data/policies/obs_policy_v1.json` with [`examples/provenance/`](../examples/provenance/).
-4. Run `make eval` (uses cached LLM consumer predictions; no Ollama if caches present).
+2. Read [`examples/provenance/`](../examples/provenance/README.md) — `(z, r)` shape without a full lattice run.
+3. **Optional / advanced:** [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — manual BYO on pilot labels (**YMMV**; productized path is v0.2).
+4. Run `make eval` on the **committed pilot** (uses cached LLM consumer predictions; no Ollama if caches present).
 
 ## Contributor path
 
@@ -58,4 +58,6 @@ head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 | **This repo** | Establishes the **benchmark** — run, reproduce, extend |
 | **Product / deployment** | Future commercial stack (out of scope here) |
 
-Goal: a practitioner can say *“I can test my own semantic exports here.”*
+Goal for v0.1.1: reproduce the frozen pilot and understand the protocol. Goal for v0.2+: *“I can test my own semantic exports here”* with less manual wiring.
+
+> **Early development — YMMV** outside the committed pilot and headline metrics.

@@ -13,7 +13,7 @@ How to adapt Open SBB without breaking the frozen v0.1.1 release. **Discuss in a
 | New adversary / linkage channel | `src/eval/adversary*.py` | [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md) |
 | New operative rule | `src/eval/operative_selection.py` | [`open-sbb/operative_selection/`](../open-sbb/operative_selection/README.md) |
 | New domain corpus | `examples/<domain>/`, generator or BYO data | [`examples/README.md`](../examples/README.md) |
-| BYO exports (no regen) | [`examples/bring_your_own/`](../examples/bring_your_own/README.md) | same schema IDs → same assessors |
+| BYO exports (enthusiast; v0.1.1 manual) | [`examples/bring_your_own/`](../examples/bring_your_own/README.md) | same schema IDs → same assessors; **YMMV** |
 | Provenance / verify | `src/boundary/verify.py`, `provenance_v1.json` | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md) |
 
 ## Frozen release policy (v0.1.1)
@@ -29,8 +29,8 @@ Document any change in `CHANGELOG.md` and bump semver appropriately.
 
 ## Explicitly deferred (v0.2+)
 
+- **Productized BYO** — `opensbb evaluate` CLI ([#1](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/1)), adapter interface ([#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/6)), optional BYO smoke sample in-repo
 - Learned semantic extractors (`sem_medium_learned`)
-- `opensbb evaluate` CLI (stub documented in BYO example)
 - Domain registration spec
 - Code relocation under `open-sbb/*/src/` — v0.2 may nest artifacts under protocol modules; **v0.1.1 stays flat** (`src/`, `eval/`, `data/`, `outputs/pilot_v2/` at repo root)
 

@@ -10,6 +10,8 @@ Use it to compare export strategies for **AI observability**, **analytics**, **e
 
 Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.com/nimblenotions/open-semantic-boundary-benchmark)
 
+> **Early development.** v0.1.1 is a citeable **frozen reference release** for the medication-adherence pilot. Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
+
 ## Start here
 
 | You are… | Read |
@@ -17,8 +19,8 @@ Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.c
 | **What is Semantic Boundary?** | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
 | New to the benchmark | [`open-sbb/README.md`](open-sbb/README.md) |
 | Looking for use cases | [`examples/README.md`](examples/README.md) |
-| Bringing your own exports | [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md) |
-| Reproducing the paper | Run `make repro-smoke` (below) |
+| Reproducing the paper (supported path) | Run `make repro-smoke` (below) |
+| BYO exports (advanced; YMMV) | [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md) — productized in v0.2 |
 | Mapping paper §4 → repo | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
 | Extending the protocol | [`docs/extension_points.md`](docs/extension_points.md) |
 | v0.2 roadmap (contributions) | [GitHub issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) |
