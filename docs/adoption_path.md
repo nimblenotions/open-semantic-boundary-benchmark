@@ -2,17 +2,22 @@
 
 Structured onboarding for reviewers, practitioners, and contributors.
 
-## 1-minute path
+Time labels below are **realistic wall-clock estimates** for someone new to the repo (clone, venv, reading, one command). Skimming is faster; understanding the protocol takes longer.
 
-1. Read [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md) — framework vs Open SBB.
-2. Read the [root README](../README.md) — what this repo measures.
-3. Skim [`open-sbb/README.md`](../open-sbb/README.md) — protocol flow.
-4. Run `make repro-smoke` after `uv pip install -e ".[dev]"`.
+## Quick repro (~15–30 min)
 
-## 5-minute path
+**Goal:** verify the frozen pilot matches published headline metrics.
 
-1. Complete 1-minute path.
-2. Read [`examples/README.md`](../examples/README.md) — when to use Open SBB.
+1. Clone the repo and create a venv (`uv venv`, `uv pip install -e ".[dev]"`) — **~5–10 min** (depends on network and clone size).
+2. Skim [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md) and the [root README](../README.md) — **~10 min**.
+3. Run `make repro-smoke` — **seconds** (no Ollama).
+
+Optional: skim [`open-sbb/README.md`](../open-sbb/README.md) for protocol flow — add **~10 min**.
+
+## Paper numbers spot-check (~30–45 min)
+
+1. Complete quick repro path.
+2. Read [`examples/README.md`](../examples/README.md) — **~10 min**.
 3. Inspect headline numbers:
 
 ```bash
@@ -20,35 +25,45 @@ Structured onboarding for reviewers, practitioners, and contributors.
 python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"
 ```
 
-## 30-minute path
+4. Optional: open pre-committed figures under `outputs/pilot_v2/figures/` — **~5 min**.
 
-1. Complete 5-minute path.
-2. Read [`open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
+## Understand the protocol (~1–2 hours)
+
+1. Complete paper numbers spot-check.
+2. Read [`open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md) — **~30–45 min**.
 3. Inspect one export condition:
 
 ```bash
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 ```
 
-4. Open `outputs/pilot_v2/figures/utility_matrix_heatmap.png` (if present) or regenerate with `make figures`.
+4. Browse `outputs/pilot_v2/figures/utility_matrix_heatmap.png` (committed) or regenerate with `make figures` — **~5–15 min** if regenerating.
 
-## 1-hour path (early enthusiasts)
+## Rescore the committed pilot (~2–3 hours total)
 
-1. Complete 30-minute path.
-2. Read [`examples/provenance/`](../examples/provenance/README.md) — `(z, r)` shape without a full lattice run.
-3. **Optional / advanced:** [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — manual BYO on pilot labels (**YMMV**; productized path is v0.2).
-4. Run `make eval` on the **committed pilot** (uses cached LLM consumer predictions; no Ollama if caches present).
+For early enthusiasts who want to **run assessors**, not just read frozen outputs.
 
-## Contributor path
+1. Complete understand-the-protocol path.
+2. Read [`examples/provenance/`](../examples/provenance/README.md) — `(z, r)` shape — **~15 min**.
+3. Run rescoring on cached LLM consumer predictions (no Ollama if caches present):
 
-1. Read [`extension_points.md`](extension_points.md) and [`repo_map.md`](repo_map.md).
-2. Run `make test`.
+```bash
+make eval CONFIG=configs/pilot_v0.1.1.yaml          # observability lattice — typically a few minutes
+make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
+```
+
+4. **Optional / advanced:** [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — manual BYO on pilot labels (**YMMV**; productized path is v0.2). Add **hours to days** depending on your export tooling.
+
+## Contributor path (~half day first time)
+
+1. Read [`extension_points.md`](extension_points.md) and [`repo_map.md`](repo_map.md) — **~30 min**.
+2. Run `make test` and `make lint` — **~1–2 min** after install.
 3. Follow [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
-## Reviewer path (paper ↔ repo)
+## Reviewer path (paper ↔ repo) (~30–60 min)
 
-1. [`paper_to_repo.md`](paper_to_repo.md)
-2. `make repro-smoke` + spot-check §4 module READMEs under `open-sbb/`
+1. [`paper_to_repo.md`](paper_to_repo.md) — **~20–30 min**.
+2. `make repro-smoke` + spot-check §4 module READMEs under `open-sbb/` — **~15–30 min**.
 
 ## Strategic framing
 

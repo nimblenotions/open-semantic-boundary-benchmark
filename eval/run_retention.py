@@ -9,13 +9,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from eval.embeddings import DEFAULT_MODEL, MockEmbedder, SentenceTransformerEmbedder  # noqa: E402
 from eval.figures import load_metrics, plot_retention_vs_utility  # noqa: E402
-from eval.retention import (  # noqa: E402
-    DEFAULT_MODEL,
-    MockEmbedder,
-    SentenceTransformerEmbedder,
-    run_retention,
-)
+from eval.retention import run_retention  # noqa: E402
 from sbb.config import load_config, repo_root  # noqa: E402
 
 
