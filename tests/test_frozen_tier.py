@@ -1,4 +1,4 @@
-"""Frozen-tier artifact checks (split manifest v0, boundary bundle schema)."""
+"""Frozen release artifact checks (split manifest v0, boundary bundle schema)."""
 
 from __future__ import annotations
 

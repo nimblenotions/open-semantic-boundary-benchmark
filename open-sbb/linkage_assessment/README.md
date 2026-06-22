@@ -18,7 +18,7 @@ Maps to **§4.4 Utility and Linkage Assessment** (linkage half): persona top-1, 
 
 Code:
 
-- `src/eval/adversary_trial4.py` — Trial4 adversary suite (primary)
+- `src/eval/adversary_trial4.py` — primary linkage adversary suite (persona, attribute, longitudinal channels)
 - `src/eval/adversary.py` — adversary helpers
 - `src/eval/embeddings.py` — vector encoding (TF-IDF char_wb, sentence-transformers path)
 - `src/eval/retention.py` — token recovery diagnostics

@@ -22,7 +22,7 @@ REQUIRED_PATHS = [
     "outputs/pilot_v2/boundary_bundle_v0.json",
 ]
 
-# Paper headline table (obs Tier-1 To-1, analytics Tier-1 Ta-1 med-class, combined R)
+# Paper headline table (obs + analytics primary-consumer F1, combined linkage R)
 HEADLINE = {
     "raw": {"obs_tier1_f1": 0.63, "analytics_tier1_f1": 0.55, "linkage_r": 0.48},
     "redact_bracket": {"obs_tier1_f1": 0.67, "analytics_tier1_f1": 0.20, "linkage_r": 0.36},
@@ -58,11 +58,11 @@ def main() -> int:
         linkage = o["trial4_adversary"]["combined_linkage_score"]
         if not _close(obs_f1, exp["obs_tier1_f1"]):
             errors.append(
-                f"{cond} obs Tier-1 F1: got {obs_f1:.3f}, expected ~{exp['obs_tier1_f1']}"
+                f"{cond} obs primary-consumer F1: got {obs_f1:.3f}, expected ~{exp['obs_tier1_f1']}"
             )
         if not _close(ana_f1, exp["analytics_tier1_f1"]):
             errors.append(
-                f"{cond} analytics Tier-1 F1: got {ana_f1:.3f}, expected ~{exp['analytics_tier1_f1']}"
+                f"{cond} analytics primary-consumer F1: got {ana_f1:.3f}, expected ~{exp['analytics_tier1_f1']}"
             )
         if not _close(linkage, exp["linkage_r"]):
             errors.append(

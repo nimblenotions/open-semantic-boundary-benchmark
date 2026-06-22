@@ -1,4 +1,4 @@
-# Tier-1 sensitivity report (pilot_v2)
+# Consumer sensitivity report — primary model qwen3:8b (Open SBB v0.1.1)
 
 Generated: 2026-06-06T00:41:22.170627+00:00
 
@@ -9,11 +9,11 @@ Same frozen prompts (`triage_v1`, `analytics_triage_v1`); temperature 0; seed 42
 - At **R_max = 0.45**, observability risk-constrained winner: qwen3:8b → `redact_bracket`, llama3.1:8b → `redact_bracket`, gemma4:latest → `redact_bracket` (**stable**).
 - Analytics composite winner at same budget: qwen3:8b → `sem_coarse`, llama3.1:8b → `sem_coarse`, gemma4:latest → `sem_coarse` (**stable**).
 - **Lattice ordering is model-robust** for semantic arms: `sem_medium` / `sem_fine` hit utility ceiling on all three models; `sem_coarse` fails on all three.
-- **Purpose conflict persists**: no model picks the same transform for obs and analytics at this budget; absolute F1 shifts but the operative story does not collapse to “one transform wins everything.”
+- **Purpose conflict persists**: no model picks the same transform for obs and analytics at this budget; absolute F1 shifts but purpose-specific winners do not collapse to “one transform wins everything.”
 
 ## Observability — failure_mode macro-F1
 
-| Condition | Trial4 R | qwen3:8b | llama3.1:8b | gemma4:latest |
+| Condition | Linkage R | qwen3:8b | llama3.1:8b | gemma4:latest |
 |---|---|---|---|---|
 | raw | 0.481 | 0.626 | 0.542 | 0.653 |
 | redact_bracket | 0.358 | 0.673 | 0.556 | 0.647 |
@@ -25,7 +25,7 @@ Same frozen prompts (`triage_v1`, `analytics_triage_v1`); temperature 0; seed 42
 | redact_llm_substitute | 0.525 | 0.599 | 0.494 | 0.638 |
 | redact_llm_rephrase | 0.537 | 0.583 | 0.432 | 0.599 |
 
-## Analytics — composite utility (mean Ta-1/2/3)
+## Analytics — composite utility (mean across analytics tasks 1–3)
 
 | Condition | qwen3:8b | llama3.1:8b | gemma4:latest |
 |---|---|---|---|
@@ -41,5 +41,5 @@ Same frozen prompts (`triage_v1`, `analytics_triage_v1`); temperature 0; seed 42
 
 ## Paper prose (paste-ready)
 
-> We hold exports and linkage fixed and swap only the open-weight Tier-1 consumer (qwen3:8b primary; llama3.1:8b and gemma4:latest on the test holdout). Absolute macro-F1 shifts by model, but the qualitative lattice ordering holds: coarse semantic exports fail triage, medium/fine oracle fields saturate utility, and purpose-specific risk-constrained winners at R_max=0.45 agree across consumers — supporting operative selection as a decision method rather than a single-model artifact.
+> We hold exports and linkage fixed and swap only the open-weight primary utility consumer (`qwen3:8b`; `llama3.1:8b` and `gemma4:latest` on the test holdout). Absolute macro-F1 shifts by model, but the qualitative lattice ordering holds: coarse semantic exports fail triage, medium/fine oracle fields saturate utility, and purpose-specific risk-constrained winners at R_max=0.45 agree across consumers — supporting operative selection as a decision method rather than a single-model artifact.
 

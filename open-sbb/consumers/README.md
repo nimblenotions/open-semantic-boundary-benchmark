@@ -20,10 +20,10 @@ The paper calls the headline assessor the **frozen `qwen3:8b` utility consumer**
 | Paper | Repo (code / committed artifacts) |
 |-------|-------------------------------------|
 | Frozen `qwen3:8b` utility consumer | `data/eval_cache/qwen3_8b/` |
-| Headline \(U(T,z)\) scores | `metrics.json` → `conditions[*].tier1` |
-| Sensitivity narrative | `outputs/pilot_v2/sensitivity_report.md` (“Tier-1” in title = this consumer) |
+| Headline \(U(T,z)\) scores | `metrics.json` → `conditions[*].tier1` (legacy JSON key) |
+| Sensitivity narrative | `outputs/pilot_v2/sensitivity_report.md` |
 
-**Tier-1** in those artifacts is **not** separate jargon — it is the primary `qwen3:8b` consumer from the paper. Alternate open-weight models (`llama3.1:8b`, `gemma4:latest`) use the same prompt contracts under their own cache dirs.
+Alternate open-weight models (`llama3.1:8b`, `gemma4:latest`) use the same prompt contracts under their own cache dirs.
 
 ## Paper connection
 

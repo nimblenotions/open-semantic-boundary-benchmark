@@ -1,4 +1,4 @@
-"""Frozen-tier artifact helpers (split manifest v0, canonical checksums)."""
+"""Frozen release artifact helpers (split manifest v0, canonical checksums)."""
 
 from __future__ import annotations
 

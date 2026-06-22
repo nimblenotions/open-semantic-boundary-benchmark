@@ -1,4 +1,4 @@
-"""Tier-A and Tier-B operative selection figures and table exports."""
+"""Operative selection figures and table exports (primary + supplementary analyses)."""
 
 from __future__ import annotations
 
@@ -166,7 +166,7 @@ def plot_tier_a_risk_constrained_heatmap(
         plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04, label="Utility")
 
     fig.suptitle(
-        "Tier-A: risk-constrained selection ($\\arg\\max U$ s.t. $R \\leq R_{\\max}$, $\\tau \\geq 0.9$)",
+        "Primary analysis: risk-constrained selection ($\\arg\\max U$ s.t. $R \\leq R_{\\max}$, $\\tau \\geq 0.9$)",
         y=1.02,
         fontsize=11,
     )
@@ -215,7 +215,7 @@ def plot_tier_a_risk_constrained_table(
         )
 
     paths = _matplotlib_table_figure(
-        "Risk-constrained winners by linkage budget (Tier-A)",
+        "Risk-constrained winners by linkage budget (primary analysis)",
         col_labels,
         table_rows,
         out_dir,
@@ -226,7 +226,7 @@ def plot_tier_a_risk_constrained_table(
 
     # LaTeX tabular snippet for paper authors
     tex_lines = [
-        "% Tier-A risk-constrained table (paste into main.tex)",
+        "% Primary analysis risk-constrained table (paste into main.tex)",
         "\\begin{table}[t]",
         "\\caption{Risk-constrained winners: $\\arg\\max U$ subject to $R \\leq R_{\\max}$ ($\\tau \\geq 0.9$).}",
         "\\label{tab:risk-constrained}",
@@ -304,7 +304,7 @@ def plot_tier_a_dominance(
         Patch(facecolor=status_colors["other"], label="Dominated but not extreme (·)"),
     ]
     fig.legend(handles=legend, loc="lower center", ncol=3, fontsize=8, bbox_to_anchor=(0.5, -0.02))
-    fig.suptitle("Tier-A: Pareto dominance (# conditions that dominate each arm)", y=1.02)
+    fig.suptitle("Primary analysis: Pareto dominance (# conditions that dominate each arm)", y=1.02)
     fig.tight_layout()
     paths = _save(fig, "tier_a_dominance_chart", out_dir)
 
@@ -324,7 +324,7 @@ def plot_tier_a_dominance(
             ]
         )
     table_paths = _matplotlib_table_figure(
-        "Dominance summary (Tier-A)",
+        "Dominance summary (primary analysis)",
         ["Condition", "Obs F?", "Obs dominated by", "Obs ×", "Ana F?", "Ana dominated by"],
         table_rows,
         out_dir,
@@ -383,7 +383,7 @@ def plot_tier_a_task_bundles(
             sym = "✓" if mat[i, j] else "·"
             ax1.text(j, i, sym, ha="center", va="center", fontsize=9, color="#333333")
 
-    fig.suptitle("Tier-A: multi-constraint task bundles", y=1.02)
+    fig.suptitle("Primary analysis: multi-constraint task bundles", y=1.02)
     fig.tight_layout()
     paths = _save(fig, "tier_a_task_bundles", out_dir)
 
@@ -408,7 +408,7 @@ def plot_tier_a_task_bundles(
     paths.update({f"task_bundles_table_{k}": v for k, v in table_paths.items()})
 
     tex_lines = [
-        "% Tier-A task bundles",
+        "% Primary analysis task bundles",
         "\\begin{table}[t]",
         "\\caption{Task-bundle feasibility under registered multi-purpose constraints.}",
         "\\label{tab:task-bundles}",
@@ -479,7 +479,7 @@ def plot_tier_a_perspective_summary(
         family="monospace",
         bbox=dict(boxstyle="round", facecolor="#F8F8F8", edgecolor="#CCCCCC"),
     )
-    ax.set_title("Tier-A: perspective-dependent selection at $R_{max}=0.45$", fontsize=11, weight="bold")
+    ax.set_title("Primary analysis: perspective-dependent selection at $R_{max}=0.45$", fontsize=11, weight="bold")
     fig.tight_layout()
     return _save(fig, "tier_a_perspective_summary", out_dir)
 
@@ -522,13 +522,13 @@ def plot_tier_a_operative_overview(
                 xytext=(4, 4),
                 textcoords="offset points",
             )
-        ax.set_xlabel("Trial4 combined linkage ($R$)")
+        ax.set_xlabel("Combined linkage score ($R$)")
         ax.set_ylabel(ylabel)
         ax.set_title(title)
         ax.set_xlim(0.25, 0.82)
         ax.set_ylim(0, 1.08)
 
-    fig.suptitle("Tier-A: utility–linkage scatter (○ frontier, × never deploy)", y=1.02)
+    fig.suptitle("Primary analysis: utility–linkage scatter (○ frontier, × never deploy)", y=1.02)
     fig.tight_layout()
     return _save(fig, "tier_a_operative_overview", out_dir)
 
@@ -539,7 +539,7 @@ def generate_tier_a_figures(
     *,
     provenance_min: float = 0.9,
 ) -> dict[str, Path]:
-    """Generate all Tier-A operative selection figures and table exports."""
+    """Generate all Primary analysis operative selection figures and table exports."""
     outputs: dict[str, Path] = {}
     for stem, paths in [
         ("risk_heatmap", plot_tier_a_risk_constrained_heatmap(points, out_dir, provenance_min=provenance_min)),
@@ -719,7 +719,7 @@ def provenance_gate_ablation(
     *,
     epsilon_grid: list[float] | None = None,
 ) -> list[dict[str, Any]]:
-    """Feasible counts and winners across τ grid (Tier-B ablation)."""
+    """Feasible counts and winners across τ grid (provenance gate ablation)."""
     grid = epsilon_grid or DEFAULT_R_MAX_GRID
     rows: list[dict[str, Any]] = []
     for tau in PROVENANCE_TAU_GRID:
@@ -819,7 +819,7 @@ def plot_provenance_gate_ablation(
 
     # Markdown summary
     md_lines = [
-        "# Provenance gate ablation (Tier-B)",
+        "# Provenance gate ablation — supplementary analysis",
         "",
         f"Minimum provenance completeness across lattice: **{min_prov:.3f}**",
         "",
@@ -828,7 +828,7 @@ def plot_provenance_gate_ablation(
         md_lines.extend(
             [
                 "At $\\tau \\in \\{0.8, 0.9, 1.0\\}$, **no condition is excluded** — the gate is",
-                "vacuous for pilot_v2 but remains part of the operative selection protocol",
+                "vacuous for the v0.1.1 published run but remains part of the operative selection protocol",
                 "(decision after verify).",
                 "",
             ]
@@ -837,6 +837,10 @@ def plot_provenance_gate_ablation(
     md_lines.append("")
     md_lines.append("| τ | Purpose | Winner | # feasible |")
     md_lines.append("|---|---------|--------|------------|")
+    purpose_labels = {
+        "observability": "observability",
+        "analytics_med": "analytics (medication-class task)",
+    }
     for tau in PROVENANCE_TAU_GRID:
         for purpose in ["observability", "analytics_med"]:
             row = next(
@@ -847,7 +851,7 @@ def plot_provenance_gate_ablation(
                 and r["epsilon"] == 0.45
             )
             md_lines.append(
-                f"| {tau} | {purpose} | {row['winner'] or '—'} | {row['n_feasible']} |"
+                f"| {tau} | {purpose_labels[purpose]} | {row['winner'] or '—'} | {row['n_feasible']} |"
             )
     md_path = out_dir / "provenance_gate_ablation.md"
     md_path.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
@@ -868,7 +872,7 @@ def generate_operative_figures(
     epsilon_grid: list[float] | None = None,
     provenance_min: float = 0.9,
 ) -> dict[str, Path]:
-    """Generate Tier-A and Tier-B operative selection figures."""
+    """Generate operative selection figures (primary and supplementary analyses)."""
     out_dir.mkdir(parents=True, exist_ok=True)
     points = build_condition_points(obs_metrics, analytics_metrics)
     outputs: dict[str, Path] = {}

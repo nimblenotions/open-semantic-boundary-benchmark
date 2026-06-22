@@ -1,4 +1,4 @@
-"""Tier-1 analytics Ollama consumer tests (mocked HTTP — no live Ollama)."""
+"""Primary LLM analytics consumer tests (mocked HTTP — no live Ollama)."""
 
 from __future__ import annotations
 

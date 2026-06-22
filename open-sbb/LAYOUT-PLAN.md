@@ -66,7 +66,7 @@ open-semantic-boundary-benchmark/
 ### What works well (keep)
 
 - **`make eval` / `make figures`** repro path on committed artifacts
-- **Frozen tier** committed in git (transforms + caches + metrics snapshot)
+- **Frozen v0.1.1 artifacts** committed in git (transforms + caches + metrics snapshot)
 - **Single install** (`uv pip install -e ".[dev]"`) and one config file
 - **Tests** colocated at repo root (standard Python OSS)
 
@@ -123,7 +123,7 @@ open-semantic-boundary-benchmark/
     │   └── outputs/             # metrics.json, analytics_metrics.json, utility figures
     │
     ├── linkage_assessment/
-    │   ├── README.md            # §4.4 linkage — R(z), Trial4 adversaries, channels
+    │   ├── README.md            # §4.4 linkage — R(z), linkage adversary suite, channels
     │   ├── src/                 # adversary*, embeddings, retention helpers
     │   ├── data/                # adversary train refs if any
     │   └── outputs/             # linkage decomposition figures, channel CSVs
@@ -206,9 +206,9 @@ Today that path is documented under `open-sbb/*/README.md` and [`../docs/`](../d
 
 | Extension | Natural home | v0.1.1 today |
 |-----------|--------------|--------------|
-| New lattice arm | `export_lattice/` + semver note | Edit `configs` + `src/transform/` |
+| New export condition | `export_lattice/` + semver note | Edit `configs` + `src/transform/` |
 | New purpose \(T\) | `policies/` + `consumers/` + utility tasks | Hard-coded analytics vs obs |
-| New adversary | `linkage_assessment/src/` | `adversary_trial4.py` |
+| New adversary | `linkage_assessment/src/` | `adversary_trial4.py` (module name unchanged) |
 | New operative rule | `operative_selection/src/` | `operative_selection.py` |
 | Learned `sem_*` | `export_lattice/` adapter slot | Explicitly out of scope v0.1.1 |
 
@@ -221,7 +221,7 @@ Today that path is documented under `open-sbb/*/README.md` and [`../docs/`](../d
 - [ ] `open-sbb/README.md` — diagram: module → paper § → repro command
 - [ ] Each module README: purpose, frozen inputs, expected outputs, checksum, “not claimed”
 - [ ] Root README: 5-minute repro + link to `open-sbb/`
-- [ ] No stale names (I0, CIKM-only paths) in public tree
+- [ ] No stale internal names (legacy iteration-0 labels, conference-only artifact paths) in public tree
 
 ### Repro & trust
 

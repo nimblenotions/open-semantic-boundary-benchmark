@@ -4,7 +4,7 @@
 
 Support platforms export **ticket text**, **intent labels**, and **routing outcomes** to separate observability (failure triage) and analytics (topic/adherence cohorts) teams — often with conflicting disclosure needs.
 
-Open SBB compares lattice arms on **the same incidents** so you can see when a sanitizer that helps triage destroys analytics utility (cross-purpose regret).
+Open SBB compares export conditions on **the same incidents** so you can see when a sanitizer that helps triage destroys analytics utility (cross-purpose regret).
 
 ## Map to protocol
 
@@ -20,7 +20,7 @@ The medication pilot demonstrates the **same structural conflict** (bracket help
 
 ```bash
 make repro-smoke
-# redact_bracket: observability utility ↑, analytics utility ↓ vs raw
+# bracket redaction (redact_bracket): observability utility ↑, analytics utility ↓ vs raw
 ```
 
 ## BYO

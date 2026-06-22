@@ -1,5 +1,4 @@
-"""Tier-0 sklearn + Tier-1 Ollama eval (Phase 3).
+"""Classical baseline + primary LLM consumer eval (Phase 3).
 
-Frozen lattice v0.1: seven conditions without LLM transforms.
-Tier-1 Ollama triage consumer: eval.tier1_consumer.
+Legacy module names: tier0_consumer (baselines), tier1_consumer (primary qwen3:8b triage).
 """

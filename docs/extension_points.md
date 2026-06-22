@@ -1,12 +1,12 @@
 # Extension points
 
-How to adapt Open SBB without breaking the frozen v0.1.1 tier. **Discuss in an issue before changing frozen assessors or splits.**
+How to adapt Open SBB without breaking the frozen v0.1.1 release. **Discuss in an issue before changing frozen assessors or splits.**
 
 ## Summary table
 
 | Extension | Where to start | Protocol map |
 |-----------|----------------|--------------|
-| New lattice arm | `src/transform/`, `configs/pilot_v0.1.1.yaml`, materialize `data/transformed/` | [`open-sbb/export_lattice/`](../open-sbb/export_lattice/README.md) |
+| New export condition | `src/transform/`, `configs/pilot_v0.1.1.yaml`, materialize `data/transformed/` | [`open-sbb/export_lattice/`](../open-sbb/export_lattice/README.md) |
 | New policy / schema | `data/policies/`, `data/schemas/`, `src/boundary/` | [`open-sbb/policies/`](../open-sbb/policies/README.md) |
 | New purpose \(T\) | policies + consumers + utility task modules | policies + consumers READMEs |
 | New utility task | `src/eval/*_task.py`, eval runners | [`open-sbb/utility_assessment/`](../open-sbb/utility_assessment/README.md) |
@@ -16,7 +16,7 @@ How to adapt Open SBB without breaking the frozen v0.1.1 tier. **Discuss in an i
 | BYO exports (no regen) | [`examples/bring_your_own/`](../examples/bring_your_own/README.md) | same schema IDs → same assessors |
 | Provenance / verify | `src/boundary/verify.py`, `provenance_v1.json` | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md) |
 
-## Frozen tier (v0.1.1)
+## Frozen release policy (v0.1.1)
 
 Patch releases **must not** silently change:
 

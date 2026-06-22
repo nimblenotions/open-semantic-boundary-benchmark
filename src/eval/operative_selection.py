@@ -1,4 +1,4 @@
-"""Tier-A operative selection: risk constraints, dominance, task bundles, decision bundle."""
+"""Operative selection: risk constraints, dominance, task bundles, decision bundle."""
 
 from __future__ import annotations
 
@@ -649,7 +649,7 @@ def write_operative_report(
     ]
 
     parts = [
-        "# Operative selection report (Tier-A)",
+        "# Operative selection report — primary analysis",
         "",
         f"Generated: {selection['generated_at_utc']}",
         "",
@@ -741,7 +741,7 @@ def run_operative_selection(
     *,
     r_max_grid: list[float] | None = None,
 ) -> dict[str, Any]:
-    """Run all Tier-A analyses and write artifacts."""
+    """Run operative selection analyses and write artifacts."""
     out_dir.mkdir(parents=True, exist_ok=True)
     points = build_condition_points(obs_metrics, analytics_metrics)
 

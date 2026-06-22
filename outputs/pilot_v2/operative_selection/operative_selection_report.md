@@ -1,4 +1,4 @@
-# Operative selection report (Tier-A)
+# Operative selection report — primary analysis
 
 Generated: 2026-06-06T01:03:16.771427+00:00
 

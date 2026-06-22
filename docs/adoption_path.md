@@ -16,7 +16,7 @@ Structured onboarding for reviewers, practitioners, and contributors.
 3. Inspect headline numbers:
 
 ```bash
-# observability T_o-1 macro-F1 (JSON key tier1 in metrics.json)
+# observability failure_mode macro-F1 (JSON key tier1 in metrics.json)
 python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"
 ```
 
@@ -24,7 +24,7 @@ python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['
 
 1. Complete 5-minute path.
 2. Read [`open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
-3. Inspect one lattice arm:
+3. Inspect one export condition:
 
 ```bash
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool

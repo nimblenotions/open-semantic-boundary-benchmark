@@ -7,7 +7,7 @@ This is the **frozen v0.1.1 pilot** described in the paper: synthetic medication
 | Asset | Location |
 |-------|----------|
 | Corpus + split | `data/raw/`, `data/ground_truth/` (100 personas, seed 42, 630 test events) |
-| Nine lattice arms | `data/transformed/`, `data/transformed_analytics/` |
+| Nine export conditions | `data/transformed/`, `data/transformed_analytics/` |
 | Published metrics | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
 | Paper figures | `outputs/pilot_v2/figures/` |
 

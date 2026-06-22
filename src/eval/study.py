@@ -1,4 +1,4 @@
-"""Orchestrate Tier-0/Tier-1/linkage observability study across lattice conditions."""
+"""Orchestrate classical baseline, LLM consumer, and linkage observability study across export conditions."""
 
 from __future__ import annotations
 

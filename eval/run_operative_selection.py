@@ -1,4 +1,4 @@
-"""Run Tier-A operative selection analyses on pilot_v2 metrics."""
+"""Run operative selection analyses on pilot_v2 metrics."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ def _load_json(path: Path) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Tier-A operative selection (risk, dominance, bundles)")
+    parser = argparse.ArgumentParser(description="Operative selection (risk, dominance, bundles)")
     parser.add_argument("--config", type=Path, default=None)
     parser.add_argument("--metrics", type=Path, default=None)
     parser.add_argument("--analytics-metrics", type=Path, default=None)

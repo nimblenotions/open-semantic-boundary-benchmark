@@ -39,7 +39,7 @@ HEATMAP_AXIS_EM = 1.2
 HEATMAP_TITLE_EM = 1.2
 HEATMAP_CBAR_EM = 1.0
 
-# Registered pilot tasks (Tier-1 qwen); excludes composite scalars.
+# Registered pilot tasks (primary qwen3:8b consumer); excludes composite scalars.
 UTILITY_COLUMNS: list[tuple[str, str, str]] = [
     ("T_o-1", "failure\nmode", "obs_failure_mode"),
     ("T_o-2", "error\nstage", "obs_error_stage"),
@@ -257,7 +257,7 @@ def plot_utility_matrix_heatmap(
     )
 
     ax.set_xlabel(
-        "Registered consumer task (Tier-1 macro-F1 / accuracy)",
+        "Registered consumer task (macro-F1 / accuracy, qwen3:8b)",
         fontsize=HEATMAP_AXIS_EM * _fs,
     )
     ax.set_ylabel("Export lattice arm", fontsize=HEATMAP_AXIS_EM * _fs)

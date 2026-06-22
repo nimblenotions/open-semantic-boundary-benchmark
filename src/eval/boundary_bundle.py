@@ -1,4 +1,4 @@
-"""Emit Open SBB boundary bundle v0 from I1 metrics."""
+"""Emit Open SBB boundary bundle v0 from published observability metrics."""
 
 from __future__ import annotations
 

@@ -33,7 +33,7 @@ Public home (at release): [`nimblenotions/open-semantic-boundary-benchmark`](htt
 | Published run | **`outputs/pilot_v2/`** (= v0.1.1 frozen outputs; historical dir name) |
 | Config | `configs/pilot_v0.1.1.yaml` |
 
-### Frozen-tier checksums
+### Frozen release checksums
 
 Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`). Regenerate with `python scripts/build_split_manifest_v0.py`.
 
@@ -71,14 +71,14 @@ Paper headline numbers do **not** require a live LLM at audit time. v0.1.1 ships
 
 | Registry | Path | Contents |
 |----------|------|----------|
-| Observability consumer | `data/eval_cache/` | Per-model, per-lattice-arm `predictions.jsonl` (primary: `qwen3_8b/`) |
+| Observability consumer | `data/eval_cache/` | Per-model, per-export-condition `predictions.jsonl` (primary: `qwen3_8b/`) |
 | Analytics consumer | `data/eval_cache_analytics/` | Same layout for analytics prompts |
 
 When you run `make eval` or `make eval-analytics`, assessors **read these cached completions** and compute metrics (F1, linkage, etc.) — they do not call Ollama unless a cache entry is missing. `make repro-smoke` skips inference entirely and checks committed `outputs/pilot_v2/metrics.json` against expected headline tolerances.
 
 To **regenerate** LLM consumer predictions (optional, heavy), you need Ollama + `qwen3:8b` and `make pipeline` or the observability/analytics study scripts; new runs can be consolidated back into `data/eval_cache*` via `scripts/consolidate_eval_cache.py`.
 
-Details: [`open-sbb/consumers/README.md`](open-sbb/consumers/README.md) (includes **Tier-1 → `qwen3:8b` consumer** alias for code and frozen outputs).
+Details: [`open-sbb/consumers/README.md`](open-sbb/consumers/README.md) — primary LLM utility consumer is **`qwen3:8b`** (legacy JSON key `tier1` in metrics).
 
 ## Repository layout
 
@@ -90,7 +90,7 @@ docs/                                                  ← repo map, adoption pa
 ```
 
 **Headline metrics:** `outputs/pilot_v2/metrics.json`, `analytics_metrics.json`  
-**Narrative summary:** `outputs/pilot_v2/sensitivity_report.md` (title says “Tier-1” = paper’s primary `qwen3:8b` consumer; see [`open-sbb/consumers/README.md`](open-sbb/consumers/README.md))
+**Narrative summary:** `outputs/pilot_v2/sensitivity_report.md` — consumer sensitivity across open-weight models (primary: `qwen3:8b`)
 
 ## Paper-linked figures
 
@@ -99,11 +99,11 @@ docs/                                                  ← repo map, adoption pa
 | Linkage decomposition | `outputs/pilot_v2/figures/linkage_decomposition.*` |
 | Utility matrix | `outputs/pilot_v2/figures/utility_matrix_heatmap.*` |
 | Cross-purpose regret | `outputs/pilot_v2/figures/cross_purpose_regret_matrix.*` |
-| Granularity stacked | `outputs/pilot_v2/additional_analyses/aa_trial4_sem_granularity_stacked.*` |
+| Semantic granularity (linkage adversary suite) | `outputs/pilot_v2/additional_analyses/aa_trial4_sem_granularity_stacked.*` |
 
 ## What this repo is / is not
 
-**In scope:** reproducible lattice evaluation, frozen pilot_v2 artifacts, BYO path (same schema IDs → same assessors).
+**In scope:** reproducible lattice evaluation, frozen v0.1.1 published run (`outputs/pilot_v2/`), BYO path (same schema IDs → same assessors).
 
 **Out of scope:** LaTeX paper sources, Policy Studio, HIPAA/OTel certification claims, learned extractors (deferred to v0.2+), production runtime.
 

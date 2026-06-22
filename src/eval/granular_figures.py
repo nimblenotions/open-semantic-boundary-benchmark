@@ -199,15 +199,15 @@ def plot_analytics_task_dedicated(
     *,
     conditions: list[str] | None = None,
 ) -> dict[str, Path]:
-    """One standalone bar chart per analytics utility task (Tier-1 qwen)."""
+    """One standalone bar chart per analytics utility task (qwen3:8b)."""
     _apply_style()
     cids = conditions or [
         c for c in PRIMARY_LATTICE_9 if c in analytics.get("conditions", {})
     ]
     task_specs = [
-        ("med_class", "medication_class_macro_f1", "Analytics: med-class F1 (Tier-1)"),
-        ("side_effect", "side_effect_signal_macro_f1", "Analytics: side-effect F1 (Tier-1)"),
-        ("adherence", "adherence_signal_macro_f1", "Analytics: adherence F1 (Tier-1)"),
+        ("med_class", "medication_class_macro_f1", "Analytics: med-class F1 (qwen3:8b)"),
+        ("side_effect", "side_effect_signal_macro_f1", "Analytics: side-effect F1 (qwen3:8b)"),
+        ("adherence", "adherence_signal_macro_f1", "Analytics: adherence F1 (qwen3:8b)"),
     ]
     outputs: dict[str, Path] = {}
     x = np.arange(len(cids))
@@ -227,7 +227,7 @@ def plot_analytics_task_dedicated(
         ax.set_xticks(x)
         ax.set_xticklabels([_short_label(c) for c in cids], rotation=35, ha="right")
         ax.set_ylim(0, 1.05)
-        ax.set_ylabel("Macro-F1 (Tier-1 qwen)")
+        ax.set_ylabel("Macro-F1 (qwen3:8b)")
         ax.set_title(title)
         ax.grid(True, alpha=0.25, linestyle="--")
         fig.tight_layout()
@@ -245,7 +245,7 @@ def plot_analytics_task_dedicated(
     ax.set_xticks(x)
     ax.set_xticklabels([_short_label(c) for c in cids], rotation=35, ha="right")
     ax.set_ylim(0, 1.05)
-    ax.set_ylabel("Composite F1 (Tier-1 qwen)")
+    ax.set_ylabel("Composite F1 (qwen3:8b)")
     ax.set_title("Analytics: composite utility (mean Ta-1/2/3)")
     ax.grid(True, alpha=0.25, linestyle="--")
     fig.tight_layout()
@@ -262,7 +262,7 @@ def plot_analytics_task_dedicated(
     ax.set_xticklabels([_short_label(c) for c in cids], rotation=35, ha="right")
     ax.set_ylim(0, 1.05)
     ax.set_ylabel("Cohort segment F1")
-    ax.set_title("Analytics: cohort segment (Tier-1-derived)")
+    ax.set_title("Analytics: cohort segment (qwen3:8b-derived)")
     ax.grid(True, alpha=0.25, linestyle="--")
     fig.tight_layout()
     paths = _save(fig, "analytics_task_cohort", out_dir)
@@ -277,7 +277,7 @@ def plot_analytics_by_transform(
     *,
     conditions: list[str] | None = None,
 ) -> dict[str, Path]:
-    """Bar panels: med / side-effect / adherence / composite by transform (Tier-1 qwen)."""
+    """Bar panels: med / side-effect / adherence / composite by transform (qwen3:8b)."""
     _apply_style()
     cids = conditions or [
         c for c in PRIMARY_LATTICE_9 if c in analytics.get("conditions", {})
@@ -307,7 +307,7 @@ def plot_analytics_by_transform(
         ax.set_xticklabels([_short_label(c) for c in cids], rotation=35, ha="right")
         ax.set_ylim(0, 1.05)
         ax.set_title(title)
-        ax.set_ylabel("Tier-1 macro-F1")
+        ax.set_ylabel("macro-F1 (qwen3:8b)")
         ax.grid(True, alpha=0.25, linestyle="--")
 
     ax = flat[3]
@@ -326,9 +326,9 @@ def plot_analytics_by_transform(
     ax.set_xticklabels([_short_label(c) for c in cids], rotation=35, ha="right")
     ax.set_ylim(0, 1.05)
     ax.set_title("Composite (mean Ta-1/2/3)")
-    ax.set_ylabel("Tier-1 composite F1")
+    ax.set_ylabel("Composite F1 (qwen3:8b)")
 
-    fig.suptitle("Analytics utility by transform (Tier-1 qwen, test split)", y=1.01)
+    fig.suptitle("Analytics utility by transform (qwen3:8b, test split)", y=1.01)
     fig.tight_layout()
     return _save(fig, "analytics_by_transform", out_dir)
 
@@ -412,7 +412,7 @@ def plot_unified_task_scatter(
         fontsize=7,
     )
     fig.suptitle(
-        "All tasks × Trial4 risk components (color=task, shape=transform family)",
+        "All tasks × linkage risk components (color=task, shape=transform family)",
         y=1.01,
         fontsize=10,
     )

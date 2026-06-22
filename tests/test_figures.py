@@ -15,7 +15,7 @@ from sbb.config import load_config, repo_root
 def metrics():
     path = repo_root() / "outputs" / "pilot_v1" / "metrics.json"
     if not path.is_file():
-        pytest.skip("I0 metrics.json not present")
+        pytest.skip("legacy pilot_v1 metrics.json not present")
     return load_metrics(path)
 
 
@@ -107,7 +107,7 @@ def test_run_figures_cli(tmp_path):
     root = repo_root()
     metrics_src = root / "outputs" / "pilot_v1" / "metrics.json"
     if not metrics_src.is_file():
-        pytest.skip("I0 metrics.json not present")
+        pytest.skip("legacy pilot_v1 metrics.json not present")
 
     pilot = tmp_path / "pilot"
     pilot.mkdir()

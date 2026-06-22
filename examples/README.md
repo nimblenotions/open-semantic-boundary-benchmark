@@ -8,8 +8,8 @@ Use Open SBB when you have **sensitive traces** that downstream systems need to 
 
 | Folder | Scenario | Status |
 |--------|----------|--------|
-| [`medication_adherence/`](medication_adherence/README.md) | **Shipped pilot** — synthetic health journaling (paper v0.1.1) | Frozen in `data/`, `outputs/pilot_v2/` |
-| [`bring_your_own/`](bring_your_own/README.md) | **BYO exports** — evaluate your lattice arm on your events | Target workflow; see current commands |
+| [`medication_adherence/`](medication_adherence/README.md) | **Shipped pilot** — synthetic health journaling (paper v0.1.1) | Frozen v0.1.1 run in `data/`, `outputs/pilot_v2/` (historical dir name) |
+| [`bring_your_own/`](bring_your_own/README.md) | **BYO exports** — evaluate your export condition on your events | Target workflow; see current commands |
 | [`agent_observability/`](agent_observability/README.md) | AI agent traces, tool calls, routing failures | Conceptual v0.1.1; SBB-Agent slice v0.2 |
 | [`customer_support/`](customer_support/README.md) | Ticket + chat exports for triage vs analytics | Conceptual |
 | [`financial_chatbot/`](financial_chatbot/README.md) | FINRA-style supervision abstracts | Conceptual; see provenance JSON |

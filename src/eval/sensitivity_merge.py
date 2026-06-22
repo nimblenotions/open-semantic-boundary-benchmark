@@ -1,4 +1,4 @@
-"""Merge Tier-1 sensitivity scores from eval cache into metrics artifacts."""
+"""Merge primary LLM consumer sensitivity scores from eval cache into metrics artifacts."""
 
 from __future__ import annotations
 
@@ -220,7 +220,7 @@ def _trial4_linkage(
     analytics_metrics: dict[str, Any],
     condition_id: str,
 ) -> float:
-    """Linkage is export-level; obs metrics hold Trial4 scores for the lattice."""
+    """Linkage is export-level; observability metrics hold linkage adversary scores per condition."""
     cond = obs_metrics.get("conditions", {}).get(condition_id, {})
     if not cond:
         cond = analytics_metrics.get("conditions", {}).get(condition_id, {})
@@ -334,7 +334,7 @@ def write_sensitivity_report_md(report: dict[str, Any], path: Path) -> None:
     models: list[str] = report["models"]
     r_max = report["r_max"]
     lines = [
-        "# Tier-1 sensitivity report (pilot_v2)",
+        "# Consumer sensitivity report — primary model qwen3:8b (Open SBB v0.1.1)",
         "",
         f"Generated: {report['generated_at_utc']}",
         "",
@@ -362,18 +362,18 @@ def write_sensitivity_report_md(report: dict[str, Any], path: Path) -> None:
         + "."
     )
     lines.append(
-        "- **Lattice ordering is model-robust** for semantic arms: `sem_medium` / `sem_fine` "
+        "- **Lattice ordering is model-robust** for semantic conditions: `sem_medium` / `sem_fine` "
         "hit utility ceiling on all three models; `sem_coarse` fails on all three."
     )
     lines.append(
         "- **Purpose conflict persists**: no model picks the same transform for obs and analytics "
-        "at this budget; absolute F1 shifts but the operative story does not collapse to "
+        "at this budget; absolute F1 shifts but purpose-specific winners do not collapse to "
         "“one transform wins everything.”"
     )
     lines.append("")
 
     lines.extend(["## Observability — failure_mode macro-F1", ""])
-    header = "| Condition | Trial4 R | " + " | ".join(models) + " |"
+    header = "| Condition | Linkage R | " + " | ".join(models) + " |"
     sep = "|---|---|" + "|".join(["---"] * len(models)) + "|"
     lines.extend([header, sep])
     for row in report["obs_failure_mode_f1"]:
@@ -384,7 +384,7 @@ def write_sensitivity_report_md(report: dict[str, Any], path: Path) -> None:
         lines.append("| " + " | ".join(cells) + " |")
     lines.append("")
 
-    lines.extend(["## Analytics — composite utility (mean Ta-1/2/3)", ""])
+    lines.extend(["## Analytics — composite utility (mean across analytics tasks 1–3)", ""])
     ana_header = "| Condition | " + " | ".join(models) + " |"
     ana_sep = "|---|" + "|".join(["---"] * len(models)) + "|"
     lines.extend([ana_header, ana_sep])
@@ -398,8 +398,8 @@ def write_sensitivity_report_md(report: dict[str, Any], path: Path) -> None:
 
     lines.extend(["## Paper prose (paste-ready)", ""])
     lines.append(
-        f"> We hold exports and linkage fixed and swap only the open-weight Tier-1 consumer "
-        f"(qwen3:8b primary; llama3.1:8b and gemma4:latest on the test holdout). "
+        f"> We hold exports and linkage fixed and swap only the open-weight primary utility consumer "
+        f"(`qwen3:8b`; `llama3.1:8b` and `gemma4:latest` on the test holdout). "
         f"Absolute macro-F1 shifts by model, but the qualitative lattice ordering holds: "
         f"coarse semantic exports fail triage, medium/fine oracle fields saturate utility, "
         f"and purpose-specific risk-constrained winners at R_max={r_max} "

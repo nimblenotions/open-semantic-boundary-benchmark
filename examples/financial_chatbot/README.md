@@ -21,7 +21,7 @@ Score competing export strategies (tokenize vs surrogate vs semantic JSON) on:
 
 ## Shipped pilot analogue
 
-`surrogate` and `redact_tokenize` arms in the medication pilot mirror **replacement** vs **token** strategies:
+`redact_surrogate` (surrogate replacement) and `redact_tokenize` (tokenization) in the medication pilot mirror **replacement** vs **token** strategies:
 
 ```bash
 make repro-smoke

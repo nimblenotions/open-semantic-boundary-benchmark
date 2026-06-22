@@ -2,7 +2,10 @@
 
 ## What this module is
 
-**Utility assessment** — `assess_utility(T, z)` → \(U(T,z)\) on the held-out split. Observability \(T_o\)-1: `failure_mode` macro-F1. Analytics \(T_a\)-1: medication-class macro-F1 (+ tasks 2–5 in full matrix).
+**Utility assessment** — `assess_utility(T, z)` → \(U(T,z)\) on the held-out split.
+
+- **Observability:** `failure_mode` macro-F1 (triage task)
+- **Analytics:** medication-class macro-F1 (+ tasks 2–5 in full matrix)
 
 ## Paper connection
 
@@ -34,7 +37,7 @@ Outputs:
 - `outputs/pilot_v2/figures/utility_matrix_heatmap.png`
 - `outputs/pilot_v2/figures/tables/utility_matrix.csv`
 - `outputs/pilot_v2/bootstrap_cis/bootstrap_cis.tex`
-- `outputs/pilot_v2/sensitivity_report.md` — consumer sensitivity; “Tier-1” in title = paper’s primary `qwen3:8b` consumer ([`../consumers/README.md`](../consumers/README.md#paper--code-naming))
+- `outputs/pilot_v2/sensitivity_report.md` — consumer sensitivity across open-weight models ([`../consumers/README.md`](../consumers/README.md#paper--code-naming))
 
 ## Reproduce
 
@@ -45,7 +48,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 make bootstrap-cis CONFIG=configs/pilot_v0.1.1.yaml
 ```
 
-Headline spot-check (`raw` observability \(T_o\)-1 macro-F1 ≈ 0.63; JSON key `tier1` in code):
+Headline spot-check (`raw` observability failure_mode macro-F1 ≈ 0.63; JSON key `tier1` in metrics):
 
 ```bash
 python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"

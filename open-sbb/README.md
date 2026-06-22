@@ -9,7 +9,7 @@ Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **d
 ```text
 Synthetic pilot data
         ↓
-Export lattice  (+ policies π materialize each arm)
+Export lattice  (+ policies π materialize each condition)
         ↓
 Utility assessment  +  Linkage assessment
         ↓
@@ -18,7 +18,7 @@ Operative selection
 Transformation provenance (τ, verify)
 ```
 
-Policies and consumers are registered **before** scoring: the same lattice arm can yield different typed exports per purpose \(T_o\) vs \(T_a\).
+Policies and consumers are registered **before** scoring: the same export condition can yield different typed exports per purpose \(T_o\) vs \(T_a\).
 
 ## Module index
 
@@ -42,7 +42,7 @@ Policies and consumers are registered **before** scoring: the same lattice arm c
 | Policies | §4.2 | `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | — |
 | Consumers | §4.2 | `src/eval/tier0_consumer.py`, `tier1_consumer.py`, `tier1_analytics_consumer.py` (legacy module names) | `data/eval_cache/`, `data/eval_cache_analytics/` | cached LLM consumer predictions |
 | Utility assessment | §4.4 | `src/eval/observability_task.py`, `analytics_task.py`, `eval/run_obs_study.py`, `run_analytics_study.py` | reads lattice + caches | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
-| Linkage assessment | §4.4 | `src/eval/adversary*.py`, `adversary_trial4.py` | same transforms | linkage in metrics + `outputs/pilot_v2/figures/linkage_*` |
+| Linkage assessment | §4.4 | `src/eval/adversary*.py`, `adversary_trial4.py` (linkage adversary suite) | same transforms | linkage in metrics + `outputs/pilot_v2/figures/linkage_*` |
 | Operative selection | §4.5 | `src/eval/operative_selection.py`, `eval/run_operative_selection.py` | — | `outputs/pilot_v2/operative_selection/` |
 | Provenance | §4.6 | `src/boundary/verify.py`, `cross.py`, `provenance_score.py` | `examples/provenance/` | `outputs/pilot_v2/boundary_bundle_v0.json` |
 

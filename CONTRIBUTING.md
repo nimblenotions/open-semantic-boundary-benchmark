@@ -14,7 +14,7 @@ make test
 
 - Reproduction bugs (include OS, Python version, commands run)
 - README and reproducibility fixes (setup commands, artifact paths, tolerance notes)
-- New lattice arms or domains — **discuss in an issue first**; v0.1.1 is a frozen reference instrument
+- New export conditions or domains — **discuss in an issue first**; v0.1.1 is a frozen reference instrument
 
 ## Pull requests
 
@@ -22,7 +22,7 @@ make test
 2. Run `make test` and `make lint`.
 3. Keep changes scoped; do not expand scope into commercial product features.
 
-## Frozen tier policy
+## Frozen release policy
 
 Patch releases (`0.1.x`) must not change assessor definitions, split seeds, or committed transform IDs without a migration note in `CHANGELOG.md`.
 

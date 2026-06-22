@@ -22,7 +22,7 @@ Maps the arXiv long paper **§4 Open Semantic Boundary Benchmark** to this repos
 | Linkage decomposition figure | `outputs/pilot_v2/figures/linkage_decomposition.*` |
 | Utility matrix heatmap | `outputs/pilot_v2/figures/utility_matrix_heatmap.*` |
 | Cross-purpose regret | `outputs/pilot_v2/figures/cross_purpose_regret_matrix.*` |
-| Granularity stacked (Trial4) | `outputs/pilot_v2/additional_analyses/aa_trial4_sem_granularity_stacked.*` |
+| Semantic granularity stacked chart (linkage adversary suite) | `outputs/pilot_v2/additional_analyses/aa_trial4_sem_granularity_stacked.*` |
 
 ## Reproduction commands cited in paper spirit
 

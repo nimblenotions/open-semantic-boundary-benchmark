@@ -14,8 +14,8 @@ Use this list before tagging **Open SBB v0.1.1** or exporting the public repo.
 
 - [ ] Open [`open-sbb/linkage_assessment/README.md`](../open-sbb/linkage_assessment/README.md)
 - [ ] Find persona top-1, attribute F1, longitudinal AUC in:
-  - `src/eval/adversary_trial4.py`
-  - `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary`
+  - `src/eval/adversary_trial4.py` (linkage adversary suite module)
+  - `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary` (JSON key)
   - `outputs/pilot_v2/figures/linkage_decomposition.png`
 
 ## Repro trust (clean sandbox)

@@ -124,7 +124,7 @@ def _has_tier1(metrics: dict[str, Any], conditions: list[str]) -> bool:
 
 def _utility_f1_label(metrics: dict[str, Any]) -> str:
     if _has_tier1(metrics, _primary_conditions(metrics) or FROZEN_LATTICE):
-        return "Macro-F1 failure_mode (Tier-1 qwen)"
+        return "Macro-F1 failure_mode (qwen3:8b)"
     return "Macro-F1 failure_mode (Tier-0)"
 
 
@@ -368,7 +368,7 @@ def plot_h1_error_stage_tier0(metrics: dict[str, Any], out_dir: Path) -> dict[st
 
 
 def plot_obs_error_stage_tier1(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
-    """Obs error_stage accuracy (Tier-1 qwen) across primary lattice."""
+    """Obs error_stage accuracy (qwen3:8b) across primary lattice."""
     _apply_style()
     conditions = _primary_conditions(metrics) or FROZEN_LATTICE
     vals = [
@@ -381,9 +381,9 @@ def plot_obs_error_stage_tier1(metrics: dict[str, Any], out_dir: Path) -> dict[s
     ax.bar(x, vals, color=colors, width=0.65, zorder=3)
     ax.set_xticks(x)
     ax.set_xticklabels([_short_label(c) for c in conditions], rotation=30, ha="right")
-    ax.set_ylabel("error_stage accuracy (Tier-1 qwen)")
+    ax.set_ylabel("error_stage accuracy (qwen3:8b)")
     ax.set_ylim(0, 1.05)
-    ax.set_title("Obs error_stage by transform (Tier-1)")
+    ax.set_title("Obs error_stage by transform (qwen3:8b)")
     return _save(fig, "obs_error_stage_tier1", out_dir)
 
 
@@ -393,7 +393,7 @@ def plot_h1(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
 
 
 def plot_h2(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
-    """H2: Tier-1 qwen macro-F1 across primary lattice (9 conditions)."""
+    """H2: qwen3:8b macro-F1 across primary lattice (9 conditions)."""
     _apply_style()
     conditions = _primary_conditions(metrics) or FROZEN_LATTICE
     tier1_vals = [_tier1_f1(metrics, c) for c in conditions]
@@ -404,7 +404,7 @@ def plot_h2(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
     if has_t1:
         vals = [v if v is not None else 0.0 for v in tier1_vals]
         ax.bar(x, vals, width=0.65, color=PALETTE["tier1"], zorder=3)
-        ylabel = "Macro-F1 failure_mode (Tier-1 qwen)"
+        ylabel = "Macro-F1 failure_mode (qwen3:8b)"
     else:
         vals = [_f1(metrics, c) for c in conditions]
         ax.bar(x, vals, width=0.65, color=PALETTE["utility"], zorder=3)
@@ -413,7 +413,7 @@ def plot_h2(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
     ax.set_xticklabels([_short_label(c) for c in conditions], rotation=30, ha="right")
     ax.set_ylabel(ylabel)
     ax.set_ylim(0, 1.05)
-    ax.set_title("H2: utility recovery (Tier-1 qwen, test split)")
+    ax.set_title("H2: utility recovery (qwen3:8b, test split)")
     return _save(fig, "h2_utility_recovery", out_dir)
 
 
@@ -449,9 +449,9 @@ def plot_h3(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
         color=PALETTE["linkage"],
         linewidth=2,
         markersize=7,
-        label="Trial4 linkage",
+        label="Combined linkage",
     )
-    ax2.set_ylabel("Trial4 combined linkage", color=PALETTE["linkage"])
+    ax2.set_ylabel("Combined linkage", color=PALETTE["linkage"])
     ax2.set_ylim(-0.02, min(1.05, max(link_vals) * 1.15 + 0.05))
     ax2.tick_params(axis="y", labelcolor=PALETTE["linkage"])
 
@@ -477,7 +477,7 @@ def plot_h4(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
     ax1.bar(x, f1_vals, color=colors, width=0.55, zorder=3)
     ax1.set_xticks(x)
     ax1.set_xticklabels([_short_label(c) for c in conditions], rotation=20, ha="right")
-    ax1.set_ylabel("Tier-1 macro-F1", color=PALETTE["utility"])
+    ax1.set_ylabel("macro-F1 (qwen3:8b)", color=PALETTE["utility"])
     ax1.set_ylim(0, 1.05)
     ax1.set_title("H4: LLM sanitization vs rule redaction / sem_medium")
 
@@ -489,9 +489,9 @@ def plot_h4(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
         color=PALETTE["linkage"],
         linewidth=2,
         markersize=7,
-        label="Trial4 linkage",
+        label="Combined linkage",
     )
-    ax2.set_ylabel("Trial4 combined linkage", color=PALETTE["linkage"])
+    ax2.set_ylabel("Combined linkage", color=PALETTE["linkage"])
     ax2.set_ylim(-0.02, 1.05)
     ax2.tick_params(axis="y", labelcolor=PALETTE["linkage"])
 
@@ -558,7 +558,7 @@ def plot_sensitivity(
         ax_obs.tick_params(labelbottom=False)
     ax_obs.set_ylabel("Obs failure_mode macro-F1")
     ax_obs.set_ylim(0, 1.05)
-    ax_obs.set_title("Tier-1 consumer sensitivity (test split)")
+    ax_obs.set_title("Consumer sensitivity (qwen3:8b, test split)")
     ax_obs.legend(loc="upper right", fontsize=8)
 
     if ax_ana is not None and analytics_metrics is not None:
@@ -634,8 +634,8 @@ def write_r4_table(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
         "Condition",
         "Tier-0 F1",
         "Transfer F1",
-        "Tier-1 F1",
-        "Trial4 link.",
+        "F1 (qwen3:8b)",
+        "Linkage",
         "Top-1",
         "Token rec.",
         "Prov.",
@@ -693,7 +693,7 @@ def write_config_snapshot(cfg: dict[str, Any], config_path: Path, out_dir: Path)
 
 
 def plot_adversary_pareto(metrics: dict[str, Any], out_dir: Path) -> dict[str, Path]:
-    """Privacy–utility frontier using Trial4 combined linkage score."""
+    """Privacy–utility frontier using Combined linkage score."""
     _apply_style()
     fig, ax = plt.subplots()
 
@@ -722,9 +722,9 @@ def plot_adversary_pareto(metrics: dict[str, Any], out_dir: Path) -> dict[str, P
     chain_y = [_f1(metrics, c) for c in SEM_CHAIN]
     ax.plot(chain_x, chain_y, "--", color=PALETTE["sem"], alpha=0.7, linewidth=1.5, zorder=2)
 
-    ax.set_xlabel("Combined linkage score (Trial4 adversary)")
+    ax.set_xlabel("Combined linkage score (linkage adversary suite)")
     ax.set_ylabel(_utility_f1_label(metrics))
-    ax.set_title("Trial4 privacy–utility frontier")
+    ax.set_title("Privacy–utility frontier")
     ax.set_xlim(left=-0.02)
     ax.set_ylim(bottom=-0.02, top=1.05)
     return _save(fig, "adversary_pareto", out_dir)
@@ -759,7 +759,7 @@ def plot_adversary_bars(metrics: dict[str, Any], out_dir: Path) -> dict[str, Pat
         ax.set_ylim(0, 1.05)
         ax.set_title(title)
 
-    fig.suptitle("Trial4 adversary metrics by lattice condition", y=1.02)
+    fig.suptitle("Linkage adversary metrics by export condition", y=1.02)
     fig.tight_layout()
     return _save(fig, "adversary_bars", out_dir)
 
@@ -821,7 +821,7 @@ def generate_all_figures(
     *,
     analytics_metrics: dict[str, Any] | None = None,
 ) -> dict[str, Path]:
-    """Generate Tier-1-forward figures and tables; return stem → path map."""
+    """Generate v0.1.1 figures and tables; return stem → path map."""
     outputs: dict[str, Path] = {}
     primary = _primary_conditions(metrics) or FROZEN_LATTICE
 

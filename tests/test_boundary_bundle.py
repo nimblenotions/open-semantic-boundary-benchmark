@@ -39,7 +39,7 @@ def pilot_v2_analytics():
 
 
 def test_pilot_v2_obs_bundle_recommendation(pilot_v2_metrics, cfg):
-    """I1 bundle: bracket wins among Trial4-feasible arms on Tier-1 obs utility."""
+    """Observability bundle: bracket wins among linkage-feasible conditions on primary obs utility."""
     primary = {
         cid: m
         for cid, m in pilot_v2_metrics["conditions"].items()

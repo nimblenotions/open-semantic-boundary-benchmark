@@ -1,4 +1,4 @@
-"""Figure generation tests for Tier-1-forward pilot_v2 metrics."""
+"""Figure generation tests for v0.1.1 published metrics (outputs/pilot_v2)."""
 
 from __future__ import annotations
 

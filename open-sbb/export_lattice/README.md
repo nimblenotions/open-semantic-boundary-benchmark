@@ -4,7 +4,19 @@
 
 The **export lattice** is a finite, frozen set of transform conditions \(\mathcal{C}\). Each condition materializes export \(z\) (and provenance \(r\) when applicable) from the same trusted observation \(x\).
 
-v0.1.1 ships **nine primary arms**: `raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogate`, `redact_llm_substitute`, `redact_llm_rephrase`, `sem_coarse`, `sem_medium`, `sem_fine`.
+v0.1.1 ships **nine primary conditions** (IDs are stable in configs and metrics JSON):
+
+| Condition ID | Plain meaning |
+|--------------|---------------|
+| `raw` | No redaction — full observation text |
+| `redact_bracket` | Bracket-style span redaction |
+| `redact_tokenize` | Token replacement / pseudonymization |
+| `redact_surrogate` | Surrogate text replacement |
+| `redact_llm_substitute` | LLM substitution (cached oracle run) |
+| `redact_llm_rephrase` | LLM rephrase (cached oracle run) |
+| `sem_coarse` | Coarse semantic JSON export |
+| `sem_medium` | Medium-granularity semantic JSON |
+| `sem_fine` | Fine-grained semantic JSON |
 
 ## Paper connection
 
@@ -46,4 +58,4 @@ Add condition ID in `configs/pilot_v0.1.1.yaml` → implement in `src/transform/
 
 ## Not claimed
 
-Lattice arms are benchmark comparators, not vendor reproductions. Semantic arms are representation upper bounds, not learned extractor SOTA.
+Lattice conditions are benchmark comparators, not vendor reproductions. Semantic conditions are representation upper bounds, not learned extractor SOTA.
