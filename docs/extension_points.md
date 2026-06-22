@@ -32,7 +32,7 @@ Document any change in `CHANGELOG.md` and bump semver appropriately.
 - Learned semantic extractors (`sem_medium_learned`)
 - `opensbb evaluate` CLI (stub documented in BYO example)
 - Domain registration spec
-- Code relocation under `open-sbb/*/src/` (see [`open-sbb/LAYOUT-PLAN.md`](../open-sbb/LAYOUT-PLAN.md))
+- Code relocation under `open-sbb/*/src/` — v0.2 may nest artifacts under protocol modules; **v0.1.1 stays flat** (`src/`, `eval/`, `data/`, `outputs/pilot_v2/` at repo root)
 
 ## Contributor workflow
 

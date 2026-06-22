@@ -69,7 +69,6 @@ make figures              # paper-linked figures from committed metrics
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |
 | [`../docs/extension_points.md`](../docs/extension_points.md) | How to extend the protocol |
 | [`../examples/README.md`](../examples/README.md) | Domain examples + BYO |
-| [`LAYOUT-PLAN.md`](LAYOUT-PLAN.md) | Maintainer notes on a possible v0.2+ folder layout (no code moves in v0.1.1) |
 
 ## Not claimed
 
