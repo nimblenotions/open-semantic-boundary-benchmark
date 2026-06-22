@@ -5,10 +5,13 @@ Thanks for helping improve the Open Semantic Boundary Benchmark.
 ## Development setup
 
 ```bash
-uv venv && source .venv/bin/activate
+uv venv
 uv pip install -e ".[dev]"
 make test
+make lint
 ```
+
+`make` targets use `.venv/bin/` when the venv exists; activation is optional unless you invoke `python`/`pytest` directly.
 
 ## What to contribute
 

@@ -47,12 +47,15 @@ Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`). Regenerat
 ## Quick start
 
 ```bash
-uv venv && source .venv/bin/activate
+uv venv
 uv pip install -e ".[dev]"
 
 make repro-smoke    # verify headline metrics; no Ollama
 make test
+make lint
 ```
+
+The `Makefile` uses `.venv/bin/python`, `pytest`, and `ruff` automatically when `.venv/` exists — you do **not** need `source .venv/bin/activate` for `make` targets. Activate the venv only if you run `python` or `pytest` directly in your shell.
 
 Optional — rescore from cached LLM consumer predictions:
 
