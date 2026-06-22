@@ -1,0 +1,60 @@
+name: Bug / reproduction
+description: Report a failing command, test, or unexpected benchmark output
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us reproduce the problem. For headline metric mismatches, run `make repro-smoke` first and paste the output.
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. macOS 15.5, Ubuntu 22.04"
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "e.g. 3.11.9"
+    validations:
+      required: true
+
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      description: Copy-paste the exact commands (include `git rev-parse HEAD` if relevant)
+      placeholder: |
+        git clone ...
+        uv pip install -e ".[dev]"
+        make repro-smoke
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include error messages, failing test names, or metric deltas
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Optional logs, screenshots, or whether Ollama was running
+    validations:
+      required: false

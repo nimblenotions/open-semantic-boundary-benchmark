@@ -1,0 +1,44 @@
+name: Question
+description: Ask about usage, reproduction, or adoption — not a feature request
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for **usage and adoption questions**. For bugs, use **Bug / reproduction**. For new benchmark work, use **Benchmark proposal**.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Getting started / installation
+        - Reproducing paper numbers (`make repro-smoke`)
+        - Understanding metrics (utility, linkage, provenance)
+        - Bring-your-own exports
+        - Policies, schemas, or export conditions
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: What you've tried
+      description: Commands run, docs read, or links to code paths you checked (optional)
+
+  - type: checkboxes
+    id: not_feature
+    attributes:
+      label: Confirm
+      options:
+        - label: This is a question, not a request to add a new feature to the frozen v0.1.1 release
+          required: true

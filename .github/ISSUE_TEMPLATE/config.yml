@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/nimblenotions/open-semantic-boundary-benchmark/blob/main/CONTRIBUTING.md
+    about: Setup, PR expectations, and frozen release policy
+  - name: v0.2 roadmap
+    url: https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues
+    about: Open issues for post-v0.1.1 work (`help wanted`, `v0.2`, `research`)

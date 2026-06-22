@@ -14,6 +14,7 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 - **`data/ground_truth/split_manifest_v0.json`** — frozen split audit manifest + README SHA256
 - **`data/schemas/boundary_bundle_v0.schema.json`** — JSON Schema for `boundary_bundle_v0.json`
 - **Pre-seeded roadmap issues** ([#1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues)) — CLI stub, domain registration, scenario pack proposal, results manifest, BYO adapters, provenance completeness research
+- **GitHub issue templates** — bug/reproduction, benchmark proposal, question
 
 ### Changed
 
