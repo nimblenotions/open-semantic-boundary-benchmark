@@ -95,7 +95,7 @@ docs/                                                  ← repo map, adoption pa
 
 **In scope:** reproducible lattice evaluation, frozen pilot_v2 artifacts, BYO path (same schema IDs → same assessors).
 
-**Out of scope:** LaTeX paper sources, Policy Studio, HIPAA/OTel certification claims, learned extractors (Paper 2), production runtime.
+**Out of scope:** LaTeX paper sources, Policy Studio, HIPAA/OTel certification claims, learned extractors (deferred to v0.2+), production runtime.
 
 ## License & citation
 

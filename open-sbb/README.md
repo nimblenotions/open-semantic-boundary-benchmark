@@ -2,7 +2,7 @@
 
 Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root. Code, data, and outputs stay in `src/`, `data/`, and `outputs/` for v0.1.1 stability.
 
-**Adopted strategy (advisor):** optimize for **adoption first** — paper parity through docs and examples, not by relocating Python packages.
+**Adopted for v0.1.1:** optimize for **adoption first** — paper parity through docs and examples, not by relocating Python packages.
 
 ## Protocol flow
 

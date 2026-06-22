@@ -37,11 +37,8 @@ make repro-smoke
 To verify no unintended `src/` edits since a baseline:
 
 ```bash
-# From research repo (if benchmark is tracked) or manual review:
 git diff --stat -- src/ tests/
 ```
-
-*(Benchmark directory may be gitignored in parent repo — use tarball or local diff as appropriate.)*
 
 ## Adopter path
 

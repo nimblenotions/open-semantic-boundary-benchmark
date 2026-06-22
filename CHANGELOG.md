@@ -12,7 +12,7 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 - **`make repro-smoke`** — verify frozen headline metrics without Ollama
 - Standalone benchmark layout; pilot_v2 frozen tier (100 personas, 630 test events)
 
-### Known gaps (R1a)
+### Known gaps (v0.1.1)
 
 - `split_manifest_v0.json` + README checksum
 - `boundary_bundle_v0.schema.json`

@@ -2,7 +2,7 @@
 
 **Status:** Brainstorm / long-term design  
 **Adopted for v0.1.1:** **Adoption-first doc map** — see [`README.md`](README.md), [`../docs/`](../docs/), [`../examples/`](../examples/). **Do not move Python code** until v0.2.  
-**Audience:** Founders, contributors, external adopters  
+**Audience:** Maintainers, contributors, external adopters  
 **Scope:** `open-semantic-boundary-benchmark/` only  
 
 ---
@@ -168,7 +168,7 @@ open-semantic-boundary-benchmark/
 |------|------|
 | Zero repro risk | Does not fix “jumbled mass” feeling |
 | Can ship this week | Adopters still hunt paths |
-| Good R1b stopgap | Not world-class long term |
+| Good v0.1.1 stopgap | Not world-class long term |
 
 ### Alternative B — move `data/` + `outputs/` only; keep `src/` unified
 
@@ -181,9 +181,9 @@ open-semantic-boundary-benchmark/
 
 | Pros | Cons |
 |------|------|
-| Best understandability / applicability / adaptability | Highest effort; belongs in v0.2 unless staffed for R1b |
+| Best understandability / applicability / adaptability | Highest effort; target v0.2+ |
 
-**Recommendation:** **A now → B for R1b artifact layout → C for v0.2** with frozen v0.1.1 repro guarded by checksum tests throughout.
+**Recommendation:** **A now → B for v0.1.1 artifact layout → C for v0.2** with frozen v0.1.1 repro guarded by checksum tests throughout.
 
 ---
 
@@ -198,7 +198,7 @@ Example: external team evaluates their own bracket-redacted exports for observab
 5. Run `make utility-assess PURPOSE=obs` (future) → outputs land in `utility_assessment/outputs/`.
 6. Run linkage + operative modules similarly.
 
-Today none of that is explicit; adopters must read `experiment-design.md` in the research repo (not shipped here).
+Today that path is documented under `open-sbb/*/README.md` and [`../docs/`](../docs/).
 
 ---
 
@@ -210,7 +210,7 @@ Today none of that is explicit; adopters must read `experiment-design.md` in the
 | New purpose \(T\) | `policies/` + `consumers/` + utility tasks | Hard-coded analytics vs obs |
 | New adversary | `linkage_assessment/src/` | `adversary_trial4.py` |
 | New operative rule | `operative_selection/src/` | `operative_selection.py` |
-| Learned `sem_*` (Paper 2) | `export_lattice/` adapter slot | Explicitly out of scope |
+| Learned `sem_*` | `export_lattice/` adapter slot | Explicitly out of scope v0.1.1 |
 
 ---
 
@@ -258,7 +258,7 @@ Today none of that is explicit; adopters must read `experiment-design.md` in the
 
 **Total to world-class layout (phases 1–5):** ~2–3 contributor-weeks, assuming metrics parity tests gate every phase.
 
-### Phase 2 detail (likely best next step after R1a repro)
+### Phase 2 detail (likely best next step after repro-smoke passes)
 
 Move without touching Python package roots initially:
 
@@ -315,18 +315,18 @@ Operative selection **reads** utility + linkage scores; provenance **validates**
 | **pilot_v0.1.1.yaml** | Config filename | Good; paths should eventually live under `open-sbb/` |
 | **boundary_bundle_v0** | Bundle schema generation | Stays in provenance module |
 
-Do **not** rename `outputs/pilot_v2/` before R1b unless checksum migration is scripted and paper figure paths updated in research repo separately.
+Do **not** rename `outputs/pilot_v2/` before a semver-major release unless checksum migration is scripted and downstream figure paths updated.
 
 ---
 
 ## Decision log
 
-Rows marked **TBD** are intentional open questions for **future repository versions** (v0.2+ module nesting). They do not block v0.1.1 / R1b: the adopted path is the adoption-first doc map with flat `src/`, `eval/`, and `outputs/pilot_v2/` (see header above).
+Rows marked **TBD** are intentional open questions for **future repository versions** (v0.2+ module nesting). They do not block the v0.1.1 release: the adopted path is the adoption-first doc map with flat `src/`, `eval/`, and `outputs/pilot_v2/` (see header above).
 
 | Question | Options | v0.1.1 | Future (v0.2+) |
 |----------|---------|--------|----------------|
 | Repo root name at public export | `open-semantic-boundary-benchmark` vs `open-sbb` | **`open-semantic-boundary-benchmark`** | TBD (short alias in docs only?) |
-| Move code before R1b? | yes / no / partial (data only) | **no** — docs only under `open-sbb/` | TBD (full module nest vs partial data moves) |
+| Move code before v0.2? | yes / no / partial (data only) | **no** — docs only under `open-sbb/` | TBD (full module nest vs partial data moves) |
 | Keep top-level `eval/`? | yes (wrappers) / merge into modules | **yes** — current wrappers | TBD |
 | Per-module tests? | later / never | defer | TBD |
 
@@ -334,11 +334,11 @@ Rows marked **TBD** are intentional open questions for **future repository versi
 
 ## Immediate next steps (suggested)
 
-1. **Confirm R1a repro** on current flat layout (`make eval` vs `metrics.json`).
-2. **Phase 1:** add `open-sbb/README.md` + seven stub READMEs (links only, no moves).
-3. **Founder review** of this plan; pick Phase 2 vs wait for v0.2.
-4. Only then execute artifact or code moves with a path-migration PR and repro-smoke gate.
+1. **Confirm repro** on current flat layout (`make repro-smoke`; optional `make eval` vs `metrics.json`).
+2. **Phase 1:** module READMEs under `open-sbb/` (links only, no moves) — **done for v0.1.1**.
+3. **Maintainer review** of this plan; pick Phase 2 vs wait for v0.2.
+4. Only then execute artifact or code moves with a path-migration PR and `make repro-smoke` gate.
 
 ---
 
-*This file is planning only. Implementation must stay within `open-semantic-boundary-benchmark/` and must not break committed headline metrics without founder sign-off.*
+*This file is planning only. Implementation must stay within `open-semantic-boundary-benchmark/` and must not break committed headline metrics without an explicit semver bump and changelog entry.*

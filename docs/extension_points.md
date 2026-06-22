@@ -27,7 +27,7 @@ Patch releases **must not** silently change:
 
 Document any change in `CHANGELOG.md` and bump semver appropriately.
 
-## Explicitly deferred (Paper 2 / v0.2)
+## Explicitly deferred (v0.2+)
 
 - Learned semantic extractors (`sem_medium_learned`)
 - `opensbb evaluate` CLI (stub documented in BYO example)
