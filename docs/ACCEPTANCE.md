@@ -1,4 +1,4 @@
-# Acceptance checklist — adoption-first documentation pass
+# Acceptance checklist — v0.1.1 release
 
 Use this list before tagging **Open SBB v0.1.1** or exporting the public repo.
 

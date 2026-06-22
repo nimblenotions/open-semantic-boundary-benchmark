@@ -1,8 +1,8 @@
 # Open SBB layout plan — understandability, applicability, adaptability
 
-**Status:** Brainstorm / long-term design  
-**Adopted for v0.1.1:** **Adoption-first doc map** — see [`README.md`](README.md), [`../docs/`](../docs/), [`../examples/`](../examples/). **Do not move Python code** until v0.2.  
-**Audience:** Maintainers, contributors, external adopters  
+**Status:** Maintainer planning doc (v0.2+ options)  
+**Current release (v0.1.1):** Protocol documentation lives in this folder; implementation stays at the repo root — see [`README.md`](README.md), [`../docs/`](../docs/), [`../examples/`](../examples/).  
+**Audience:** Maintainers and contributors considering a future restructure  
 **Scope:** `open-semantic-boundary-benchmark/` only  
 
 ---
@@ -155,10 +155,10 @@ open-semantic-boundary-benchmark/
 
 | Pros | Cons |
 |------|------|
-| **Paper parity** — reviewer reads §4.2, opens `policies/` + `consumers/` | **Large one-time move** — every import path, config path, test fixture |
+| **Paper alignment** — reviewer reads §4.2, opens `policies/` + `consumers/` | **Large one-time move** — every import path, config path, test fixture |
 | **Locality** — “change linkage” → one folder | **Duplication risk** — lattice data referenced by utility *and* linkage |
 | **BYO clarity** — adopters drop files in module `data/` | **Config complexity** — `pilot_v0.1.1.yaml` must list 7 base paths or use convention |
-| **Incremental READMEs** — each module documents frozen tier | **Python packaging** — `pyproject` must still expose one installable package (or namespace packages) |
+| **Incremental READMEs** — each module documents its v0.1.1 scope | **Python packaging** — `pyproject` must still expose one installable package (or namespace packages) |
 | **Adaptability** — new domain = new subtree pattern | **CI time** — more paths to checksum and verify |
 | **Zenodo/archival** — tarball reads like the protocol spec | **Migration period** — need compatibility shims (`make eval` must not break) |
 
@@ -321,7 +321,7 @@ Do **not** rename `outputs/pilot_v2/` before a semver-major release unless check
 
 ## Decision log
 
-Rows marked **TBD** are intentional open questions for **future repository versions** (v0.2+ module nesting). They do not block the v0.1.1 release: the adopted path is the adoption-first doc map with flat `src/`, `eval/`, and `outputs/pilot_v2/` (see header above).
+Rows marked **TBD** are open questions for **v0.2+** (module nesting). They do not block v0.1.1: this release uses flat `src/`, `eval/`, and `outputs/pilot_v2/` with protocol READMEs under `open-sbb/` (see header above).
 
 | Question | Options | v0.1.1 | Future (v0.2+) |
 |----------|---------|--------|----------------|

@@ -1,8 +1,6 @@
 # Open SBB — protocol map
 
-Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root. Code, data, and outputs stay in `src/`, `data/`, and `outputs/` for v0.1.1 stability.
-
-**Adopted for v0.1.1:** optimize for **adoption first** — paper parity through docs and examples, not by relocating Python packages.
+Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root. For v0.1.1, code, data, and outputs stay in `src/`, `data/`, and `outputs/` so you can clone and reproduce without learning a new package layout.
 
 ## Protocol flow
 
@@ -71,7 +69,7 @@ make figures              # paper-linked figures from committed metrics
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |
 | [`../docs/extension_points.md`](../docs/extension_points.md) | How to extend the protocol |
 | [`../examples/README.md`](../examples/README.md) | Domain examples + BYO |
-| [`LAYOUT-PLAN.md`](LAYOUT-PLAN.md) | Long-term layout brainstorm (code move deferred) |
+| [`LAYOUT-PLAN.md`](LAYOUT-PLAN.md) | Maintainer notes on a possible v0.2+ folder layout (no code moves in v0.1.1) |
 
 ## Not claimed
 
