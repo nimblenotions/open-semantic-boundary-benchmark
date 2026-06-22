@@ -36,7 +36,7 @@ Quick navigation for newcomers. Implementation stays at the repo root for v0.1.1
 |---------|------|------|---------|
 | Lattice transforms | `src/transform/` | `data/transformed/` | metrics JSON |
 | Policies / schemas | `src/boundary/` | `data/policies/`, `data/schemas/` | config snapshot |
-| Consumers | `src/eval/tier*_consumer.py` | `data/eval_cache*` | metrics JSON |
+| Consumers (LLM + classical baselines) | `src/eval/tier*_consumer.py` | `data/eval_cache*` | metrics JSON |
 | Synthetic corpus | `src/generate/` | `data/raw/`, `data/ground_truth/` | — |
 | Utility | `eval/run_*_study.py` | caches + transforms | `metrics.json`, figures |
 | Linkage | `src/eval/adversary*.py` | transforms | linkage in metrics, figures |
@@ -59,5 +59,5 @@ make eval-analytics
 make figures
 make operative-selection
 make bootstrap-cis
-make pipeline    # full regen; requires Ollama for Tier-1
+make pipeline    # full regen; requires Ollama for LLM utility consumers
 ```

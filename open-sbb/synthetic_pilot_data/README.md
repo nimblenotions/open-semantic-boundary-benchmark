@@ -29,7 +29,9 @@ Data:
 
 Outputs:
 
-- (validation inline; split manifest + checksum — R1a todo)
+- `make validate` — JSON report on **stdout** (tier, event/persona counts, failure-mode floors, `ok` / `failures`); not written to disk by default
+- `data/ground_truth/splits.json` — frozen persona split (`seed: 42`, train/val/test assignments; 20 test personas → 630 test events)
+- Published run snapshot: `outputs/pilot_v2/config_snapshot/pilot_v0.1.1.yaml` (corpus scale + split settings used for v0.1.1)
 
 ## Reproduce
 

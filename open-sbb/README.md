@@ -40,7 +40,7 @@ Policies and consumers are registered **before** scoring: the same lattice arm c
 | Synthetic pilot | §4.3 | `src/generate/` | `data/raw/`, `data/ground_truth/` | — |
 | Export lattice | §4.1 | `src/transform/`, `eval/run_*` (materialize) | `data/transformed/`, `data/transformed_analytics/`, `data/llm_transform_cache/` | (scores in metrics JSON) |
 | Policies | §4.2 | `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | — |
-| Consumers | §4.2 | `src/eval/tier0_consumer.py`, `tier1_consumer.py`, `tier1_analytics_consumer.py` | `data/eval_cache/`, `data/eval_cache_analytics/` | cached predictions |
+| Consumers | §4.2 | `src/eval/tier0_consumer.py`, `tier1_consumer.py`, `tier1_analytics_consumer.py` (legacy module names) | `data/eval_cache/`, `data/eval_cache_analytics/` | cached LLM consumer predictions |
 | Utility assessment | §4.4 | `src/eval/observability_task.py`, `analytics_task.py`, `eval/run_obs_study.py`, `run_analytics_study.py` | reads lattice + caches | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
 | Linkage assessment | §4.4 | `src/eval/adversary*.py`, `adversary_trial4.py` | same transforms | linkage in metrics + `outputs/pilot_v2/figures/linkage_*` |
 | Operative selection | §4.5 | `src/eval/operative_selection.py`, `eval/run_operative_selection.py` | — | `outputs/pilot_v2/operative_selection/` |
@@ -58,7 +58,7 @@ Policies and consumers are registered **before** scoring: the same lattice arm c
 
 ```bash
 make repro-smoke          # verify committed headline metrics
-make eval                 # full obs eval on cached Tier-1 (slow; uses caches)
+make eval                 # full obs eval on cached LLM consumer predictions (slow; uses caches)
 make figures              # paper-linked figures from committed metrics
 ```
 

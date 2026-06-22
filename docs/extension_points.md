@@ -22,7 +22,7 @@ Patch releases **must not** silently change:
 
 - Nine primary condition IDs
 - Split seed 42 / 630 test events
-- Tier-1 prompt versions and primary model (`qwen3:8b`)
+- Frozen LLM utility consumer prompts and primary model (`qwen3:8b`)
 - Metric definitions in committed `metrics.json`
 
 Document any change in `CHANGELOG.md` and bump semver appropriately.

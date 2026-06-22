@@ -43,7 +43,7 @@ make repro-smoke    # verify headline metrics; no Ollama
 make test
 ```
 
-Optional — rescore from cached Tier-1 predictions:
+Optional — rescore from cached LLM consumer predictions:
 
 ```bash
 make eval CONFIG=configs/pilot_v0.1.1.yaml
@@ -53,7 +53,22 @@ make operative-selection
 make bootstrap-cis
 ```
 
-Full regen (`make pipeline`) requires Ollama with `qwen3:8b` for Tier-1 arms.
+Full regen (`make pipeline`) requires Ollama with `qwen3:8b` for the frozen LLM utility consumers.
+
+## Offline reproduction (no Ollama)
+
+Paper headline numbers do **not** require a live LLM at audit time. v0.1.1 ships a frozen **evaluation registry** of pre-computed utility-consumer predictions (primary: `qwen3:8b`):
+
+| Registry | Path | Contents |
+|----------|------|----------|
+| Observability consumer | `data/eval_cache/` | Per-model, per-lattice-arm `predictions.jsonl` (primary: `qwen3_8b/`) |
+| Analytics consumer | `data/eval_cache_analytics/` | Same layout for analytics prompts |
+
+When you run `make eval` or `make eval-analytics`, assessors **read these cached completions** and compute metrics (F1, linkage, etc.) — they do not call Ollama unless a cache entry is missing. `make repro-smoke` skips inference entirely and checks committed `outputs/pilot_v2/metrics.json` against expected headline tolerances.
+
+To **regenerate** LLM consumer predictions (optional, heavy), you need Ollama + `qwen3:8b` and `make pipeline` or the observability/analytics study scripts; new runs can be consolidated back into `data/eval_cache*` via `scripts/consolidate_eval_cache.py`.
+
+Details: [`open-sbb/consumers/README.md`](open-sbb/consumers/README.md) (includes **Tier-1 → `qwen3:8b` consumer** alias for code and frozen outputs).
 
 ## Repository layout
 
@@ -65,7 +80,7 @@ docs/                                                  ← repo map, adoption pa
 ```
 
 **Headline metrics:** `outputs/pilot_v2/metrics.json`, `analytics_metrics.json`  
-**Narrative summary:** `outputs/pilot_v2/sensitivity_report.md`
+**Narrative summary:** `outputs/pilot_v2/sensitivity_report.md` (title says “Tier-1” = paper’s primary `qwen3:8b` consumer; see [`open-sbb/consumers/README.md`](open-sbb/consumers/README.md))
 
 ## Paper-linked figures
 

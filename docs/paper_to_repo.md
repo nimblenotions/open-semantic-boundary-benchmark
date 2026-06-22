@@ -7,7 +7,7 @@ Maps the arXiv long paper **§4 Open Semantic Boundary Benchmark** to this repos
 | Paper § | Title | Protocol folder | Primary artifacts |
 |---------|-------|-----------------|-------------------|
 | §4.1 | Export lattice | [`open-sbb/export_lattice/`](../open-sbb/export_lattice/README.md) | `data/transformed/`, Table export-lattice |
-| §4.2 | Registered consumers & policies | [`open-sbb/policies/`](../open-sbb/policies/README.md), [`open-sbb/consumers/`](../open-sbb/consumers/README.md) | `data/policies/`, `data/schemas/`, Tier-1 caches |
+| §4.2 | Registered consumers & policies | [`open-sbb/policies/`](../open-sbb/policies/README.md), [`open-sbb/consumers/`](../open-sbb/consumers/README.md) | `data/policies/`, `data/schemas/`, `data/eval_cache*` |
 | §4.3 | Synthetic pilot | [`open-sbb/synthetic_pilot_data/`](../open-sbb/synthetic_pilot_data/README.md) | `data/raw/`, `data/ground_truth/`, seed 42 |
 | §4.4 | Utility & linkage | [`open-sbb/utility_assessment/`](../open-sbb/utility_assessment/README.md), [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md) | `metrics.json`, linkage figures |
 | §4.5 | Operative selection | [`open-sbb/operative_selection/`](../open-sbb/operative_selection/README.md) | `operative_selection/`, regret matrix |

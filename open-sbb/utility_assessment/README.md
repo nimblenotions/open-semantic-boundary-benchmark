@@ -25,7 +25,7 @@ Code:
 Data:
 
 - `data/transformed/` (reads exports)
-- `data/eval_cache/` and `data/eval_cache_analytics/` (Tier-1 predictions)
+- `data/eval_cache/` and `data/eval_cache_analytics/` (frozen LLM consumer predictions)
 
 Outputs:
 
@@ -34,7 +34,7 @@ Outputs:
 - `outputs/pilot_v2/figures/utility_matrix_heatmap.png`
 - `outputs/pilot_v2/figures/tables/utility_matrix.csv`
 - `outputs/pilot_v2/bootstrap_cis/bootstrap_cis.tex`
-- `outputs/pilot_v2/sensitivity_report.md`
+- `outputs/pilot_v2/sensitivity_report.md` — consumer sensitivity; “Tier-1” in title = paper’s primary `qwen3:8b` consumer ([`../consumers/README.md`](../consumers/README.md#paper--code-naming))
 
 ## Reproduce
 
@@ -45,7 +45,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 make bootstrap-cis CONFIG=configs/pilot_v0.1.1.yaml
 ```
 
-Headline spot-check (`raw` obs Tier-1 F1 ≈ 0.63):
+Headline spot-check (`raw` observability \(T_o\)-1 macro-F1 ≈ 0.63; JSON key `tier1` in code):
 
 ```bash
 python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"

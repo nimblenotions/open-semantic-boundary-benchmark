@@ -16,6 +16,7 @@ Structured onboarding for reviewers, practitioners, and contributors.
 3. Inspect headline numbers:
 
 ```bash
+# observability T_o-1 macro-F1 (JSON key tier1 in metrics.json)
 python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"
 ```
 
@@ -36,7 +37,7 @@ head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 1. Complete 30-minute path.
 2. Read [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md).
 3. Compare `data/policies/obs_policy_v1.json` with [`examples/provenance/`](../examples/provenance/).
-4. Run `make eval` (uses cached Tier-1; no Ollama if caches present).
+4. Run `make eval` (uses cached LLM consumer predictions; no Ollama if caches present).
 
 ## Contributor path
 

@@ -20,7 +20,7 @@ The medication pilot demonstrates the **same structural conflict** (bracket help
 
 ```bash
 make repro-smoke
-# redact_bracket: obs Tier-1 ↑, analytics Tier-1 ↓ vs raw
+# redact_bracket: observability utility ↑, analytics utility ↓ vs raw
 ```
 
 ## BYO

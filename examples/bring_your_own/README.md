@@ -104,7 +104,7 @@ make repro-smoke
 ## Checklist
 
 - [ ] Held-out split documented (or reuse `data/ground_truth/splits.json` event IDs)
-- [ ] Same Tier-1 prompts if comparing to published Tier-1 numbers
+- [ ] Same frozen LLM consumer prompts if comparing to published headline utility numbers
 - [ ] Provenance `r` present if using \(\tau\) operative gates
 - [ ] Report \(U(T,z)\) and \(R(z)\) — do not claim regulatory certification
 

@@ -49,7 +49,7 @@ open-semantic-boundary-benchmark/
 | Paper §4 module | Role | Code today | Data today | Outputs today |
 |-----------------|------|------------|------------|---------------|
 | **Export lattice** | Materialize \(z,r\) for each \(c \in \mathcal{C}\) | `src/transform/`, `eval/run_*` (partial) | `data/transformed/`, `data/transformed_analytics/`, `data/llm_transform_cache/` | (embedded in eval metrics) |
-| **Policies & consumers** | \(\pi\), schemas, frozen assessors | `src/eval/tier*_consumer.py`, `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | Tier-1 in `data/eval_cache*` |
+| **Policies & consumers** | \(\pi\), schemas, frozen assessors | `src/eval/tier*_consumer.py`, `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | LLM consumer predictions in `data/eval_cache*` |
 | **Synthetic pilot** | Corpus \(W\), split, labels | `src/generate/` | `data/raw/`, `data/ground_truth/` | — |
 | **Utility assessment** | `assess_utility` → \(U(T,z)\) | `src/eval/observability_task.py`, `analytics_task.py`, `eval/run_obs_study.py`, `run_analytics_study.py` | eval caches | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
 | **Linkage assessment** | `assess_risk` → \(R(z)\) | `src/eval/adversary*.py`, linkage in study runners | same transforms | linkage columns in metrics + `figures/linkage_*` |
@@ -105,8 +105,8 @@ open-semantic-boundary-benchmark/
     │   └── src/                 # policy_check, schema validation (thin)
     │
     ├── consumers/
-    │   ├── README.md            # §4.2 (consumer half) — Tier-0/1 contracts, prompts
-    │   ├── src/                 # tier0_consumer, tier1_consumer, tier1_analytics_consumer
+    │   ├── README.md            # §4.2 (consumer half) — frozen LLM + classical baseline contracts
+    │   ├── src/                 # tier0_consumer, tier1_consumer, tier1_analytics_consumer (legacy names)
     │   ├── data/                # eval_cache/, eval_cache_analytics/
     │   └── outputs/             # optional sensitivity merge artifacts
     │
@@ -194,7 +194,7 @@ Example: external team evaluates their own bracket-redacted exports for observab
 1. Read `open-sbb/export_lattice/README.md` — condition ID must be `redact_bracket` (or register new arm in v0.2).
 2. Place `events.jsonl` under `open-sbb/export_lattice/data/redact_bracket/`.
 3. Read `open-sbb/policies/README.md` — ship matching `obs_policy_v1.json` + schema.
-4. Read `open-sbb/consumers/README.md` — run Tier-0 or supply cached Tier-1 predictions.
+4. Read `open-sbb/consumers/README.md` — run classical baselines or supply cached LLM consumer predictions.
 5. Run `make utility-assess PURPOSE=obs` (future) → outputs land in `utility_assessment/outputs/`.
 6. Run linkage + operative modules similarly.
 
@@ -319,14 +319,16 @@ Do **not** rename `outputs/pilot_v2/` before R1b unless checksum migration is sc
 
 ---
 
-## Decision log (fill as you brainstorm)
+## Decision log
 
-| Question | Options | Decision |
-|----------|---------|----------|
-| Repo root name at public export | `open-semantic-boundary-benchmark` vs `open-sbb` | TBD |
-| Move code before R1b? | yes / no / partial (data only) | TBD |
-| Keep top-level `eval/`? | yes (wrappers) / merge into modules | TBD |
-| Per-module tests? | later / never | TBD |
+Rows marked **TBD** are intentional open questions for **future repository versions** (v0.2+ module nesting). They do not block v0.1.1 / R1b: the adopted path is the adoption-first doc map with flat `src/`, `eval/`, and `outputs/pilot_v2/` (see header above).
+
+| Question | Options | v0.1.1 | Future (v0.2+) |
+|----------|---------|--------|----------------|
+| Repo root name at public export | `open-semantic-boundary-benchmark` vs `open-sbb` | **`open-semantic-boundary-benchmark`** | TBD (short alias in docs only?) |
+| Move code before R1b? | yes / no / partial (data only) | **no** — docs only under `open-sbb/` | TBD (full module nest vs partial data moves) |
+| Keep top-level `eval/`? | yes (wrappers) / merge into modules | **yes** — current wrappers | TBD |
+| Per-module tests? | later / never | defer | TBD |
 
 ---
 
