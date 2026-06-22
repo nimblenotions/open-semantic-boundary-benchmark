@@ -29,7 +29,7 @@ Document any change in `CHANGELOG.md` and bump semver appropriately.
 
 ## Explicitly deferred (v0.2+)
 
-- **Productized BYO** — `opensbb evaluate` CLI ([#1](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/1)), adapter interface ([#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/6)), optional BYO smoke sample in-repo
+- **Productized BYO** — `opensbb evaluate` CLI ([#1](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/1)), adapter interface ([#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/6)); sample + `make byo-smoke` cover join/provenance plumbing only
 - Learned semantic extractors (`sem_medium_learned`)
 - Domain registration spec
 - Code relocation under `open-sbb/*/src/` — v0.2 may nest artifacts under protocol modules; **v0.1.1 stays flat** (`src/`, `eval/`, `data/`, `outputs/pilot_v2/` at repo root)

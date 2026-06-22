@@ -1,6 +1,6 @@
 # Bring your own exports (advanced / enthusiast path)
 
-> **Early development — your mileage may vary.** Open SBB **v0.1.1** is a frozen **reference release** for the medication-adherence pilot. Evaluating **your own** exports is supported in principle (same `(z, r)` contract, same assessors) but **not productized**: no sample bundle, no one-command CLI, no adapter API yet. Expect manual steps, config edits, and rough edges. Track [issue #1](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/1) (`opensbb evaluate`) and [issue #6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/6) (adapters) for v0.2.
+> **Early development — your mileage may vary.** Open SBB **v0.1.1** is a frozen **reference release** for the medication-adherence pilot. Evaluating **your own** exports is supported in principle (same `(z, r)` contract, same assessors) but **not productized**: no one-command CLI or adapter API yet. Expect manual steps, config edits, and rough edges. Track [issue #1](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/1) (`opensbb evaluate`) and [issue #6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues/6) (adapters) for v0.2.
 
 **Start here instead if you are new:** [`make repro-smoke`](../../README.md#quick-start) on the committed pilot, then [`examples/provenance/`](../provenance/README.md) for lightweight `(z, r)` examples.
 
@@ -84,6 +84,17 @@ head -1 data/transformed/sem_medium/events.jsonl | python -m json.tool
 
 Schema contracts: `data/schemas/obs_schema_medium.json`, `data/schemas/provenance_v1.json`.
 
+## Sample bundle (format reference)
+
+[`sample_events.jsonl`](sample_events.jsonl) — eight held-out **test-split** exports copied from `data/transformed/sem_medium/events.jsonl`. Use it to inspect shape and to sanity-check your wiring:
+
+```bash
+make byo-smoke   # pytest: load sample → join pilot labels → provenance assessor
+head -1 examples/bring_your_own/sample_events.jsonl | python -m json.tool
+```
+
+This does **not** score your custom exports; it only proves the BYO join path against frozen ground truth.
+
 ## Target workflow (v0.2 — not shipped)
 
 ```bash
@@ -111,7 +122,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 
 5. Compare to `outputs/pilot_v2/metrics.json` or your own baseline.
 
-**Known gaps (v0.1.1):** no bundled sample exports in this folder; no automated BYO smoke test in CI; comparing to published headline utility F1 still requires frozen LLM consumer caches or Ollama regen; a different domain/corpus requires fork-level work until v0.2.
+**Known gaps (v0.1.1):** scoring your own exports still requires manual placement under `data/transformed/`; comparing to published headline utility F1 requires frozen LLM consumer caches or Ollama regen; a different domain/corpus requires fork-level work until v0.2.
 
 Quick trust check on the **frozen pilot** (not your BYO files):
 

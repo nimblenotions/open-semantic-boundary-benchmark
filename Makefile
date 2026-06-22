@@ -1,4 +1,4 @@
-.PHONY: install generate provenance-targets validate transform eval figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis eval-analytics figures-all repro-smoke
+.PHONY: install generate provenance-targets validate transform eval figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis eval-analytics figures-all repro-smoke byo-smoke
 
 ROOT := $(shell pwd)
 export PYTHONPATH := $(ROOT)/src:$(PYTHONPATH)
@@ -99,6 +99,10 @@ test:
 repro-smoke:
 	@echo "Checking baseline artifact parity (no Ollama)..."
 	@$(PYTHON) scripts/repro_smoke.py
+
+byo-smoke:
+	@echo "Checking BYO sample export plumbing..."
+	@$(PYTEST) tests/test_byo_exports.py -q
 
 lint:
 	$(RUFF) check src tests eval
