@@ -15,7 +15,7 @@ make test
 - Reproduction bugs (include OS, Python version, commands run)
 - README and reproducibility fixes (setup commands, artifact paths, tolerance notes)
 - New export conditions or domains — **discuss in an issue first**; v0.1.1 is a frozen reference instrument
-- v0.2 roadmap items — see [open issues](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) (`help wanted`, `v0.2`, `Paper 2`)
+- v0.2 roadmap items — see [open issues](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) (`help wanted`, `v0.2`, `research`)
 
 ## Pull requests
 
