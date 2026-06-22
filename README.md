@@ -22,7 +22,6 @@ Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.c
 | Mapping paper §4 → repo | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
 | Extending the protocol | [`docs/extension_points.md`](docs/extension_points.md) |
 | v0.2 roadmap (contributions) | [GitHub issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) |
-| Release acceptance checklist | [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) |
 
 ## Status: Open SBB v0.1.1
 
