@@ -142,22 +142,6 @@ Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathc
 
 ---
 
-## How the pieces connect
-
-```text
-Semantic Boundary (idea)
-        │
-        ├── Production crossing (future product) — declare / cross / verify at runtime
-        │
-        └── Open SBB (this repo) — assess_utility + assess_risk on frozen exports
-                    │
-                    ├── open-sbb/     ← paper §4 protocol map
-                    ├── examples/     ← domains + bring-your-own
-                    └── src/ data/    ← harness (stable layout)
-```
-
----
-
 ## Where to go next
 
 | Goal | Doc |

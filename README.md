@@ -67,7 +67,7 @@ make lint
 
 ### Paper reproduction cheatsheet
 
-Headline utility F1 in the paper comes from the **Tier-1 LLM consumer** (`qwen3:8b`, JSON key `tier1` in metrics) — not Tier-0 (`make eval TIER=0`).
+Headline utility F1 in the paper comes from the **frozen LLM utility consumer** (`qwen3:8b`; JSON key `tier1` in metrics) — not the classical Tier-0 baseline (`make eval TIER=0`).
 
 | Goal | Command | Output / notes |
 |------|---------|----------------|

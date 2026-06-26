@@ -16,3 +16,4 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: make lint
       - run: pytest tests/ -q
+      - run: make repro-smoke

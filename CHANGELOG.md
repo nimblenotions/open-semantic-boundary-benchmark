@@ -2,7 +2,7 @@
 
 All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Versioning](https://semver.org/).
 
-## [0.1.1] — unreleased
+## [0.1.1] — 2026-06-26
 
 ### Added
 
