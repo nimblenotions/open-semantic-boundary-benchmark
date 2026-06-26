@@ -2,6 +2,8 @@
 
 This page explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). The paper gives the full treatment; this is the adoption-oriented overview.
 
+**String redaction** asks which literals to strip. **Semantic Boundary** asks which **meanings** may cross for each registered downstream purpose — under policy, granularity, and provenance. **Open SBB** (this repo) measures whether those semantic disclosures preserve task utility while limiting linkage risk.
+
 ---
 
 ## The problem
@@ -22,7 +24,31 @@ That question is necessary but incomplete. Downstream systems often need **struc
 
 A **semantic boundary** is a governed crossing from a trusted collection zone to a registered downstream consumer.
 
-Given a trusted observation \(x\), purpose \(T\), policy \(\pi\), and schema granularity \(g\), the boundary emits:
+### Multi-purpose exports
+
+One sensitive event can support **different legitimate exports** for different downstream purposes — not one sanitizer for every team:
+
+```text
+Raw event (x)
+      │
+      ▼
+Semantic Boundary  (policy π, purpose T, granularity g)
+      │
+      ├──► Observability export (z, r)  ──► U(T,z), R(z), provenance τ
+      ├──► Analytics export (z, r)      ──► U(T,z), R(z), provenance τ
+      ├──► Evaluation export (z, r)     ──► …  [illustrative — v0.2+]
+      └──► Agent export (z, r)          ──► …  [illustrative — v0.2+]
+```
+
+- **Utility** \(U(T,z)\) — can the consumer do its job on export \(z\)?
+- **Linkage** \(R(z)\) — how much re-identification risk remains in \(z\)?
+- **Provenance** \(\tau\) — audit record in \(r\): policy version, transforms, verify outcome
+
+*Conceptual fan-out.* Open SBB **v0.1.1** benchmarks **observability** and **analytics** on the frozen medication-adherence pilot; evaluation and agent slices are roadmap examples (see [`examples/README.md`](../examples/README.md)).
+
+### Per-export contract
+
+Given a trusted observation \(x\), purpose \(T\), policy \(\pi\), and schema granularity \(g\), each crossing emits:
 
 - **Export \(z\)** — typed semantic fields released to the consumer  
 - **Provenance \(r\)** — audit record of policy version, transforms, suppressed fields, verify outcome  

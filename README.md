@@ -8,6 +8,8 @@ Open SBB asks: *which meanings may be disclosed for a registered purpose, with w
 
 Use it to compare export strategies for **AI observability**, **analytics**, **evaluation**, and **agent workflows** — on a counterfactual export lattice with frozen assessors.
 
+One sensitive event can yield **different semantic exports** per downstream purpose; each is scored for utility, linkage, and provenance. [Conceptual overview →](docs/what-is-semantic-boundary.md#multi-purpose-exports)
+
 Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.com/nimblenotions/open-semantic-boundary-benchmark)
 
 > **Early development.** v0.1.1 is a citeable **frozen reference release** for the medication-adherence pilot. Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
