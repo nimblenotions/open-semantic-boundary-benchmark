@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Open Semantic Boundary Benchmark (Open SBB-Obs)"
-message: "If you use this benchmark, please cite it and the companion arXiv preprint (ID pending at release)."
+message: "If you use this benchmark, please cite it and the companion arXiv preprint (submitted; ID pending)."
 type: software
 authors:
   - family-names: Baruah

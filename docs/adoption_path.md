@@ -69,7 +69,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 
 | Layer | Role |
 |-------|------|
-| **Paper** | Establishes the idea and pilot evidence |
+| **Paper** | Establishes the idea and pilot evidence (companion arXiv preprint: submitted; ID pending) |
 | **This repo** | Establishes the **benchmark** — run, reproduce, extend |
 | **Product / deployment** | Future commercial stack (out of scope here) |
 
