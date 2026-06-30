@@ -70,7 +70,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 | Layer | Role |
 |-------|------|
 | **Paper** | Establishes the idea and pilot evidence (companion pre-print submitted; id pending) |
-| **This repo** | Establishes the **benchmark** — run, reproduce, extend |
+| **This repo** | Establishes the **benchmark** — run, reproduce, extend ([Zenodo 10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)) |
 | **Product / deployment** | Future commercial stack (out of scope here) |
 
 Goal for v0.1.1: reproduce the frozen pilot and understand the protocol. Goal for v0.2+: *“I can test my own semantic exports here”* with less manual wiring.

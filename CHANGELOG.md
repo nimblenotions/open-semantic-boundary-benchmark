@@ -2,6 +2,19 @@
 
 All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] — 2026-06-30
+
+### Added
+
+- Zenodo archive: [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`)
+
+### Changed
+
+- Standardized preprint status wording (*companion pre-print submitted; id pending*)
+- `CITATION.cff` and docs updated with Zenodo DOI
+
+No change to frozen pilot artifacts vs v0.1.1.
+
 ## [0.1.1] — 2026-06-26
 
 ### Added

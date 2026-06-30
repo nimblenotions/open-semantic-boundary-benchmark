@@ -12,9 +12,9 @@ One sensitive event can yield **different semantic exports** per downstream purp
 
 Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.com/nimblenotions/open-semantic-boundary-benchmark)
 
-Companion pre-print submitted; id pending.
+**Zenodo:** [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`). Companion pre-print submitted; id pending.
 
-> **Early development.** v0.1.1 is a citeable **frozen reference release** for the medication-adherence pilot. Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
+> **Early development.** v0.1.2 is the **citeable Zenodo release** for the medication-adherence pilot (same frozen bundle as v0.1.1). Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
 
 ## Start here
 
@@ -29,7 +29,7 @@ Companion pre-print submitted; id pending.
 | Extending the protocol | [`docs/extension_points.md`](docs/extension_points.md) |
 | v0.2 roadmap (contributions) | [GitHub issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) |
 
-## Status: Open SBB v0.1.1
+## Status: Open SBB v0.1.2 (Zenodo)
 
 | Component | Notes |
 |-----------|-------|
@@ -126,7 +126,7 @@ docs/                                                  ← repo map, adoption pa
 
 ## License & citation
 
-Apache-2.0 — [`LICENSE`](LICENSE). Citation: [`CITATION.cff`](CITATION.cff). Companion pre-print submitted; id pending.
+Apache-2.0 — [`LICENSE`](LICENSE). Citation: [`CITATION.cff`](CITATION.cff). Zenodo: [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088). Companion pre-print submitted; id pending.
 
 ## Contributing
 

@@ -2,7 +2,7 @@
 
 Maps the arXiv long paper **§4 Open Semantic Boundary Benchmark** to this repository.
 
-Companion pre-print submitted; id pending.
+Companion pre-print submitted; id pending. **Zenodo:** [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`).
 
 ## Section index
 

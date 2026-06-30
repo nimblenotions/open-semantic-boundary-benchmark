@@ -70,6 +70,7 @@ Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not
 | Doc | Purpose |
 |-----|---------|
 | Companion pre-print | submitted; id pending — full framework + pilot results |
+| Zenodo archive | [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`) |
 | [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
 | [`../docs/adoption_path.md`](../docs/adoption_path.md) | Onboarding paths (quick repro → rescore → contributor) |
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |

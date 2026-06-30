@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Open Semantic Boundary Benchmark (Open SBB-Obs)"
-message: "If you use this benchmark, please cite it; companion pre-print submitted; id pending."
+message: "If you use this benchmark, please cite it via the Zenodo DOI below; companion pre-print submitted; id pending."
 type: software
 authors:
   - family-names: Baruah
@@ -9,4 +9,10 @@ authors:
 repository-code: "https://github.com/nimblenotions/open-semantic-boundary-benchmark"
 license: Apache-2.0
 version: 0.1.2
-date-released: 2026-06-26
+date-released: 2026-06-30
+doi: 10.5281/zenodo.21071088
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21071088
+  - type: url
+    value: "https://github.com/nimblenotions/open-semantic-boundary-benchmark/releases/tag/opensbb-v0.1.2"
