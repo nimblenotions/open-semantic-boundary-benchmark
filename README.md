@@ -12,7 +12,7 @@ One sensitive event can yield **different semantic exports** per downstream purp
 
 Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.com/nimblenotions/open-semantic-boundary-benchmark)
 
-**Companion arXiv preprint:** submitted; ID pending.
+Companion preprint submitted; ID pending.
 
 > **Early development.** v0.1.1 is a citeable **frozen reference release** for the medication-adherence pilot. Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
 
@@ -126,7 +126,7 @@ docs/                                                  ← repo map, adoption pa
 
 ## License & citation
 
-Apache-2.0 — [`LICENSE`](LICENSE). Citation: [`CITATION.cff`](CITATION.cff). Companion arXiv preprint: submitted; ID pending.
+Apache-2.0 — [`LICENSE`](LICENSE). Citation: [`CITATION.cff`](CITATION.cff). Companion preprint submitted; ID pending.
 
 ## Contributing
 

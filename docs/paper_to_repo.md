@@ -2,7 +2,7 @@
 
 Maps the arXiv long paper **§4 Open Semantic Boundary Benchmark** to this repository.
 
-**Companion arXiv preprint:** submitted; ID pending.
+Companion preprint submitted; ID pending.
 
 ## Section index
 

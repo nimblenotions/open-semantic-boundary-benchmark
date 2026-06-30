@@ -69,7 +69,7 @@ Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not
 
 | Doc | Purpose |
 |-----|---------|
-| Companion arXiv preprint | Submitted; ID pending — full framework + pilot results |
+| Companion preprint | submitted; ID pending — full framework + pilot results |
 | [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
 | [`../docs/adoption_path.md`](../docs/adoption_path.md) | Onboarding paths (quick repro → rescore → contributor) |
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |

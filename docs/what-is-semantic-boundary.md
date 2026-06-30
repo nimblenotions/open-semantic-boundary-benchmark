@@ -1,6 +1,6 @@
 # What is Semantic Boundary?
 
-This page explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). The companion arXiv preprint gives the full treatment (submitted; ID pending); this is the adoption-oriented overview.
+This page explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). Companion preprint submitted; ID pending — full treatment in the preprint; this is the adoption-oriented overview.
 
 **String redaction** asks which literals to strip. **Semantic Boundary** asks which **meanings** may cross for each registered downstream purpose — under policy, granularity, and provenance. **Open SBB** (this repo) measures whether those semantic disclosures preserve task utility while limiting linkage risk.
 
