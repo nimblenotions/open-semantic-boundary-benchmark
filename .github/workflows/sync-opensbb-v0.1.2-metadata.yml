@@ -1,0 +1,125 @@
+name: Sync opensbb-v0.1.2 public metadata
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/releases/opensbb-v0.1.2.md
+      - scripts/zenodo_opensbb_v0.1.2_description.html
+      - .github/workflows/sync-opensbb-v0.1.2-metadata.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update GitHub release notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.request
+
+          body = pathlib.Path("docs/releases/opensbb-v0.1.2.md").read_text(encoding="utf-8")
+          payload = json.dumps({"body": body}).encode("utf-8")
+          req = urllib.request.Request(
+              "https://api.github.com/repos/nimblenotions/open-semantic-boundary-benchmark/releases/346862390",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+                  "Accept": "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                  "Content-Type": "application/json",
+              },
+              method="PATCH",
+          )
+          with urllib.request.urlopen(req) as resp:
+              print("GitHub release updated:", resp.status)
+          PY
+
+  zenodo-record:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Zenodo description
+        env:
+          ZENODO_ACCESS_TOKEN: ${{ secrets.ZENODO_ACCESS_TOKEN }}
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          import pathlib
+          import sys
+          import urllib.error
+          import urllib.request
+
+          token = os.environ.get("ZENODO_ACCESS_TOKEN", "")
+          if not token:
+              print("ZENODO_ACCESS_TOKEN secret not set; skipping Zenodo update.", file=sys.stderr)
+              sys.exit(1)
+
+          description = pathlib.Path("scripts/zenodo_opensbb_v0.1.2_description.html").read_text(
+              encoding="utf-8"
+          )
+          record_id = 21071088
+
+          def request(method, url, data=None):
+              body = None if data is None else json.dumps(data).encode("utf-8")
+              headers = {
+                  "Authorization": f"Bearer {token}",
+                  "Accept": "application/json",
+              }
+              if body is not None:
+                  headers["Content-Type"] = "application/json"
+              req = urllib.request.Request(url, data=body, headers=headers, method=method)
+              with urllib.request.urlopen(req) as resp:
+                  raw = resp.read().decode("utf-8")
+                  return json.loads(raw) if raw else {}
+
+          dep_id = None
+          page = 1
+          while page <= 20:
+              deps = request(
+                  "GET",
+                  f"https://zenodo.org/api/deposit/depositions?size=100&page={page}",
+              )
+              entries = deps if isinstance(deps, list) else deps.get("hits", deps)
+              if isinstance(entries, dict):
+                  entries = entries.get("hits", [])
+              for dep in entries:
+                  if dep.get("record_id") == record_id:
+                      dep_id = dep["id"]
+                      break
+              if dep_id or not entries:
+                  break
+              page += 1
+
+          if dep_id is None:
+              raise SystemExit(f"Could not find Zenodo deposition for record {record_id}")
+
+          base = f"https://zenodo.org/api/deposit/depositions/{dep_id}"
+          dep = request("GET", base)
+          metadata = dep["metadata"]
+          metadata["description"] = description
+          for key in ("related_identifiers", "alternate_identifiers"):
+              if key not in metadata:
+                  continue
+              metadata[key] = [
+                  item
+                  for item in metadata[key]
+                  if item.get("relation") not in ("isVersionOf", "isIdenticalTo")
+              ]
+
+          request("POST", f"{base}/actions/edit")
+          request("PUT", base, {"metadata": metadata})
+          request("POST", f"{base}/actions/publish")
+          print(f"Zenodo record {record_id} updated (deposition {dep_id})")
+          PY
