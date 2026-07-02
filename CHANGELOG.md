@@ -10,7 +10,7 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 
 ### Changed
 
-- Standardized preprint status wording (*companion pre-print submitted; id pending*)
+- Companion-paper status wording (*technical report forthcoming*)
 - `CITATION.cff` and docs updated with Zenodo DOI
 
 No change to frozen pilot artifacts vs v0.1.1.

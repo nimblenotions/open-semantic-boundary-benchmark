@@ -69,7 +69,7 @@ make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
 
 | Layer | Role |
 |-------|------|
-| **Paper** | Establishes the idea and pilot evidence (companion pre-print submitted; id pending) |
+| **Paper** | Establishes the idea and pilot evidence (companion technical report forthcoming) |
 | **This repo** | Establishes the **benchmark** — run, reproduce, extend ([Zenodo 10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)) |
 | **Product / deployment** | Future commercial stack (out of scope here) |
 

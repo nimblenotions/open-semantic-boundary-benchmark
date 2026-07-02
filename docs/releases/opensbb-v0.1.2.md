@@ -12,7 +12,7 @@
 
 ### Changes since v0.1.1
 
-- Standardized preprint status: *companion pre-print submitted; id pending*
+- Companion-paper status: *technical report forthcoming*
 - `CITATION.cff` bumped to **0.1.2** for Zenodo DOI
 - Zenodo DOI published: [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)
 
