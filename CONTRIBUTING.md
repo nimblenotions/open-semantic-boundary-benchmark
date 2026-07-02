@@ -36,3 +36,7 @@ Patch releases (`0.1.x`) must not change assessor definitions, split seeds, or c
 ## Code of conduct
 
 Be respectful and precise. Benchmark claims must match what the harness actually measures.
+
+## Security
+
+See [`SECURITY.md`](SECURITY.md) for how to report security-sensitive issues privately.
