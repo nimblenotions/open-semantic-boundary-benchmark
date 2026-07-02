@@ -8,6 +8,8 @@ Counterfactual control corpus: 100 personas, split seed 42, **630 test events** 
 
 Maps to **§4.3 Synthetic Pilot Construction**.
 
+Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+
 ## Current implementation
 
 Code:

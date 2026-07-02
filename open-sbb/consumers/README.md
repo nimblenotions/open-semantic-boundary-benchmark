@@ -29,6 +29,8 @@ Alternate open-weight models (`llama3.1:8b`, `gemma4:latest`) use the same promp
 
 Maps to **§4.2 Registered Consumers and Policies** (consumer half) and Table registered-tasks.
 
+Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+
 ## Current implementation
 
 Code (module filenames use legacy `tier*` prefixes):

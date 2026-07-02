@@ -11,6 +11,8 @@
 
 Maps to **§4.4 Utility and Linkage Assessment** (utility half) and headline results tables.
 
+Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+
 ## Current implementation
 
 Code:

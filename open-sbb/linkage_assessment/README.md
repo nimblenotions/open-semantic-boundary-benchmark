@@ -14,6 +14,8 @@ Token recovery is separate (text arms) and **excluded** from \(R(z)\).
 
 Maps to **§4.4 Utility and Linkage Assessment** (linkage half): persona top-1, attribute macro-F1, longitudinal linkage AUC.
 
+Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+
 ## Current implementation
 
 Code:

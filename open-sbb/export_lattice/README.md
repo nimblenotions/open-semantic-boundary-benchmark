@@ -22,6 +22,8 @@ v0.1.1 ships **nine primary conditions** (IDs are stable in configs and metrics 
 
 Maps to **§4.1 Export Lattice** (Table: export-lattice).
 
+Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+
 ## Current implementation
 
 Code:
