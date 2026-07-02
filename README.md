@@ -16,6 +16,14 @@ Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.c
 
 > **Early development.** v0.1.2 is the **citeable Zenodo release** for the medication-adherence pilot (same frozen bundle as v0.1.1). Reproduction (`make repro-smoke`) is the supported first path. Bring-your-own exports, adapters, and one-command evaluation are **enthusiast / v0.2** — see [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md). **Your mileage may vary** outside the committed pilot.
 
+## About the companion paper
+
+Open SBB is built to **stand on its own** — everything needed to understand, run, and reproduce the benchmark lives in this repository ([start here](#start-here)). A companion **technical report** with the full framework write-up is **forthcoming (2026)**.
+
+Section references throughout these docs (e.g., **§4.1–§4.6** in the [`open-sbb/`](open-sbb/README.md) protocol map and [`docs/paper_to_repo.md`](docs/paper_to_repo.md)) point to that report. **"Paper," "long paper," and "technical report" all refer to the same forthcoming document.**
+
+Until it lands, **cite the benchmark via the [Zenodo DOI](https://doi.org/10.5281/zenodo.21071088)** — you do not need the report to use or build on Open SBB.
+
 ## Start here
 
 | You are… | Read |
