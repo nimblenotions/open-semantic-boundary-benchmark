@@ -83,10 +83,21 @@ Headline utility F1 in the paper comes from the **frozen LLM utility consumer** 
 |------|---------|----------------|
 | **Verify** published numbers (start here) | `make repro-smoke` | Checks committed obs + analytics **tier1** F1 and linkage **R(z)** vs paper table (±0.02); **seconds**; no Ollama |
 | **Rescore** observability utility + linkage | `make eval` | Recomputes from `data/eval_cache/` → `outputs/pilot_v2/metrics.json`; typically **a few minutes** |
-| **Rescore** analytics utility | `make eval-analytics` | Recomputes from `data/eval_cache_analytics/` → `analytics_metrics.json` |
-| Regenerate figures / CIs (optional) | `make figures`, `make bootstrap-cis`, … | Uses metrics JSON; see Makefile |
+| **Rescore** analytics utility | `make eval-analytics` | Recomputes from `data/eval_cache_analytics/` → `analytics_metrics.json` (**overwrites** that file; see cohort note below) |
+| **Restore** analytics cohort segments | `make cohort-tier1` | Merges `tier1_cohort` back into `analytics_metrics.json` from the analytics eval cache |
+| Regenerate figures / CIs (optional) | `make figures-all` (preferred) or `make figures`, `make bootstrap-cis`, … | `figures-all` runs `cohort-tier1` first; bare `make figures` expects cohort data already present |
 
 Use **`make repro-smoke` alone** to audit the frozen release. Use **`make eval` + `make eval-analytics`** when you want to recompute headlines from cached LLM predictions (both commands needed for the full paper table).
+
+**Cohort metrics and figures:** `make eval-analytics` rewrites `outputs/pilot_v2/analytics_metrics.json` and does **not** preserve the pre-existing `tier1_cohort` segment block. Run **`make cohort-tier1` immediately after `make eval-analytics`** before regenerating figures — otherwise the utility heatmap draws a blank cohort column. Prefer **`make figures-all`**, which orchestrates `cohort-tier1` → merge-sensitivity → figures → … in the correct order.
+
+```bash
+# Safe rescore + figure regen (no Ollama if caches are present)
+make eval
+make eval-analytics
+make cohort-tier1    # required after eval-analytics; or use figures-all below
+make figures-all     # includes cohort-tier1; safe even if you already ran it
+```
 
 Full regen (`make pipeline`) requires Ollama with `qwen3:8b` for the frozen LLM utility consumers.
 
