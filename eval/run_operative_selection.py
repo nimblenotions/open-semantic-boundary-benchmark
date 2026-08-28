@@ -1,4 +1,4 @@
-"""Run operative selection analyses on pilot_v2 metrics."""
+"""Run Tier-A operative selection analyses on pilot_v2 metrics."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ def _load_json(path: Path) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Operative selection (risk, dominance, bundles)")
+    parser = argparse.ArgumentParser(description="Tier-A operative selection (risk, dominance, bundles)")
     parser.add_argument("--config", type=Path, default=None)
     parser.add_argument("--metrics", type=Path, default=None)
     parser.add_argument("--analytics-metrics", type=Path, default=None)
@@ -27,7 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     root = repo_root()
-    config_path = args.config or (root / "configs" / "pilot_v0.1.1.yaml")
+    config_path = args.config or (root / "configs" / "cikm_v0.1.yaml")
     cfg = load_config(config_path)
 
     pilot_dir = root / cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")

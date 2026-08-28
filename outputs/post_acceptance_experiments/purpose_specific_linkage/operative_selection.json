@@ -1,0 +1,981 @@
+{
+  "observability_R_for_To": {
+    "0.4": {
+      "r_max": 0.4,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.197277738074702,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.26071428571428573,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.45": {
+      "r_max": 0.45,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.45,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.44535940497894505,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.5": {
+      "r_max": 0.5,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.5,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.4866875410037193,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.5,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.4866875410037193,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.5,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      }
+    },
+    "0.55": {
+      "r_max": 0.55,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.55,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.4866875410037193,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.55,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.4866875410037193,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3095413925127006,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.55,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      }
+    }
+  },
+  "analytics_R_for_Ta": {
+    "0.4": {
+      "r_max": 0.4,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.197277738074702,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.26071428571428573,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.45": {
+      "r_max": 0.45,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.45,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.44535940497894505,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.5": {
+      "r_max": 0.5,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.5,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 4,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.5,
+        "winner": "raw",
+        "utility": 0.5468396114664771,
+        "linkage": 0.4832788797549978,
+        "n_feasible": 4,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 4,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 4,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.5,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 4,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.55": {
+      "r_max": 0.55,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.55,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.3568462879823953,
+        "n_feasible": 6,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.55,
+        "winner": "raw",
+        "utility": 0.5468396114664771,
+        "linkage": 0.4832788797549978,
+        "n_feasible": 6,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 6,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3135256953751198,
+        "n_feasible": 6,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.55,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.43175453650222256,
+        "n_feasible": 6,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      }
+    }
+  },
+  "shared_frozen_obs_R": {
+    "0.4": {
+      "r_max": 0.4,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.35787478197253214,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.197277738074702,
+        "linkage": 0.35787478197253214,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.4,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.4,
+        "winner": "redact_bracket",
+        "utility": 0.26071428571428573,
+        "linkage": 0.35787478197253214,
+        "n_feasible": 2,
+        "feasible_conditions": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.45": {
+      "r_max": 0.45,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.45,
+        "winner": "redact_bracket",
+        "utility": 0.6731650099289139,
+        "linkage": 0.35787478197253214,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.44535940497894505,
+        "linkage": 0.4239907589463723,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.45,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.45,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.4239907589463723,
+        "n_feasible": 3,
+        "feasible_conditions": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.5": {
+      "r_max": 0.5,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.5,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.48264927923086615,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.5,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.48264927923086615,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.5,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.5,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.4239907589463723,
+        "n_feasible": 5,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      }
+    },
+    "0.55": {
+      "r_max": 0.55,
+      "observability": {
+        "purpose": "observability",
+        "r_max": 0.55,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.48264927923086615,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_med": {
+        "purpose": "analytics_med",
+        "r_max": 0.55,
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "linkage": 0.48264927923086615,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_side": {
+        "purpose": "analytics_side",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_adherence": {
+        "purpose": "analytics_adherence",
+        "r_max": 0.55,
+        "winner": "sem_coarse",
+        "utility": 1.0,
+        "linkage": 0.3102532461599767,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "analytics_cohort": {
+        "purpose": "analytics_cohort",
+        "r_max": 0.55,
+        "winner": "redact_surrogate",
+        "utility": 0.26430976430976433,
+        "linkage": 0.4239907589463723,
+        "n_feasible": 7,
+        "feasible_conditions": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      }
+    }
+  },
+  "T_o_2_error_stage": {
+    "0.4": {
+      "obs_R": {
+        "winner": "redact_bracket",
+        "utility": 0.9,
+        "feasible": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      },
+      "shared_frozen_R": {
+        "winner": "redact_bracket",
+        "utility": 0.9,
+        "feasible": [
+          "redact_bracket",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.45": {
+      "obs_R": {
+        "winner": "redact_bracket",
+        "utility": 0.9,
+        "feasible": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      },
+      "shared_frozen_R": {
+        "winner": "redact_bracket",
+        "utility": 0.9,
+        "feasible": [
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse"
+        ]
+      }
+    },
+    "0.5": {
+      "obs_R": {
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "feasible": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      },
+      "shared_frozen_R": {
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "feasible": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium"
+        ]
+      }
+    },
+    "0.55": {
+      "obs_R": {
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "feasible": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      },
+      "shared_frozen_R": {
+        "winner": "sem_medium",
+        "utility": 1.0,
+        "feasible": [
+          "raw",
+          "redact_bracket",
+          "redact_surrogate",
+          "sem_coarse",
+          "sem_medium",
+          "redact_llm_substitute",
+          "redact_llm_rephrase"
+        ]
+      }
+    }
+  }
+}

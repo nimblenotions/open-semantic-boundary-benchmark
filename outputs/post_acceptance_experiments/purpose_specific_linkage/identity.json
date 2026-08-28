@@ -1,0 +1,58 @@
+{
+  "conditions": {
+    "raw": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "redact_bracket": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "redact_tokenize": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "redact_surrogate": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "sem_coarse": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "sem_medium": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "sem_fine": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "redact_llm_substitute": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    },
+    "redact_llm_rephrase": {
+      "n_obs": 3894,
+      "n_ana": 3894,
+      "event_ids_equal": true,
+      "symmetric_diff": 0
+    }
+  }
+}

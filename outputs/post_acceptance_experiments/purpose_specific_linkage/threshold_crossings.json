@@ -1,0 +1,14 @@
+[
+  {
+    "condition": "sem_medium",
+    "R_max": 0.5,
+    "obs_feasible": true,
+    "ana_feasible": false
+  },
+  {
+    "condition": "sem_medium",
+    "R_max": 0.55,
+    "obs_feasible": true,
+    "ana_feasible": false
+  }
+]

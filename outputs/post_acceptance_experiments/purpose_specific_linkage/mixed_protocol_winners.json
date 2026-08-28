@@ -1,0 +1,135 @@
+{
+  "protocol": "c*(T_o) uses R(z_c,T_o); c*(T_a) uses R(z_c,T_a); T_a-5 is Track C",
+  "by_r_max": {
+    "0.4": {
+      "feasible_T_o": [
+        "redact_bracket",
+        "sem_coarse"
+      ],
+      "feasible_T_a": [
+        "redact_bracket",
+        "sem_coarse"
+      ],
+      "winners": {
+        "T_o-1": "redact_bracket",
+        "T_o-2": "redact_bracket",
+        "T_a-1": "redact_bracket",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_bracket"
+      },
+      "shared_frozen_obs_R_winners": {
+        "T_o-1": "redact_bracket",
+        "T_a-1": "redact_bracket",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_bracket"
+      },
+      "winner_diffs_vs_shared_frozen": {}
+    },
+    "0.45": {
+      "feasible_T_o": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ],
+      "feasible_T_a": [
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ],
+      "winners": {
+        "T_o-1": "redact_bracket",
+        "T_o-2": "redact_bracket",
+        "T_a-1": "redact_surrogate",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "shared_frozen_obs_R_winners": {
+        "T_o-1": "redact_bracket",
+        "T_a-1": "redact_surrogate",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "winner_diffs_vs_shared_frozen": {}
+    },
+    "0.5": {
+      "feasible_T_o": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium"
+      ],
+      "feasible_T_a": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse"
+      ],
+      "winners": {
+        "T_o-1": "sem_medium",
+        "T_o-2": "sem_medium",
+        "T_a-1": "raw",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "shared_frozen_obs_R_winners": {
+        "T_o-1": "sem_medium",
+        "T_a-1": "sem_medium",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "winner_diffs_vs_shared_frozen": {
+        "T_a-1": {
+          "purpose_specific": "raw",
+          "shared_frozen": "sem_medium"
+        }
+      }
+    },
+    "0.55": {
+      "feasible_T_o": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "sem_medium",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "feasible_T_a": [
+        "raw",
+        "redact_bracket",
+        "redact_surrogate",
+        "sem_coarse",
+        "redact_llm_substitute",
+        "redact_llm_rephrase"
+      ],
+      "winners": {
+        "T_o-1": "sem_medium",
+        "T_o-2": "sem_medium",
+        "T_a-1": "raw",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "shared_frozen_obs_R_winners": {
+        "T_o-1": "sem_medium",
+        "T_a-1": "sem_medium",
+        "T_a-2": "sem_coarse",
+        "T_a-3": "sem_coarse",
+        "T_a-5_track_c": "redact_surrogate"
+      },
+      "winner_diffs_vs_shared_frozen": {
+        "T_a-1": {
+          "purpose_specific": "raw",
+          "shared_frozen": "sem_medium"
+        }
+      }
+    }
+  }
+}

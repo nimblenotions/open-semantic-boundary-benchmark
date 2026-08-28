@@ -1,0 +1,152 @@
+{
+  "created_at_utc": "2026-08-19T16:31:32.009619+00:00",
+  "note": "Two purpose-surface Fig 2 analogues (observability + analytics); audit-only.",
+  "inputs": {
+    "linkage_train_only": "outputs/post_acceptance_experiments/purpose_specific_linkage/linkage_train_only.json",
+    "linkage_comparison": "outputs/post_acceptance_experiments/purpose_specific_linkage/linkage_comparison.json",
+    "text_z_equality": "outputs/post_acceptance_experiments/purpose_specific_linkage/text_z_equality.json",
+    "text_linkage_sanity": "outputs/post_acceptance_experiments/purpose_specific_linkage/text_linkage_sanity.json"
+  },
+  "outputs": {
+    "surface_figures": [
+      {
+        "surface": "observability",
+        "stem": "linkage_decomposition_observability_surface",
+        "tasks": "$T_o$-1, $T_o$-2",
+        "subtitle": "Released surface $z_{c,T_o}$ \u00b7 observability purpose"
+      },
+      {
+        "surface": "analytics",
+        "stem": "linkage_decomposition_analytics_surface",
+        "tasks": "$T_a$-1, $T_a$-2, $T_a$-3, $T_a$-5",
+        "subtitle": "Released surface $z_{c,T_a}$ \u00b7 analytics purpose"
+      }
+    ],
+    "figures": {
+      "linkage_decomposition_observability_surface_png": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/figures/linkage_decomposition_observability_surface.png",
+      "linkage_decomposition_observability_surface_pdf": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/figures/linkage_decomposition_observability_surface.pdf",
+      "linkage_decomposition_analytics_surface_png": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/figures/linkage_decomposition_analytics_surface.png",
+      "linkage_decomposition_analytics_surface_pdf": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/figures/linkage_decomposition_analytics_surface.pdf"
+    },
+    "comparison_csv": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/tables/obs_vs_analytics_linkage_comparison.csv",
+    "comparison_json": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/tables/obs_vs_analytics_linkage_comparison.json",
+    "report": "outputs/post_acceptance_experiments/purpose_specific_linkage/analytics_linkage_decomposition/REPORT.md"
+  },
+  "text_arm_verification": {
+    "all_text_arms_identical": true,
+    "conditions": [
+      {
+        "condition": "raw",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.4832788797549978,
+          "R_ana": 0.4832788797549978,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      },
+      {
+        "condition": "redact_bracket",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.3568462879823953,
+          "R_ana": 0.3568462879823953,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      },
+      {
+        "condition": "redact_llm_rephrase",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.5391263761095514,
+          "R_ana": 0.5391263761095514,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      },
+      {
+        "condition": "redact_llm_substitute",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.527027152608799,
+          "R_ana": 0.527027152608799,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      },
+      {
+        "condition": "redact_surrogate",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.43175453650222256,
+          "R_ana": 0.43175453650222256,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      },
+      {
+        "condition": "redact_tokenize",
+        "delta_R": 0.0,
+        "z_byte_identical": true,
+        "embed_text_identical": true,
+        "linkage_channel_equal": {
+          "R_obs": 0.6523094169065846,
+          "R_ana": 0.6523094169065846,
+          "delta_R": 0.0,
+          "persona_equal": true,
+          "attr_equal": true,
+          "long_equal": true,
+          "token_equal": true
+        },
+        "obs_ana_identical": true
+      }
+    ]
+  },
+  "camera_ready_obs_check": {
+    "checked": true,
+    "camera_ready_table": "outputs/pilot_v2_camera_ready/figures/tables/linkage_decomposition.csv",
+    "matches": true,
+    "mismatches": []
+  },
+  "frozen_sha256_before_after": {
+    "outputs/pilot_v2/metrics.json": "34f172bbf74d3c11013ef5b9f88fa6bb80a053ea09758f7da81727fdfa02774b",
+    "outputs/pilot_v2/analytics_metrics.json": "b6f7262474378f7b4794ff80b78918a6b121be1599f614a8edf4800a63627990",
+    "outputs/pilot_v2_camera_ready/figures/tables/linkage_decomposition.csv": "bb831c7ec4b3806f41494d4f08906e2f2584e91d475b620c188e8e853359485d"
+  },
+  "do_not_write": [
+    "outputs/pilot_v2/**",
+    "outputs/pilot_v2_camera_ready/**",
+    "paper/**/*.tex"
+  ]
+}

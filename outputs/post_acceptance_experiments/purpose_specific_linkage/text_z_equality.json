@@ -1,0 +1,98 @@
+{
+  "raw": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  },
+  "redact_bracket": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  },
+  "redact_tokenize": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  },
+  "redact_surrogate": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  },
+  "redact_llm_substitute": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  },
+  "redact_llm_rephrase": {
+    "n_shared_events": 3894,
+    "n_obs_only": 0,
+    "n_ana_only": 0,
+    "n_z_equal": 3894,
+    "n_embed_text_equal": 3894,
+    "n_r_equal": 0,
+    "z_byte_identical": true,
+    "embed_text_identical": true,
+    "r_differing_keys": [
+      "consumer_id",
+      "purpose_id"
+    ],
+    "first_z_diff": null,
+    "first_embed_diff": null
+  }
+}

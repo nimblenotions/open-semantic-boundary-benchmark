@@ -1,0 +1,25 @@
+{
+  "lowest_to_highest_obs": [
+    "sem_coarse",
+    "redact_bracket",
+    "redact_surrogate",
+    "raw",
+    "sem_medium",
+    "redact_llm_substitute",
+    "redact_llm_rephrase",
+    "redact_tokenize",
+    "sem_fine"
+  ],
+  "lowest_to_highest_ana": [
+    "sem_coarse",
+    "redact_bracket",
+    "redact_surrogate",
+    "raw",
+    "redact_llm_substitute",
+    "redact_llm_rephrase",
+    "sem_medium",
+    "redact_tokenize",
+    "sem_fine"
+  ],
+  "rank_changed": true
+}

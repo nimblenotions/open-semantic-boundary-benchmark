@@ -1,0 +1,898 @@
+{
+  "study": "sbb-analytics-v0.1.1",
+  "generated_at_utc": "2026-06-05T20:55:04.631119+00:00",
+  "tier": "all",
+  "purpose_id": "analytics",
+  "consumer_id": "analytics_vendor",
+  "policy_id": "analytics_policy_v1",
+  "primary_metric": "medication_class_macro_f1",
+  "composite_metric": "composite_utility",
+  "conditions": {
+    "raw": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.49022113798525835,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.8300737126617528
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "raw",
+        "transfer_medication_class_macro_f1": 0.49022113798525835,
+        "transfer_side_effect_signal_macro_f1": 1.0,
+        "transfer_adherence_signal_macro_f1": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.5468396114664771,
+        "side_effect_signal_macro_f1": 0.9097938144329898,
+        "adherence_signal_macro_f1": 0.7243826560373323,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.5468396114664771,
+            "side_effect_signal_macro_f1": 0.9097938144329898,
+            "adherence_signal_macro_f1": 0.7243826560373323,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.3449770679770679,
+            "side_effect_signal_macro_f1": 0.4843064836888719,
+            "adherence_signal_macro_f1": 0.5563031455614577,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.46186223240913254
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.33822453377022493,
+            "side_effect_signal_macro_f1": 0.3300121962660662,
+            "adherence_signal_macro_f1": 0.5084136610901137,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.3922167970421349
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.18730158730158727,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "redact_bracket": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.3599392600602074,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.7866464200200691
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_bracket",
+        "transfer_medication_class_macro_f1": 0.28002760524499654,
+        "transfer_side_effect_signal_macro_f1": 1.0,
+        "transfer_adherence_signal_macro_f1": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.197277738074702,
+        "side_effect_signal_macro_f1": 0.5615662115662116,
+        "adherence_signal_macro_f1": 0.718906430496727,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.197277738074702,
+            "side_effect_signal_macro_f1": 0.5615662115662116,
+            "adherence_signal_macro_f1": 0.718906430496727,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.18898681245557522,
+            "side_effect_signal_macro_f1": 0.37867867867867866,
+            "adherence_signal_macro_f1": 0.5716477556554628,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.3797710822632389
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.006688963210702341,
+            "side_effect_signal_macro_f1": 0.41437664958857323,
+            "adherence_signal_macro_f1": 0.7945759967617891,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.40521386985368824
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.26071428571428573,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "redact_tokenize": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.23794861656823255,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.745982872189411
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_tokenize",
+        "transfer_medication_class_macro_f1": 0.23960253298687217,
+        "transfer_side_effect_signal_macro_f1": 1.0,
+        "transfer_adherence_signal_macro_f1": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.23336357622444076,
+        "side_effect_signal_macro_f1": 0.8660933259213237,
+        "adherence_signal_macro_f1": 0.7756667968480784,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.23336357622444076,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7756667968480784,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.15202088546138537,
+            "side_effect_signal_macro_f1": 0.5015574641243091,
+            "adherence_signal_macro_f1": 0.565393743257821,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.4063240309478385
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.04043010947607531,
+            "side_effect_signal_macro_f1": 0.3172020404504637,
+            "adherence_signal_macro_f1": 0.5213428468603797,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.29299166559563955
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.20625,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "redact_surrogate": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.5231160104321119,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.8410386701440373
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_surrogate",
+        "transfer_medication_class_macro_f1": 0.21999444683749328,
+        "transfer_side_effect_signal_macro_f1": 1.0,
+        "transfer_adherence_signal_macro_f1": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.44535940497894505,
+        "side_effect_signal_macro_f1": 0.8660933259213237,
+        "adherence_signal_macro_f1": 0.7351351351351352,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.44535940497894505,
+            "side_effect_signal_macro_f1": 0.8660933259213237,
+            "adherence_signal_macro_f1": 0.7351351351351352,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.30477620148079626,
+            "side_effect_signal_macro_f1": 0.38239869492493755,
+            "adherence_signal_macro_f1": 0.558883968626089,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.4153529550106076
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.11309539719939414,
+            "side_effect_signal_macro_f1": 0.3102882124796141,
+            "adherence_signal_macro_f1": 0.5240588949605343,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.3158141682131808
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.26430976430976433,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "sem_coarse": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.2163568651713973,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630,
+          "side_effect_present_f1": 1.0,
+          "adherence_friction_f1": 1.0
+        },
+        "composite_utility": 0.7387856217237991
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_coarse",
+        "transfer_medication_class_macro_f1": 0.20257826887661143,
+        "transfer_side_effect_signal_macro_f1": 0.48360655737704916,
+        "transfer_adherence_signal_macro_f1": 0.14864864864864866,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.23604465709728864,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.22830687830687835,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.12831858407079647,
+        "side_effect_signal_macro_f1": 1.0,
+        "adherence_signal_macro_f1": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.12831858407079647,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.030351866774106905,
+            "side_effect_signal_macro_f1": 0.9684605757196496,
+            "adherence_signal_macro_f1": 0.87951039143185,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.6261076113085354
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 0.997236587580435,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.6657455291934783
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.23604465709728864,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.23601190476190476,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "sem_medium": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 1.0,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 1.0
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_medium",
+        "transfer_medication_class_macro_f1": 0.20257826887661143,
+        "transfer_side_effect_signal_macro_f1": 0.48360655737704916,
+        "transfer_adherence_signal_macro_f1": 0.14864864864864866,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.4380952380952381,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.24867724867724864,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 1.0,
+        "side_effect_signal_macro_f1": 0.9932475160505472,
+        "adherence_signal_macro_f1": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9934030722834795,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.9978010240944931
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 1.0
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.4305555555555555,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.20238095238095238,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "sem_fine": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 1.0,
+          "side_effect_signal_macro_f1": 1.0,
+          "adherence_signal_macro_f1": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 1.0
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_fine",
+        "transfer_medication_class_macro_f1": 0.20257826887661143,
+        "transfer_side_effect_signal_macro_f1": 0.48360655737704916,
+        "transfer_adherence_signal_macro_f1": 0.2968094514614844,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.41269841269841273,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.18148148148148147,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 1.0,
+        "side_effect_signal_macro_f1": 0.9932475160505472,
+        "adherence_signal_macro_f1": 0.9888250319284801,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 0.9932475160505472,
+            "adherence_signal_macro_f1": 0.9888250319284801,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 0.994493006993007,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.9981643356643356
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 1.0,
+            "side_effect_signal_macro_f1": 1.0,
+            "adherence_signal_macro_f1": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 1.0
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.362962962962963,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.29444444444444445,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "redact_llm_substitute": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.3573479971565627,
+          "side_effect_signal_macro_f1": 0.9590003904724718,
+          "adherence_signal_macro_f1": 0.946723044397463,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.7543571440088325
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_substitute",
+        "transfer_medication_class_macro_f1": 0.3265675933432502,
+        "transfer_side_effect_signal_macro_f1": 0.9316673174541195,
+        "transfer_adherence_signal_macro_f1": 0.931408115182106,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.2608521658377333,
+        "side_effect_signal_macro_f1": 0.8603859552703195,
+        "adherence_signal_macro_f1": 0.7336840374815058,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.2608521658377333,
+            "side_effect_signal_macro_f1": 0.8603859552703195,
+            "adherence_signal_macro_f1": 0.7336840374815058,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.23948680370437417,
+            "side_effect_signal_macro_f1": 0.35749154838838226,
+            "adherence_signal_macro_f1": 0.5276839204409298,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.37488742417789545
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.13338451452625769,
+            "side_effect_signal_macro_f1": 0.31644427192003494,
+            "adherence_signal_macro_f1": 0.4838807340345532,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.3112365068269486
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.12301587301587302,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    },
+    "redact_llm_rephrase": {
+      "role": "primary",
+      "purpose_id": "analytics",
+      "consumer_id": "analytics_vendor",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "tier0": {
+        "utility": {
+          "medication_class_macro_f1": 0.3815432932423977,
+          "side_effect_signal_macro_f1": 0.9590003904724718,
+          "adherence_signal_macro_f1": 0.9385376756066411,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "composite_utility": 0.7596937864405034
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_rephrase",
+        "transfer_medication_class_macro_f1": 0.43038567856009413,
+        "transfer_side_effect_signal_macro_f1": 0.9527326123538302,
+        "transfer_adherence_signal_macro_f1": 0.627680732818875,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "analytics_triage_v1",
+        "medication_class_macro_f1": 0.41853001814415963,
+        "side_effect_signal_macro_f1": 0.8285714285714285,
+        "adherence_signal_macro_f1": 0.7461976353816961,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "medication_class_macro_f1": 0.41853001814415963,
+            "side_effect_signal_macro_f1": 0.8285714285714285,
+            "adherence_signal_macro_f1": 0.7461976353816961,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.4210624102029847,
+            "side_effect_signal_macro_f1": 0.5103254389598002,
+            "adherence_signal_macro_f1": 0.5553910466000993,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.49559296525429475
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "medication_class_macro_f1": 0.2348991186036445,
+            "side_effect_signal_macro_f1": 0.26584381307250426,
+            "adherence_signal_macro_f1": 0.4778586593873218,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null,
+            "composite_utility": 0.3262005303544902
+          }
+        }
+      },
+      "tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.25925925925925924,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "ta5_cohort_audit_track_c",
+        "cohort_mode": "assessor_symmetric"
+      }
+    }
+  },
+  "notes": {
+    "eval_split": "test",
+    "train_split": "train",
+    "tasks": [
+      "ta_med_class",
+      "ta_side_effect",
+      "ta_adherence",
+      "ta_cohort_segment"
+    ],
+    "transform_root": "data/transformed_analytics",
+    "tier1_consumer": "active",
+    "tier1_runtime_s": 3091.4,
+    "tier1_primary_only": true,
+    "tier1_cohort": "derived_from_tier1_event_predictions",
+    "tier1_sensitivity": {
+      "models": [
+        "llama3.1:8b",
+        "gemma4:latest"
+      ],
+      "prompt_version": "analytics_triage_v1",
+      "merged_at_utc": "2026-06-06T00:41:14.019779+00:00",
+      "split": "test"
+    }
+  },
+  "dual_purpose": {
+    "points": [
+      {
+        "condition_id": "raw",
+        "linkage": 0.48057589546603063,
+        "u_obs": 0.6263286808976464,
+        "u_analytics": 0.7270053606455997
+      },
+      {
+        "condition_id": "redact_bracket",
+        "linkage": 0.35787478197253214,
+        "u_obs": 0.6731650099289139,
+        "u_analytics": 0.4925834600458802
+      },
+      {
+        "condition_id": "redact_tokenize",
+        "linkage": 0.6619591645788753,
+        "u_obs": 0.6618053142346182,
+        "u_analytics": 0.6250412329979477
+      },
+      {
+        "condition_id": "redact_surrogate",
+        "linkage": 0.4239907589463723,
+        "u_obs": 0.6569965291501275,
+        "u_analytics": 0.6821959553451347
+      },
+      {
+        "condition_id": "sem_coarse",
+        "linkage": 0.3102532461599767,
+        "u_obs": 0.1650382121415734,
+        "u_analytics": 0.7094395280235988
+      },
+      {
+        "condition_id": "sem_medium",
+        "linkage": 0.48264927923086615,
+        "u_obs": 1.0,
+        "u_analytics": 0.9977491720168491
+      },
+      {
+        "condition_id": "sem_fine",
+        "linkage": 0.7522809317662005,
+        "u_obs": 1.0,
+        "u_analytics": 0.9940241826596757
+      }
+    ],
+    "knees": {
+      "obs_knee": "sem_medium",
+      "analytics_knee": "sem_medium",
+      "same_knee": true,
+      "obs_knee_u": 1.0,
+      "analytics_knee_u": 0.9977491720168491,
+      "obs_knee_linkage": 0.48264927923086615,
+      "analytics_knee_linkage": 0.48264927923086615
+    },
+    "figures": {
+      "png": "outputs/pilot_v2/figures/dual_pareto.png",
+      "pdf": "outputs/pilot_v2/figures/dual_pareto.pdf"
+    }
+  }
+}

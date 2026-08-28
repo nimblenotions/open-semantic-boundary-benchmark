@@ -26,7 +26,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     root = repo_root()
-    config_path = args.config or (root / "configs" / "pilot_v0.1.1.yaml")
+    config_path = args.config or (root / "configs" / "cikm_v0.1.yaml")
     cfg = load_config(config_path)
 
     default_pilot = root / cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")
@@ -36,6 +36,19 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     metrics = load_metrics(metrics_path)
+    trial4_scope = None
+    for cond in (metrics.get("conditions") or {}).values():
+        t4 = cond.get("trial4_adversary") or {}
+        if t4:
+            trial4_scope = t4.get("tfidf_fit_scope")
+            break
+    if trial4_scope != "train_only":
+        print(
+            "Warning: these metrics are not the CIKM train-only TF-IDF protocol "
+            f"(tfidf_fit_scope={trial4_scope!r}). Paper figures live in "
+            "outputs/pilot_v2_camera_ready (make camera-ready-linkage).",
+            file=sys.stderr,
+        )
     pilot_dir = metrics_path.parent
     out_dir = args.output_dir or (pilot_dir / "figures")
 
@@ -70,6 +83,9 @@ def main(argv: list[str] | None = None) -> int:
         "figures_dir": str(out_dir.relative_to(root) if out_dir.is_relative_to(root) else out_dir),
         "boundary_bundle": str(bundle_path.relative_to(root) if bundle_path.is_relative_to(root) else bundle_path),
         "config_snapshot": str(snapshot_dir.relative_to(root) if snapshot_dir.is_relative_to(root) else snapshot_dir),
+        "tfidf_fit_scope": trial4_scope,
+        "cikm_paper_figures_dir": "outputs/pilot_v2_camera_ready/figures",
+        "cikm_paper_figures_manifest": "outputs/pilot_v2_camera_ready/figures_manifest.json",
         "figure_files": {k: str(v.name) for k, v in figure_paths.items()},
     }
     (pilot_dir / "figures_manifest.json").write_text(

@@ -5,6 +5,8 @@ from __future__ import annotations
 from eval.adversary_trial4 import (
     combined_linkage_score,
     evaluate_trial4_adversary,
+    tfidf_fit_scope_from_config,
+    tfidf_fit_texts,
 )
 from eval.embeddings import MockEmbedder
 
@@ -169,3 +171,48 @@ def test_trial4_returns_attribute_and_linkage_keys():
         "embedder",
     ):
         assert key in metrics
+
+
+def test_tfidf_fit_texts_train_only_excludes_test():
+    train = ["aaa"]
+    test = ["zzz"]
+    assert tfidf_fit_texts(train, test, "train_test") == ["aaa", "zzz"]
+    assert tfidf_fit_texts(train, test, "train_only") == ["aaa"]
+
+
+def test_tfidf_fit_scope_from_config_defaults_to_train_only():
+    assert tfidf_fit_scope_from_config(None) == "train_only"
+    assert tfidf_fit_scope_from_config({}) == "train_only"
+    assert tfidf_fit_scope_from_config({"eval": {"trial4": {"tfidf_fit_scope": "train_test"}}}) == (
+        "train_test"
+    )
+
+
+def test_train_only_tfidf_excludes_test_only_ngrams_and_preserves_token_recovery():
+    train, test = _synthetic_corpus("raw")
+    for row in test:
+        row["export"]["z"]["journal_text"] = "zzzz unique heldout surface zzzz"
+    raw_by_id = {
+        r["event_id"]: {
+            "event_id": r["event_id"],
+            "journal_text": r["export"]["z"]["journal_text"],
+            "assistant_text": r["export"]["z"]["assistant_text"],
+        }
+        for r in train + test
+    }
+    transductive = evaluate_trial4_adversary(
+        train, test, raw_by_id, _persona_table(), seed=7, tfidf_fit_scope="train_test"
+    )
+    inductive = evaluate_trial4_adversary(
+        train, test, raw_by_id, _persona_table(), seed=7, tfidf_fit_scope="train_only"
+    )
+    assert transductive["embedder"] == "tfidf_char_wb"
+    assert inductive["embedder"] == "tfidf_char_wb"
+    assert transductive["tfidf_fit_scope"] == "train_test"
+    assert inductive["tfidf_fit_scope"] == "train_only"
+    assert transductive["tfidf_n_fit_docs"] == len(train) + len(test)
+    assert inductive["tfidf_n_fit_docs"] == len(train)
+    assert transductive["tfidf_vocab_size"] >= inductive["tfidf_vocab_size"]
+    assert transductive["token_recovery_rate"] == inductive["token_recovery_rate"]
+    assert transductive["n_linkage_pairs"] == inductive["n_linkage_pairs"]
+    assert transductive["n_test"] == inductive["n_test"] == 3

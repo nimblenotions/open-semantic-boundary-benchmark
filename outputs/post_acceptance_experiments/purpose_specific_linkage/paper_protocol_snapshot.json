@@ -1,0 +1,33 @@
+{
+  "locked_on": "2026-08-19",
+  "do_not_overwrite_pilot_v2": true,
+  "linkage": {
+    "embedder": "tfidf_char_wb",
+    "analyzer": "char_wb",
+    "ngram_range": [1, 3],
+    "max_features": 5000,
+    "fit": "train_only",
+    "combined_r": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+    "token_recovery": "separate",
+    "risk_surface": "purpose_specific"
+  },
+  "ta5_cohort": {
+    "primary": "track_c_assessor_symmetric",
+    "historical": "mixed_track_a_tier1_test_qwen",
+    "outputs": "outputs/post_acceptance_experiments/ta5_cohort_audit",
+    "scores": "outputs/post_acceptance_experiments/ta5_cohort_audit/track_c_scores.json",
+    "runner": "eval/run_ta5_cohort_audit.py",
+    "replay": "python eval/run_ta5_cohort_audit.py --score-track-c-only"
+  },
+  "purpose_specific_linkage": {
+    "runner": "eval/run_purpose_specific_linkage_audit.py",
+    "outputs": "outputs/post_acceptance_experiments/purpose_specific_linkage",
+    "replay": "MPLCONFIGDIR=/tmp/mpl-sbb python eval/run_purpose_specific_linkage_audit.py"
+  },
+  "frozen_historical": {
+    "outputs": "outputs/pilot_v2",
+    "tfidf_fit": "transductive_train_and_test",
+    "risk_surface": "shared_observability",
+    "ta5": "mixed_track_a"
+  }
+}

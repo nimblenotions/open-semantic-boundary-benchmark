@@ -1,0 +1,70 @@
+{
+  "observability": {
+    "shared_frozen_obs_R": [
+      "redact_bracket",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "purpose_specific": [
+      "redact_bracket",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "enter": [],
+    "leave": []
+  },
+  "analytics_med": {
+    "shared_frozen_obs_R": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "purpose_specific": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "enter": [],
+    "leave": []
+  },
+  "analytics_side": {
+    "shared_frozen_obs_R": [
+      "sem_coarse"
+    ],
+    "purpose_specific": [
+      "sem_coarse"
+    ],
+    "enter": [],
+    "leave": []
+  },
+  "analytics_adherence": {
+    "shared_frozen_obs_R": [
+      "sem_coarse"
+    ],
+    "purpose_specific": [
+      "sem_coarse"
+    ],
+    "enter": [],
+    "leave": []
+  },
+  "analytics_cohort": {
+    "shared_frozen_obs_R": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_fine"
+    ],
+    "purpose_specific": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_fine"
+    ],
+    "enter": [],
+    "leave": []
+  }
+}

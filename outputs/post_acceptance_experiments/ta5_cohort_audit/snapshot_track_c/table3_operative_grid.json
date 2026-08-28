@@ -1,0 +1,70 @@
+{
+  "frozen": [
+    {
+      "r_max": 0.4,
+      "T_o-1": "bracket (0.67)",
+      "T_a-1": "bracket (0.20)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "bracket (0.39)"
+    },
+    {
+      "r_max": 0.45,
+      "T_o-1": "bracket (0.67)",
+      "T_a-1": "surrogate (0.45)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "bracket (0.39)"
+    },
+    {
+      "r_max": 0.5,
+      "T_o-1": "medium (1.00)",
+      "T_a-1": "medium (1.00)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "raw (0.39)"
+    },
+    {
+      "r_max": 0.55,
+      "T_o-1": "medium (1.00)",
+      "T_a-1": "medium (1.00)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "raw (0.39)"
+    }
+  ],
+  "track_c": [
+    {
+      "r_max": 0.4,
+      "T_o-1": "bracket (0.67)",
+      "T_a-1": "bracket (0.20)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "bracket (0.26)"
+    },
+    {
+      "r_max": 0.45,
+      "T_o-1": "bracket (0.67)",
+      "T_a-1": "surrogate (0.45)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "surrogate (0.26)"
+    },
+    {
+      "r_max": 0.5,
+      "T_o-1": "medium (1.00)",
+      "T_a-1": "medium (1.00)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "surrogate (0.26)"
+    },
+    {
+      "r_max": 0.55,
+      "T_o-1": "medium (1.00)",
+      "T_a-1": "medium (1.00)",
+      "T_a-2": "coarse (1.00)",
+      "T_a-3": "coarse (1.00)",
+      "T_a-5": "surrogate (0.26)"
+    }
+  ]
+}

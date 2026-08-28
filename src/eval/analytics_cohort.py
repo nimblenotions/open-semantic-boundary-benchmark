@@ -1,4 +1,14 @@
-"""Opt 5: persona-level cohort analytics (Ta-5) from 30-day event aggregates."""
+"""Opt 5: persona-level cohort analytics (Ta-5) from 30-day event aggregates.
+
+Cohort evaluation modes (post-acceptance audit; frozen paper uses mixed_frozen):
+
+* ``mixed_frozen`` — train on export aggregates, test on assessor aggregates
+  (``evaluate_cohort_from_tier1_predictions``; reported ``tier1_cohort``).
+* ``export_symmetric`` — train and test on export aggregates
+  (``evaluate_cohort_tasks``; reported ``cohort``).
+* ``assessor_symmetric`` — train and test on analytics-assessor aggregates
+  (``evaluate_cohort_from_assessor_predictions``).
+"""
 
 from __future__ import annotations
 
@@ -245,4 +255,242 @@ def evaluate_cohort_tasks(
         ),
         "n_train_personas": len(train_personas),
         "n_test_personas": len(test_personas),
+    }
+
+
+COHORT_MODES = ("mixed_frozen", "export_symmetric", "assessor_symmetric")
+FEATURE_MODES = ("all", "event_count_only", "no_event_count", "shared")
+
+
+def apply_feature_mode(
+    train_x: list[dict[str, Any]],
+    test_x: list[dict[str, Any]],
+    mode: str = "all",
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Restrict persona feature dicts. Does not mutate inputs."""
+    if mode in (None, "all"):
+        return train_x, test_x
+    if mode == "event_count_only":
+        return (
+            [{"event_count": d.get("event_count", 0)} for d in train_x],
+            [{"event_count": d.get("event_count", 0)} for d in test_x],
+        )
+    if mode == "no_event_count":
+
+        def _drop(d: dict[str, Any]) -> dict[str, Any]:
+            return {k: v for k, v in d.items() if k != "event_count"}
+
+        return [_drop(d) for d in train_x], [_drop(d) for d in test_x]
+    if mode == "shared":
+        train_keys: set[str] = set()
+        test_keys: set[str] = set()
+        for d in train_x:
+            train_keys.update(d)
+        for d in test_x:
+            test_keys.update(d)
+        shared = train_keys & test_keys
+
+        def _keep(d: dict[str, Any]) -> dict[str, Any]:
+            return {k: v for k, v in d.items() if k in shared}
+
+        return [_keep(d) for d in train_x], [_keep(d) for d in test_x]
+    raise ValueError(f"unknown feature mode: {mode}")
+
+
+def inspect_feature_schema(
+    train_x: list[dict[str, Any]],
+    test_x: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Train/test key overlap and DictVectorizer drop/zero rates."""
+    train_keys = sorted({k for d in train_x for k in d})
+    test_keys = sorted({k for d in test_x for k in d})
+    train_set, test_set = set(train_keys), set(test_keys)
+    intersection = sorted(train_set & test_set)
+    train_only = sorted(train_set - test_set)
+    test_only = sorted(test_set - train_set)
+
+    vec = DictVectorizer(sparse=False)
+    vec.fit_transform(train_x) if train_x else None
+    test_m = vec.transform(test_x) if train_x and test_x else None
+    feature_names = list(vec.get_feature_names_out()) if train_x else []
+
+    always_zero = 0
+    if test_m is not None and test_m.size:
+        always_zero = int((test_m == 0).all(axis=0).sum())
+    n_dim = len(feature_names)
+    dropped_test_keys = [k for k in test_keys if k not in feature_names]
+
+    return {
+        "train_keys": train_keys,
+        "test_keys": test_keys,
+        "intersection": intersection,
+        "train_only_keys": train_only,
+        "test_only_keys": test_only,
+        "n_train_keys": len(train_keys),
+        "n_test_keys": len(test_keys),
+        "n_vectorizer_dims": n_dim,
+        "n_train_dims_always_zero_at_test": always_zero,
+        "frac_train_dims_always_zero_at_test": (
+            always_zero / n_dim if n_dim else None
+        ),
+        "test_keys_dropped": dropped_test_keys,
+        "n_test_keys_dropped": len(dropped_test_keys),
+        "frac_test_keys_dropped": (
+            len(dropped_test_keys) / len(test_keys) if test_keys else None
+        ),
+        "event_count_in_train": "event_count" in train_set,
+        "event_count_in_test": "event_count" in test_set,
+    }
+
+
+def _fit_predict_features(
+    train_f: list[dict[str, Any]],
+    train_y: list[Any],
+    test_f: list[dict[str, Any]],
+    *,
+    seed: int,
+) -> list[Any]:
+    classes = sorted(set(train_y))
+    if len(classes) < 2:
+        clf = DummyClassifier(strategy="most_frequent")
+        clf.fit(train_f, train_y)
+        return list(clf.predict(test_f))
+    vec = DictVectorizer(sparse=False)
+    train_xm = vec.fit_transform(train_f)
+    test_xm = vec.transform(test_f)
+    clf = RandomForestClassifier(
+        n_estimators=50, random_state=seed, class_weight="balanced"
+    )
+    clf.fit(train_xm, train_y)
+    return list(clf.predict(test_xm))
+
+
+def evaluate_cohort_from_assessor_predictions(
+    train_rows: list[dict[str, Any]],
+    test_rows: list[dict[str, Any]],
+    train_predictions: dict[str, dict[str, str]],
+    test_predictions: dict[str, dict[str, str]],
+    persona_table: dict[str, dict[str, Any]],
+    *,
+    seed: int = 42,
+    feature_mode: str = "all",
+) -> dict[str, float]:
+    """Track C: train and test on analytics-assessor 30-day aggregates."""
+    train_by_persona = _group_by_persona(train_rows)
+    test_by_persona = _group_by_persona(test_rows)
+    train_personas = sorted(train_by_persona)
+    test_personas = sorted(test_by_persona)
+
+    if not test_personas:
+        return {
+            "cohort_segment_macro_f1": 0.0,
+            "n_train_personas": len(train_personas),
+            "n_test_personas": 0,
+            "source": "assessor_predictions",
+            "cohort_mode": "assessor_symmetric",
+            "feature_mode": feature_mode,
+        }
+
+    train_x = [
+        _persona_features_from_predictions(train_by_persona[pid], train_predictions)
+        for pid in train_personas
+    ]
+    test_x = [
+        _persona_features_from_predictions(test_by_persona[pid], test_predictions)
+        for pid in test_personas
+    ]
+    train_x, test_x = apply_feature_mode(train_x, test_x, feature_mode)
+    y_train = [cohort_segment(persona_table[pid]) for pid in train_personas]
+    y_test = [cohort_segment(persona_table[pid]) for pid in test_personas]
+    pred = _fit_predict_features(train_x, y_train, test_x, seed=seed)
+    return {
+        "cohort_segment_macro_f1": float(
+            f1_score(y_test, pred, average="macro", zero_division=0)
+        ),
+        "n_train_personas": len(train_personas),
+        "n_test_personas": len(test_personas),
+        "source": "assessor_predictions",
+        "cohort_mode": "assessor_symmetric",
+        "feature_mode": feature_mode,
+    }
+
+
+def evaluate_cohort_export_symmetric(
+    train_rows: list[dict[str, Any]],
+    test_rows: list[dict[str, Any]],
+    persona_table: dict[str, dict[str, Any]],
+    *,
+    condition_id: str,
+    seed: int = 42,
+    feature_mode: str = "all",
+) -> dict[str, Any]:
+    """Track B with optional feature-mode controls."""
+    train_by_persona = _group_by_persona(train_rows)
+    test_by_persona = _group_by_persona(test_rows)
+    train_personas = sorted(train_by_persona)
+    test_personas = sorted(test_by_persona)
+    train_x = [
+        _persona_features(train_by_persona[pid], condition_id=condition_id)
+        for pid in train_personas
+    ]
+    test_x = [
+        _persona_features(test_by_persona[pid], condition_id=condition_id)
+        for pid in test_personas
+    ]
+    schema = inspect_feature_schema(train_x, test_x)
+    train_x, test_x = apply_feature_mode(train_x, test_x, feature_mode)
+    y_train = [cohort_segment(persona_table[pid]) for pid in train_personas]
+    y_test = [cohort_segment(persona_table[pid]) for pid in test_personas]
+    pred = _fit_predict_features(train_x, y_train, test_x, seed=seed)
+    return {
+        "cohort_segment_macro_f1": float(
+            f1_score(y_test, pred, average="macro", zero_division=0)
+        ),
+        "n_train_personas": len(train_personas),
+        "n_test_personas": len(test_personas),
+        "source": "export_aggregates",
+        "cohort_mode": "export_symmetric",
+        "feature_mode": feature_mode,
+        "schema": schema,
+    }
+
+
+def evaluate_cohort_mixed_frozen(
+    train_rows: list[dict[str, Any]],
+    test_rows: list[dict[str, Any]],
+    test_predictions: dict[str, dict[str, str]],
+    persona_table: dict[str, dict[str, Any]],
+    *,
+    condition_id: str,
+    seed: int = 42,
+    feature_mode: str = "all",
+) -> dict[str, Any]:
+    """Track A with optional feature-mode controls (does not replace frozen JSON)."""
+    train_by_persona = _group_by_persona(train_rows)
+    test_by_persona = _group_by_persona(test_rows)
+    train_personas = sorted(train_by_persona)
+    test_personas = sorted(test_by_persona)
+    train_x = [
+        _persona_features(train_by_persona[pid], condition_id=condition_id)
+        for pid in train_personas
+    ]
+    test_x = [
+        _persona_features_from_predictions(test_by_persona[pid], test_predictions)
+        for pid in test_personas
+    ]
+    schema = inspect_feature_schema(train_x, test_x)
+    train_x, test_x = apply_feature_mode(train_x, test_x, feature_mode)
+    y_train = [cohort_segment(persona_table[pid]) for pid in train_personas]
+    y_test = [cohort_segment(persona_table[pid]) for pid in test_personas]
+    pred = _fit_predict_features(train_x, y_train, test_x, seed=seed)
+    return {
+        "cohort_segment_macro_f1": float(
+            f1_score(y_test, pred, average="macro", zero_division=0)
+        ),
+        "n_train_personas": len(train_personas),
+        "n_test_personas": len(test_personas),
+        "source": "tier1_predictions",
+        "cohort_mode": "mixed_frozen",
+        "feature_mode": feature_mode,
+        "schema": schema,
     }

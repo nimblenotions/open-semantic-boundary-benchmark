@@ -1,8 +1,8 @@
-.PHONY: install generate provenance-targets validate transform eval figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis eval-analytics figures-all repro-smoke byo-smoke
+.PHONY: install generate provenance-targets validate transform eval figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis eval-analytics figures-all repro-smoke repro-cikm-2026 byo-smoke
 
 ROOT := $(shell pwd)
 export PYTHONPATH := $(ROOT)/src:$(PYTHONPATH)
-CONFIG ?= configs/pilot_v0.1.1.yaml
+CONFIG ?= configs/cikm_v0.1.yaml
 
 # Prefer repo .venv when present (no shell activation required); fall back to PATH (CI).
 VENV_PYTHON := $(wildcard .venv/bin/python)
@@ -97,8 +97,13 @@ test:
 	$(PYTEST) tests/ -q
 
 repro-smoke:
-	@echo "Checking baseline artifact parity (no Ollama)..."
+	@echo "Checking historical v0.1.1 headline metrics (no Ollama)..."
 	@$(PYTHON) scripts/repro_smoke.py
+
+repro-cikm-2026:
+	@echo "Verifying CIKM 2026 camera-ready protocol + figure checksums (no Ollama)..."
+	@$(PYTHON) scripts/repro_cikm_2026.py
+	@$(PYTEST) tests/test_paper_protocol.py -q
 
 byo-smoke:
 	@echo "Checking BYO sample export plumbing..."

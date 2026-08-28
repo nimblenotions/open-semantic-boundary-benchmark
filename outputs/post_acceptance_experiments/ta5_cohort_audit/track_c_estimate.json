@@ -1,0 +1,192 @@
+{
+  "model": "qwen3:8b",
+  "prompt_version": "analytics_triage_v1",
+  "batch_size": 30,
+  "train_inferences_needed": 24963,
+  "approx_batches": 833,
+  "test_frozen_hits": 5670,
+  "test_frozen_misses": 0,
+  "note": "Train-side Qwen is not in the frozen analytics cache. Track C writes only to the audit cache root. Test predictions are read from the frozen cache and not re-run.",
+  "conditions": {
+    "raw": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "redact_bracket": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "redact_tokenize": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "redact_surrogate": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "sem_coarse": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 30,
+        "miss": 2747,
+        "total": 2777
+      },
+      "train_inferences_needed": 2747
+    },
+    "sem_medium": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "sem_fine": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "redact_llm_substitute": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    },
+    "redact_llm_rephrase": {
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "test_frozen_cache": {
+        "hit": 630,
+        "miss": 0,
+        "total": 630
+      },
+      "train_frozen_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_audit_cache": {
+        "hit": 0,
+        "miss": 2777,
+        "total": 2777
+      },
+      "train_inferences_needed": 2777
+    }
+  }
+}

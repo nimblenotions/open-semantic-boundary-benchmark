@@ -1,4 +1,4 @@
-"""Operative selection: risk constraints, dominance, task bundles, decision bundle."""
+"""Tier-A operative selection: risk constraints, dominance, task bundles, decision bundle."""
 
 from __future__ import annotations
 
@@ -176,6 +176,7 @@ def build_condition_points(
     analytics_metrics: dict[str, Any],
     *,
     conditions: list[str] | None = None,
+    linkage_by_cid: dict[str, float] | None = None,
 ) -> list[ConditionPoint]:
     cids = conditions or [
         c
@@ -198,7 +199,11 @@ def build_condition_points(
                 u_analytics_adherence=_analytics_adherence(analytics_metrics, cid),
                 u_analytics_composite=_analytics_composite(analytics_metrics, cid),
                 u_cohort=_cohort_utility(analytics_metrics, cid),
-                linkage=_trial4_linkage(obs_metrics, cid),
+                linkage=(
+                    float(linkage_by_cid[cid])
+                    if linkage_by_cid is not None
+                    else _trial4_linkage(obs_metrics, cid)
+                ),
                 provenance_completeness=float(
                     obs_cond.get("provenance", {}).get("completeness", 0.0)
                 ),
@@ -377,6 +382,7 @@ def build_operative_boundary_bundle(
     selection: dict[str, Any],
 ) -> dict[str, Any]:
     """Decision deliverable: recommendations per perspective + trace."""
+    build_condition_points(obs_metrics, analytics_metrics)
     obs_at_045 = [
         r for r in selection["risk_constrained"] if r["purpose"] == "observability" and r["r_max"] == 0.45
     ]
@@ -648,7 +654,7 @@ def write_operative_report(
     ]
 
     parts = [
-        "# Operative selection report — primary analysis",
+        "# Operative selection report (Tier-A)",
         "",
         f"Generated: {selection['generated_at_utc']}",
         "",
@@ -740,7 +746,7 @@ def run_operative_selection(
     *,
     r_max_grid: list[float] | None = None,
 ) -> dict[str, Any]:
-    """Run operative selection analyses and write artifacts."""
+    """Run all Tier-A analyses and write artifacts."""
     out_dir.mkdir(parents=True, exist_ok=True)
     points = build_condition_points(obs_metrics, analytics_metrics)
 

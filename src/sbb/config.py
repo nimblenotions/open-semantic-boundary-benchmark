@@ -1,4 +1,4 @@
-"""Load configs/pilot_v0.1.1.yaml."""
+"""Load configs/cikm_v0.1.yaml."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ def repo_root() -> Path:
 
 
 def load_config(path: Path | None = None) -> dict[str, Any]:
-    cfg_path = path or ROOT / "configs" / "pilot_v0.1.1.yaml"
+    cfg_path = path or ROOT / "configs" / "cikm_v0.1.yaml"
     with cfg_path.open(encoding="utf-8") as f:
         return yaml.safe_load(f)
 

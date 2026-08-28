@@ -1,0 +1,108 @@
+{
+  "sem_coarse": {
+    "obs_fields": [
+      "adherence_barrier",
+      "risk_level",
+      "side_effect"
+    ],
+    "ana_fields": [
+      "adherence_friction_present",
+      "risk_band",
+      "side_effect_present"
+    ],
+    "common_fields": [],
+    "obs_only_fields": [
+      "adherence_barrier",
+      "risk_level",
+      "side_effect"
+    ],
+    "ana_only_fields": [
+      "adherence_friction_present",
+      "risk_band",
+      "side_effect_present"
+    ],
+    "persona_attr_flags": [],
+    "releases_cohort_segment": false
+  },
+  "sem_medium": {
+    "obs_fields": [
+      "error_stage",
+      "failure_mode",
+      "input_semantic_type",
+      "medication_class",
+      "policy_action",
+      "symptom_categories"
+    ],
+    "ana_fields": [
+      "adherence_signal",
+      "medication_class",
+      "side_effect_signal",
+      "symptom_categories",
+      "time_bucket"
+    ],
+    "common_fields": [
+      "medication_class",
+      "symptom_categories"
+    ],
+    "obs_only_fields": [
+      "error_stage",
+      "failure_mode",
+      "input_semantic_type",
+      "policy_action"
+    ],
+    "ana_only_fields": [
+      "adherence_signal",
+      "side_effect_signal",
+      "time_bucket"
+    ],
+    "persona_attr_flags": [
+      "failure_mode",
+      "medication_class",
+      "symptom_categories",
+      "time_bucket"
+    ],
+    "releases_cohort_segment": false
+  },
+  "sem_fine": {
+    "obs_fields": [
+      "failure_mode",
+      "occupation_sector",
+      "specific_medication",
+      "symptoms"
+    ],
+    "ana_fields": [
+      "adherence_signal",
+      "cohort_segment",
+      "engagement_trend",
+      "medication_class",
+      "side_effect_signal",
+      "symptom_categories"
+    ],
+    "common_fields": [],
+    "obs_only_fields": [
+      "failure_mode",
+      "occupation_sector",
+      "specific_medication",
+      "symptoms"
+    ],
+    "ana_only_fields": [
+      "adherence_signal",
+      "cohort_segment",
+      "engagement_trend",
+      "medication_class",
+      "side_effect_signal",
+      "symptom_categories"
+    ],
+    "persona_attr_flags": [
+      "cohort_segment",
+      "engagement_trend",
+      "failure_mode",
+      "medication_class",
+      "occupation_sector",
+      "specific_medication",
+      "symptom_categories",
+      "symptoms"
+    ],
+    "releases_cohort_segment": true
+  }
+}

@@ -1,4 +1,4 @@
-"""Orchestrate classical baseline, LLM consumer, and linkage observability study across export conditions."""
+"""Orchestrate Tier-0/Tier-1/linkage observability study across lattice conditions."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from eval.adversary import evaluate_adversary
-from eval.adversary_trial4 import evaluate_trial4_adversary
+from eval.adversary_trial4 import evaluate_trial4_adversary, tfidf_fit_scope_from_config
 from eval.io import (
     join_eval_rows,
     load_condition_exports,
@@ -280,6 +280,7 @@ def run_study(
         for row in load_jsonl(root / cfg["paths"]["ground_truth"] / "persona_table.jsonl")
     }
     seed = int(cfg.get("eval", {}).get("tier0", {}).get("random_seed", 42))
+    tfidf_fit_scope = tfidf_fit_scope_from_config(cfg)
 
     raw_exports = load_condition_exports(
         root / cfg["paths"]["transformed"] / "raw"
@@ -310,12 +311,14 @@ def run_study(
             "provenance": evaluate_provenance(exports),
         }
         if run_linkage:
+            print(f"[linkage] {condition_id} tfidf_fit_scope={tfidf_fit_scope}", flush=True, file=sys.stderr)
             metrics["trial4_adversary"] = evaluate_trial4_adversary(
                 train_rows,
                 test_rows,
                 raw_by_id,
                 persona_table,
                 seed=seed,
+                tfidf_fit_scope=tfidf_fit_scope,
             )
             metrics["transfer"] = evaluate_transfer(
                 raw_train_rows,
@@ -330,6 +333,7 @@ def run_study(
                 raw_by_id,
                 persona_table,
                 seed=seed,
+                tfidf_fit_scope=tfidf_fit_scope,
             )
             metrics["tier0"] = {
                 "utility": evaluate_tier0(train_rows, test_rows, seed=seed),
@@ -408,5 +412,9 @@ def run_study(
             "hypotheses_scope": "7 lattice (H1–H3) + LLM arms (H4)",
             "tier1_consumer": "active" if run_tier1 else "inactive",
             "linkage_tier": run_linkage,
+            "tfidf_fit_scope": tfidf_fit_scope,
+            "tfidf_analyzer": "char_wb",
+            "tfidf_ngram_range": [1, 3],
+            "tfidf_max_features": 5000,
         },
     }

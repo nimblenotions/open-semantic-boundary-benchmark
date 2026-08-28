@@ -2,6 +2,24 @@
 
 All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Versioning](https://semver.org/).
 
+## [cikm-2026] — 2026-08-28
+
+CIKM 2026 paper **4405** reproducibility package (Full paper package, not Open-SBB Core).
+
+### Added
+
+- `configs/cikm_v0.1.yaml` with locked `paper_protocol` (train-only TF-IDF, purpose-specific \(R\), Track C Ta-5)
+- Cite surface [`releases/cikm-2026/`](releases/cikm-2026/) — protocol assertion, Table 3 grid, Fig. 2–4 PDFs, checksums
+- `make repro-cikm-2026` — verify protocol + figure checksums **without Ollama**
+- Camera-ready and post-acceptance metric trees used by the submitted paper
+
+### Changed
+
+- Default config is `configs/cikm_v0.1.yaml` on this tag
+- README is self-contained for CIKM 2026 repro; `outputs/pilot_v2/` labeled **historical**
+
+This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on this tag.
+
 ## [0.1.2] — 2026-06-30
 
 ### Added

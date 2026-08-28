@@ -1,0 +1,740 @@
+{
+  "created_at_utc": "2026-08-19T13:02:46.447571+00:00",
+  "diagnostic_only": true,
+  "did_not_modify": [
+    "Track C",
+    "frozen consumer prompts",
+    "policies",
+    "schemas",
+    "lattice exports",
+    "linkage scores",
+    "utility scores for other tasks",
+    "paper figures",
+    "main.tex"
+  ],
+  "track_c_sem_fine_macro_f1": 0.29444444444444445,
+  "direct_field_ceiling_sem_fine_macro_f1": 1.0,
+  "direct_field_exact_one": true,
+  "utility_gap": 0.7055555555555555,
+  "published_obs_R_z_sem_fine": 0.7522809317662005,
+  "published_embedder": "tfidf_char_wb",
+  "published_persona_inference_mode": "test_loo_disjoint",
+  "r_max_grid": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "sem_fine_feasible_at_r_max": {
+    "0.4": false,
+    "0.45": false,
+    "0.5": false,
+    "0.55": false
+  },
+  "sem_fine_infeasible_at_all_reported_r_max": true,
+  "consumer": {
+    "prompt_version": "analytics_triage_v1",
+    "model": "qwen3:8b",
+    "system_prompt_requests_cohort_segment": false,
+    "system_prompt_output_keys": [
+      "medication_class",
+      "side_effect_signal",
+      "adherence_signal"
+    ],
+    "aggregation_reads_z_cohort_segment": false,
+    "same_pipeline_all_conditions": true,
+    "pipeline": "Qwen analytics_triage_v1 event outputs \u2192 30-day rates (event_count, side_effect_rate, adherence_barrier_rate, med_*) \u2192 RF n=50 seed 42, both splits"
+  },
+  "conditions": {
+    "raw": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Quick check-in: meds done, mood stable.\nassistant: Logged. Remember your evening dose if applicable."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "redact_bracket": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Quick check-in: [MEDICATION] done, mood stable.\nassistant: Logged. Remember your [TIME] [MEDICATION] if applicable."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "redact_tokenize": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Quick check-in: MED_39f6b060 done, mood stable.\nassistant: Logged. Remember your TIME_5c29e39a MED_a474c8f6 if applicable."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "redact_surrogate": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Quick check-in: prescriptions done, mood stable.\nassistant: Logged. Remember your afternoon dosage if applicable."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "sem_coarse": {
+      "analytics_z_keys": [
+        "adherence_friction_present",
+        "risk_band",
+        "side_effect_present"
+      ],
+      "obs_z_keys": [
+        "adherence_barrier",
+        "risk_level",
+        "side_effect"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "adherence_friction_present",
+          "risk_band",
+          "side_effect_present"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "{\"adherence_friction_present\": false, \"risk_band\": \"low\", \"side_effect_present\": false}"
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "sem_medium": {
+      "analytics_z_keys": [
+        "adherence_signal",
+        "medication_class",
+        "side_effect_signal",
+        "symptom_categories",
+        "time_bucket"
+      ],
+      "obs_z_keys": [
+        "error_stage",
+        "failure_mode",
+        "input_semantic_type",
+        "medication_class",
+        "policy_action",
+        "symptom_categories"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "adherence_signal",
+          "medication_class",
+          "side_effect_signal",
+          "symptom_categories",
+          "time_bucket"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "{\"adherence_signal\": \"none\", \"medication_class\": \"SNRI\", \"side_effect_signal\": \"absent\", \"symptom_categories\": \"general\", \"time_bucket\": \"evening\"}"
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "sem_fine": {
+      "analytics_z_keys": [
+        "adherence_signal",
+        "cohort_segment",
+        "engagement_trend",
+        "medication_class",
+        "side_effect_signal",
+        "symptom_categories"
+      ],
+      "obs_z_keys": [
+        "failure_mode",
+        "occupation_sector",
+        "specific_medication",
+        "symptoms"
+      ],
+      "releases_cohort_segment": true,
+      "releases_engagement_trend": true,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 20,
+        "n_personas_missing_field": 0,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": 1.0,
+        "exact_one": true,
+        "y_true_class_counts": {
+          "low_moderate": 4,
+          "high_anxious-hypervigilant": 1,
+          "high_avoidant": 3,
+          "low_avoidant": 5,
+          "medium_moderate": 4,
+          "low_anxious-hypervigilant": 1,
+          "medium_avoidant": 2
+        },
+        "y_pred_class_counts": {
+          "low_moderate": 4,
+          "high_anxious-hypervigilant": 1,
+          "high_avoidant": 3,
+          "low_avoidant": 5,
+          "medium_moderate": 4,
+          "low_anxious-hypervigilant": 1,
+          "medium_avoidant": 2
+        }
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 100,
+        "n_personas_missing_field": 0,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": 1.0,
+        "exact_one": true,
+        "y_true_class_counts": {
+          "low_avoidant": 16,
+          "low_anxious-hypervigilant": 14,
+          "low_moderate": 10,
+          "high_anxious-hypervigilant": 11,
+          "medium_avoidant": 8,
+          "high_avoidant": 11,
+          "medium_anxious-hypervigilant": 9,
+          "medium_moderate": 11,
+          "high_moderate": 10
+        },
+        "y_pred_class_counts": {
+          "low_avoidant": 16,
+          "low_anxious-hypervigilant": 14,
+          "low_moderate": 10,
+          "high_anxious-hypervigilant": 11,
+          "medium_avoidant": 8,
+          "high_avoidant": 11,
+          "medium_anxious-hypervigilant": 9,
+          "medium_moderate": 11,
+          "high_moderate": 10
+        }
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 630,
+          "macro_f1": 1.0,
+          "exact_one": true
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "adherence_signal",
+          "cohort_segment",
+          "engagement_trend",
+          "medication_class",
+          "side_effect_signal",
+          "symptom_categories"
+        ],
+        "qwen_payload_contains_cohort_segment": true,
+        "analytics_embed_text_contains_cohort_segment": true,
+        "qwen_payload_excerpt": "{\"adherence_signal\": \"none\", \"cohort_segment\": \"low_avoidant\", \"engagement_trend\": \"stable\", \"medication_class\": \"SNRI\", \"side_effect_signal\": \"absent\", \"symptom_categories\": \"general\"}"
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "redact_llm_substitute": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Logged medication. No significant side effects prior to shift.\nassistant: Logged. Remember your evening medication if applicable."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    },
+    "redact_llm_rephrase": {
+      "analytics_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "obs_z_keys": [
+        "assistant_text",
+        "journal_text"
+      ],
+      "releases_cohort_segment": false,
+      "releases_engagement_trend": false,
+      "test_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 20,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 20,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "corpus_direct_field_cohort": {
+        "field": "cohort_segment",
+        "n_test_personas": 100,
+        "n_personas_with_field": 0,
+        "n_personas_missing_field": 100,
+        "n_nonconstant_personas": 0,
+        "n_mismatch_vs_persona_table": 0,
+        "macro_f1": null,
+        "exact_one": false,
+        "y_true_class_counts": {},
+        "y_pred_class_counts": {}
+      },
+      "test_event_field_ceilings": {
+        "medication_class": {
+          "field": "medication_class",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "side_effect_signal": {
+          "field": "side_effect_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        },
+        "adherence_signal": {
+          "field": "adherence_signal",
+          "n_test_events": 630,
+          "n_events_with_field": 0,
+          "macro_f1": null,
+          "exact_one": false
+        }
+      },
+      "analytics_payload": {
+        "z_keys": [
+          "assistant_text",
+          "journal_text"
+        ],
+        "qwen_payload_contains_cohort_segment": false,
+        "analytics_embed_text_contains_cohort_segment": false,
+        "qwen_payload_excerpt": "journal: Medication recorded. No significant concerns prior to starting the day.\nassistant: Your session is recorded. Don't forget your evening medication if needed."
+      },
+      "obs_z_contains_cohort_segment": false,
+      "obs_embed_contains_cohort_segment": false
+    }
+  },
+  "note_on_train_only_linkage": "Published R(z) in outputs/pilot_v2/metrics.json is Trial4 combined_linkage_score on observability exports (data/transformed/), embedder tfidf_char_wb. A train-only vectorizer protocol is a parallel laptop job and is not on this branch. Feasibility at 0.40\u20130.55 does not depend on that protocol: published R(z)=0.752 already exceeds 0.55. Analytics z.cohort_segment is not in the observability embedding string used for that R(z)."
+}

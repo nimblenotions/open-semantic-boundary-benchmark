@@ -457,7 +457,7 @@ def plot_dual_pareto_main_threepanel(
                 r"Mean Ta-1/2/3 macro-F1",
             ),
         ],
-        suptitle="Purpose-specific utility--linkage frontiers (Tier-1 qwen, nine lattice arms)",
+        suptitle="Purpose-specific utility--linkage frontiers (Tier-1 qwen, nine lattice conditions)",
         ncols=3,
         figsize=(13.8, 4.3),
         label_panels=True,

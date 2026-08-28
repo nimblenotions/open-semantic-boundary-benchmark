@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-08-19T14:07:29.603253+00:00",
+  "output_dir": "outputs/post_acceptance_experiments/purpose_specific_linkage",
+  "text_z_embed_identical": true,
+  "text_linkage_identical": true,
+  "instrument_counts_match": true,
+  "stopped_before_semantic_interp": false,
+  "post_run_notes": [
+    "semantic_schemas.json regenerated after fixing ana_only_fields (ana_k - obs_k); Trial4 not rerun",
+    "mixed_protocol_winners.json derived from operative_selection.json without rerunning Trial4",
+    "REPORT.md written after Trial4; does not overwrite pilot_v2 or main.tex"
+  ]
+}

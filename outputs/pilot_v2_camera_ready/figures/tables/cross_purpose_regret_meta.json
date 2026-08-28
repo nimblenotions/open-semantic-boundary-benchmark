@@ -1,0 +1,18 @@
+{
+  "r_max": 0.45,
+  "provenance_min": 0.9,
+  "winners": {
+    "observability": "redact_bracket",
+    "analytics_med": "redact_surrogate",
+    "analytics_side": "sem_coarse",
+    "analytics_adherence": "sem_coarse",
+    "analytics_cohort": "redact_bracket"
+  },
+  "column_labels": [
+    "T_o",
+    "Ta-1 med-class",
+    "Ta-2 side-effect",
+    "Ta-3 adherence",
+    "Ta-5 cohort"
+  ]
+}

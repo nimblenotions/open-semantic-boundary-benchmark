@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "conditions": {
+    "redact_surrogate": {
+      "R_obs": 0.43175453650222256,
+      "R_ana": 0.43175453650222256,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    },
+    "redact_bracket": {
+      "R_obs": 0.3568462879823953,
+      "R_ana": 0.3568462879823953,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    },
+    "raw": {
+      "R_obs": 0.4832788797549978,
+      "R_ana": 0.4832788797549978,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    },
+    "redact_llm_rephrase": {
+      "R_obs": 0.5391263761095514,
+      "R_ana": 0.5391263761095514,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    },
+    "redact_llm_substitute": {
+      "R_obs": 0.527027152608799,
+      "R_ana": 0.527027152608799,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    },
+    "redact_tokenize": {
+      "R_obs": 0.6523094169065846,
+      "R_ana": 0.6523094169065846,
+      "delta_R": 0.0,
+      "persona_equal": true,
+      "attr_equal": true,
+      "long_equal": true,
+      "token_equal": true
+    }
+  }
+}

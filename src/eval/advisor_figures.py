@@ -22,6 +22,7 @@ from eval.operative_selection import (
     risk_constrained_selection,
     _utility_for_purpose,
 )
+from sbb.config import repo_root
 from eval.granular_figures import (
     _analytics_cohort,
     _analytics_tier1,
@@ -31,6 +32,9 @@ from eval.granular_figures import (
 )
 
 FIG_DPI = 300
+# Sheridan/ACM: Type 1 or TrueType only. Matplotlib default pdf.fonttype=3 emits Type 3.
+plt.rcParams["pdf.fonttype"] = 42
+plt.rcParams["ps.fonttype"] = 42
 
 # Paper heatmap typography (em relative to rcParams["font.size"], typically 10pt).
 HEATMAP_CELL_EM = 1.0
@@ -39,14 +43,14 @@ HEATMAP_AXIS_EM = 1.2
 HEATMAP_TITLE_EM = 1.2
 HEATMAP_CBAR_EM = 1.0
 
-# Registered pilot tasks (primary qwen3:8b consumer); excludes composite scalars.
+# Registered pilot tasks (Tier-1 qwen); excludes composite scalars.
 UTILITY_COLUMNS: list[tuple[str, str, str]] = [
     ("T_o-1", "failure\nmode", "obs_failure_mode"),
     ("T_o-2", "error\nstage", "obs_error_stage"),
     ("Ta-1", "med\nclass", "analytics_med_class"),
     ("Ta-2", "side\neffect", "analytics_side_effect"),
     ("Ta-3", "adher\nence", "analytics_adherence"),
-    ("Ta-5", "cohort\nsegment", "analytics_cohort"),
+    ("Ta-5", "behavioural\ncohort", "analytics_cohort"),
 ]
 
 LINKAGE_COLUMNS: list[tuple[str, str]] = [
@@ -56,13 +60,13 @@ LINKAGE_COLUMNS: list[tuple[str, str]] = [
     ("Token", "token_recovery_rate"),
 ]
 
-# Registered purposes for cross-purpose regret (risk-constrained winners per purpose).
+# Registered purposes for cross-task regret (risk-constrained winners per task).
 REGRET_PURPOSES: list[tuple[str, str]] = [
     ("observability", "T_o"),
-    ("analytics_med", "Ta-1 med-class"),
-    ("analytics_side", "Ta-2 side-effect"),
-    ("analytics_adherence", "Ta-3 adherence"),
-    ("analytics_cohort", "Ta-5 cohort"),
+    ("analytics_med", "T_a-1\nmedication class"),
+    ("analytics_side", "T_a-2\nside effect"),
+    ("analytics_adherence", "T_a-3\nadherence"),
+    ("analytics_cohort", "T_a-5\nbehavioural\ncohort"),
 ]
 
 DEFAULT_R_MAX_FOCAL = 0.45
@@ -196,7 +200,7 @@ def plot_utility_matrix_heatmap(
     analytics_metrics: dict[str, Any],
     out_dir: Path,
 ) -> dict[str, Path]:
-    """Rows = lattice arms; columns = registered utility tasks under T_o and T_a."""
+    """Rows = lattice conditions; columns = registered utility tasks under T_o and T_a."""
     cids = _conditions(obs_metrics, analytics_metrics)
     n_rows = len(cids)
     n_cols = len(UTILITY_COLUMNS)
@@ -217,7 +221,12 @@ def plot_utility_matrix_heatmap(
     _annotate_heatmap(ax, matrix, cell_fontsize=HEATMAP_CELL_EM * _fs)
 
     ax.set_xticks(np.arange(n_cols))
-    col_labels = [f"{task_id}\n{label}" for task_id, label, _ in UTILITY_COLUMNS]
+    col_labels = []
+    for task_id, label, _ in UTILITY_COLUMNS:
+        if task_id == "Ta-5":
+            col_labels.append("T_a-5\nbehavioural\ncohort")
+        else:
+            col_labels.append(f"{task_id}\n{label}")
     ax.set_xticklabels(col_labels, fontsize=HEATMAP_TICK_EM * _fs)
     ax.set_yticks(np.arange(n_rows))
     ax.set_yticklabels([PAPER_LABELS.get(c, c) for c in cids], fontsize=HEATMAP_TICK_EM * _fs)
@@ -256,13 +265,10 @@ def plot_utility_matrix_heatmap(
         fontweight="bold",
     )
 
-    ax.set_xlabel(
-        "Registered consumer task (macro-F1 / accuracy, qwen3:8b)",
-        fontsize=HEATMAP_AXIS_EM * _fs,
-    )
-    ax.set_ylabel("Export lattice arm", fontsize=HEATMAP_AXIS_EM * _fs)
+    ax.set_xlabel("Registered consumer task", fontsize=HEATMAP_AXIS_EM * _fs)
+    ax.set_ylabel("Lattice condition", fontsize=HEATMAP_AXIS_EM * _fs)
     ax.set_title(
-        "Export utility matrix: no single arm maximizes every registered task",
+        "Export utility matrix: no single condition maximizes every registered task",
         fontsize=HEATMAP_TITLE_EM * _fs,
         fontweight="bold",
         pad=28,
@@ -279,28 +285,49 @@ def plot_utility_matrix_heatmap(
 def plot_linkage_decomposition(
     obs_metrics: dict[str, Any],
     out_dir: Path,
+    *,
+    suptitle: str | None = None,
+    subtitle: str | None = None,
+    filename_stem: str = "linkage_decomposition",
+    combined_r_label: str = r"$R(z)$",
 ) -> dict[str, Path]:
-    """Rows = lattice arms; columns = linkage channels (persona, attribute, longitudinal, token)."""
+    """Rows = lattice conditions; left = four channels; right = combined R(z)."""
     cids = [c for c in PRIMARY_LATTICE if c in obs_metrics.get("conditions", {})]
     n_rows = len(cids)
     n_cols = len(LINKAGE_COLUMNS)
 
     matrix = np.full((n_rows, n_cols), np.nan)
+    combined = np.full((n_rows, 1), np.nan)
     for i, cid in enumerate(cids):
         for j, (_, metric_key) in enumerate(LINKAGE_COLUMNS):
             matrix[i, j] = _linkage_value(obs_metrics, cid, metric_key)
+        combined[i, 0] = _linkage_value(obs_metrics, cid, "combined_linkage_score")
 
     cmap = LinearSegmentedColormap.from_list(
         "linkage",
         ["#fff5f0", "#fcbba1", "#fb6a4a", "#cb181d", "#67000d"],
     )
 
-    fig, ax = plt.subplots(figsize=(6.8, 5.2))
+    fig, (ax, ax_r) = plt.subplots(
+        1,
+        2,
+        figsize=(7.4, 5.2),
+        sharey=True,
+        layout="constrained",
+        gridspec_kw={"width_ratios": [4.0, 1.05], "wspace": 0.16},
+    )
     im = ax.imshow(matrix, aspect="auto", cmap=cmap, vmin=0.0, vmax=1.0)
+    ax_r.imshow(combined, aspect="auto", cmap=cmap, vmin=0.0, vmax=1.0)
     _fs = plt.rcParams["font.size"]
     _annotate_heatmap(
         ax,
         matrix,
+        text_color_threshold=0.5,
+        cell_fontsize=HEATMAP_CELL_EM * _fs,
+    )
+    _annotate_heatmap(
+        ax_r,
+        combined,
         text_color_threshold=0.5,
         cell_fontsize=HEATMAP_CELL_EM * _fs,
     )
@@ -309,6 +336,12 @@ def plot_linkage_decomposition(
     ax.set_xticklabels(
         [label for label, _ in LINKAGE_COLUMNS],
         fontsize=HEATMAP_TICK_EM * _fs,
+    )
+    ax_r.set_xticks([0])
+    ax_r.set_xticklabels(
+        [combined_r_label],
+        fontsize=HEATMAP_TICK_EM * _fs,
+        fontweight="bold",
     )
     ax.set_yticks(np.arange(n_rows))
     ax.set_yticklabels(
@@ -330,19 +363,37 @@ def plot_linkage_decomposition(
         )
 
     ax.set_xlabel("Linkage channel", fontsize=HEATMAP_AXIS_EM * _fs)
-    ax.set_ylabel("Export lattice arm", fontsize=HEATMAP_AXIS_EM * _fs)
-    ax.set_title(
-        "Linkage decomposition: lexical suppression $\\neq$ behavioural privacy",
+    ax.set_ylabel("Export lattice condition", fontsize=HEATMAP_AXIS_EM * _fs)
+    main_title = (
+        suptitle
+        or "Linkage decomposition: lexical suppression $\\neq$ behavioural privacy"
+    )
+    fig.suptitle(
+        main_title,
         fontsize=HEATMAP_TITLE_EM * _fs,
         fontweight="bold",
+        y=0.98 if subtitle else 0.99,
     )
+    if subtitle:
+        fig.text(
+            0.5,
+            0.935,
+            subtitle,
+            ha="center",
+            va="top",
+            transform=fig.transFigure,
+            fontsize=HEATMAP_AXIS_EM * _fs,
+            color="#333333",
+        )
+        layout_engine = fig.get_layout_engine()
+        if layout_engine is not None and hasattr(layout_engine, "set"):
+            layout_engine.set(rect=(0, 0, 1, 0.84))
 
-    cbar = fig.colorbar(im, ax=ax, fraction=0.03, pad=0.02)
+    cbar = fig.colorbar(im, ax=[ax, ax_r], fraction=0.046, pad=0.02)
     cbar.set_label("Risk score", fontsize=HEATMAP_CBAR_EM * _fs)
 
-    fig.tight_layout()
-    paths = _save(fig, "linkage_decomposition", out_dir)
-    return {f"linkage_decomposition_{k}": v for k, v in paths.items()}
+    paths = _save(fig, filename_stem, out_dir)
+    return {f"{filename_stem}_{k}": v for k, v in paths.items()}
 
 
 def write_utility_matrix_table(
@@ -373,9 +424,76 @@ def write_linkage_decomposition_table(
         for label, metric_key in LINKAGE_COLUMNS:
             val = _linkage_value(obs_metrics, cid, metric_key)
             row[label.lower()] = round(val, 4) if val is not None else ""
+        combined = _linkage_value(obs_metrics, cid, "combined_linkage_score")
+        row["combined_r"] = round(combined, 4) if combined is not None else ""
         rows.append(row)
-    fieldnames = ["condition_id"] + [label.lower() for label, _ in LINKAGE_COLUMNS]
+    fieldnames = ["condition_id"] + [label.lower() for label, _ in LINKAGE_COLUMNS] + [
+        "combined_r"
+    ]
     return _write_csv(table_dir / "linkage_decomposition.csv", rows, fieldnames)
+
+
+def _load_purpose_specific_linkage_scores() -> tuple[dict[str, float], dict[str, float]] | None:
+    """Train-only purpose-specific R from post-acceptance audit, if present."""
+    path = (
+        repo_root()
+        / "outputs/post_acceptance_experiments/purpose_specific_linkage/linkage_train_only.json"
+    )
+    if not path.is_file():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    obs = {
+        cid: float(block["combined_linkage_score"])
+        for cid, block in data["observability"].items()
+    }
+    ana = {
+        cid: float(block["combined_linkage_score"])
+        for cid, block in data["analytics"].items()
+    }
+    return obs, ana
+
+
+def _purpose_point_sets(
+    obs_metrics: dict[str, Any],
+    analytics_metrics: dict[str, Any],
+    *,
+    obs_linkage_by_cid: dict[str, float] | None = None,
+    ana_linkage_by_cid: dict[str, float] | None = None,
+) -> tuple[list[Any], list[Any], dict[str, tuple[list[Any], dict[str, Any]]]]:
+    """Obs vs analytics linkage surfaces for purpose-specific operative selection."""
+    cids = _conditions(obs_metrics, analytics_metrics)
+    if obs_linkage_by_cid is None:
+        obs_linkage_by_cid = {
+            cid: float(
+                _linkage_value(obs_metrics, cid, "combined_linkage_score") or 0.0
+            )
+            for cid in cids
+        }
+    if ana_linkage_by_cid is None:
+        ana_linkage_by_cid = dict(obs_linkage_by_cid)
+
+    obs_points = build_condition_points(
+        obs_metrics,
+        analytics_metrics,
+        conditions=cids,
+        linkage_by_cid=obs_linkage_by_cid,
+    )
+    ana_points = build_condition_points(
+        obs_metrics,
+        analytics_metrics,
+        conditions=cids,
+        linkage_by_cid=ana_linkage_by_cid,
+    )
+    obs_by = {p.condition_id: p for p in obs_points}
+    ana_by = {p.condition_id: p for p in ana_points}
+    purpose_sets: dict[str, tuple[list[Any], dict[str, Any]]] = {
+        "observability": (obs_points, obs_by),
+        "analytics_med": (ana_points, ana_by),
+        "analytics_side": (ana_points, ana_by),
+        "analytics_adherence": (ana_points, ana_by),
+        "analytics_cohort": (ana_points, ana_by),
+    }
+    return obs_points, ana_points, purpose_sets
 
 
 def build_cross_purpose_regret_matrix(
@@ -384,35 +502,64 @@ def build_cross_purpose_regret_matrix(
     *,
     r_max: float = DEFAULT_R_MAX_FOCAL,
     provenance_min: float = DEFAULT_PROVENANCE_MIN,
+    obs_linkage_by_cid: dict[str, float] | None = None,
+    ana_linkage_by_cid: dict[str, float] | None = None,
 ) -> dict[str, Any]:
-    """Regret[i,j] = U(purpose_j, z*_j) - U(purpose_j, z*_i) at linkage budget r_max."""
-    points = build_condition_points(obs_metrics, analytics_metrics)
-    point_by_cid = {p.condition_id: p for p in points}
+    """Regret[i,j] = U(task j, z*_{j}) - U(task j, z*_{i}) under purpose-specific R."""
+    _, _, purpose_sets = _purpose_point_sets(
+        obs_metrics,
+        analytics_metrics,
+        obs_linkage_by_cid=obs_linkage_by_cid,
+        ana_linkage_by_cid=ana_linkage_by_cid,
+    )
     purposes = [p for p, _ in REGRET_PURPOSES]
 
-    winners: dict[str, str | None] = {
-        purpose: _winner_for_purpose_at_r_max(
+    winners: dict[str, str | None] = {}
+    for purpose in purposes:
+        points, _ = purpose_sets[purpose]
+        winners[purpose] = _winner_for_purpose_at_r_max(
             points, purpose, r_max, provenance_min=provenance_min
         )
-        for purpose in purposes
-    }
 
     n = len(purposes)
     regret = np.full((n, n), np.nan)
+    infeasible = np.zeros((n, n), dtype=bool)
     deployed_utility = np.full((n, n), np.nan)
+    infeasible_reuses: list[dict[str, Any]] = []
+
     for i, p_row in enumerate(purposes):
-        z_row = winners.get(p_row)
-        if not z_row or z_row not in point_by_cid:
+        c_row = winners.get(p_row)
+        if not c_row:
             continue
-        pt_row = point_by_cid[z_row]
         for j, p_col in enumerate(purposes):
-            u_deployed = _utility_for_purpose(pt_row, p_col)
-            deployed_utility[i, j] = u_deployed
-            z_col = winners.get(p_col)
-            if not z_col or z_col not in point_by_cid:
+            _, by_col = purpose_sets[p_col]
+            if c_row not in by_col:
                 continue
-            u_optimal = _utility_for_purpose(point_by_cid[z_col], p_col)
+            pt_forced = by_col[c_row]
+            r_on_col = pt_forced.linkage
+            if r_on_col > r_max + 1e-9:
+                infeasible[i, j] = True
+                infeasible_reuses.append(
+                    {
+                        "row_purpose": p_row,
+                        "col_purpose": p_col,
+                        "forced_condition": c_row,
+                        "r_on_col_surface": r_on_col,
+                        "r_max": r_max,
+                    }
+                )
+                continue
+            c_col = winners.get(p_col)
+            if not c_col or c_col not in by_col:
+                continue
+            u_deployed = _utility_for_purpose(pt_forced, p_col)
+            u_optimal = _utility_for_purpose(by_col[c_col], p_col)
+            deployed_utility[i, j] = u_deployed
             regret[i, j] = u_optimal - u_deployed
+
+    purpose_specific = (
+        obs_linkage_by_cid is not None and ana_linkage_by_cid is not None
+    )
 
     return {
         "r_max": r_max,
@@ -422,6 +569,13 @@ def build_cross_purpose_regret_matrix(
         "winners": winners,
         "regret": regret,
         "deployed_utility": deployed_utility,
+        "infeasible": infeasible,
+        "infeasible_reuses": infeasible_reuses,
+        "purpose_specific_linkage": purpose_specific,
+        "linkage_surfaces": {
+            "observability": "R(z_{c,T_o})",
+            "analytics": "R(z_{c,T_a})",
+        },
     }
 
 
@@ -458,6 +612,9 @@ def write_cross_purpose_regret_table(
                 "provenance_min": matrix["provenance_min"],
                 "winners": winners,
                 "column_labels": labels,
+                "purpose_specific_linkage": matrix.get("purpose_specific_linkage"),
+                "infeasible_reuses": matrix.get("infeasible_reuses", []),
+                "linkage_surfaces": matrix.get("linkage_surfaces"),
             },
             indent=2,
         )
@@ -472,6 +629,7 @@ def plot_cross_purpose_regret_matrix(
     out_dir: Path,
 ) -> dict[str, Path]:
     regret = matrix["regret"]
+    infeasible = matrix.get("infeasible")
     labels = matrix["purpose_labels"]
     winners = matrix["winners"]
     r_max = matrix["r_max"]
@@ -484,15 +642,35 @@ def plot_cross_purpose_regret_matrix(
     vmax = float(np.nanmax(regret)) if np.any(~np.isnan(regret)) else 0.5
     vmax = max(vmax, 0.05)
 
-    fig, ax = plt.subplots(figsize=(6.8, 5.4))
+    fig, ax = plt.subplots(figsize=(7.0, 5.6))
     im = ax.imshow(regret, aspect="auto", cmap=cmap, vmin=0.0, vmax=vmax)
     _fs = plt.rcParams["font.size"]
-    _annotate_heatmap(
-        ax,
-        regret,
-        text_color_threshold=vmax * 0.55,
-        cell_fontsize=HEATMAP_CELL_EM * _fs,
-    )
+    for i in range(n):
+        for j in range(n):
+            if infeasible is not None and infeasible[i, j]:
+                ax.text(
+                    j,
+                    i,
+                    "—",
+                    ha="center",
+                    va="center",
+                    fontsize=HEATMAP_CELL_EM * _fs,
+                    color="#222222",
+                )
+                continue
+            val = regret[i, j]
+            if np.isnan(val):
+                continue
+            color = "white" if val >= vmax * 0.55 else "#222222"
+            ax.text(
+                j,
+                i,
+                f"{val:.2f}",
+                ha="center",
+                va="center",
+                fontsize=HEATMAP_CELL_EM * _fs,
+                color=color,
+            )
 
     ax.set_xticks(np.arange(n))
     ax.set_xticklabels(labels, fontsize=HEATMAP_TICK_EM * _fs, rotation=25, ha="right")
@@ -505,21 +683,21 @@ def plot_cross_purpose_regret_matrix(
 
     ax.set_yticklabels(ylabels, fontsize=HEATMAP_TICK_EM * _fs)
     ax.set_xlabel(
-        "Utility regret on registered purpose (macro-F1 / accuracy loss)",
+        "Utility regret on registered task (j)",
         fontsize=HEATMAP_AXIS_EM * _fs,
     )
     ax.set_ylabel(
-        f"Risk-constrained winner selected for ($R_{{max}}$={r_max:.2f})",
+        f"Risk-constrained winning condition at ($R_{{max}}$={r_max:.2f})",
         fontsize=HEATMAP_AXIS_EM * _fs,
     )
     ax.set_title(
-        "Cross-purpose regret: one export cannot serve every stakeholder",
+        "Cross-task regret: reusing winners can incur utility loss",
         fontsize=HEATMAP_TITLE_EM * _fs,
         fontweight="bold",
     )
 
     cbar = fig.colorbar(im, ax=ax, fraction=0.03, pad=0.02)
-    cbar.set_label("Regret (optimal − deployed)", fontsize=HEATMAP_CBAR_EM * _fs)
+    cbar.set_label("Regret (own winner − reused)", fontsize=HEATMAP_CBAR_EM * _fs)
 
     fig.tight_layout()
     paths = _save(fig, "cross_purpose_regret_matrix", out_dir)
@@ -552,9 +730,20 @@ def run_advisor_figures(
         obs_metrics, table_dir
     )
 
-    regret_matrix = build_cross_purpose_regret_matrix(
-        obs_metrics, analytics_metrics, r_max=r_max
-    )
+    scores = _load_purpose_specific_linkage_scores()
+    if scores is not None:
+        obs_R, ana_R = scores
+        regret_matrix = build_cross_purpose_regret_matrix(
+            obs_metrics,
+            analytics_metrics,
+            r_max=r_max,
+            obs_linkage_by_cid=obs_R,
+            ana_linkage_by_cid=ana_R,
+        )
+    else:
+        regret_matrix = build_cross_purpose_regret_matrix(
+            obs_metrics, analytics_metrics, r_max=r_max
+        )
     figures.update(plot_cross_purpose_regret_matrix(regret_matrix, out_dir))
     tables["cross_purpose_regret_matrix"] = write_cross_purpose_regret_table(
         regret_matrix, table_dir

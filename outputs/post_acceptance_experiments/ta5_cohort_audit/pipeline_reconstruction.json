@@ -1,0 +1,1146 @@
+{
+  "target": {
+    "name": "cohort_segment",
+    "construction": "logging_propensity \u00d7 clinical_engagement",
+    "formula": "{logging_propensity}_{clinical_engagement}",
+    "n_possible_classes": 9,
+    "logging_levels": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "engagement_levels": [
+      "avoidant",
+      "moderate",
+      "anxious-hypervigilant"
+    ],
+    "metric": "macro-F1",
+    "classifier": {
+      "family": "RandomForestClassifier",
+      "n_estimators": 50,
+      "random_state": 42,
+      "class_weight": "balanced",
+      "vectorizer": "DictVectorizer(sparse=False)"
+    }
+  },
+  "splits": {
+    "rule": "whole-persona 70/10/20, split_seed=42",
+    "train": {
+      "n": 70,
+      "n_classes": 9,
+      "cohort_segment": {
+        "low_anxious-hypervigilant": 12,
+        "high_anxious-hypervigilant": 9,
+        "low_avoidant": 9,
+        "medium_avoidant": 5,
+        "medium_anxious-hypervigilant": 9,
+        "low_moderate": 6,
+        "high_avoidant": 7,
+        "high_moderate": 7,
+        "medium_moderate": 6
+      },
+      "logging_propensity": {
+        "low": 27,
+        "high": 23,
+        "medium": 20
+      },
+      "clinical_engagement": {
+        "anxious-hypervigilant": 30,
+        "avoidant": 21,
+        "moderate": 19
+      }
+    },
+    "val": {
+      "n": 10,
+      "n_classes": 7,
+      "cohort_segment": {
+        "low_avoidant": 2,
+        "high_moderate": 3,
+        "high_avoidant": 1,
+        "high_anxious-hypervigilant": 1,
+        "low_anxious-hypervigilant": 1,
+        "medium_avoidant": 1,
+        "medium_moderate": 1
+      },
+      "logging_propensity": {
+        "low": 3,
+        "high": 5,
+        "medium": 2
+      },
+      "clinical_engagement": {
+        "avoidant": 4,
+        "moderate": 4,
+        "anxious-hypervigilant": 2
+      }
+    },
+    "test": {
+      "n": 20,
+      "n_classes": 7,
+      "cohort_segment": {
+        "low_moderate": 4,
+        "high_anxious-hypervigilant": 1,
+        "high_avoidant": 3,
+        "low_avoidant": 5,
+        "medium_moderate": 4,
+        "low_anxious-hypervigilant": 1,
+        "medium_avoidant": 2
+      },
+      "logging_propensity": {
+        "low": 10,
+        "high": 4,
+        "medium": 6
+      },
+      "clinical_engagement": {
+        "moderate": 8,
+        "anxious-hypervigilant": 2,
+        "avoidant": 10
+      }
+    },
+    "note": "Val personas are unused by Ta-5."
+  },
+  "event_count_ranges": {
+    "low": [
+      10,
+      15
+    ],
+    "medium": [
+      25,
+      40
+    ],
+    "high": [
+      60,
+      100
+    ],
+    "note": "Non-overlapping ranges; event_count identifies logging_propensity exactly."
+  },
+  "frozen_pipeline": {
+    "track_a_function": "evaluate_cohort_from_tier1_predictions",
+    "track_a_field": "conditions.*.tier1_cohort.cohort_segment_macro_f1",
+    "track_b_function": "evaluate_cohort_tasks",
+    "track_b_field": "conditions.*.cohort.cohort_segment_macro_f1",
+    "train_features": "export z fields via _persona_features",
+    "test_features": "Tier-1 assessor outputs via _persona_features_from_predictions",
+    "assessor": {
+      "model": "qwen3:8b",
+      "prompt_version": "analytics_triage_v1",
+      "event_fields": [
+        "medication_class",
+        "side_effect_signal",
+        "adherence_signal"
+      ],
+      "split_scored": "test only (zero-shot; train unused by evaluate_tier1_analytics)"
+    }
+  },
+  "sem_fine_note": "sem_fine oracle z contains cohort_segment and engagement_trend, but _persona_features does not read those keys.",
+  "conditions": {
+    "raw": {
+      "role": "primary",
+      "family": "raw",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 7,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 4,
+        "frac_test_keys_dropped": 0.5714285714285714,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "redact_bracket": {
+      "role": "primary",
+      "family": "bracket",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 7,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 4,
+        "frac_test_keys_dropped": 0.5714285714285714,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "redact_tokenize": {
+      "role": "primary",
+      "family": "token",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_ND3",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_ND3",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 8,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_ND3",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 5,
+        "frac_test_keys_dropped": 0.625,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "redact_surrogate": {
+      "role": "primary",
+      "family": "surrogate",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 7,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 4,
+        "frac_test_keys_dropped": 0.5714285714285714,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "sem_coarse": {
+      "role": "primary",
+      "family": "semantic",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "side_effect_present": 50,
+          "adherence_friction_present": 50,
+          "risk_band": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_NDRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 5,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_NDRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 2,
+        "frac_test_keys_dropped": 0.4,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.23604465709728864,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.22830687830687835,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.23604465709728864,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.22830687830687835,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "sem_medium": {
+      "role": "primary",
+      "family": "semantic",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "medication_class": 50,
+          "symptom_categories": 50,
+          "side_effect_signal": 50,
+          "adherence_signal": 50,
+          "time_bucket": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular",
+          "time_afternoon",
+          "time_evening",
+          "time_morning"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular",
+          "time_afternoon",
+          "time_evening",
+          "time_morning"
+        ],
+        "test_only_keys": [],
+        "n_train_keys": 13,
+        "n_test_keys": 6,
+        "n_vectorizer_dims": 13,
+        "n_train_dims_always_zero_at_test": 7,
+        "frac_train_dims_always_zero_at_test": 0.5384615384615384,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular",
+          "time_afternoon",
+          "time_evening",
+          "time_morning"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular",
+          "time_afternoon",
+          "time_evening",
+          "time_morning"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular",
+          "time_afternoon",
+          "time_evening",
+          "time_morning"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 13,
+        "n_test_keys": 13,
+        "n_vectorizer_dims": 13,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.4305555555555555,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.27380952380952384,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.4380952380952381,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.24867724867724864,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "sem_fine": {
+      "role": "primary",
+      "family": "semantic",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "medication_class": 50,
+          "symptom_categories": 50,
+          "side_effect_signal": 50,
+          "adherence_signal": 50,
+          "cohort_segment": 50,
+          "engagement_trend": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular"
+        ],
+        "test_only_keys": [],
+        "n_train_keys": 10,
+        "n_test_keys": 6,
+        "n_vectorizer_dims": 10,
+        "n_train_dims_always_zero_at_test": 4,
+        "frac_train_dims_always_zero_at_test": 0.4,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "side_effect_rate",
+          "sym_gastrointestinal",
+          "sym_general",
+          "sym_neurological",
+          "sym_vestibular"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 10,
+        "n_test_keys": 10,
+        "n_vectorizer_dims": 10,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.362962962962963,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.2956730769230769,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.41269841269841273,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.18148148148148147,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "redact_llm_substitute": {
+      "role": "primary",
+      "family": "llm",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 7,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 4,
+        "frac_test_keys_dropped": 0.5714285714285714,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    },
+    "redact_llm_rephrase": {
+      "role": "primary",
+      "family": "llm",
+      "n_train_events": 2777,
+      "n_test_events": 630,
+      "n_test_preds_cached": 630,
+      "z_inventory": {
+        "z_python_types": [
+          "dict"
+        ],
+        "z_keys_in_sample": {
+          "journal_text": 50,
+          "assistant_text": 50
+        },
+        "sample_n": 50
+      },
+      "mixed_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "med_ND, SNRI",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [
+          "med_ND, SNRI",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_train_keys": 3,
+        "n_test_keys": 8,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 0,
+        "frac_train_dims_always_zero_at_test": 0.0,
+        "test_keys_dropped": [
+          "med_ND, SNRI",
+          "med_NDRI",
+          "med_SNRI",
+          "med_SSRI",
+          "med_none"
+        ],
+        "n_test_keys_dropped": 5,
+        "frac_test_keys_dropped": 0.625,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "export_symmetric_schema": {
+        "train_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "test_keys": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "intersection": [
+          "adherence_barrier_rate",
+          "event_count",
+          "side_effect_rate"
+        ],
+        "train_only_keys": [],
+        "test_only_keys": [],
+        "n_train_keys": 3,
+        "n_test_keys": 3,
+        "n_vectorizer_dims": 3,
+        "n_train_dims_always_zero_at_test": 2,
+        "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+        "test_keys_dropped": [],
+        "n_test_keys_dropped": 0,
+        "frac_test_keys_dropped": 0.0,
+        "event_count_in_train": true,
+        "event_count_in_test": true
+      },
+      "frozen_tier1_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20,
+        "source": "tier1_predictions"
+      },
+      "frozen_export_cohort": {
+        "adherence_trajectory_macro_f1": 0.39571150097465885,
+        "quasi_id_rarity_accuracy": 0.4,
+        "cohort_segment_macro_f1": 0.3888888888888889,
+        "n_train_personas": 70,
+        "n_test_personas": 20
+      }
+    }
+  }
+}

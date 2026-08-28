@@ -1,0 +1,884 @@
+[
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.1650382121415734,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.45,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "observability",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.12831858407079647,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.197277738074702,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.45,
+    "winner": "redact_surrogate",
+    "winner_utility": 0.44535940497894505,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.8,
+    "purpose": "analytics_med",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.1650382121415734,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.45,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "observability",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.12831858407079647,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.197277738074702,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.45,
+    "winner": "redact_surrogate",
+    "winner_utility": 0.44535940497894505,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 0.9,
+    "purpose": "analytics_med",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.1650382121415734,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.45,
+    "winner": "redact_bracket",
+    "winner_utility": 0.6731650099289139,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "observability",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.35,
+    "winner": "sem_coarse",
+    "winner_utility": 0.12831858407079647,
+    "n_feasible": 1,
+    "feasible_conditions": [
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.4,
+    "winner": "redact_bracket",
+    "winner_utility": 0.197277738074702,
+    "n_feasible": 2,
+    "feasible_conditions": [
+      "redact_bracket",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.45,
+    "winner": "redact_surrogate",
+    "winner_utility": 0.44535940497894505,
+    "n_feasible": 3,
+    "feasible_conditions": [
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.5,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 5,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.55,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.6,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.65,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 7,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.7,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  },
+  {
+    "provenance_tau": 1.0,
+    "purpose": "analytics_med",
+    "epsilon": 0.75,
+    "winner": "sem_medium",
+    "winner_utility": 1.0,
+    "n_feasible": 8,
+    "feasible_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "provenance_gate_active": false
+  }
+]

@@ -1,0 +1,7 @@
+r_max,obs_winner,obs_utility,med-class_winner,med-class_utility,side-effect_winner,side-effect_utility,adherence_winner,adherence_utility,cohort segment_winner,cohort segment_utility,composite_winner,composite_utility,med_side_adherence_same_winner
+0.35,sem_coarse,0.1650382121415734,sem_coarse,0.12831858407079647,sem_coarse,1.0,sem_coarse,1.0,sem_coarse,0.22830687830687835,sem_coarse,0.7094395280235988,True
+0.4,redact_bracket,0.6731650099289139,redact_bracket,0.197277738074702,sem_coarse,1.0,sem_coarse,1.0,redact_bracket,0.3888888888888889,sem_coarse,0.7094395280235988,False
+0.45,redact_bracket,0.6731650099289139,redact_surrogate,0.44535940497894505,sem_coarse,1.0,sem_coarse,1.0,redact_bracket,0.3888888888888889,sem_coarse,0.7094395280235988,False
+0.5,sem_medium,1.0,sem_medium,1.0,sem_coarse,1.0,sem_coarse,1.0,raw,0.3888888888888889,sem_medium,0.9977491720168491,False
+0.55,sem_medium,1.0,sem_medium,1.0,sem_coarse,1.0,sem_coarse,1.0,raw,0.3888888888888889,sem_medium,0.9977491720168491,False
+0.6,sem_medium,1.0,sem_medium,1.0,sem_coarse,1.0,sem_coarse,1.0,raw,0.3888888888888889,sem_medium,0.9977491720168491,False

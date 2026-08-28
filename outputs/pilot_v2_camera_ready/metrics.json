@@ -1,0 +1,1297 @@
+{
+  "study": "sbb-obs-v0.1.1",
+  "generated_at_utc": "2026-08-19T06:51:52.944163+00:00",
+  "tier": "camera-ready-tfidf-train-only",
+  "primary_metric": "failure_mode_macro_f1",
+  "conditions": {
+    "raw": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.3238095238095238,
+        "persona_top5": 0.6396825396825396,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.4870441521141595,
+        "occupation_sector_macro_f1": 0.3848729091051426,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.36880861825916494,
+        "attribute_combined_macro_f1": 0.5611067553446661,
+        "longitudinal_linkage_auc": 0.5649489265927978,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.3238095238095238,
+        "token_recovery_rate": 1.0,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 1121,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.48328840191566264
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "raw",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6263286808976464,
+        "error_stage_accuracy": 0.8936507936507937,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6263286808976464,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5424029626524124,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6534067362577216,
+            "error_stage_accuracy": 0.8984126984126984,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.49022113798525835,
+          "token_recovery_rate": 1.0,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.3238095238095238,
+          "persona_top5": 0.6396825396825396,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.4870441521141595,
+          "occupation_sector_macro_f1": 0.3848729091051426,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.36880861825916494,
+          "attribute_combined_macro_f1": 0.5611067553446661,
+          "longitudinal_linkage_auc": 0.5649489265927978,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.3238095238095238,
+          "token_recovery_rate": 1.0,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 1121,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.48328840191566264
+        }
+      }
+    },
+    "redact_bracket": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.05396825396825397,
+        "persona_top5": 0.32857142857142857,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.41540696229230506,
+        "occupation_sector_macro_f1": 0.17275956178538962,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.3684206085378292,
+        "attribute_combined_macro_f1": 0.49016912105926436,
+        "longitudinal_linkage_auc": 0.5264014889196676,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.05396825396825397,
+        "token_recovery_rate": 0.03274711946634324,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 882,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.3568462879823953
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_bracket",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6731650099289139,
+        "error_stage_accuracy": 0.9,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6731650099289139,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5557971546693351,
+            "error_stage_accuracy": 0.8698412698412699,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.646760306638669,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.3599392600602074,
+          "token_recovery_rate": 0.03274711946634324,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.05396825396825397,
+          "persona_top5": 0.32857142857142857,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.41540696229230506,
+          "occupation_sector_macro_f1": 0.17275956178538962,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.3684206085378292,
+          "attribute_combined_macro_f1": 0.49016912105926436,
+          "longitudinal_linkage_auc": 0.5264014889196676,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.05396825396825397,
+          "token_recovery_rate": 0.03274711946634324,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 882,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.3568462879823953
+        }
+      }
+    },
+    "redact_tokenize": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.8365079365079365,
+        "persona_top5": 0.9222222222222223,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.2776930574588105,
+        "occupation_sector_macro_f1": 0.20238544144516277,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.4599089545695942,
+        "attribute_combined_macro_f1": 0.4631471147658339,
+        "longitudinal_linkage_auc": 0.6572740650969529,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.8365079365079365,
+        "token_recovery_rate": 0.007883565797453002,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 4545,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.6523097054569078
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_tokenize",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6618053142346182,
+        "error_stage_accuracy": 0.8936507936507937,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6618053142346182,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.49418077708981406,
+            "error_stage_accuracy": 0.834920634920635,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5255553819183184,
+            "error_stage_accuracy": 0.8761904761904762,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.23794861656823255,
+          "token_recovery_rate": 0.007883565797453002,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.8365079365079365,
+          "persona_top5": 0.9222222222222223,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.2776930574588105,
+          "occupation_sector_macro_f1": 0.20238544144516277,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.4599089545695942,
+          "attribute_combined_macro_f1": 0.4631471147658339,
+          "longitudinal_linkage_auc": 0.6572740650969529,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.8365079365079365,
+          "token_recovery_rate": 0.007883565797453002,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 4545,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.6523097054569078
+        }
+      }
+    },
+    "redact_surrogate": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.21587301587301588,
+        "persona_top5": 0.6253968253968254,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.5271580906071613,
+        "occupation_sector_macro_f1": 0.17216025174592292,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.32311928100339576,
+        "attribute_combined_macro_f1": 0.5179570756281117,
+        "longitudinal_linkage_auc": 0.5613634002770083,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.21587301587301588,
+        "token_recovery_rate": 0.02850212249848393,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 1091,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.43173116392604527
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_surrogate",
+        "transfer_failure_mode_macro_f1": 1.0,
+        "transfer_error_stage_accuracy": 1.0,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.6569965291501275,
+        "error_stage_accuracy": 0.9,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.6569965291501275,
+            "error_stage_accuracy": 0.9,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5517356675619093,
+            "error_stage_accuracy": 0.8984126984126984,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6031614444304276,
+            "error_stage_accuracy": 0.8936507936507937,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.5231160104321119,
+          "token_recovery_rate": 0.02850212249848393,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.21587301587301588,
+          "persona_top5": 0.6253968253968254,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.5271580906071613,
+          "occupation_sector_macro_f1": 0.17216025174592292,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.32311928100339576,
+          "attribute_combined_macro_f1": 0.5179570756281117,
+          "longitudinal_linkage_auc": 0.5613634002770083,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.21587301587301588,
+          "token_recovery_rate": 0.02850212249848393,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 1091,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.43173116392604527
+        }
+      }
+    },
+    "sem_coarse": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.026984126984126985,
+        "persona_top5": 0.1492063492063492,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.2163568651713973,
+        "occupation_sector_macro_f1": 0.0883219496041521,
+        "symptom_categories_macro_f1": 0.9318645020732308,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.1586690111542127,
+        "attribute_combined_macro_f1": 0.40226331925203573,
+        "longitudinal_linkage_auc": 0.49937673130193905,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.026984126984126985,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 166,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.3095413925127006
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_coarse",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8253968253968254,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.1650382121415734,
+        "error_stage_accuracy": 0.8365079365079365,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.1650382121415734,
+            "error_stage_accuracy": 0.8365079365079365,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.2238768473332107,
+            "error_stage_accuracy": 0.8952380952380953,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.21255775236456476,
+            "error_stage_accuracy": 0.8444444444444444,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 0.4174594099122401,
+          "error_stage_accuracy": 0.9476190476190476,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.2163568651713973,
+          "token_recovery_rate": 0.0,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.026984126984126985,
+          "persona_top5": 0.1492063492063492,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.2163568651713973,
+          "occupation_sector_macro_f1": 0.0883219496041521,
+          "symptom_categories_macro_f1": 0.9318645020732308,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.1586690111542127,
+          "attribute_combined_macro_f1": 0.40226331925203573,
+          "longitudinal_linkage_auc": 0.49937673130193905,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.026984126984126985,
+          "token_recovery_rate": 0.0,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 166,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.3095413925127006
+        }
+      }
+    },
+    "sem_medium": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.16666666666666666,
+        "persona_top5": 0.7063492063492064,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 1.0,
+        "occupation_sector_macro_f1": 0.05153439153439153,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.07691873227278333,
+        "attribute_combined_macro_f1": 0.6060110879234386,
+        "longitudinal_linkage_auc": 0.6873848684210526,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.16666666666666666,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 595,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.4866875410037193
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_medium",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8253968253968254,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 1.0,
+        "error_stage_accuracy": 1.0,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 1.0,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.997265102558654,
+            "error_stage_accuracy": 0.9968253968253968,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 1.0,
+          "token_recovery_rate": 0.0,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.16666666666666666,
+          "persona_top5": 0.7063492063492064,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 1.0,
+          "occupation_sector_macro_f1": 0.05153439153439153,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.07691873227278333,
+          "attribute_combined_macro_f1": 0.6060110879234386,
+          "longitudinal_linkage_auc": 0.6873848684210526,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.16666666666666666,
+          "token_recovery_rate": 0.0,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 595,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.4866875410037193
+        }
+      }
+    },
+    "sem_fine": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.6412698412698413,
+        "persona_top5": 0.9682539682539683,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 1.0,
+        "occupation_sector_macro_f1": 1.0,
+        "symptom_categories_macro_f1": 1.0,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.050648386346761075,
+        "attribute_combined_macro_f1": 0.8431274900398407,
+        "longitudinal_linkage_auc": 0.7728315443213296,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.6412698412698413,
+        "token_recovery_rate": 0.0,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 593,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.7524096252103373
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "sem_fine",
+        "transfer_failure_mode_macro_f1": 0.12919254658385093,
+        "transfer_error_stage_accuracy": 0.8571428571428571,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 1.0,
+        "error_stage_accuracy": 0.873015873015873,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.9079365079365079,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 1.0,
+            "error_stage_accuracy": 0.9142857142857143,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 1.0,
+          "error_stage_accuracy": 1.0,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 1.0,
+          "token_recovery_rate": 0.0,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.6412698412698413,
+          "persona_top5": 0.9682539682539683,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 1.0,
+          "occupation_sector_macro_f1": 1.0,
+          "symptom_categories_macro_f1": 1.0,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.050648386346761075,
+          "attribute_combined_macro_f1": 0.8431274900398407,
+          "longitudinal_linkage_auc": 0.7728315443213296,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.6412698412698413,
+          "token_recovery_rate": 0.0,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 593,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.7524096252103373
+        }
+      }
+    },
+    "redact_llm_substitute": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.526984126984127,
+        "persona_top5": 0.8174603174603174,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.3413786215850429,
+        "occupation_sector_macro_f1": 0.248092673609915,
+        "symptom_categories_macro_f1": 0.9191656857432908,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.3040971606292284,
+        "attribute_combined_macro_f1": 0.4702867352744028,
+        "longitudinal_linkage_auc": 0.5838443559556786,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.526984126984127,
+        "token_recovery_rate": 0.40873256519102485,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 1820,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.5270384060714028
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_substitute",
+        "transfer_failure_mode_macro_f1": 0.922234543786268,
+        "transfer_error_stage_accuracy": 0.9698412698412698,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.5990921382359268,
+        "error_stage_accuracy": 0.873015873015873,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.5990921382359268,
+            "error_stage_accuracy": 0.873015873015873,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.49360800358761986,
+            "error_stage_accuracy": 0.8825396825396825,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.6383472443586947,
+            "error_stage_accuracy": 0.8809523809523809,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 0.922234543786268,
+          "error_stage_accuracy": 0.9698412698412698,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.3573479971565627,
+          "token_recovery_rate": 0.40873256519102485,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.526984126984127,
+          "persona_top5": 0.8174603174603174,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.3413786215850429,
+          "occupation_sector_macro_f1": 0.248092673609915,
+          "symptom_categories_macro_f1": 0.9191656857432908,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.3040971606292284,
+          "attribute_combined_macro_f1": 0.4702867352744028,
+          "longitudinal_linkage_auc": 0.5838443559556786,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.526984126984127,
+          "token_recovery_rate": 0.40873256519102485,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 1820,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.5270384060714028
+        }
+      }
+    },
+    "redact_llm_rephrase": {
+      "role": "primary",
+      "provenance": {
+        "completeness": 1.0,
+        "n_exports": 3894
+      },
+      "trial4_adversary": {
+        "persona_top1": 0.5761904761904761,
+        "persona_top5": 0.8650793650793651,
+        "candidate_set_size_mean": 20.0,
+        "random_baseline_top1": 0.05,
+        "n_test_personas": 20,
+        "persona_inference_mode": "test_loo_disjoint",
+        "medication_class_macro_f1": 0.4205921925424616,
+        "occupation_sector_macro_f1": 0.20600382245305499,
+        "symptom_categories_macro_f1": 0.8965489104061417,
+        "quasi_id_rarity_macro_f1": 0.37250996015936255,
+        "time_bucket_macro_f1": 0.31315411322342906,
+        "attribute_combined_macro_f1": 0.4739137213902552,
+        "longitudinal_linkage_auc": 0.5672749307479225,
+        "n_linkage_pairs": 1520,
+        "longitudinal_loo_top1": 0.5761904761904761,
+        "token_recovery_rate": 0.5633717404487568,
+        "n_test": 630,
+        "n_train": 2777,
+        "embedder": "tfidf_char_wb",
+        "similarity_threshold": 0.3,
+        "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+        "tfidf_fit_scope": "train_only",
+        "tfidf_n_fit_docs": 2777,
+        "tfidf_vocab_size": 2120,
+        "tfidf_analyzer": "char_wb",
+        "tfidf_ngram_range": [
+          1,
+          3
+        ],
+        "tfidf_max_features": 5000,
+        "combined_linkage_score": 0.5391263761095514
+      },
+      "transfer": {
+        "train_condition": "raw",
+        "test_condition": "redact_llm_rephrase",
+        "transfer_failure_mode_macro_f1": 0.870215815758512,
+        "transfer_error_stage_accuracy": 0.9428571428571428,
+        "n_train": 2777,
+        "n_test": 630
+      },
+      "tier1": {
+        "status": "ok",
+        "model": "qwen3:8b",
+        "prompt_version": "triage_v1",
+        "failure_mode_macro_f1": 0.5826727812985624,
+        "error_stage_accuracy": 0.8682539682539683,
+        "parse_success_rate": 1.0,
+        "n_test": 630,
+        "n_parsed": 630,
+        "per_seed": {
+          "42": {
+            "failure_mode_macro_f1": 0.5826727812985624,
+            "error_stage_accuracy": 0.8682539682539683,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630
+          }
+        },
+        "sensitivity": {
+          "llama3.1:8b": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.4315005037067093,
+            "error_stage_accuracy": 0.8380952380952381,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          },
+          "gemma4:latest": {
+            "status": "ok",
+            "failure_mode_macro_f1": 0.5986105778912475,
+            "error_stage_accuracy": 0.8746031746031746,
+            "parse_success_rate": 1.0,
+            "n_test": 630,
+            "n_parsed": 630,
+            "reason": null
+          }
+        }
+      },
+      "tier0": {
+        "utility": {
+          "failure_mode_macro_f1": 0.879342636545357,
+          "error_stage_accuracy": 0.9571428571428572,
+          "n_train": 2777,
+          "n_test": 630
+        },
+        "risk": {
+          "persona_top1": 0.0,
+          "medication_class_macro_f1": 0.3815432932423977,
+          "token_recovery_rate": 0.5633717404487568,
+          "n_test": 630
+        },
+        "trial4_adversary": {
+          "persona_top1": 0.5761904761904761,
+          "persona_top5": 0.8650793650793651,
+          "candidate_set_size_mean": 20.0,
+          "random_baseline_top1": 0.05,
+          "n_test_personas": 20,
+          "persona_inference_mode": "test_loo_disjoint",
+          "medication_class_macro_f1": 0.4205921925424616,
+          "occupation_sector_macro_f1": 0.20600382245305499,
+          "symptom_categories_macro_f1": 0.8965489104061417,
+          "quasi_id_rarity_macro_f1": 0.37250996015936255,
+          "time_bucket_macro_f1": 0.31315411322342906,
+          "attribute_combined_macro_f1": 0.4739137213902552,
+          "longitudinal_linkage_auc": 0.5672749307479225,
+          "n_linkage_pairs": 1520,
+          "longitudinal_loo_top1": 0.5761904761904761,
+          "token_recovery_rate": 0.5633717404487568,
+          "n_test": 630,
+          "n_train": 2777,
+          "embedder": "tfidf_char_wb",
+          "similarity_threshold": 0.3,
+          "combined_linkage_formula": "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)",
+          "tfidf_fit_scope": "train_only",
+          "tfidf_n_fit_docs": 2777,
+          "tfidf_vocab_size": 2120,
+          "tfidf_analyzer": "char_wb",
+          "tfidf_ngram_range": [
+            1,
+            3
+          ],
+          "tfidf_max_features": 5000,
+          "combined_linkage_score": 0.5391263761095514
+        }
+      }
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "supported": false,
+      "detail": "redact_bracket F1 (0.673) vs raw (0.626); transfer F1 (1.000) vs raw transfer (1.000)",
+      "per_condition": {
+        "supported": false,
+        "detail": "redact_bracket F1 (0.673) vs raw (0.626)"
+      },
+      "transfer": {
+        "supported": false,
+        "detail": "redact_bracket transfer F1 (1.000) vs raw transfer (1.000)"
+      }
+    },
+    "H2": {
+      "supported": false,
+      "detail": "sem_medium F1 (1.000) vs raw (0.626); Trial4 combined_linkage 0.487 vs raw 0.483; note: legacy persona_top1 would support H2 linkage arm (0.000 vs raw 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H3": {
+      "supported": false,
+      "detail": "sem_fine F1 (1.000) vs sem_medium (1.000); Trial4 combined_linkage 0.752 vs 0.487; note: legacy persona_top1 would not support H3 linkage arm (0.000 vs 0.000); Trial4 combined_linkage verdict differs"
+    },
+    "H4": {
+      "supported": false,
+      "detail": "substitute F1 (0.599) rephrase F1 (0.583) vs bracket (0.673) sem_medium (1.000); linkage subst 0.527 rephrase 0.539 vs raw 0.483 bracket 0.357 sem_medium 0.487",
+      "substitute": {
+        "utility_ok": false,
+        "linkage_ok": false
+      },
+      "rephrase": {
+        "utility_ok": false,
+        "linkage_ok": false
+      }
+    },
+    "sem_coarse_f1": 0.1650382121415734
+  },
+  "notes": {
+    "eval_split": "test",
+    "train_split": "train",
+    "primary_conditions": [
+      "raw",
+      "redact_bracket",
+      "redact_tokenize",
+      "redact_surrogate",
+      "sem_coarse",
+      "sem_medium",
+      "sem_fine",
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "llm_conditions": [
+      "redact_llm_substitute",
+      "redact_llm_rephrase"
+    ],
+    "appendix_conditions_evaluated": [],
+    "hypotheses_scope": "7 lattice (H1\u2013H3) + LLM arms (H4)",
+    "tier1_consumer": "inactive",
+    "linkage_tier": true,
+    "tier1_sensitivity": {
+      "models": [
+        "llama3.1:8b",
+        "gemma4:latest"
+      ],
+      "prompt_version": "triage_v1",
+      "merged_at_utc": "2026-06-06T00:41:12.845372+00:00",
+      "split": "test"
+    },
+    "tfidf_fit_scope": "train_only",
+    "tfidf_analyzer": "char_wb",
+    "tfidf_ngram_range": [
+      1,
+      3
+    ],
+    "tfidf_max_features": 5000,
+    "utility_source": "outputs/pilot_v2/metrics.json and analytics_metrics.json (frozen; not recomputed)",
+    "analytics_utility_source": "outputs/pilot_v2/analytics_metrics.json (frozen; not recomputed)",
+    "linkage_source": "outputs/pilot_v2_tfidf_train_only/metrics.json",
+    "frozen_tfidf_fit_scope": "train_test",
+    "sensitivity_tfidf_fit_scope": "train_only",
+    "canonical_paper_protocol": true,
+    "transductive_archive": "outputs/pilot_v2_tfidf_train_test/metrics.json",
+    "no_llm_rerun": true,
+    "no_lattice_regeneration": true
+  }
+}

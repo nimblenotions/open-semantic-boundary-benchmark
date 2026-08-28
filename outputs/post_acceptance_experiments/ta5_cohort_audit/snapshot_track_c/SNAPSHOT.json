@@ -1,0 +1,76 @@
+{
+  "created_at_utc": "2026-08-19T16:38:17.775623+00:00",
+  "note": "Track C snapshot only. Frozen outputs/pilot_v2/analytics_metrics.json untouched.",
+  "frozen_analytics": "outputs/pilot_v2/analytics_metrics.json",
+  "frozen_analytics_sha256": "b6f7262474378f7b4794ff80b78918a6b121be1599f614a8edf4800a63627990",
+  "patched_analytics": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/analytics_metrics_track_c.json",
+  "patched_field": "conditions.*.tier1_cohort.cohort_segment_macro_f1",
+  "track_c_scores": "outputs/post_acceptance_experiments/ta5_cohort_audit/track_c_scores.json",
+  "track_c_scores_used": {
+    "raw": 0.18730158730158727,
+    "redact_bracket": 0.26071428571428573,
+    "redact_tokenize": 0.20625,
+    "redact_surrogate": 0.26430976430976433,
+    "sem_coarse": 0.23601190476190476,
+    "sem_medium": 0.20238095238095238,
+    "sem_fine": 0.29444444444444445,
+    "redact_llm_substitute": 0.12301587301587302,
+    "redact_llm_rephrase": 0.25925925925925924
+  },
+  "figures_dir": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures",
+  "operative_dir": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/operative_selection",
+  "paper_maps": {
+    "fig3": "utility_matrix_heatmap.pdf (cohort column)",
+    "fig4": "cross_purpose_regret_matrix.pdf (cohort row/col at R_max=0.45)",
+    "table3": "table3_operative_grid_track_c.tex"
+  },
+  "advisor": {
+    "regret_winners": {
+      "observability": "redact_bracket",
+      "analytics_med": "redact_surrogate",
+      "analytics_side": "sem_coarse",
+      "analytics_adherence": "sem_coarse",
+      "analytics_cohort": "redact_surrogate"
+    },
+    "figures": {
+      "utility_matrix_png": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/utility_matrix_heatmap.png",
+      "utility_matrix_pdf": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/utility_matrix_heatmap.pdf",
+      "linkage_decomposition_png": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/linkage_decomposition.png",
+      "linkage_decomposition_pdf": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/linkage_decomposition.pdf",
+      "cross_purpose_regret_png": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/cross_purpose_regret_matrix.png",
+      "cross_purpose_regret_pdf": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/cross_purpose_regret_matrix.pdf"
+    },
+    "tables": {
+      "utility_matrix": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/tables/utility_matrix.csv",
+      "linkage_decomposition": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/tables/linkage_decomposition.csv",
+      "cross_purpose_regret_matrix": "outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/figures/tables/cross_purpose_regret_matrix.csv"
+    }
+  },
+  "extra_figures": {
+    "utility_matrix_png": "utility_matrix_heatmap.png",
+    "utility_matrix_pdf": "utility_matrix_heatmap.pdf",
+    "linkage_decomposition_png": "linkage_decomposition.png",
+    "linkage_decomposition_pdf": "linkage_decomposition.pdf",
+    "cross_purpose_regret_png": "cross_purpose_regret_matrix.png",
+    "cross_purpose_regret_pdf": "cross_purpose_regret_matrix.pdf",
+    "analytics_task_med_class_png": "analytics_task_med_class.png",
+    "analytics_task_med_class_pdf": "analytics_task_med_class.pdf",
+    "analytics_task_side_effect_png": "analytics_task_side_effect.png",
+    "analytics_task_side_effect_pdf": "analytics_task_side_effect.pdf",
+    "analytics_task_adherence_png": "analytics_task_adherence.png",
+    "analytics_task_adherence_pdf": "analytics_task_adherence.pdf",
+    "analytics_task_composite_png": "analytics_task_composite.png",
+    "analytics_task_composite_pdf": "analytics_task_composite.pdf",
+    "analytics_task_cohort_png": "analytics_task_cohort.png",
+    "analytics_task_cohort_pdf": "analytics_task_cohort.pdf",
+    "granularity_png": "granularity_per_task.png",
+    "granularity_pdf": "granularity_per_task.pdf",
+    "small_multiples_png": "task_risk_small_multiples_analytics.png",
+    "small_multiples_pdf": "task_risk_small_multiples_analytics.pdf"
+  },
+  "do_not_write": [
+    "outputs/pilot_v2/**",
+    "data/eval_cache_analytics/**",
+    "paper/**/*.tex"
+  ]
+}

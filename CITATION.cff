@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Open Semantic Boundary Benchmark (Open SBB-Obs)"
-message: "If you use this benchmark, please cite it via the Zenodo DOI below. A companion technical report is forthcoming."
+message: "If you use this tag to reproduce CIKM 2026 paper 4405, please cite the paper DOI. The Zenodo DOI archives the earlier v0.1.2 frozen bundle."
 type: software
 authors:
   - family-names: Baruah
@@ -8,11 +8,20 @@ authors:
     email: gb@nimblenotions.ca
 repository-code: "https://github.com/nimblenotions/open-semantic-boundary-benchmark"
 license: Apache-2.0
-version: 0.1.2
-date-released: 2026-06-30
-doi: 10.5281/zenodo.21071088
+version: "cikm-2026"
+date-released: 2026-08-28
 identifiers:
+  - type: url
+    value: "https://github.com/nimblenotions/open-semantic-boundary-benchmark/tree/cikm-2026"
   - type: doi
     value: 10.5281/zenodo.21071088
-  - type: url
-    value: "https://github.com/nimblenotions/open-semantic-boundary-benchmark/releases/tag/opensbb-v0.1.2"
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: Baruah
+      given-names: Gaurav
+  title: "Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure"
+  year: 2026
+  collection-title: "Proceedings of the 35th ACM International Conference on Information and Knowledge Management"
+  publisher: ACM
+  doi: 10.1145/3799682.3840076

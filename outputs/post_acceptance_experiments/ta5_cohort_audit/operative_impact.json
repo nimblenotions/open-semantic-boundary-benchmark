@@ -1,0 +1,306 @@
+{
+  "r_max_grid": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "tracks": {
+    "track_b": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        }
+      },
+      "regret_cohort_row_changed": false,
+      "regret_cohort_col_changed": false,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    },
+    "event_count_only": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        }
+      },
+      "regret_cohort_row_changed": false,
+      "regret_cohort_col_changed": true,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    },
+    "track_b_no_event_count": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "sem_coarse",
+          "new_utility": 0.24444444444444446,
+          "changed": true
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "sem_coarse",
+          "new_utility": 0.24444444444444446,
+          "changed": true
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "sem_coarse",
+          "new_utility": 0.24444444444444446,
+          "changed": true
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "sem_coarse",
+          "new_utility": 0.24444444444444446,
+          "changed": true
+        }
+      },
+      "regret_cohort_row_changed": true,
+      "regret_cohort_col_changed": true,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "sem_coarse"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    },
+    "track_a_shared": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "raw",
+          "new_utility": 0.3888888888888889,
+          "changed": false
+        }
+      },
+      "regret_cohort_row_changed": false,
+      "regret_cohort_col_changed": false,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    },
+    "track_c": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.26071428571428573,
+          "changed": false
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_surrogate",
+          "new_utility": 0.26430976430976433,
+          "changed": true
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "redact_surrogate",
+          "new_utility": 0.26430976430976433,
+          "changed": true
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "redact_surrogate",
+          "new_utility": 0.26430976430976433,
+          "changed": true
+        }
+      },
+      "regret_cohort_row_changed": true,
+      "regret_cohort_col_changed": true,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_surrogate"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    },
+    "track_c_no_event_count": {
+      "winners": {
+        "0.4": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.16309523809523807,
+          "changed": false
+        },
+        "0.45": {
+          "original_winner": "redact_bracket",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.16309523809523807,
+          "changed": false
+        },
+        "0.5": {
+          "original_winner": "raw",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.16309523809523807,
+          "changed": true
+        },
+        "0.55": {
+          "original_winner": "raw",
+          "new_winner": "redact_bracket",
+          "new_utility": 0.16309523809523807,
+          "changed": true
+        }
+      },
+      "regret_cohort_row_changed": false,
+      "regret_cohort_col_changed": true,
+      "regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "frozen_regret_winners": {
+        "observability": "redact_bracket",
+        "analytics_med": "redact_surrogate",
+        "analytics_side": "sem_coarse",
+        "analytics_adherence": "sem_coarse",
+        "analytics_cohort": "redact_bracket"
+      },
+      "bundles_unchanged": true,
+      "bundle_note": "TASK_BUNDLES constraints are obs / med-class / composite / linkage / provenance. None include u_cohort. Dual-purpose bundle is unaffected by Ta-5 construction."
+    }
+  },
+  "frozen_cohort_winners": {
+    "0.4": "redact_bracket",
+    "0.45": "redact_bracket",
+    "0.5": "raw",
+    "0.55": "raw"
+  },
+  "frozen_regret_winners": {
+    "observability": "redact_bracket",
+    "analytics_med": "redact_surrogate",
+    "analytics_side": "sem_coarse",
+    "analytics_adherence": "sem_coarse",
+    "analytics_cohort": "redact_bracket"
+  },
+  "purpose_labels": [
+    "T_o",
+    "Ta-1 med-class",
+    "Ta-2 side-effect",
+    "Ta-3 adherence",
+    "Ta-5 cohort"
+  ]
+}

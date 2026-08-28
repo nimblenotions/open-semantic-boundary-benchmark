@@ -1,0 +1,841 @@
+{
+  "raw": {
+    "family": "raw",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 7,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 4,
+      "frac_test_keys_dropped": 0.5714285714285714,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "redact_bracket": {
+    "family": "bracket",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 7,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 4,
+      "frac_test_keys_dropped": 0.5714285714285714,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "redact_tokenize": {
+    "family": "token",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_ND3",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_ND3",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 8,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_ND3",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 5,
+      "frac_test_keys_dropped": 0.625,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "redact_surrogate": {
+    "family": "surrogate",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 7,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 4,
+      "frac_test_keys_dropped": 0.5714285714285714,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "sem_coarse": {
+    "family": "semantic",
+    "frozen_reported": 0.22830687830687835,
+    "frozen_export_cohort": 0.22830687830687835,
+    "track_a_repro": 0.22830687830687835,
+    "track_a_mixed_all": 0.22830687830687835,
+    "track_a_shared_features": 0.22830687830687835,
+    "track_b_export_symmetric": 0.22830687830687835,
+    "track_b_no_event_count": 0.24444444444444446,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_NDRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 5,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_NDRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 2,
+      "frac_test_keys_dropped": 0.4,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "sem_medium": {
+    "family": "semantic",
+    "frozen_reported": 0.27380952380952384,
+    "frozen_export_cohort": 0.24867724867724864,
+    "track_a_repro": 0.27380952380952384,
+    "track_a_mixed_all": 0.27380952380952384,
+    "track_a_shared_features": 0.24338624338624337,
+    "track_b_export_symmetric": 0.24867724867724864,
+    "track_b_no_event_count": 0.18730158730158727,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular",
+        "time_afternoon",
+        "time_evening",
+        "time_morning"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular",
+        "time_afternoon",
+        "time_evening",
+        "time_morning"
+      ],
+      "test_only_keys": [],
+      "n_train_keys": 13,
+      "n_test_keys": 6,
+      "n_vectorizer_dims": 13,
+      "n_train_dims_always_zero_at_test": 7,
+      "frac_train_dims_always_zero_at_test": 0.5384615384615384,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular",
+        "time_afternoon",
+        "time_evening",
+        "time_morning"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular",
+        "time_afternoon",
+        "time_evening",
+        "time_morning"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular",
+        "time_afternoon",
+        "time_evening",
+        "time_morning"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 13,
+      "n_test_keys": 13,
+      "n_vectorizer_dims": 13,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "sem_fine": {
+    "family": "semantic",
+    "frozen_reported": 0.2956730769230769,
+    "frozen_export_cohort": 0.18148148148148147,
+    "track_a_repro": 0.2956730769230769,
+    "track_a_mixed_all": 0.2956730769230769,
+    "track_a_shared_features": 0.3988095238095238,
+    "track_b_export_symmetric": 0.18148148148148147,
+    "track_b_no_event_count": 0.11904761904761904,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular"
+      ],
+      "test_only_keys": [],
+      "n_train_keys": 10,
+      "n_test_keys": 6,
+      "n_vectorizer_dims": 10,
+      "n_train_dims_always_zero_at_test": 4,
+      "frac_train_dims_always_zero_at_test": 0.4,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "side_effect_rate",
+        "sym_gastrointestinal",
+        "sym_general",
+        "sym_neurological",
+        "sym_vestibular"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 10,
+      "n_test_keys": 10,
+      "n_vectorizer_dims": 10,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "redact_llm_substitute": {
+    "family": "llm",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 7,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 4,
+      "frac_test_keys_dropped": 0.5714285714285714,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  },
+  "redact_llm_rephrase": {
+    "family": "llm",
+    "frozen_reported": 0.3888888888888889,
+    "frozen_export_cohort": 0.3888888888888889,
+    "track_a_repro": 0.3888888888888889,
+    "track_a_mixed_all": 0.3888888888888889,
+    "track_a_shared_features": 0.3888888888888889,
+    "track_b_export_symmetric": 0.3888888888888889,
+    "track_b_no_event_count": 0.013605442176870748,
+    "event_count_only": 0.3888888888888889,
+    "track_a_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "med_ND, SNRI",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [
+        "med_ND, SNRI",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_train_keys": 3,
+      "n_test_keys": 8,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 0,
+      "frac_train_dims_always_zero_at_test": 0.0,
+      "test_keys_dropped": [
+        "med_ND, SNRI",
+        "med_NDRI",
+        "med_SNRI",
+        "med_SSRI",
+        "med_none"
+      ],
+      "n_test_keys_dropped": 5,
+      "frac_test_keys_dropped": 0.625,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "track_b_schema": {
+      "train_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "test_keys": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "intersection": [
+        "adherence_barrier_rate",
+        "event_count",
+        "side_effect_rate"
+      ],
+      "train_only_keys": [],
+      "test_only_keys": [],
+      "n_train_keys": 3,
+      "n_test_keys": 3,
+      "n_vectorizer_dims": 3,
+      "n_train_dims_always_zero_at_test": 2,
+      "frac_train_dims_always_zero_at_test": 0.6666666666666666,
+      "test_keys_dropped": [],
+      "n_test_keys_dropped": 0,
+      "frac_test_keys_dropped": 0.0,
+      "event_count_in_train": true,
+      "event_count_in_test": true
+    },
+    "n_test_preds": 630,
+    "reproduce_frozen_a": true,
+    "track_b_matches_legacy_cohort": true
+  }
+}

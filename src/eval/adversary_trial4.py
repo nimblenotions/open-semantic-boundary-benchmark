@@ -25,22 +25,42 @@ from eval.export_text import export_text_for_embedding
 
 DEFAULT_SIMILARITY_THRESHOLD = 0.3
 MAX_LINKAGE_PAIRS = 4000
+TFIDF_FIT_TRAIN_TEST = "train_test"
+TFIDF_FIT_TRAIN_ONLY = "train_only"
+DEFAULT_TFIDF_FIT_SCOPE = TFIDF_FIT_TRAIN_ONLY
+TFIDF_ANALYZER = "char_wb"
+TFIDF_NGRAM_RANGE = (1, 3)
+TFIDF_MAX_FEATURES = 5000
 
 
 class _FittedTfidfEmbedder:
-    """Char/word TF-IDF dense vectors (fallback when sentence-transformers unavailable)."""
+    """Char n-gram TF-IDF dense vectors (frozen SBB linkage probe)."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        max_features: int = TFIDF_MAX_FEATURES,
+        ngram_range: tuple[int, int] = TFIDF_NGRAM_RANGE,
+        analyzer: str = TFIDF_ANALYZER,
+    ) -> None:
         self._vectorizer = TfidfVectorizer(
-            max_features=5000,
-            ngram_range=(1, 3),
-            analyzer="char_wb",
+            max_features=max_features,
+            ngram_range=ngram_range,
+            analyzer=analyzer,
             min_df=1,
         )
         self.model_name = "tfidf_char_wb"
+        self.max_features = max_features
+        self.ngram_range = ngram_range
+        self.analyzer = analyzer
 
     def fit(self, texts: list[str]) -> None:
         self._vectorizer.fit(texts)
+
+    @property
+    def vocab_size(self) -> int:
+        vocab = getattr(self._vectorizer, "vocabulary_", None)
+        return len(vocab) if vocab is not None else 0
 
     def embed(self, texts: list[str]) -> np.ndarray:
         matrix = self._vectorizer.transform(texts)
@@ -50,6 +70,53 @@ class _FittedTfidfEmbedder:
             if norm > 0:
                 dense[i] /= norm
         return dense
+
+
+def tfidf_fit_scope_from_config(cfg: dict[str, Any] | None) -> str:
+    """Read eval.trial4.tfidf_fit_scope; default is camera-ready train-only fitting."""
+    if not cfg:
+        return DEFAULT_TFIDF_FIT_SCOPE
+    trial4 = (cfg.get("eval") or {}).get("trial4") or {}
+    scope = str(trial4.get("tfidf_fit_scope", DEFAULT_TFIDF_FIT_SCOPE)).strip()
+    return scope or DEFAULT_TFIDF_FIT_SCOPE
+
+
+def tfidf_fit_texts(
+    train_texts: list[str],
+    test_texts: list[str],
+    tfidf_fit_scope: str = DEFAULT_TFIDF_FIT_SCOPE,
+) -> list[str]:
+    """Select documents used to fit the frozen TF-IDF vectorizer."""
+    scope = (tfidf_fit_scope or DEFAULT_TFIDF_FIT_SCOPE).strip()
+    if scope == TFIDF_FIT_TRAIN_ONLY:
+        return list(train_texts)
+    if scope == TFIDF_FIT_TRAIN_TEST:
+        return list(train_texts) + list(test_texts)
+    raise ValueError(
+        f"tfidf_fit_scope must be {TFIDF_FIT_TRAIN_TEST!r} or "
+        f"{TFIDF_FIT_TRAIN_ONLY!r}, got {tfidf_fit_scope!r}"
+    )
+
+
+def fit_trial4_tfidf_embedder(
+    train_texts: list[str],
+    test_texts: list[str],
+    *,
+    tfidf_fit_scope: str = DEFAULT_TFIDF_FIT_SCOPE,
+) -> tuple[_FittedTfidfEmbedder, dict[str, Any]]:
+    """Fit the frozen char_wb TF-IDF probe and return embedder plus fit metadata."""
+    fit_texts = tfidf_fit_texts(train_texts, test_texts, tfidf_fit_scope)
+    embedder = _FittedTfidfEmbedder()
+    embedder.fit(fit_texts)
+    meta = {
+        "tfidf_fit_scope": tfidf_fit_scope,
+        "tfidf_n_fit_docs": len(fit_texts),
+        "tfidf_vocab_size": embedder.vocab_size,
+        "tfidf_analyzer": TFIDF_ANALYZER,
+        "tfidf_ngram_range": list(TFIDF_NGRAM_RANGE),
+        "tfidf_max_features": TFIDF_MAX_FEATURES,
+    }
+    return embedder, meta
 
 
 def resolve_embedder(
@@ -71,6 +138,23 @@ def resolve_embedder(
 
 def _export_texts(rows: list[dict[str, Any]]) -> list[str]:
     return [export_text_for_embedding(row["export"]) for row in rows]
+
+
+def train_only_tfidf_embedder(
+    train_rows: list[dict[str, Any]],
+    *,
+    max_features: int = TFIDF_MAX_FEATURES,
+    ngram_range: tuple[int, int] = TFIDF_NGRAM_RANGE,
+    analyzer: str = TFIDF_ANALYZER,
+) -> _FittedTfidfEmbedder:
+    """Fit Trial4 TF-IDF on training export strings only (paper protocol)."""
+    embedder = _FittedTfidfEmbedder(
+        max_features=max_features,
+        ngram_range=ngram_range,
+        analyzer=analyzer,
+    )
+    embedder.fit(_export_texts(train_rows))
+    return embedder
 
 
 def _mean_pool(vectors: np.ndarray) -> np.ndarray:
@@ -481,8 +565,17 @@ def evaluate_trial4_adversary(
     embedder: Embedder | None = None,
     seed: int = 42,
     similarity_threshold: float = DEFAULT_SIMILARITY_THRESHOLD,
+    tfidf_fit_scope: str = DEFAULT_TFIDF_FIT_SCOPE,
 ) -> dict[str, float | str | int]:
-    """Run Trial4 adversary suite on frozen exports."""
+    """Run Trial4 adversary suite on frozen exports.
+
+    Camera-ready protocol: character n-gram TF-IDF (``char_wb``, 1–3, 5000
+    features) fitted on that condition's **training** export strings only
+    (``tfidf_fit_scope="train_only"``), then applied unchanged to held-out
+    exports. ``tfidf_fit_scope="train_test"`` is the superseded transductive
+    fit (train+test); keep it only for audit comparison. Caller-supplied
+    ``embedder`` (e.g. unit-test mocks) skips TF-IDF fitting.
+    """
     empty: dict[str, float | str | int] = {
         "persona_top1": 0.0,
         "persona_top5": 0.0,
@@ -501,8 +594,10 @@ def evaluate_trial4_adversary(
         "combined_linkage_score": 0.0,
         "token_recovery_rate": 0.0,
         "n_test": 0,
+        "n_train": len(train_rows),
         "embedder": "none",
         "similarity_threshold": similarity_threshold,
+        "tfidf_fit_scope": tfidf_fit_scope,
         "combined_linkage_formula": (
             "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)"
         ),
@@ -510,12 +605,19 @@ def evaluate_trial4_adversary(
     if not test_rows:
         return empty
 
-    all_texts = _export_texts(train_rows) + _export_texts(test_rows)
-    resolved = resolve_embedder(embedder, fit_texts=all_texts)
-    embedder_name = getattr(resolved, "model_name", type(resolved).__name__)
-
     train_texts = _export_texts(train_rows)
     test_texts = _export_texts(test_rows)
+    tfidf_meta: dict[str, Any] = {"tfidf_fit_scope": tfidf_fit_scope}
+    if embedder is not None:
+        resolved = embedder
+    else:
+        # Frozen paper protocol is TF-IDF char_wb, not MiniLM.
+        resolved, tfidf_meta = fit_trial4_tfidf_embedder(
+            train_texts,
+            test_texts,
+            tfidf_fit_scope=tfidf_fit_scope,
+        )
+    embedder_name = getattr(resolved, "model_name", type(resolved).__name__)
     embeddings_train = resolved.embed(train_texts)
     embeddings_test = resolved.embed(test_texts)
 
@@ -546,11 +648,13 @@ def evaluate_trial4_adversary(
         "longitudinal_loo_top1": loo_top1,
         "token_recovery_rate": float(token_recovery_rate(test_rows, raw_by_id)),
         "n_test": len(test_rows),
+        "n_train": len(train_rows),
         "embedder": embedder_name,
         "similarity_threshold": similarity_threshold,
         "combined_linkage_formula": (
             "mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)"
         ),
+        **tfidf_meta,
     }
     result["combined_linkage_score"] = combined_linkage_score(
         {k: float(v) for k, v in result.items() if isinstance(v, (int, float))}

@@ -1,0 +1,104 @@
+{
+  "conditions": {
+    "raw": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.18730158730158727,
+      "track_c_no_event_count": 0.1255731922398589
+    },
+    "redact_bracket": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.26071428571428573,
+      "track_c_no_event_count": 0.16309523809523807
+    },
+    "redact_tokenize": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.20625,
+      "track_c_no_event_count": 0.20238095238095236
+    },
+    "redact_surrogate": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.26430976430976433,
+      "track_c_no_event_count": 0.07222222222222223
+    },
+    "sem_coarse": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.23601190476190476,
+      "track_c_no_event_count": 0.13174603174603175
+    },
+    "sem_medium": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.20238095238095238,
+      "track_c_no_event_count": 0.07738095238095238
+    },
+    "sem_fine": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.29444444444444445,
+      "track_c_no_event_count": 0.07738095238095238
+    },
+    "redact_llm_substitute": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.12301587301587302,
+      "track_c_no_event_count": 0.15740740740740738
+    },
+    "redact_llm_rephrase": {
+      "status": "ok",
+      "coverage": {
+        "train_preds": 2777,
+        "train_events": 2777,
+        "test_preds": 630,
+        "test_events": 630
+      },
+      "track_c_assessor_symmetric": 0.25925925925925924,
+      "track_c_no_event_count": 0.037037037037037035
+    }
+  },
+  "incomplete": []
+}

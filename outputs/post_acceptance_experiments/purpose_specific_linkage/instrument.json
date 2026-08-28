@@ -1,0 +1,52 @@
+{
+  "git": {
+    "commit": "985295c10f9ceb5ffb8d1400a611f463f982b8ea",
+    "commit_short": "985295c",
+    "branch": "feature/post-acceptance-experiments",
+    "status_short": "## feature/post-acceptance-experiments...research/feature/post-acceptance-experiments\n?? eval/run_purpose_specific_linkage_audit.py\n?? paper/arxiv-2026-long-paper-v4/source-shortened-content.tex\n?? paper/cikm-2026-short-paper-v3/source-cikm-paper.tex\n?? tmp/"
+  },
+  "config": "configs/cikm_v0.1.yaml",
+  "seed": 42,
+  "tfidf": {
+    "analyzer": "char_wb",
+    "ngram_range": [
+      1,
+      3
+    ],
+    "max_features": 5000,
+    "fit": "train_export_strings_only"
+  },
+  "adversary": "evaluate_trial4_adversary with pre-fitted train-only TF-IDF",
+  "do_not_write": [
+    "outputs/pilot_v2/**",
+    "data/**",
+    "paper/**/*.tex",
+    "src/eval/adversary_trial4.py"
+  ],
+  "n_raw_events": 3894,
+  "n_personas": 100,
+  "conditions": [
+    "raw",
+    "redact_bracket",
+    "redact_tokenize",
+    "redact_surrogate",
+    "sem_coarse",
+    "sem_medium",
+    "sem_fine",
+    "redact_llm_substitute",
+    "redact_llm_rephrase"
+  ],
+  "n_train_events": 2777,
+  "n_test_events": 630,
+  "n_val_events": 487,
+  "n_test_personas": 20,
+  "n_train_personas": 70,
+  "expected": {
+    "events": 3894,
+    "train": 2777,
+    "test": 630,
+    "test_personas": 20,
+    "conditions": 9
+  },
+  "counts_match_frozen": true
+}

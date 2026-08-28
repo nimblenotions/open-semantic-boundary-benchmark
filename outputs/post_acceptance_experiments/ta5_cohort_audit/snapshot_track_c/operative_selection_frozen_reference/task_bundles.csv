@@ -1,0 +1,6 @@
+bundle_id,label,n_feasible,feasible_conditions,empty
+dual_purpose_balanced,Balanced dual-purpose (obs + med-class under moderate linkage),2,raw;sem_medium,False
+strict_linkage,Strict linkage budget (compliance-oriented),0,,True
+observability_first,Observability-first vendor triage,3,redact_bracket;redact_surrogate;sem_medium,False
+analytics_med_class,Analytics med-class priority,2,raw;sem_medium,False
+full_dual_composite,Full dual-purpose composite utility,3,raw;redact_surrogate;sem_medium,False

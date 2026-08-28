@@ -1,0 +1,57 @@
+{
+  "r_max": 0.45,
+  "formula_note": "Existing shared-R regret assumes one feasible set. Purpose-specific R splits feasibility; forced reuse is marked infeasible when the same condition ID fails the destination purpose's R constraint.",
+  "purposes": [
+    "observability",
+    "analytics_med",
+    "analytics_side",
+    "analytics_adherence",
+    "analytics_cohort"
+  ],
+  "winners": {
+    "observability": "redact_bracket",
+    "analytics_med": "redact_surrogate",
+    "analytics_side": "sem_coarse",
+    "analytics_adherence": "sem_coarse",
+    "analytics_cohort": "redact_surrogate"
+  },
+  "regret_or_infeasible": [
+    [
+      0.0,
+      0.24808166690424305,
+      0.43843378843378844,
+      0.281093569503273,
+      0.003595478595478596
+    ],
+    [
+      0.01616848077878641,
+      0.0,
+      0.1339066740786763,
+      0.2648648648648648,
+      0.0
+    ],
+    [
+      0.5081267977873405,
+      0.31704082090814856,
+      0.0,
+      0.0,
+      0.028297859547859572
+    ],
+    [
+      0.5081267977873405,
+      0.31704082090814856,
+      0.0,
+      0.0,
+      0.028297859547859572
+    ],
+    [
+      0.01616848077878641,
+      0.0,
+      0.1339066740786763,
+      0.2648648648648648,
+      0.0
+    ]
+  ],
+  "infeasible_reuses": [],
+  "legacy_shared_r_assumption": "not reused"
+}

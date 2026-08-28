@@ -1,0 +1,10 @@
+condition_id,linkage,u_obs,on_pareto_frontier,dominated_by,never_deploy
+raw,0.48328840191566264,0.6263286808976464,False,redact_bracket;redact_surrogate,True
+redact_bracket,0.3568462879823953,0.6731650099289139,True,,False
+redact_tokenize,0.6523097054569078,0.6618053142346182,False,redact_bracket;sem_medium,True
+redact_surrogate,0.43173116392604527,0.6569965291501275,False,redact_bracket,True
+sem_coarse,0.3095413925127006,0.1650382121415734,True,,False
+sem_medium,0.4866875410037193,1.0,True,,False
+sem_fine,0.7524096252103373,1.0,False,sem_medium,True
+redact_llm_substitute,0.5270384060714028,0.5990921382359268,False,raw;redact_bracket;redact_surrogate;sem_medium,True
+redact_llm_rephrase,0.5391263761095514,0.5826727812985624,False,raw;redact_bracket;redact_surrogate;sem_medium;redact_llm_substitute,True

@@ -1,0 +1,156 @@
+{
+  "generated_at_utc": "2026-08-19T06:52:08.265026+00:00",
+  "git_commit": "b2a9c0d09d62d7dd0abd9a761fae35ed8fda7a8b",
+  "tfidf_fit_scope": "train_only",
+  "tfidf_analyzer": "char_wb",
+  "tfidf_ngram_range": [
+    1,
+    3
+  ],
+  "tfidf_max_features": 5000,
+  "split_seed": 42,
+  "train_ratio": 0.7,
+  "val_ratio": 0.1,
+  "test_ratio": 0.2,
+  "eval_seed": 42,
+  "no_llm_rerun": true,
+  "no_lattice_regeneration": true,
+  "source_paths": {
+    "legacy_transductive_metrics": "outputs/pilot_v2/metrics.json",
+    "transductive_archive": "outputs/pilot_v2_tfidf_train_test/metrics.json",
+    "train_only_sensitivity": "outputs/pilot_v2_tfidf_train_only/metrics.json",
+    "frozen_analytics_utility": "outputs/pilot_v2/analytics_metrics.json",
+    "camera_ready_metrics": "outputs/pilot_v2_camera_ready/metrics.json"
+  },
+  "paper_figures": {
+    "linkage_decomposition": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.png"
+    },
+    "utility_matrix_heatmap": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.png"
+    },
+    "cross_purpose_regret_matrix": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.png"
+    }
+  },
+  "advisor_figures": {
+    "utility_matrix_png": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.png",
+    "utility_matrix_pdf": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.pdf",
+    "linkage_decomposition_png": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.png",
+    "linkage_decomposition_pdf": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.pdf",
+    "cross_purpose_regret_png": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.png",
+    "cross_purpose_regret_pdf": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.pdf"
+  },
+  "dual_purpose_figures": {
+    "aggregate_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto.png",
+    "aggregate_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto.pdf",
+    "per_task_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_per_task.png",
+    "per_task_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_per_task.pdf",
+    "png": "outputs/pilot_v2_camera_ready/figures/frontier_epsilon_merged.png",
+    "pdf": "outputs/pilot_v2_camera_ready/figures/frontier_epsilon_merged.pdf",
+    "dual_pareto_main_threepanel_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_main_threepanel.png",
+    "dual_pareto_main_threepanel_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_main_threepanel.pdf",
+    "dual_pareto_hero_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_hero.png",
+    "dual_pareto_hero_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_hero.pdf",
+    "dual_pareto_obs_vs_analytics_composite_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_obs_vs_analytics_composite.png",
+    "dual_pareto_obs_vs_analytics_composite_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_obs_vs_analytics_composite.pdf",
+    "dual_pareto_composite_purposes_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_composite_purposes.png",
+    "dual_pareto_composite_purposes_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_composite_purposes.pdf",
+    "dual_pareto_triptych_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych.png",
+    "dual_pareto_triptych_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych.pdf",
+    "dual_pareto_triptych_obs_med_side_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych_obs_med_side.png",
+    "dual_pareto_triptych_obs_med_side_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych_obs_med_side.pdf",
+    "dual_pareto_triptych_analytics_internal_png": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych_analytics_internal.png",
+    "dual_pareto_triptych_analytics_internal_pdf": "outputs/pilot_v2_camera_ready/figures/dual_pareto_triptych_analytics_internal.pdf",
+    "winner_mismatch_png": "outputs/pilot_v2_camera_ready/figures/operative_winner_mismatch.png",
+    "winner_mismatch_pdf": "outputs/pilot_v2_camera_ready/figures/operative_winner_mismatch.pdf",
+    "regret_focal_png": "outputs/pilot_v2_camera_ready/figures/operative_regret_focal.png",
+    "regret_focal_pdf": "outputs/pilot_v2_camera_ready/figures/operative_regret_focal.pdf",
+    "linkage_channels_png": "outputs/pilot_v2_camera_ready/figures/linkage_channels_dual.png",
+    "linkage_channels_pdf": "outputs/pilot_v2_camera_ready/figures/linkage_channels_dual.pdf",
+    "utility_matrix_png": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.png",
+    "utility_matrix_pdf": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.pdf",
+    "linkage_decomposition_png": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.png",
+    "linkage_decomposition_pdf": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.pdf",
+    "cross_purpose_regret_png": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.png",
+    "cross_purpose_regret_pdf": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.pdf"
+  },
+  "operative_selection": {
+    "out_dir": "outputs/pilot_v2_camera_ready/operative_selection",
+    "json": "outputs/pilot_v2_camera_ready/operative_selection/operative_selection.json",
+    "operative_boundary_bundle": "outputs/pilot_v2_camera_ready/operative_selection/operative_boundary_bundle_v0.json",
+    "report_md": "outputs/pilot_v2_camera_ready/operative_selection/operative_selection_report.md",
+    "analytics_multi_task_md": "outputs/pilot_v2_camera_ready/operative_selection/analytics_multi_task_simulation.md"
+  },
+  "operative_figures": {
+    "tier_a_risk_heatmap_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_risk_constrained_heatmap.png",
+    "tier_a_risk_heatmap_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_risk_constrained_heatmap.pdf",
+    "tier_a_risk_table_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_risk_constrained_table.png",
+    "tier_a_risk_table_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_risk_constrained_table.pdf",
+    "tier_a_risk_table_tex": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_risk_constrained_table.tex",
+    "tier_a_dominance_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_dominance_chart.png",
+    "tier_a_dominance_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_dominance_chart.pdf",
+    "tier_a_dominance_dominance_table_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_dominance_table.png",
+    "tier_a_dominance_dominance_table_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_dominance_table.pdf",
+    "tier_a_task_bundles_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_task_bundles.png",
+    "tier_a_task_bundles_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_task_bundles.pdf",
+    "tier_a_task_bundles_task_bundles_table_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_task_bundles_table.png",
+    "tier_a_task_bundles_task_bundles_table_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_task_bundles_table.pdf",
+    "tier_a_task_bundles_task_bundles_tex": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_task_bundles_table.tex",
+    "tier_a_perspective_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_perspective_summary.png",
+    "tier_a_perspective_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_perspective_summary.pdf",
+    "tier_a_overview_png": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_operative_overview.png",
+    "tier_a_overview_pdf": "outputs/pilot_v2_camera_ready/operative_selection/tier_a_operative_overview.pdf",
+    "epsilon_sweep_winner_trace_png": "outputs/pilot_v2_camera_ready/operative_selection/epsilon_sweep_winner_trace.png",
+    "epsilon_sweep_winner_trace_pdf": "outputs/pilot_v2_camera_ready/operative_selection/epsilon_sweep_winner_trace.pdf",
+    "epsilon_sweep_condition_bands_png": "outputs/pilot_v2_camera_ready/operative_selection/epsilon_sweep_condition_bands.png",
+    "epsilon_sweep_condition_bands_pdf": "outputs/pilot_v2_camera_ready/operative_selection/epsilon_sweep_condition_bands.pdf",
+    "provenance_gate_ablation_png": "outputs/pilot_v2_camera_ready/operative_selection/provenance_gate_ablation.png",
+    "provenance_gate_ablation_pdf": "outputs/pilot_v2_camera_ready/operative_selection/provenance_gate_ablation.pdf",
+    "provenance_gate_ablation_md": "outputs/pilot_v2_camera_ready/operative_selection/provenance_gate_ablation.md",
+    "provenance_gate_ablation_json": "outputs/pilot_v2_camera_ready/operative_selection/provenance_gate_ablation.json"
+  },
+  "verification": {
+    "winners_at_0_45": {
+      "observability": "redact_bracket",
+      "analytics_med": "redact_surrogate",
+      "analytics_side": "sem_coarse",
+      "analytics_adherence": "sem_coarse",
+      "analytics_cohort": "redact_bracket"
+    },
+    "winners_match_paper_table": true,
+    "r_max_boundary_crossings_vs_transductive": [],
+    "pareto_obs_unchanged": true,
+    "pareto_obs": [
+      "redact_bracket",
+      "sem_coarse",
+      "sem_medium"
+    ],
+    "dual_purpose_balanced_unchanged": true,
+    "dual_purpose_balanced": [
+      "raw",
+      "sem_medium"
+    ],
+    "dual_purpose_floors_at_0_45": [],
+    "dual_purpose_empty_at_0_45": true,
+    "red_tokenize": {
+      "token_recovery_rate": 0.007883565797453002,
+      "persona_top1": 0.8365079365079365,
+      "near_zero_token_high_persona": true
+    }
+  },
+  "rank_low_to_high": [
+    "sem_coarse",
+    "redact_bracket",
+    "redact_surrogate",
+    "raw",
+    "sem_medium",
+    "redact_llm_substitute",
+    "redact_llm_rephrase",
+    "redact_tokenize",
+    "sem_fine"
+  ]
+}

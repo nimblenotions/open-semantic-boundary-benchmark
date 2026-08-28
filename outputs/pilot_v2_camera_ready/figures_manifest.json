@@ -1,0 +1,24 @@
+{
+  "cikm_paper_protocol": true,
+  "tfidf_fit_scope": "train_only",
+  "metrics": "outputs/pilot_v2_camera_ready/metrics.json",
+  "analytics_metrics": "outputs/pilot_v2_camera_ready/analytics_metrics.json",
+  "figures_dir": "outputs/pilot_v2_camera_ready/figures",
+  "legacy_transductive_metrics": "outputs/pilot_v2/metrics.json",
+  "transductive_archive": "outputs/pilot_v2_tfidf_train_test/metrics.json",
+  "note": "CIKM Figs. 2–4. Do not use outputs/pilot_v2/figures for those three plots (legacy transductive TF-IDF). Rebuild: make camera-ready-linkage.",
+  "paper_figures": {
+    "linkage_decomposition": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/linkage_decomposition.png"
+    },
+    "utility_matrix_heatmap": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/utility_matrix_heatmap.png"
+    },
+    "cross_purpose_regret_matrix": {
+      "pdf": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.pdf",
+      "png": "outputs/pilot_v2_camera_ready/figures/cross_purpose_regret_matrix.png"
+    }
+  }
+}
