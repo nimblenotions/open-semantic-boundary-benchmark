@@ -2,8 +2,6 @@
 
 This folder is the **cite surface** for tag `cikm-2026`: the submitted CIKM 2026 protocol (paper **4405**, DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
 
-It is the **Full paper package**, not Open-SBB Core.
-
 ## Verify (no Ollama)
 
 From the repository root:
@@ -34,6 +32,8 @@ That command checks:
 Protocol-referenced originals remain under `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`.
 
 `outputs/pilot_v2/` on this tag is **historical** (transductive TF-IDF, mixed Ta-5). Do not treat it as the CIKM default.
+
+Camera-ready repair inventory (not required for reading the paper): [`../../docs/CIKM-2026-RELEASE-NOTES.md`](../../docs/CIKM-2026-RELEASE-NOTES.md).
 
 ## Cite
 

@@ -42,4 +42,12 @@ Flattened copies in [`figures/`](figures/); originals stay under `outputs/` so p
 | Fig. 3 | `figures/utility_matrix_heatmap.pdf` | Track C Ta-5 column |
 | Fig. 4 | `figures/cross_purpose_regret_matrix.pdf` | purpose-specific \(R\) at 0.45 |
 
-Checksums: [`checksums.sha256`](checksums.sha256).
+Figure checksums: [`checksums.sha256`](checksums.sha256).
+
+## Split manifest
+
+Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`).
+
+| Artifact | Path | SHA256 |
+|----------|------|--------|
+| Split manifest v0 | `data/ground_truth/split_manifest_v0.json` | `b15f4cebc5570a36171eb18ddca5d65d109ad18cb334268d45f43f84e15cfac0` |

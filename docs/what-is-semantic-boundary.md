@@ -153,7 +153,7 @@ Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathc
 | Table 3 and Figs. 2–4 | [`../releases/cikm-2026/`](../releases/cikm-2026/) |
 | Benchmark protocol | [`../open-sbb/README.md`](../open-sbb/README.md) |
 | Verify the CIKM protocol | Root [`README.md`](../README.md) → `make repro-cikm-2026` |
-| Evaluate your exports | [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) |
+| Map paper concepts to code | [`paper_to_repo.md`](paper_to_repo.md) |
 | Find code for linkage / operative selection | [`../open-sbb/linkage_assessment/README.md`](../open-sbb/linkage_assessment/README.md), [`../open-sbb/operative_selection/README.md`](../open-sbb/operative_selection/README.md) |
 | Onboarding paths | [`adoption_path.md`](adoption_path.md) |
 

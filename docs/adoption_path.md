@@ -46,13 +46,13 @@ make eval-analytics
 make cohort-tier1         # required after eval-analytics before figures
 ```
 
-No Ollama if `data/eval_cache*` is present. Do **not** overwrite `outputs/pilot_v2/`.
+No Ollama if `data/eval_cache*` is present. Do **not** overwrite `outputs/pilot_v2/`. Full regen from scratch is `make pipeline` (needs Ollama + `qwen3:8b`).
 
-**Optional / advanced:** [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — **YMMV**; productized path is v0.2.
+**Optional / advanced:** [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — **YMMV**; not part of the CIKM evaluation.
 
 ## Contributor path (~half day first time)
 
-1. Read [`extension_points.md`](extension_points.md) and [`repo_map.md`](repo_map.md).
+1. Read [`extension_points.md`](extension_points.md) and [`paper_to_repo.md`](paper_to_repo.md).
 2. Run `make test` and `make lint`.
 3. Follow [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
@@ -73,8 +73,6 @@ python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['
 
 | Layer | Role |
 |-------|------|
-| **CIKM 2026 paper** | Establishes the idea and pilot evidence ([DOI](https://doi.org/10.1145/3799682.3840076)) |
-| **This repo (tag `cikm-2026`)** | Frozen benchmark artifact — run, reproduce, inspect Table 3 / Figs. 2–4 |
-| **Product / deployment** | Future stack (out of scope here) |
-
-Goal on this tag: reproduce the CIKM protocol and understand the lattice. Goal for v0.2+: *“I can test my own exports here”* via `opensbb run` (not implemented yet).
+| **Semantic Boundary** | Framework |
+| **Open-SBB** | Benchmark / evaluation instrument |
+| **CIKM 2026 artifact** | This frozen experiment ([DOI](https://doi.org/10.1145/3799682.3840076)) |

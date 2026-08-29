@@ -1,12 +1,6 @@
-# Open SBB — protocol map
+# Protocol map
 
-Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root.
-
-**CIKM 2026 paper readers:** Table 3 and Figs. 2–4 live in [`../releases/cikm-2026/`](../releases/cikm-2026/). Verify with `make repro-cikm-2026`. Paths under `outputs/pilot_v2/` in the module READMEs below are the **historical** v0.1.1 snapshot, not the camera-ready default.
-
-Code, data, and outputs stay in `src/`, `data/`, and `outputs/` so you can clone and reproduce without learning a new package layout.
-
-## Protocol flow
+This folder maps the Open-SBB **benchmark protocol** to module READMEs. Implementation stays at the repo root (`src/`, `data/`, `eval/`).
 
 ```text
 Synthetic pilot data
@@ -20,67 +14,17 @@ Operative selection
 Transformation provenance (τ, verify)
 ```
 
-Policies and consumers are registered **before** scoring: the same export condition can yield different typed exports per purpose \(T_o\) vs \(T_a\).
+## Modules
 
-## Module index
+| Module | README |
+|--------|--------|
+| Synthetic pilot | [`synthetic_pilot_data/`](synthetic_pilot_data/README.md) |
+| Export lattice | [`export_lattice/`](export_lattice/README.md) |
+| Policies | [`policies/`](policies/README.md) |
+| Consumers | [`consumers/`](consumers/README.md) |
+| Utility assessment | [`utility_assessment/`](utility_assessment/README.md) |
+| Linkage assessment | [`linkage_assessment/`](linkage_assessment/README.md) |
+| Operative selection | [`operative_selection/`](operative_selection/README.md) |
+| Transformation provenance | [`transformation_provenance/`](transformation_provenance/README.md) |
 
-| Protocol module | Paper § | README | Role |
-|-----------------|---------|--------|------|
-| Synthetic pilot | §4.3 | [`synthetic_pilot_data/`](synthetic_pilot_data/README.md) | Corpus \(W\), split, labels |
-| Export lattice | §4.1 | [`export_lattice/`](export_lattice/README.md) | Nine frozen conditions \(z,r\) |
-| Policies | §4.2 | [`policies/`](policies/README.md) | Disclosure bundles π, schemas |
-| Consumers | §4.2 | [`consumers/`](consumers/README.md) | Frozen assessor contracts |
-| Utility assessment | §4.4 | [`utility_assessment/`](utility_assessment/README.md) | `assess_utility` → \(U(T,z)\) |
-| Linkage assessment | §4.4 | [`linkage_assessment/`](linkage_assessment/README.md) | `assess_risk` → \(R(z)\) |
-| Operative selection | §4.5 | [`operative_selection/`](operative_selection/README.md) | Pareto, \(R_{\max}\), bundles |
-| Transformation provenance | §4.6 | [`transformation_provenance/`](transformation_provenance/README.md) | \(\tau\), `verify`, BYO \((z,r)\) |
-
-## Paper §4 → current repo locations
-
-| Protocol module | Paper section | Current code | Current data | Current outputs |
-|-----------------|---------------|--------------|--------------|-----------------|
-| Synthetic pilot | §4.3 | `src/generate/` | `data/raw/`, `data/ground_truth/` | — |
-| Export lattice | §4.1 | `src/transform/`, `eval/run_*` (materialize) | `data/transformed/`, `data/transformed_analytics/`, `data/llm_transform_cache/` | (scores in metrics JSON) |
-| Policies | §4.2 | `src/boundary/policy_check.py` | `data/policies/`, `data/schemas/` | — |
-| Consumers | §4.2 | `src/eval/tier0_consumer.py`, `tier1_consumer.py`, `tier1_analytics_consumer.py` (legacy module names) | `data/eval_cache/`, `data/eval_cache_analytics/` | cached LLM consumer predictions |
-| Utility assessment | §4.4 | `src/eval/observability_task.py`, `analytics_task.py`, `eval/run_obs_study.py`, `run_analytics_study.py` | reads lattice + caches | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
-| Linkage assessment | §4.4 | `src/eval/adversary*.py`, `adversary_trial4.py` (linkage adversary suite) | same transforms | linkage in metrics + `outputs/pilot_v2/figures/linkage_*` |
-| Operative selection | §4.5 | `src/eval/operative_selection.py`, `eval/run_operative_selection.py` | — | `outputs/pilot_v2/operative_selection/` |
-| Provenance | §4.6 | `src/boundary/verify.py`, `cross.py`, `provenance_score.py` | `examples/provenance/` | `outputs/pilot_v2/boundary_bundle_v0.json` |
-
-## Naming alias
-
-| Name | Meaning |
-|------|---------|
-| **Tag `cikm-2026`** | Frozen CIKM 2026 paper artifact |
-| **`releases/cikm-2026/`** | Table 3, Figs. 2–4, camera-ready protocol |
-| **`outputs/pilot_v2/`** | Historical v0.1.1 snapshot — not the CIKM default |
-| **`configs/cikm_v0.1.yaml`** | Default config on this tag |
-
-## Reproduce (no Ollama)
-
-See [Reproduce](../README.md#reproduce) in the root README. Short form:
-
-```bash
-make repro-cikm-2026      # CIKM 2026 protocol + figure checksums
-make repro-smoke          # historical v0.1.1 headlines
-```
-
-Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not Tier-0.
-
-## Further reading
-
-| Doc | Purpose |
-|-----|---------|
-| CIKM 2026 paper | [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076) |
-| Longer technical report | forthcoming |
-| Zenodo archive (historical v0.1.2) | [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) |
-| [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
-| [`../docs/adoption_path.md`](../docs/adoption_path.md) | Onboarding paths (quick repro → rescore → contributor) |
-| [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |
-| [`../docs/extension_points.md`](../docs/extension_points.md) | How to extend the protocol |
-| [`../examples/README.md`](../examples/README.md) | Domain examples + BYO |
-
-## Not claimed
-
-Open SBB measures utility and linkage on **released exports** under declared assessors. It does not certify HIPAA compliance, OTel conformance, or production safety.
+[Paper-to-repo map →](../docs/paper_to_repo.md) · [Reproduce CIKM →](../releases/cikm-2026/) (`make repro-cikm-2026`)
