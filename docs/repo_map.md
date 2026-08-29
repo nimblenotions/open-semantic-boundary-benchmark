@@ -1,17 +1,18 @@
 # Repository map
 
-Quick navigation for newcomers. Implementation stays at the repo root for v0.1.1.
+Quick navigation for newcomers. Implementation stays at the repo root.
 
 ## I want to…
 
 | Goal | Start here |
 |------|------------|
 | Understand the protocol | [`open-sbb/README.md`](../open-sbb/README.md) |
-| Reproduce paper numbers (fast) | `make repro-smoke` |
+| Inspect Table 3 / Figs. 2–4 | [`../releases/cikm-2026/`](../releases/cikm-2026/) |
+| Reproduce CIKM 2026 (fast) | `make repro-cikm-2026` |
+| Historical v0.1.1 headlines | `make repro-smoke` |
 | Reproduce full eval | `make eval`, `make eval-analytics` |
-| Regenerate figures | `make figures`, `make operative-selection` |
 | See domain use cases | [`examples/README.md`](../examples/README.md) |
-| Evaluate my own exports (advanced) | [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — enthusiast path; **YMMV** until v0.2 |
+| Evaluate my own exports (advanced) | [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — **YMMV** until v0.2 |
 | Map paper → repo | [`paper_to_repo.md`](paper_to_repo.md) |
 | Extend the benchmark | [`extension_points.md`](extension_points.md) |
 | Onboarding paths | [`adoption_path.md`](adoption_path.md) |
@@ -23,11 +24,14 @@ Quick navigation for newcomers. Implementation stays at the repo root for v0.1.1
 | `open-sbb/` | Protocol map (README per paper §4 module) — **docs only** |
 | `src/` | Python packages: generate, transform, boundary, eval |
 | `eval/` | Study CLI entrypoints |
-| `scripts/` | Pipeline, cache, repro smoke |
+| `scripts/` | Pipeline, cache, repro verify |
 | `tests/` | Regression tests |
-| `configs/pilot_v0.1.1.yaml` | Primary frozen config |
+| `configs/cikm_v0.1.yaml` | CIKM 2026 paper protocol (default) |
+| `configs/pilot_v0.1.1.yaml` | Historical v0.1.1 config |
 | `data/` | Frozen pilot data, transforms, eval caches |
-| `outputs/pilot_v2/` | **Open SBB v0.1.1** published metrics + figures |
+| `releases/cikm-2026/` | Cite surface: Table 3, Figs. 2–4, protocol |
+| `outputs/pilot_v2_camera_ready/`, `outputs/post_acceptance_experiments/` | Canonical CIKM metrics |
+| `outputs/pilot_v2/` | Historical v0.1.1 snapshot — not the CIKM default |
 | `examples/` | Adoption examples by domain |
 
 ## By protocol concern
@@ -45,19 +49,19 @@ Quick navigation for newcomers. Implementation stays at the repo root for v0.1.1
 
 ## Naming
 
-- **`outputs/pilot_v2/`** = frozen **Open SBB v0.1.1** published run (directory name is historical).
-- **`configs/pilot_v0.1.1.yaml`** = config for that release.
+- **`releases/cikm-2026/`** = paper cite surface (Table 3, Figs. 2–4).
+- **`outputs/pilot_v2_camera_ready/`** + **`outputs/post_acceptance_experiments/`** = canonical CIKM metric trees.
+- **`outputs/pilot_v2/`** = historical **Open SBB v0.1.1** snapshot (transductive TF-IDF, mixed Ta-5).
+- **`configs/cikm_v0.1.yaml`** = default config on this tag; **`configs/pilot_v0.1.1.yaml`** = historical.
 
 ## Makefile targets (common)
 
 ```bash
 make install
 make test
-make repro-smoke
+make repro-cikm-2026   # CIKM 2026 protocol + figure checksums
+make repro-smoke       # historical v0.1.1 headlines
 make eval
 make eval-analytics
-make figures
-make operative-selection
-make bootstrap-cis
-make pipeline    # full regen; requires Ollama for LLM utility consumers
+make pipeline          # full regen; requires Ollama for LLM utility consumers
 ```

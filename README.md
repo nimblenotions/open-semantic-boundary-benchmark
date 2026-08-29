@@ -1,22 +1,92 @@
 # Open Semantic Boundary Benchmark
 
-**Tag `cikm-2026` — CIKM 2026 paper 4405 reproducibility package**
-
-This tag reproduces the submitted protocol for
+**CIKM 2026 artifact** for
 [Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure](https://doi.org/10.1145/3799682.3840076)
-(CIKM 2026, paper **4405**):
+(paper **4405**).
 
-- **Linkage:** train-only TF-IDF (`char_wb`)
-- **Risk surface:** purpose-specific \(R(z_{c,T})\)
-- **Ta-5 cohort:** Track C `assessor_symmetric`
+## What this repo demonstrates
 
-Cite artifacts: [`releases/cikm-2026/`](releases/cikm-2026/).
+**Open-SBB** is the evaluation instrument for that paper. It holds sensitive events fixed and scores candidate **information exports** for different downstream purposes on two axes:
 
-This tag is the **Full paper package** (scientific repro). It is **not** Open-SBB Core. Core is a later, cheaper default suite and is not what this tag ships.
+- purpose-specific utility \(U(T,z)\)
+- residual linkage risk \(R(z)\)
 
-Public home: [`nimblenotions/open-semantic-boundary-benchmark`](https://github.com/nimblenotions/open-semantic-boundary-benchmark)
+The CIKM 2026 pilot uses synthetic medication-adherence journals, two purpose families (observability and analytics), and nine **reference** export conditions.
 
-## Start here
+```text
+Sensitive source event x
+        │
+        ├── raw
+        ├── bracket redaction
+        ├── surrogate substitution
+        ├── tokenization
+        ├── LLM rewrite
+        └── semantic coarse / medium / fine
+                │
+                ▼
+        purpose-specific consumer
+                │
+         ┌──────┴───────┐
+         ▼              ▼
+      utility         linkage
+      U(T,z)           R(z)
+         │              │
+         └──────┬───────┘
+                ▼
+     feasible winner @ Rmax
+```
+
+**Headline findings**
+
+- Different downstream purposes can prefer different exports.
+- Removing recoverable tokens does not necessarily remove linkage risk.
+- Semantic exports are not universally better than redaction.
+- A single global export can incur substantial cross-purpose regret.
+
+[Paper in 60 seconds](#paper-in-60-seconds) · [Table 3 and figures](#from-the-paper) · [Reproduce](#reproduce) · [Understand the benchmark](docs/what-is-semantic-boundary.md)
+
+## Paper in 60 seconds
+
+**Problem.** Sensitive traces may be useful to several downstream consumers, but they do not necessarily require the same information.
+
+**Benchmark.** Open-SBB holds the underlying events fixed and evaluates nine candidate export conditions for purpose-specific utility and residual linkage risk.
+
+**Pilot.** Synthetic medication-adherence journals; 100 personas; 630 held-out events; observability and analytics consumers.
+
+**Selection.** At each declared linkage ceiling \(R_{\max}\), select the feasible export with the best utility for each purpose.
+
+**Result.** Winners differ across purposes; surface redaction can outperform richer exports under tight constraints, while semantic exports can dominate for other tasks. Token removal alone does not eliminate persona linkage.
+
+**Start with [Table 3](releases/cikm-2026/table3_operative_grid.md) → [Figures 2–4](#from-the-paper) → [one-command verify](#reproduce).**
+
+## From the paper
+
+Cite surface: [`releases/cikm-2026/`](releases/cikm-2026/). You do not need the deep `outputs/` trees to inspect the paper.
+
+| From the paper | Open here |
+|----------------|-----------|
+| **Table 3 — operative winners** | [`releases/cikm-2026/table3_operative_grid.md`](releases/cikm-2026/table3_operative_grid.md) |
+| **Figure 2 — linkage decomposition** | [`figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf) |
+| **Figure 3 — utility matrix** | [`figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
+| **Figure 4 — cross-purpose regret** | [`figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
+| **Exact camera-ready protocol** | [`CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
+| **One-command verification** | `make repro-cikm-2026` |
+
+**Cite:** Evaluated on Open SBB tag `cikm-2026`; see that result card. Do not report an unofficial aggregate “Open-SBB score.”
+
+## Protocol
+
+Declared in `configs/cikm_v0.1.yaml` → `paper_protocol` (locked 2026-08-19).
+
+| What the paper means | How this tag implements it | Not the default |
+|----------------------|----------------------------|-----------------|
+| Linkage fitted on train exports only | train-only TF-IDF (`char_wb`) | transductive train+test (`outputs/pilot_v2/`) |
+| Linkage evaluated on the purpose-specific export \(z_{c,T}\) | purpose-specific \(R(z_{c,T})\) | shared observability \(R\) |
+| Cohort task (\(T_a\)-5) | Track C / assessor-symmetric | mixed Track A |
+
+`make repro-cikm-2026` asserts Table 3 at \(R_{\max}=0.45\), the `red_tokenize` token vs persona bite, and SHA256 of Figs. 2–4. Inventory: [`docs/CIKM-2026-RELEASE-NOTES.md`](docs/CIKM-2026-RELEASE-NOTES.md).
+
+## Reproduce
 
 Use a **project virtual environment** (`.venv/`) — do not install into system Python.
 
@@ -26,27 +96,10 @@ source .venv/bin/activate
 uv pip install -e ".[dev]"
 
 make repro-cikm-2026    # CIKM 2026 protocol + figure checksums; no Ollama
-make repro-smoke        # historical v0.1.1 headlines; no Ollama
 make test
 ```
 
-**Why activate?** Your shell then uses the venv’s `python`, `pytest`, and installed packages. That matters when you run scripts or tests outside `make`.
-
-**Without activation:** `make` targets still work if `.venv/` exists — the `Makefile` calls `.venv/bin/python` and `.venv/bin/pytest` directly.
-
-## Protocol (one screen)
-
-Declared in `configs/cikm_v0.1.yaml` → `paper_protocol` (locked 2026-08-19).
-
-| Dimension | Canonical on this tag | Do not use as default |
-|-----------|----------------------|------------------------|
-| TF-IDF linkage | train-only fit on that condition’s train exports | transductive train+test (`outputs/pilot_v2/`) |
-| Risk \(R\) | purpose-specific \(R(z_{c,T})\) | shared observability \(R\) |
-| Ta-5 | Track C assessor-symmetric | mixed Track A |
-
-`make repro-cikm-2026` asserts Table 3 at \(R_{\max}=0.45\), the `red_tokenize` token vs persona bite, and SHA256 of Figs. 2–4. Details: [`releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md). Change inventory: [`docs/CIKM-2026-RELEASE-NOTES.md`](docs/CIKM-2026-RELEASE-NOTES.md).
-
-**Cite:** Evaluated on Open SBB tag `cikm-2026`; see the result card in `releases/cikm-2026/`. Do not report an unofficial aggregate “Open-SBB score.”
+`make` still works without activation if `.venv/` exists (it calls `.venv/bin/python` directly).
 
 ## Reference baselines
 
@@ -54,100 +107,72 @@ The **nine lattice conditions** in `data/transformed/` are **reference baselines
 
 `raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogate`, `sem_coarse`, `sem_medium`, `sem_fine`, `redact_llm_substitute`, `redact_llm_rephrase`
 
-Open SBB asks *which meanings may be disclosed for a registered purpose, with what utility and residual linkage risk?* — not *which strings should be removed?* One sensitive event can yield **different semantic exports** per downstream purpose; each is scored for utility, linkage, and provenance. [Conceptual overview →](docs/what-is-semantic-boundary.md#multi-purpose-exports)
+Open SBB asks *which meanings may be disclosed for a registered purpose, with what utility and residual linkage risk?* One event can yield **different semantic exports** per purpose; each is scored for utility, linkage, and provenance. [Conceptual overview →](docs/what-is-semantic-boundary.md#multi-purpose-exports)
 
 ## Historical `outputs/pilot_v2/`
 
-> **Historical / not the CIKM default.** `outputs/pilot_v2/` is the pre-repair v0.1.1 snapshot: transductive TF-IDF, mixed Ta-5, shared observability \(R\). `make repro-smoke` still checks those older headlines. Canonical CIKM metrics live under `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`. See [`outputs/pilot_v2/HISTORICAL.md`](outputs/pilot_v2/HISTORICAL.md).
+> **Historical / not the CIKM default.** `outputs/pilot_v2/` is the pre-repair v0.1.1 snapshot (transductive TF-IDF, mixed Ta-5, shared observability \(R\)). `make repro-smoke` still checks those older headlines. Canonical CIKM metrics: `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`. See [`outputs/pilot_v2/HISTORICAL.md`](outputs/pilot_v2/HISTORICAL.md).
 
-**Zenodo v0.1.2** ([10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)) archives that same historical frozen bundle. Prefer this GitHub tag when reproducing the CIKM paper.
+Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`) archives that same historical bundle. Prefer tag `cikm-2026` for the CIKM paper.
 
-## What comes next (v0.2)
+## Versioning note
 
-v0.2 will invert the harness to `opensbb run <suite> --transform …` so you can score *your* method against this suite. **That CLI is not implemented on this tag.** Transform produces the export payload; Open SBB produces the evaluation. The system under test must not report its own risk.
+This tag freezes the **full CIKM 2026 scientific artifact**. Later Open-SBB releases will add a cheaper canonical Core suite and a plug-in transform interface (`opensbb run <suite> --transform …`); those are intentionally **not** part of this frozen paper tag. Transform produces the export; Open SBB produces the evaluation. The system under test must not report its own risk.
 
-Roadmap issues ([#1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues)) track that inversion. They are not required to reproduce CIKM 2026.
+Roadmap: [issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues). Not required to reproduce the paper.
 
 ## Docs
 
 | You are… | Read |
 |----------|------|
-| Reproducing CIKM 2026 | this README + [`releases/cikm-2026/`](releases/cikm-2026/) |
+| Paper reader | this README + [`releases/cikm-2026/`](releases/cikm-2026/) |
 | What is Semantic Boundary? | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
+| Paper §4 → repo | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
+| Onboarding tracks | [`docs/adoption_path.md`](docs/adoption_path.md) |
 | Protocol map | [`open-sbb/README.md`](open-sbb/README.md) |
 | Use cases | [`examples/README.md`](examples/README.md) |
-| BYO exports (advanced; YMMV) | [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md) — productized in v0.2 |
-| Mapping paper §4 → repo | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
-| Extending the protocol | [`docs/extension_points.md`](docs/extension_points.md) |
+| BYO exports (advanced; YMMV) | [`examples/bring_your_own/README.md`](examples/bring_your_own/README.md) — v0.2 |
 | Camera-ready change inventory | [`docs/CIKM-2026-RELEASE-NOTES.md`](docs/CIKM-2026-RELEASE-NOTES.md) |
 
 ## Frozen split checksum
 
-Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`). Regenerate with `python scripts/build_split_manifest_v0.py`.
+Canonical JSON uses `sort_keys=True` and compact separators (`,` `:`).
 
 | Artifact | Path | SHA256 |
 |----------|------|--------|
 | Split manifest v0 | `data/ground_truth/split_manifest_v0.json` | `b15f4cebc5570a36171eb18ddca5d65d109ad18cb334268d45f43f84e15cfac0` |
 
-`data/ground_truth/splits.json` remains the loader source for code; `split_manifest_v0.json` is the frozen audit manifest.
+### Optional rescore (no live LLM if caches are present)
 
-### Offline rescore (optional; still no live LLM if caches are present)
+Headline utility F1 uses the frozen LLM consumer (`qwen3:8b`; JSON key `tier1`).
 
-Headline utility F1 uses the frozen LLM utility consumer (`qwen3:8b`; JSON key `tier1`) — not the classical Tier-0 baseline (`make eval TIER=0`).
+| Goal | Command |
+|------|---------|
+| **Verify CIKM protocol** | `make repro-cikm-2026` |
+| Historical v0.1.1 headlines | `make repro-smoke` |
+| Rescore observability / analytics | `make eval` then `make eval-analytics` + `make cohort-tier1` |
+| Full regen | `make pipeline` (needs Ollama + `qwen3:8b`) |
 
-| Goal | Command | Notes |
-|------|---------|-------|
-| **Verify CIKM protocol** | `make repro-cikm-2026` | Seconds; no Ollama |
-| **Verify historical headlines** | `make repro-smoke` | Seconds; no Ollama |
-| **Rescore** observability utility + linkage | `make eval` | Reads `data/eval_cache/`; default config is `configs/cikm_v0.1.yaml` |
-| **Rescore** analytics utility | `make eval-analytics` | Then `make cohort-tier1` before figures |
-| Full regen from scratch | `make pipeline` | Requires Ollama + `qwen3:8b` |
-
-When you run `make eval` / `make eval-analytics`, assessors **read cached completions** unless an entry is missing. Do not overwrite `outputs/pilot_v2/` when replaying the paper protocol.
-
-Paper-protocol replay (writes only under `outputs/post_acceptance_experiments/`):
-
-```bash
-# declared in configs/cikm_v0.1.yaml → paper_protocol; no Ollama if caches exist
-python eval/run_purpose_specific_linkage_audit.py
-python eval/run_ta5_cohort_audit.py --score-track-c-only
-```
+Do not overwrite `outputs/pilot_v2/` when replaying the paper protocol.
 
 ## Repository layout
 
 ```text
-src/ eval/ scripts/ tests/ configs/ data/ outputs/   ← implementation
-releases/cikm-2026/                                  ← cite surface (this tag)
-open-sbb/                                            ← protocol map
-examples/                                            ← adoption by domain
-docs/                                                ← repo map, CIKM release notes
+README → releases/cikm-2026/ → docs/paper_to_repo.md → src/ eval/ outputs/
 ```
 
 **CIKM cite metrics:** `outputs/pilot_v2_camera_ready/`, `outputs/post_acceptance_experiments/`  
-**Historical v0.1.1 metrics:** `outputs/pilot_v2/`
+**Historical v0.1.1:** `outputs/pilot_v2/`
 
-## Paper-linked figures (CIKM)
-
-| Figure | Cite path | Source |
-|--------|-----------|--------|
-| Fig. 2 linkage decomposition | `releases/cikm-2026/figures/linkage_decomposition.pdf` | purpose-specific observability surface |
-| Fig. 3 utility matrix | `releases/cikm-2026/figures/utility_matrix_heatmap.pdf` | Track C Ta-5 |
-| Fig. 4 cross-purpose regret | `releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf` | purpose-specific \(R\) at 0.45 |
-
-## What this repo is / is not
-
-**In scope on this tag:** reproducible lattice evaluation of the CIKM 2026 protocol; frozen reference baselines; checksum verify without Ollama.
-
-**Out of scope:** LaTeX paper sources, Policy Studio, HIPAA/OTel certification claims, `opensbb run` / Transform CLI (v0.2), production runtime.
+**In scope:** CIKM 2026 protocol, frozen reference baselines, checksum verify without Ollama.  
+**Out of scope:** LaTeX sources, Policy Studio, certification claims, `opensbb run` (v0.2), production runtime.
 
 ## License & citation
 
-Apache-2.0 — [`LICENSE`](LICENSE). Software citation: [`CITATION.cff`](CITATION.cff).
+Apache-2.0 — [`LICENSE`](LICENSE). [`CITATION.cff`](CITATION.cff).
 
 **Paper:** Gaurav Baruah. *Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure.* CIKM 2026. DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076).
 
-**Historical software archive:** Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`).
+**Historical software archive:** Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088).
 
-## Contributing
-
-[`CONTRIBUTING.md`](CONTRIBUTING.md) · [`CHANGELOG.md`](CHANGELOG.md) · [`docs/adoption_path.md`](docs/adoption_path.md)
+[`CONTRIBUTING.md`](CONTRIBUTING.md) · [`CHANGELOG.md`](CHANGELOG.md)

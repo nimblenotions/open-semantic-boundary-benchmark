@@ -1,6 +1,10 @@
 # What is Semantic Boundary?
 
-This page explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). A companion technical report (forthcoming) gives the full treatment; this is the adoption-oriented overview. **Cite the benchmark:** [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088).
+This page is a conceptual companion to the **CIKM 2026** paper
+[*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076)
+(DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
+
+It explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). A longer technical report remains forthcoming; it does not replace the CIKM paper. **Cite the paper** via that ACM DOI. The historical software archive is Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088).
 
 **String redaction** asks which literals to strip. **Semantic Boundary** asks which **meanings** may cross for each registered downstream purpose — under policy, granularity, and provenance. **Open SBB** (this repo) measures whether those semantic disclosures preserve task utility while limiting linkage risk.
 
@@ -44,7 +48,7 @@ Semantic Boundary  (policy π, purpose T, granularity g)
 - **Linkage** \(R(z)\) — how much re-identification risk remains in \(z\)?
 - **Provenance** \(\tau\) — audit record in \(r\): policy version, transforms, verify outcome
 
-*Conceptual fan-out.* Open SBB **v0.1.1** benchmarks **observability** and **analytics** on the frozen medication-adherence pilot; evaluation and agent slices are roadmap examples (see [`examples/README.md`](../examples/README.md)).
+*Conceptual fan-out.* The CIKM 2026 / Open SBB pilot benchmarks **observability** and **analytics** on the frozen medication-adherence corpus; evaluation and agent slices are roadmap examples (see [`examples/README.md`](../examples/README.md)).
 
 ### Per-export contract
 
@@ -138,7 +142,7 @@ See [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.m
 
 Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathcal{C}\) (raw, bracket, tokenize, semantic coarse/medium/fine, …). Each arm gets the same \(U(T,z)\) and \(R(z)\) assessors — the counterfactual fairness constraint.
 
-**v0.1.1 pilot:** synthetic medication-adherence corpus · 100 personas · 630 test events · nine lattice conditions · dual purposes (observability + analytics).
+**CIKM 2026 pilot:** synthetic medication-adherence corpus · 100 personas · 630 test events · nine lattice conditions · dual purposes (observability + analytics). Frozen paper tag: `cikm-2026`.
 
 ---
 
@@ -146,8 +150,9 @@ Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathc
 
 | Goal | Doc |
 |------|-----|
-| Benchmark protocol (paper §4) | [`../open-sbb/README.md`](../open-sbb/README.md) |
-| Run repro smoke test | Root [`README.md`](../README.md) → `make repro-smoke` |
+| Table 3 and Figs. 2–4 | [`../releases/cikm-2026/`](../releases/cikm-2026/) |
+| Benchmark protocol | [`../open-sbb/README.md`](../open-sbb/README.md) |
+| Verify the CIKM protocol | Root [`README.md`](../README.md) → `make repro-cikm-2026` |
 | Evaluate your exports | [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) |
 | Find code for linkage / operative selection | [`../open-sbb/linkage_assessment/README.md`](../open-sbb/linkage_assessment/README.md), [`../open-sbb/operative_selection/README.md`](../open-sbb/operative_selection/README.md) |
 | Onboarding paths | [`adoption_path.md`](adoption_path.md) |
@@ -158,7 +163,7 @@ Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathc
 
 - HIPAA, FINRA, GDPR, or SOC2 **certification**
 - Production-safe egress without organizational \(R_{\max}\) and governance
-- Learned extractors as SOTA (oracle semantic arms are **upper bounds** for v0.1.1)
+- Learned extractors as SOTA (oracle semantic arms are **upper bounds** on this pilot)
 - That one export serves all downstream consumers optimally
 
 Open SBB helps you **compare** purpose-bound export strategies with reproducible \(U\) and \(R\) — the first step toward governed semantic disclosure, not the last step toward compliance.

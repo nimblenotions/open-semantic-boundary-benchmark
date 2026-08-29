@@ -1,6 +1,10 @@
 # Open SBB — protocol map
 
-Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root. For v0.1.1, code, data, and outputs stay in `src/`, `data/`, and `outputs/` so you can clone and reproduce without learning a new package layout.
+Open SBB is a **benchmark protocol**, not a single dataset. This folder is a **documentation map** to the implementation at the repository root.
+
+**CIKM 2026 paper readers:** Table 3 and Figs. 2–4 live in [`../releases/cikm-2026/`](../releases/cikm-2026/). Verify with `make repro-cikm-2026`. Paths under `outputs/pilot_v2/` in the module READMEs below are the **historical** v0.1.1 snapshot, not the camera-ready default.
+
+Code, data, and outputs stay in `src/`, `data/`, and `outputs/` so you can clone and reproduce without learning a new package layout.
 
 ## Protocol flow
 
@@ -48,19 +52,18 @@ Policies and consumers are registered **before** scoring: the same export condit
 
 | Name | Meaning |
 |------|---------|
-| **Open SBB v0.1.1** | Citeable protocol release (paper, CITATION.cff) |
-| **`outputs/pilot_v2/`** | Frozen published run for v0.1.1 (historical directory name) |
-| **`configs/pilot_v0.1.1.yaml`** | Primary config for this release |
+| **Tag `cikm-2026`** | Frozen CIKM 2026 paper artifact |
+| **`releases/cikm-2026/`** | Table 3, Figs. 2–4, camera-ready protocol |
+| **`outputs/pilot_v2/`** | Historical v0.1.1 snapshot — not the CIKM default |
+| **`configs/cikm_v0.1.yaml`** | Default config on this tag |
 
 ## Reproduce (no Ollama)
 
-See the [paper reproduction cheatsheet](../README.md#paper-reproduction-cheatsheet) in the root README. Short form:
+See [Reproduce](../README.md#reproduce) in the root README. Short form:
 
 ```bash
-make repro-smoke          # verify obs + analytics tier1 F1 + linkage R(z) — seconds
-make eval                 # rescore observability from data/eval_cache/
-make eval-analytics       # rescore analytics from data/eval_cache_analytics/
-make figures              # paper-linked figures from committed metrics
+make repro-cikm-2026      # CIKM 2026 protocol + figure checksums
+make repro-smoke          # historical v0.1.1 headlines
 ```
 
 Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not Tier-0.
@@ -69,8 +72,9 @@ Headline utility F1 is under JSON key **`tier1`** (LLM consumer `qwen3:8b`), not
 
 | Doc | Purpose |
 |-----|---------|
-| Companion technical report | forthcoming — full framework + pilot results |
-| Zenodo archive | [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`) |
+| CIKM 2026 paper | [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076) |
+| Longer technical report | forthcoming |
+| Zenodo archive (historical v0.1.2) | [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) |
 | [`../docs/what-is-semantic-boundary.md`](../docs/what-is-semantic-boundary.md) | Framework vs benchmark — start here for concepts |
 | [`../docs/adoption_path.md`](../docs/adoption_path.md) | Onboarding paths (quick repro → rescore → contributor) |
 | [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md) | Paper section index |

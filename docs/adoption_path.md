@@ -1,78 +1,80 @@
 # Adoption path
 
-Structured onboarding for reviewers, practitioners, and contributors.
+Structured onboarding for paper readers, reproducers, and contributors.
 
-Time labels below are **realistic wall-clock estimates** for someone new to the repo (clone, venv, reading, one command). Skimming is faster; understanding the protocol takes longer.
+Time labels are **realistic wall-clock estimates** for someone new to the repo.
 
-## Quick repro (~15–30 min)
+## Paper reader — ~5 minutes
 
-**Goal:** verify the frozen pilot matches published headline metrics.
+**Goal:** understand what the CIKM 2026 artifact contains.
 
-1. Clone the repo and create a venv (`uv venv`, `uv pip install -e ".[dev]"`) — **~5–10 min** (depends on network and clone size).
-2. Skim [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md) and the [root README](../README.md) — **~10 min**.
-3. Run `make repro-smoke` — **seconds** (no Ollama). Checks observability **and** analytics headline **tier1** F1 plus linkage **R(z)** against the paper table.
+1. Read the [root README](../README.md) (especially *Paper in 60 seconds*).
+2. Open [`../releases/cikm-2026/table3_operative_grid.md`](../releases/cikm-2026/table3_operative_grid.md).
+3. Open Figs. 2–4 under [`../releases/cikm-2026/figures/`](../releases/cikm-2026/figures/).
+4. Optionally run `make repro-cikm-2026` (after the install steps below).
 
-Optional: skim [`open-sbb/README.md`](../open-sbb/README.md) for protocol flow — add **~10 min**.
+## Reproducer — ~15–30 minutes
 
-## Paper numbers spot-check (~30–45 min)
+**Goal:** verify the submitted CIKM protocol without Ollama.
 
-1. Complete quick repro path.
-2. Read [`examples/README.md`](../examples/README.md) — **~10 min**.
-3. Inspect headline numbers (or trust `make repro-smoke` from the step above):
+1. Clone and create a venv (`uv venv`, `uv pip install -e ".[dev]"`) — **~5–10 min**.
+2. Run `make repro-cikm-2026` — **seconds**. Checks Table 3 @ 0.45, `red_tokenize` token vs persona, and figure checksums.
+3. Read [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md).
+4. Follow [`paper_to_repo.md`](paper_to_repo.md) if you want §-to-path mapping.
 
-```bash
-# observability failure_mode macro-F1 (JSON key tier1 in metrics.json)
-python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"
-```
-
-4. Optional: open pre-committed figures under `outputs/pilot_v2/figures/` — **~5 min**.
+Optional: skim [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md) and [`../open-sbb/README.md`](../open-sbb/README.md).
 
 ## Understand the protocol (~1–2 hours)
 
-1. Complete paper numbers spot-check.
-2. Read [`open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md) — **~30–45 min**.
+1. Complete the reproducer path.
+2. Read [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`../open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
 3. Inspect one export condition:
 
 ```bash
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 ```
 
-4. Browse `outputs/pilot_v2/figures/utility_matrix_heatmap.png` (committed) or regenerate with `make figures` — **~5–15 min** if regenerating.
+4. Browse the cite-surface PDFs, or the PNG siblings under `outputs/post_acceptance_experiments/` / `outputs/pilot_v2_camera_ready/figures/`.
 
 ## Rescore the committed pilot (~2–3 hours total)
 
-For early enthusiasts who want to **run assessors**, not just read frozen outputs.
-
-1. Complete understand-the-protocol path.
-2. Read [`examples/provenance/`](../examples/provenance/README.md) — `(z, r)` shape — **~15 min**.
-3. Run rescoring on cached LLM consumer predictions (no Ollama if caches present). **Both commands** needed for the full paper utility table:
+For people who want to **run assessors**, not just verify frozen outputs.
 
 ```bash
-make eval CONFIG=configs/pilot_v0.1.1.yaml          # observability lattice — typically a few minutes
-make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
+make eval                 # default config is configs/cikm_v0.1.yaml
+make eval-analytics
+make cohort-tier1         # required after eval-analytics before figures
 ```
 
-4. **Optional / advanced:** [`examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — manual BYO on pilot labels (**YMMV**; productized path is v0.2). Add **hours to days** depending on your export tooling.
+No Ollama if `data/eval_cache*` is present. Do **not** overwrite `outputs/pilot_v2/`.
+
+**Optional / advanced:** [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) — **YMMV**; productized path is v0.2.
 
 ## Contributor path (~half day first time)
 
-1. Read [`extension_points.md`](extension_points.md) and [`repo_map.md`](repo_map.md) — **~30 min**.
-2. Run `make test` and `make lint` — **~1–2 min** after install.
+1. Read [`extension_points.md`](extension_points.md) and [`repo_map.md`](repo_map.md).
+2. Run `make test` and `make lint`.
 3. Follow [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 ## Reviewer path (paper ↔ repo) (~30–60 min)
 
-1. [`paper_to_repo.md`](paper_to_repo.md) — **~20–30 min**.
-2. `make repro-smoke` + spot-check §4 module READMEs under `open-sbb/` — **~15–30 min**.
+1. [`paper_to_repo.md`](paper_to_repo.md).
+2. `make repro-cikm-2026` + spot-check protocol folders under `open-sbb/`.
+
+## Historical v0.1.1 / Zenodo
+
+`make repro-smoke` and `outputs/pilot_v2/` audit the **pre-repair** published snapshot (transductive TF-IDF, mixed Ta-5). Same bundle: [Zenodo 10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). **Not** the CIKM default.
+
+```bash
+python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['tier1']['failure_mode_macro_f1'])"
+```
 
 ## Strategic framing
 
 | Layer | Role |
 |-------|------|
-| **Paper** | Establishes the idea and pilot evidence (companion technical report forthcoming) |
-| **This repo** | Establishes the **benchmark** — run, reproduce, extend ([Zenodo 10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)) |
-| **Product / deployment** | Future commercial stack (out of scope here) |
+| **CIKM 2026 paper** | Establishes the idea and pilot evidence ([DOI](https://doi.org/10.1145/3799682.3840076)) |
+| **This repo (tag `cikm-2026`)** | Frozen benchmark artifact — run, reproduce, inspect Table 3 / Figs. 2–4 |
+| **Product / deployment** | Future stack (out of scope here) |
 
-Goal for v0.1.1: reproduce the frozen pilot and understand the protocol. Goal for v0.2+: *“I can test my own semantic exports here”* with less manual wiring.
-
-> **Early development — YMMV** outside the committed pilot and headline metrics.
+Goal on this tag: reproduce the CIKM protocol and understand the lattice. Goal for v0.2+: *“I can test my own exports here”* via `opensbb run` (not implemented yet).
