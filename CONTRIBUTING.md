@@ -2,7 +2,9 @@
 
 Thanks for helping improve the Open Semantic Boundary Benchmark.
 
-For the `cikm-2026` release, the CIKM 2026 paper and the supporting materials under [`releases/cikm-2026/`](releases/cikm-2026/) define the frozen scientific artifact. When editing reader-facing documentation, follow [`docs/DOCUMENTATION.md`](docs/DOCUMENTATION.md): explain and operationalize the published work without introducing new scientific terminology or claims.
+For the `cikm-2026` release, the CIKM 2026 paper and the supporting materials under [`releases/cikm-2026/`](releases/cikm-2026/) define the frozen scientific artifact.
+
+When editing documentation, preserve the terminology and scientific claims of the CIKM 2026 paper. Introduce concepts before notation, avoid unsupported generalizations or compliance claims, and do not introduce new scientific terminology for concepts already named in the paper. The paper and [`releases/cikm-2026/`](releases/cikm-2026/) are the authoritative references for the published artifact.
 
 ## Development setup
 

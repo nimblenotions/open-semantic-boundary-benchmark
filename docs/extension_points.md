@@ -41,4 +41,4 @@ Document any change in `CHANGELOG.md`.
 2. Open an issue describing the extension
 3. Branch, implement, run `make test` and `make repro-cikm-2026`
 4. Update the relevant `open-sbb/*/README.md` if adopters will see the change
-5. Follow [`DOCUMENTATION.md`](DOCUMENTATION.md) if you touch user-facing docs
+5. Follow [`CONTRIBUTING.md`](../CONTRIBUTING.md) if you touch user-facing docs
