@@ -1,12 +1,10 @@
-# Using and extending Open-SBB
+# Inspecting and extending this artifact
 
-This page is for people who want to **do something** with the harness, not only read the paper.
+This page is for researchers who have the paper (or the README) and want to **work with the frozen SBB pilot** — not for a vendor plug-in workflow. There is no `opensbb run` on this tag. A later release on `main` is intended to make external transformations first-class; this branch is the scientific artifact.
 
-On this frozen tag there is no `opensbb run` yet. You can verify the CIKM evidence, inspect how an export is scored, rescore with the committed caches, and try a manual bring-your-own bundle. A plug-in interface for an external disclosure method is planned for a later release on `main`.
+Times are wall-clock for someone new to the repository.
 
-Times below are wall-clock for someone new to the repo.
-
-## Verify the paper (~15–30 minutes)
+## Reproduce the reported check (~15–30 minutes)
 
 ```bash
 uv venv
@@ -15,47 +13,43 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-That is the supported check: Table 3 at \(R_{\max}=0.45\), tokenize vs persona, figure checksums. No Ollama.
+That is the supported reproduction path: Table 3 at \(R_{\max}=0.45\), token recovery versus persona linkage on the tokenize condition, and figure checksums. No Ollama.
 
-Then read [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md) and, if you want paths from the PDF, [`paper_to_repo.md`](paper_to_repo.md).
+Then read [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md). Paths from the PDF: [`paper_to_repo.md`](paper_to_repo.md). Framework: [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
 
-## Look at one export (~1–2 hours)
+## Inspect one export (~1–2 hours)
 
-After the verify step:
-
-1. Read [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) and [`../open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
-2. Inspect a single condition:
+1. Read [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) (lattice \(\mathcal{C}\)) and [`../open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
+2. Look at a single purpose-conditioned export:
 
 ```bash
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 ```
 
-3. Open the cite-surface PDFs in [`../releases/cikm-2026/figures/`](../releases/cikm-2026/figures/). PNG siblings live under `outputs/post_acceptance_experiments/` and `outputs/pilot_v2_camera_ready/figures/`.
+(`redact_bracket` is `red_bracket` in the paper.)
 
-The idea behind the protocol is in [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
+3. Open Figures 2–4 under [`../releases/cikm-2026/figures/`](../releases/cikm-2026/figures/).
 
-## Rescore the committed pilot (~2–3 hours)
+## Rescore with committed caches (~2–3 hours)
 
-For people who want to **run assessors**, not only verify frozen outputs.
+To rerun registered assessors rather than only verify frozen files:
 
 ```bash
 make eval                 # default config is configs/cikm_v0.1.yaml
 make eval-analytics
-make cohort-tier1         # required after eval-analytics before figures
+make cohort-tier1         # after eval-analytics, before regenerating figures
 ```
 
-No Ollama if `data/eval_cache*` is present. Do **not** overwrite `outputs/pilot_v2/`. Regenerating from scratch is `make pipeline` (needs Ollama and `qwen3:8b`).
+No Ollama if `data/eval_cache*` is present. Do not overwrite `outputs/pilot_v2/`. Regenerating lattice text from scratch is `make pipeline` (needs Ollama and `qwen3:8b`).
 
-## Bring your own exports (experimental)
+## Extend
 
-[`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) shows the on-disk `events.jsonl` shape. It is a manual path, **not** part of the CIKM evaluation, and it will change when the plug-in harness lands.
+[`extension_points.md`](extension_points.md) lists what is frozen (splits, assessor definitions, condition IDs) and where a new lattice condition, purpose, or adversary would land. Open an issue before changing those.
 
-## Contribute
+[`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) documents an experimental on-disk `events.jsonl` shape. It is **not** part of the CIKM evaluation.
 
-1. Read [`extension_points.md`](extension_points.md) — what is frozen vs what is fair game.
-2. Run `make test` and `make lint`.
-3. Follow [`CONTRIBUTING.md`](../CONTRIBUTING.md). Open an issue before changing assessors or splits.
+Then `make test`, `make lint`, and [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 ## Pre-camera-ready snapshot
 
-`make repro-smoke` and `outputs/pilot_v2/` audit the older published run (transductive TF-IDF, mixed Ta-5). Same bundle: [Zenodo v0.1.2](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). That is **not** the CIKM default.
+`make repro-smoke` and `outputs/pilot_v2/` audit an earlier published run. Same bundle: [Zenodo v0.1.2](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). That snapshot is not the CIKM default.

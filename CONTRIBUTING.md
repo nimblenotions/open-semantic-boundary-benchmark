@@ -2,7 +2,7 @@
 
 Thanks for helping improve the Open Semantic Boundary Benchmark.
 
-On this tag the scientific record is the CIKM 2026 paper plus `releases/cikm-2026/`. If you edit user-facing docs, follow [`docs/DOCUMENTATION.md`](docs/DOCUMENTATION.md).
+On this tag the scientific record is the CIKM 2026 paper plus `releases/cikm-2026/`. If you edit user-facing docs, follow [`docs/DOCUMENTATION.md`](docs/DOCUMENTATION.md) — explain the paper; do not invent terminology.
 
 ## Development setup
 

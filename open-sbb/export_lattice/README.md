@@ -6,19 +6,19 @@
 
 The **export lattice** is a finite, frozen set of transform conditions \(\mathcal{C}\). Each condition materializes export \(z\) (and provenance \(r\) when applicable) from the same trusted observation \(x\).
 
-v0.1.1 ships **nine primary conditions** (IDs are stable in configs and metrics JSON):
+v0.1.1 ships **nine primary conditions** (IDs are stable in configs and metrics JSON). Paper Table 2 uses a `red_` prefix where this repo uses `redact_`:
 
-| Condition ID | Plain meaning |
-|--------------|---------------|
-| `raw` | No redaction — full observation text |
-| `redact_bracket` | Bracket-style span redaction |
-| `redact_tokenize` | Token replacement / pseudonymization |
-| `redact_surrogate` | Surrogate text replacement |
-| `redact_llm_substitute` | LLM substitution (cached oracle run) |
-| `redact_llm_rephrase` | LLM rephrase (cached oracle run) |
-| `sem_coarse` | Coarse semantic JSON export |
-| `sem_medium` | Medium-granularity semantic JSON |
-| `sem_fine` | Fine-grained semantic JSON |
+| This repo | Paper | Export rule |
+|-----------|-------|-------------|
+| `raw` | `raw` | Raw journal and assistant text |
+| `redact_bracket` | `red_bracket` | Bracket placeholders (`[MEDICATION]`-style) |
+| `redact_tokenize` | `red_tokenize` | Persona-scoped stable pseudonyms |
+| `redact_surrogate` | `red_surrogate` | i2b2-style surrogate replacements |
+| `redact_llm_substitute` | `red_llm_substitute` | LLM entity substitution |
+| `redact_llm_rephrase` | `red_llm_rephrase` | LLM passage rewrite |
+| `sem_coarse` | `sem_coarse` | Coarse semantic export (boolean slots) |
+| `sem_medium` | `sem_medium` | Medium semantic export (typed task fields) |
+| `sem_fine` | `sem_fine` | Fine semantic export (richer typed attributes) |
 
 ## Paper connection
 

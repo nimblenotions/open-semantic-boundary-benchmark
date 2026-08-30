@@ -1,19 +1,17 @@
 # Protocol map
 
-Exact protocol detail for people who already know what Open-SBB is testing.
-
-CIKM paper numbers and figures live in [`../releases/cikm-2026/`](../releases/cikm-2026/). Implementation stays at the repo root (`src/`, `data/`, `eval/`).
+Protocol modules for the Semantic Boundary Benchmark (SBB) as instantiated in this CIKM 2026 artifact. Frozen numbers and figures: [`../releases/cikm-2026/`](../releases/cikm-2026/). Implementation is at the repository root (`src/`, `data/`, `eval/`).
 
 ```text
-Synthetic pilot data
+Synthetic pilot corpus
         ↓
-Export lattice  (+ policies π materialize each condition)
+Export lattice  (policy π materializes each condition c)
         ↓
-Utility assessment  +  Linkage assessment
+Utility U(T, z_{c,T})  +  linkage R(z_{c,T})
         ↓
-Operative selection
+Operative selection under R_max
         ↓
-Transformation provenance (τ, verify)
+Provenance r and verify
 ```
 
 ## Modules
@@ -29,5 +27,5 @@ Transformation provenance (τ, verify)
 | Operative selection | [`operative_selection/`](operative_selection/README.md) |
 | Transformation provenance | [`transformation_provenance/`](transformation_provenance/README.md) |
 
-Where the paper maps onto these folders: [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md).  
+Paper → paths: [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md).  
 Verify: `make repro-cikm-2026`.

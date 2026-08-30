@@ -1,45 +1,48 @@
 # Open Semantic Boundary Benchmark
 
-This is the **CIKM 2026 artifact** for
-[Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure](https://doi.org/10.1145/3799682.3840076)
-(paper **4405**).
+Supporting artifact for the CIKM 2026 short paper
+[*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076)
+(Gaurav Baruah, *Proc. CIKM '26*, DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
 
-Sensitive traces are often useful to more than one downstream team, and those teams do not need the same information. **Open-SBB** holds the underlying events fixed and scores candidate **exports** on two axes: how well a purpose can still do its job (\(U\)), and how much residual linkage remains (\(R\)).
+**The Semantic Boundary Benchmark (SBB) evaluates what representation should cross a system boundary for a declared purpose.** Sensitive user and operational traces — journals, conversations, tool-use records, logs — can support several downstream purposes, but those purposes may require different information to perform their tasks. Rather than assuming that one transformed representation is appropriate for every consumer, the benchmark compares candidate exports by the utility they preserve for a particular task, \(U(T,z_{c,T})\), and the residual linkage associated with that export, \(R(z_{c,T})\).
 
-The paper studies a synthetic medication-adherence pilot: 100 personas, 630 held-out events, observability and analytics consumers, and nine reference export methods.
+This repository is the public artifact of the SBB pilot reported in the paper. The CIKM 2026 study instantiates the trade-off on synthetic medication-adherence journals and two registered consumer families: observability (\(T_o\)) and analytics (\(T_a\)). Nine lattice conditions range from surface redaction and surrogate substitution to semantic exports at different granularities. Under a declared linkage tolerance \(R_{\max}\), operative selection identifies which feasible condition best preserves utility for each registered task.
+
+The experiments show that the preferred transformation can change with both purpose and linkage constraint. Surface transformations can be competitive under tight ceilings, while richer semantic exports can better support some analytics tasks. Token removal alone does not necessarily prevent persona linkage, and forcing one lattice condition — a single privacy-preserving or disclosure-controlled export — across registered purposes can incur substantial utility regret.
+
+**If you are here from the paper**, Table 3, Figures 2–4, the protocol declaration, and a one-command check are in [`releases/cikm-2026/`](releases/cikm-2026/).
+
+## How the benchmark works
+
+A trusted observation \(x\) is transformed under a registered purpose \(T\) and disclosure policy \(\pi\) into an export \(z\) with provenance \(r\), then checked by `verify` before release. SBB applies a frozen set of lattice conditions \(\mathcal{C}\) to the same events, scores each purpose-conditioned export, and selects among feasible conditions at \(R_{\max}\).
 
 ```text
-Sensitive source event
+observation x  (trusted collection context)
         │
-        ├── raw
-        ├── bracket redaction
-        ├── surrogate substitution
-        ├── tokenization
-        ├── LLM rewrite
-        └── semantic coarse / medium / fine
+        │  lattice condition c ∈ C
+        ▼
+purpose-conditioned export z_{c,T}  (+ provenance r)
+        │
+        ├── utility   U(T, z_{c,T})
+        └── linkage   R(z_{c,T})
                 │
                 ▼
-        purpose-specific consumer
-                │
-         ┌──────┴───────┐
-         ▼              ▼
-      utility         linkage
-         │              │
-         └──────┬───────┘
-                ▼
-     feasible winner at a linkage ceiling
+     risk-constrained winner at R_max
 ```
 
-**What this study found**
+Semantic Boundary is the framework for that crossing (`declare`, `cross`, `verify`). SBB is the counterfactual lattice that makes alternative disclosure strategies comparable. Neither is a new privacy algorithm.
 
-- Different downstream purposes can prefer different exports.
-- Removing recoverable tokens does not necessarily remove linkage risk.
-- Semantic exports are not universally better than redaction.
-- A single global export can cost a lot of utility for some purposes.
+## Paper artifacts
 
-There is no unofficial aggregate “Open-SBB score.” Cite the paper for the science, and this tag for the exact code and numbers.
+| In the paper | In this artifact |
+|--------------|------------------|
+| Table 3 — risk-constrained winners | [`releases/cikm-2026/table3_operative_grid.md`](releases/cikm-2026/table3_operative_grid.md) |
+| Figure 2 — linkage decomposition | [`releases/cikm-2026/figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf) |
+| Figure 3 — utility matrix | [`releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
+| Figure 4 — cross-task regret | [`releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
+| Protocol declaration | [`releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
 
-## Try it
+## Reproduce
 
 ```bash
 uv venv
@@ -48,38 +51,40 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-No Ollama. That check confirms Table 3 at \(R_{\max}=0.45\), the tokenize-vs-persona result, and the three figure checksums.
+No Ollama. The command checks Table 3 at \(R_{\max}=0.45\), token recovery versus persona linkage on the tokenize condition, and SHA256 of Figures 2–4.
 
-## Paper assets
+## Reference transformations
 
-| From the paper | Open here |
-|----------------|-----------|
-| **Table 3 — operative winners** | [`releases/cikm-2026/table3_operative_grid.md`](releases/cikm-2026/table3_operative_grid.md) |
-| **Figure 2 — linkage decomposition** | [`releases/cikm-2026/figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf) |
-| **Figure 3 — utility matrix** | [`releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
-| **Figure 4 — cross-purpose regret** | [`releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
-| **Camera-ready protocol** | [`releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
+Nine frozen lattice conditions (paper Table 2). Repository identifiers use a `redact_` prefix where the paper uses `red_`.
 
-The nine reference baselines are `raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogate`, `sem_coarse`, `sem_medium`, `sem_fine`, `redact_llm_substitute`, and `redact_llm_rephrase`.
+| Paper | This repo | Export rule |
+|-------|-----------|-------------|
+| `raw` | `raw` | Raw journal and assistant text |
+| `red_bracket` | `redact_bracket` | Bracket placeholders (`[MEDICATION]`-style) |
+| `red_tokenize` | `redact_tokenize` | Persona-scoped stable pseudonyms |
+| `red_surrogate` | `redact_surrogate` | i2b2-style surrogate replacements |
+| `red_llm_substitute` | `redact_llm_substitute` | LLM entity substitution |
+| `red_llm_rephrase` | `redact_llm_rephrase` | LLM passage rewrite |
+| `sem_coarse` | `sem_coarse` | Coarse semantic export (boolean slots) |
+| `sem_medium` | `sem_medium` | Medium semantic export (typed task fields) |
+| `sem_fine` | `sem_fine` | Fine semantic export (richer typed attributes) |
 
-## What to cite
+Semantic conditions use simulator ground truth rather than learned extraction, isolating representation choice from extraction error.
 
-| | |
-|--|--|
-| **Science** | The CIKM 2026 paper ([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)) |
-| **This artifact** | Git tag `cikm-2026`, folder [`releases/cikm-2026/`](releases/cikm-2026/). A Zenodo version of this tag is the archival copy (see [`docs/releases/opensbb-cikm-2026.md`](docs/releases/opensbb-cikm-2026.md)). |
-| **Older software** | Zenodo [v0.1.2](https://doi.org/10.5281/zenodo.21071088) and `outputs/pilot_v2/` are the **pre-camera-ready** snapshot. They are not the paper default. |
-
-## Read next
+## Documentation
 
 | If you want to… | Read |
 |-----------------|------|
-| Understand the idea | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
-| Find paper tables and code | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
-| Reproduce more deeply, or extend | [`docs/adoption_path.md`](docs/adoption_path.md) |
+| Understand the framework | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
+| Map paper sections to files | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
+| Inspect, reproduce further, or extend | [`docs/adoption_path.md`](docs/adoption_path.md) |
 
-A later release will add a plug-in interface so you can score an external disclosure method without forking this experiment. That work is not on this frozen tag. ([Issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues).)
+## Citation
+
+Cite the **paper** for the science. Cite this **artifact** (git tag `cikm-2026`, and a Zenodo version of this tag when published) for the exact code and frozen results. See [`CITATION.cff`](CITATION.cff).
+
+Zenodo [v0.1.2](https://doi.org/10.5281/zenodo.21071088) and `outputs/pilot_v2/` are a pre-camera-ready software snapshot, not the paper default.
 
 ## License
 
-Apache-2.0 — [`LICENSE`](LICENSE). [`CITATION.cff`](CITATION.cff).
+Apache-2.0 — [`LICENSE`](LICENSE).

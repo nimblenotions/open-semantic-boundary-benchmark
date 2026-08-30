@@ -1,6 +1,6 @@
 # Extension points
 
-How to adapt Open SBB without silently changing the frozen CIKM experiment. **Discuss in an issue before changing assessors or splits.**
+How to adapt this SBB artifact without silently changing the frozen CIKM experiment. **Discuss in an issue before changing assessors or splits.**
 
 This tag (`cikm-2026`) is a frozen scientific artifact. The plug-in harness for an external disclosure method is not here yet; see [open issues](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues).
 
@@ -15,7 +15,7 @@ This tag (`cikm-2026`) is a frozen scientific artifact. The plug-in harness for 
 | New adversary / linkage channel | `src/eval/adversary*.py` | [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md) |
 | New operative rule | `src/eval/operative_selection.py` | [`open-sbb/operative_selection/`](../open-sbb/operative_selection/README.md) |
 | New domain corpus | `examples/<domain>/`, generator or BYO data | [`examples/README.md`](../examples/README.md) |
-| BYO exports (manual, experimental) | [`examples/bring_your_own/`](../examples/bring_your_own/README.md) | same schema IDs → same assessors; **YMMV** |
+| BYO exports (manual, experimental) | [`examples/bring_your_own/`](../examples/bring_your_own/README.md) | same schema IDs → same assessors; not part of the CIKM evaluation |
 | Provenance / verify | `src/boundary/verify.py`, `provenance_v1.json` | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md) |
 
 ## Frozen on this tag
