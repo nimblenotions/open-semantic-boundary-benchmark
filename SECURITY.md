@@ -1,59 +1,68 @@
 # Security policy
 
-Open Semantic Boundary Benchmark (Open SBB) is a **research benchmark** for evaluating semantic export strategies on **synthetic pilot data**. It is not a production privacy gateway, HIPAA certification, or hosted service.
+Open Semantic Boundary Benchmark (Open-SBB) is a research benchmark for evaluating semantic disclosure and export strategies. The CIKM 2026 artifact uses synthetic pilot data and is intended for research and reproducibility work.
+
+Open-SBB is not a production privacy or security gateway, a hosted service, or a compliance certification mechanism. Its evaluation results should not be interpreted as establishing HIPAA, GDPR, or other regulatory compliance.
 
 ## Supported versions
 
-| Version | Supported |
-|---------|-----------|
-| `opensbb-v0.1.2` (Zenodo) | Yes |
-| `main` | Yes |
-| Older tags | Best-effort; prefer upgrading |
+Security fixes are maintained on the active development branch. 
+Security issues affecting the frozen CIKM 2026 artifact should identify the `cikm-2026` release or exact affected commit. Older experimental tags and snapshots are retained primarily for provenance and may receive fixes on a best-effort basis.
 
-Security fixes land on `main` and are noted in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Reporting a vulnerability
 
-**Please do not open a public GitHub issue** for security-sensitive reports.
+Please do not open a public GitHub issue for security-sensitive reports.
 
-Report privately by either:
+Report them privately using either:
 
-1. **Email:** [gb@nimblenotions.ca](mailto:gb@nimblenotions.ca) (PGP optional; ask if you need a key)
-2. **GitHub:** [Private security advisory](https://github.com/nimblenotions/open-semantic-boundary-benchmark/security/advisories/new) on this repository (if enabled for your account/org)
+1. **Email:** [gb@nimblenotions.ca](mailto:gb@nimblenotions.ca)
+2. **GitHub:** [Private security advisory](https://github.com/nimblenotions/open-semantic-boundary-benchmark/security/advisories/new), when available
 
-Include:
+Please include:
 
-- Affected version or commit
-- Steps to reproduce
-- Impact (e.g. arbitrary code execution, credential leak, path traversal)
-- Any proof-of-concept you can share safely
+* the affected version or commit;
+* steps needed to reproduce the issue;
+* the expected security impact, such as arbitrary code execution, credential exposure, path traversal, or unintended file modification; and
+* any proof of concept that can be shared safely.
 
-We aim to acknowledge reports within **5 business days** and to provide a fix or mitigation timeline when confirmed.
+Security-sensitive reports are appreciated and will be reviewed as maintainer capacity permits. Confirmed issues will be addressed or documented when practical.
 
-There is **no bug bounty** program for this repository.
+There is currently no bug-bounty program for this repository.
 
 ## In scope
 
-Issues in this repo that could affect someone running the benchmark locally, for example:
+Security issues in repository code or tooling that could affect someone running the benchmark locally are in scope. Examples include:
 
-- Unsafe deserialization or shell invocation in harness scripts
-- Path traversal or arbitrary file write when processing benchmark inputs
-- Credential handling bugs in tooling that talks to local services (e.g. Ollama)
+* unsafe deserialization or command execution;
+* path traversal or unintended arbitrary file writes when processing benchmark inputs;
+* credential or secret-handling vulnerabilities in benchmark tooling; and
+* vulnerabilities in repository code that could cause execution of untrusted input outside the intended benchmark workflow.
 
 ## Out of scope
 
-- **Synthetic corpus content** — pilot personas and events are generated fixtures, not real PHI
-- **Third-party runtimes** — Ollama, Python, OS packages, and model weights you install separately
-- **Dependency version bumps** — report via normal [issues](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues) or Dependabot PRs unless exploitability in *this* harness is demonstrated
-- **Misuse on production traces** — running the harness on live sensitive data without your own governance
-- **Compliance claims** — Open SBB does not certify HIPAA, GDPR, OTel, or production safety (see [`open-sbb/README.md`](open-sbb/README.md#not-claimed))
+The following are generally outside the scope of this repository's security policy:
+
+* **Synthetic corpus content:** the CIKM pilot personas and events are generated research fixtures rather than real patient or user records.
+* **Third-party runtimes and dependencies:** vulnerabilities in Python, operating-system packages, Ollama, model runtimes, or externally obtained model weights should normally be reported to their respective maintainers unless the vulnerability arises from how Open-SBB uses them.
+* **Routine dependency updates:** non-security version bumps should be handled through normal issues or dependency-management pull requests.
+* **Use with production-sensitive data:** Open-SBB does not provide the governance, access controls, or operational safeguards required for handling live sensitive traces.
+* **Compliance determinations:** benchmark results do not certify HIPAA, GDPR, or other regulatory or production-safety requirements.
 
 ## Safe use
 
-- Treat the committed pilot as **research artifacts** with checksums in [`README.md`](README.md)
-- Use `make repro-smoke` for audit without calling external LLMs
-- Full regeneration (`make pipeline`) requires a **local** Ollama instance you control; do not expose Ollama to untrusted networks
+For the frozen CIKM 2026 artifact, use the supported verification workflow:
+
+```bash
+make repro-cikm-2026
+```
+
+This verification path uses committed evaluation artifacts and does not regenerate the LLM-based transformation outputs.
+
+Broader regeneration and development workflows may require local model runtimes and may exercise historical pipeline components retained for provenance. Review the relevant commands before running them, keep local services restricted to trusted interfaces, and do not expose development model endpoints to untrusted networks.
+
+The frozen CIKM protocol and verification artifacts are documented under [`releases/cikm-2026/`](releases/cikm-2026/).
 
 ## General bugs
 
-Reproduction problems, metric mismatches, and documentation fixes belong in public issues — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Reproduction problems, metric mismatches, and documentation issues that are not security-sensitive should be reported through public GitHub issues. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
