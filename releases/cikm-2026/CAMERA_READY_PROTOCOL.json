@@ -1,7 +1,6 @@
 {
   "paper": {
     "venue": "CIKM 2026",
-    "paper_id": "4405",
     "title": "Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure",
     "doi": "10.1145/3799682.3840076",
     "tag": "cikm-2026"

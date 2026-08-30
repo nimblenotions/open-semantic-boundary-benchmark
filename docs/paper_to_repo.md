@@ -2,7 +2,7 @@
 
 You read the CIKM 2026 paper. This page maps its sections and assets onto this artifact.
 
-Gaurav Baruah, [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076), CIKM 2026 (paper **4405**). Frozen results: [`../releases/cikm-2026/`](../releases/cikm-2026/).
+Gaurav Baruah, [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076), CIKM 2026. Frozen results: [`../releases/cikm-2026/`](../releases/cikm-2026/).
 
 Section numbers are those of the short paper.
 

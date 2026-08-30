@@ -1,7 +1,7 @@
 # CIKM 2026 camera-ready protocol
 
 **Paper:** Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure  
-**Venue:** CIKM 2026, paper **4405**  
+**Venue:** CIKM 2026  
 **DOI:** [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)  
 **Tag:** `cikm-2026` (Full paper package — not Open-SBB Core)
 

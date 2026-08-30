@@ -36,7 +36,7 @@ No marketing superlatives. No claims the paper does not make. Do not “improve 
 | Provenance \(r\) | Evidence of the contract’s execution, not a general operational log |
 | Operative selection | Risk-constrained choice among lattice conditions under \(R_{\max}\) (C3) |
 
-**Do not use in reader-facing prose** (development jargon): downstream *team*; unofficial “Open-SBB score”; “bite”; “dumb redactor”; “hero question”; “Track C” (keep that identifier in protocol/release files where it names a scoring path); forthcoming technical report.
+**Do not use in reader-facing prose** (development jargon): downstream *team*; unofficial “Open-SBB score”; “bite”; “dumb redactor”; “hero question”; “Track C” (keep that identifier in protocol/release files where it names a scoring path); forthcoming technical report; EasyChair/Sheridan paper id **4405** (leave it in maintainer archaeology such as [`CIKM-2026-RELEASE-NOTES.md`](CIKM-2026-RELEASE-NOTES.md) and research Sheridan filenames).
 
 Prefer **purpose / consumer / task** over organizational “team.” Prefer **lattice condition** or **transformation** over vague “method.” Prefer the paper’s **forcing one condition across consumers** over a newly coined “global export.”
 

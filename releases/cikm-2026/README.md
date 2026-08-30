@@ -1,7 +1,7 @@
 # CIKM 2026 cite surface
 
 Frozen numbers and figures for the CIKM 2026 paper
-([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076), paper **4405**).
+([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
 
 Cite the paper for the science. Cite git tag `cikm-2026` (and the Zenodo version of this tag, when published) for this folder.
 
