@@ -1,111 +1,84 @@
 # What is Semantic Boundary?
 
-This page is a conceptual companion to the **CIKM 2026** paper
+Teams ship sensitive traces to observability vendors, analytics warehouses, eval harnesses, and agents. The usual question is:
+
+> Which strings should we remove, tokenize, or rewrite?
+
+That question is necessary but incomplete. Downstream systems often need **structured meaning** — a failure mode, a medication class, a symptom category — not raw text, and not the same meaning for every consumer.
+
+**Semantic Boundary** asks a different question:
+
+> For this registered purpose, under this policy, at this granularity — which meanings may cross, with what task utility and what residual linkage risk?
+
+**Open SBB** (this repository) is the evaluation instrument for that idea. It does not ship production egress. It measures whether candidate exports preserve utility while limiting linkage.
+
+The peer-reviewed account of this study is
 [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076)
-(DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
-
-It explains the **Semantic Boundary** idea and how it relates to **Open SBB** (this repository). A longer technical report remains forthcoming; it does not replace the CIKM paper. **Cite the paper** via that ACM DOI. The historical software archive is Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088).
-
-**String redaction** asks which literals to strip. **Semantic Boundary** asks which **meanings** may cross for each registered downstream purpose — under policy, granularity, and provenance. **Open SBB** (this repo) measures whether those semantic disclosures preserve task utility while limiting linkage risk.
+(CIKM 2026). Cite that paper for the science.
 
 ---
 
-## The problem
-
-Teams ship sensitive traces to many downstream systems: observability vendors, analytics warehouses, eval harnesses, agent planners. The usual privacy playbook asks:
-
-> *Which strings should we remove, tokenize, or rewrite?*
-
-That question is necessary but incomplete. Downstream systems often need **structured meaning** (failure mode, medication class, symptom category) — not raw text, and not the same meaning for every consumer.
-
-**Semantic Boundary** reframes egress as an **export contract**:
-
-> *For this registered purpose, under this policy, at this granularity — which fields may cross, with what task utility and what residual linkage risk?*
-
----
-
-## Semantic Boundary (the framework)
+## The framework
 
 A **semantic boundary** is a governed crossing from a trusted collection zone to a registered downstream consumer.
 
-### Multi-purpose exports
-
-One sensitive event can support **different legitimate exports** for different downstream purposes — not one sanitizer for every team:
+One sensitive event can support **different legitimate exports** for different purposes — not one sanitizer for every team:
 
 ```text
 Raw event (x)
       │
       ▼
-Semantic Boundary  (policy π, purpose T, granularity g)
+Semantic Boundary  (policy, purpose, granularity)
       │
-      ├──► Observability export (z, r)  ──► U(T,z), R(z), provenance τ
-      ├──► Analytics export (z, r)      ──► U(T,z), R(z), provenance τ
-      ├──► Evaluation export (z, r)     ──► …  [illustrative — v0.2+]
-      └──► Agent export (z, r)          ──► …  [illustrative — v0.2+]
+      ├──► Observability export  ──► utility, linkage, provenance
+      ├──► Analytics export      ──► utility, linkage, provenance
+      ├──► Evaluation export     ──► …  (not in this pilot)
+      └──► Agent export          ──► …  (not in this pilot)
 ```
 
 - **Utility** \(U(T,z)\) — can the consumer do its job on export \(z\)?
 - **Linkage** \(R(z)\) — how much re-identification risk remains in \(z\)?
-- **Provenance** \(\tau\) — audit record in \(r\): policy version, transforms, verify outcome
+- **Provenance** — how \(z\) was produced (policy version, transforms, verify outcome)
 
-*Conceptual fan-out.* The CIKM 2026 / Open SBB pilot benchmarks **observability** and **analytics** on the frozen medication-adherence corpus; evaluation and agent slices are roadmap examples (see [`examples/README.md`](../examples/README.md)).
+The CIKM pilot benchmarks **observability** and **analytics** on a frozen medication-adherence corpus. Evaluation and agent slices in the sketch above are examples of where the framework can go; they are not part of this artifact.
 
-### Per-export contract
+### What each crossing produces
 
-Given a trusted observation \(x\), purpose \(T\), policy \(\pi\), and schema granularity \(g\), each crossing emits:
-
-- **Export \(z\)** — typed semantic fields released to the consumer  
-- **Provenance \(r\)** — audit record of policy version, transforms, suppressed fields, verify outcome  
+Given a trusted observation \(x\), purpose \(T\), policy \(\pi\), and schema granularity \(g\), a crossing emits an export \(z\) (the fields the consumer receives) and a provenance record of how it was made. Then:
 
 ```text
-(x, trusted zone)  ──cross(π, T, g)──►  (z, r)  ──verify──►  consumer_T
-                                              │
-                                              ├── assess_utility(T, z)  →  U(T, z)
-                                              └── assess_risk(z)          →  R(z)
+(x, trusted zone)  ──cross──►  export z  ──verify──►  consumer
+                                  │
+                                  ├── assess_utility(T, z)  →  U(T, z)
+                                  └── assess_risk(z)        →  R(z)
 ```
-
-### Core operations
 
 | Operation | What it does |
 |-----------|----------------|
-| **declare** | Register consumer, purpose \(T\), policy \(\pi\), granularity \(g\) |
-| **cross** | Transform observation \(x\) into export \((z, r)\) under \(\pi\) |
-| **verify** | Check policy compliance and provenance completeness before release |
-| **assess_utility** | Score task performance \(U(T, z)\) on held-out exports |
-| **assess_risk** | Score linkage / leakage \(R(z)\) under declared adversaries |
-
-### Key symbols (plain English)
-
-| Symbol | Meaning |
-|--------|---------|
-| \(x\) | Raw trusted observation (journal, ticket, trace, tool log) |
-| \(T\) | Registered purpose (observability triage, analytics, eval, agent trace) |
-| \(\pi\) | Disclosure policy — allowed/prohibited fields, guards, provenance requirements |
-| \(g\) | Granularity (coarse / medium / fine semantic schema) |
-| \(z\) | Typed export the consumer receives |
-| \(r\) | Provenance — *how* \(z\) was produced |
-| \(U(T,z)\) | Utility for purpose \(T\) |
-| \(R(z)\) | Linkage risk on export \(z\) |
-| \(R_{\max}\) | Organizational linkage tolerance for operative selection |
+| **declare** | Register consumer, purpose, policy, granularity |
+| **cross** | Transform the observation into an export under policy |
+| **verify** | Check policy compliance and provenance before release |
+| **assess_utility** | Score task performance on held-out exports |
+| **assess_risk** | Score linkage under declared adversaries |
 
 ### vs string redaction
 
 | String-centric egress | Semantic Boundary |
 |----------------------|-------------------|
-| Remove/tokenize literals | Release **typed fields** under purpose + policy |
+| Remove or tokenize literals | Release **typed fields** under purpose and policy |
 | One sanitizer for all teams | **Different valid exports** per purpose on the same incident |
 | Hard to compare strategies | Benchmark **utility vs linkage** on the same events |
-| Audit = “we redacted” | Audit = **provenance \(r\)** + verify gate |
+| Audit = “we redacted” | Audit = provenance plus a verify gate |
 
-**Important:** Semantic abstraction is **not** safe by construction. Coarse JSON can fail triage; fine JSON can re-link personas. The point is to make trade-offs **measurable**, not to claim privacy by default.
+Semantic abstraction is **not** safe by construction. Coarse JSON can fail triage; fine JSON can re-link personas. The point is to make the trade-off **measurable**, not to claim privacy by default.
 
 ---
 
-## Anchor example (medication-adherence pilot)
+## One incident, two legitimate exports
 
-One journal incident can support **conflicting** legitimate exports:
+The pilot uses synthetic medication-adherence journals. One incident can support conflicting contracts:
 
-**Observability consumer** needs triage labels without verbatim journal text:
+**Observability** needs triage labels without verbatim journal text:
 
 ```json
 {
@@ -115,7 +88,7 @@ One journal incident can support **conflicting** legitimate exports:
 }
 ```
 
-**Analytics consumer** needs epidemiology fields without observability routing labels:
+**Analytics** needs epidemiology fields without observability routing labels:
 
 ```json
 {
@@ -124,46 +97,35 @@ One journal incident can support **conflicting** legitimate exports:
 }
 ```
 
-Same underlying event — different **purpose-bound contracts**. Bracket redaction, tokenization, and semantic JSON are comparable **lattice arms**, not interchangeable “privacy levels.”
-
-See [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) for the on-disk `events.jsonl` shape.
+Bracket redaction, tokenization, and semantic JSON are comparable **methods** on the same events, not interchangeable “privacy levels.”
 
 ---
 
-## Open SBB (this repository)
+## What Open SBB is
 
-**Open Semantic Boundary Benchmark (Open SBB)** is the **open evaluation instrument** for the framework — not the production egress product.
+Open SBB holds incidents fixed and varies the export method (raw, bracket, tokenize, semantic coarse/medium/fine, and so on). Each method gets the same utility and linkage assessors.
 
-| | Semantic Boundary (framework) | Open SBB (this repo) |
-|---|------------------------------|----------------------|
-| Role | Protocol: declare, cross, verify, assess | **Benchmark**: score export arms on a frozen lattice |
-| Delivers | Concept + assessor contracts | Code, frozen pilot data, reproducible metrics |
-| Paper | §3 framework | §4 benchmark + §5–§6 results |
+This artifact: synthetic medication-adherence corpus · 100 personas · 630 test events · nine methods · observability and analytics. Frozen tag: `cikm-2026`.
 
-Open SBB holds incidents fixed and varies **transform condition** \(c \in \mathcal{C}\) (raw, bracket, tokenize, semantic coarse/medium/fine, …). Each arm gets the same \(U(T,z)\) and \(R(z)\) assessors — the counterfactual fairness constraint.
-
-**CIKM 2026 pilot:** synthetic medication-adherence corpus · 100 personas · 630 test events · nine lattice conditions · dual purposes (observability + analytics). Frozen paper tag: `cikm-2026`.
-
----
-
-## Where to go next
-
-| Goal | Doc |
-|------|-----|
-| Table 3 and Figs. 2–4 | [`../releases/cikm-2026/`](../releases/cikm-2026/) |
-| Benchmark protocol | [`../open-sbb/README.md`](../open-sbb/README.md) |
-| Verify the CIKM protocol | Root [`README.md`](../README.md) → `make repro-cikm-2026` |
-| Map paper concepts to code | [`paper_to_repo.md`](paper_to_repo.md) |
-| Find code for linkage / operative selection | [`../open-sbb/linkage_assessment/README.md`](../open-sbb/linkage_assessment/README.md), [`../open-sbb/operative_selection/README.md`](../open-sbb/operative_selection/README.md) |
-| Onboarding paths | [`adoption_path.md`](adoption_path.md) |
+| | Semantic Boundary | Open SBB |
+|---|-------------------|----------|
+| Role | Framework: declare, cross, verify, assess | Benchmark: score export methods on a frozen set of events |
+| Delivers | The idea and the assessor contracts | Code, frozen data, reproducible metrics |
+| In the paper | §2 | §3–§5 |
 
 ---
 
 ## What we do not claim
 
-- HIPAA, FINRA, GDPR, or SOC2 **certification**
-- Production-safe egress without organizational \(R_{\max}\) and governance
-- Learned extractors as SOTA (oracle semantic arms are **upper bounds** on this pilot)
-- That one export serves all downstream consumers optimally
+- HIPAA, FINRA, GDPR, or SOC 2 certification
+- Production-safe egress without an organizational linkage ceiling and governance
+- That learned extractors are state of the art (oracle semantic arms here are **upper bounds**)
+- That one export serves every downstream consumer optimally
 
-Open SBB helps you **compare** purpose-bound export strategies with reproducible \(U\) and \(R\) — the first step toward governed semantic disclosure, not the last step toward compliance.
+---
+
+## Next
+
+Paper tables and figures: [`../releases/cikm-2026/`](../releases/cikm-2026/).  
+Where the paper maps onto this repo: [`paper_to_repo.md`](paper_to_repo.md).  
+If you want to run or extend the harness: [`adoption_path.md`](adoption_path.md).

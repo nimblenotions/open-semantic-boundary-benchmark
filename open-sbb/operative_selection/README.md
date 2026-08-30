@@ -1,14 +1,14 @@
 # Operative selection
 
+> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+
 ## What this module is
 
 **Operative selection** applies Pareto deprioritization, risk-constrained winners (\(R \leq R_{\max}\)), and dual-purpose bundles. **Cross-purpose regret** quantifies utility loss when one purpose's winner is reused for another.
 
 ## Paper connection
 
-Maps to **§4.5 Operative Selection** and Figure cross-purpose regret matrix.
-
-Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Risk-constrained winners and cross-purpose regret in the CIKM paper (Table 3, Fig. 4). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
 ## Current implementation
 

@@ -1,14 +1,14 @@
 # Transformation provenance
 
+> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+
 ## What this module is
 
 **Provenance** \(r\) records policy version, transform identity, and field lineage. **Completeness** \(\tau(z,r)\) gates operative feasibility. `verify` checks completeness and raw-substring replay.
 
 ## Paper connection
 
-Maps to **§4.6 Transformation Provenance**.
-
-Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Provenance and the verify gate in the CIKM paper (§2–§3). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
 ## Current implementation
 

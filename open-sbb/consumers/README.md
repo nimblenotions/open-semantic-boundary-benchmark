@@ -1,10 +1,12 @@
 # Consumers
 
+> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+
 ## What this module is
 
-**Consumers** are downstream workflows that receive verified export \(z\) under declared purpose \(T\) (paper §4.2). **Assessors** are frozen scoring procedures that benchmark each released export on a held-out split — they never see raw observation \(x\).
+**Consumers** are downstream workflows that receive a verified export under a declared purpose. **Assessors** are frozen scoring procedures that benchmark each released export on a held-out split — they never see the raw observation.
 
-v0.1.1 registers two consumer families:
+This artifact registers two consumer families:
 
 | Family | Role | Primary implementation |
 |--------|------|------------------------|
@@ -15,7 +17,7 @@ Headline utility scores are **not recomputed from live inference** in the defaul
 
 ### Paper ↔ code naming
 
-The paper calls the headline assessor the **frozen `qwen3:8b` utility consumer** (§4.2, §6). In repo code and frozen outputs, the same consumer appears under legacy labels:
+The paper calls the headline assessor the **frozen `qwen3:8b` utility consumer**. In repo code and frozen outputs, the same consumer appears under legacy labels:
 
 | Paper | Repo (code / committed artifacts) |
 |-------|-------------------------------------|
@@ -27,9 +29,7 @@ Alternate open-weight models (`llama3.1:8b`, `gemma4:latest`) use the same promp
 
 ## Paper connection
 
-Maps to **§4.2 Registered Consumers and Policies** (consumer half) and Table registered-tasks.
-
-Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Registered purposes and frozen utility consumers in the CIKM paper (§3–§4). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
 ## Current implementation
 

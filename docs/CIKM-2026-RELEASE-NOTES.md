@@ -1,5 +1,7 @@
 # CIKM 2026 camera-ready — change inventory & OSS repro handoff
 
+> **Not a reader path.** Maintainer archaeology from the camera-ready export. Paper readers should start at the [root README](../README.md) and [`releases/cikm-2026/`](../releases/cikm-2026/).
+
 **Created:** 2026-08-23  
 **Scope:** Sun **2026-08-17** → Sheridan submit + author registration (paper **4405**)  
 **Research repo:** `gauravbaruah/sem-bound-sim-bench` (`feature/cikm-sheridan-package` at handoff)  

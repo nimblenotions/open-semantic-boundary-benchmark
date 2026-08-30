@@ -1,6 +1,9 @@
 # CIKM 2026 cite surface
 
-This folder is the **cite surface** for tag `cikm-2026`: the submitted CIKM 2026 protocol (paper **4405**, DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
+Frozen numbers and figures for the CIKM 2026 paper
+([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076), paper **4405**).
+
+Cite the paper for the science. Cite git tag `cikm-2026` (and the Zenodo version of this tag, when published) for this folder. Do not report an unofficial aggregate “Open-SBB score.”
 
 ## Verify (no Ollama)
 
@@ -14,9 +17,9 @@ make repro-cikm-2026
 
 That command checks:
 
-1. `paper_protocol` locks (train-only TF-IDF, purpose-specific \(R\), Track C Ta-5)
+1. Protocol locks (train-only TF-IDF, purpose-specific \(R\), Track C Ta-5)
 2. Table 3 winners at \(R_{\max}=0.45\)
-3. `red_tokenize` token vs persona bite
+3. Token vs persona on `redact_tokenize`
 4. SHA256 of the three paper figure PDFs
 
 ## Contents
@@ -31,10 +34,4 @@ That command checks:
 
 Protocol-referenced originals remain under `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`.
 
-`outputs/pilot_v2/` on this tag is **historical** (transductive TF-IDF, mixed Ta-5). Do not treat it as the CIKM default.
-
-Camera-ready repair inventory (not required for reading the paper): [`../../docs/CIKM-2026-RELEASE-NOTES.md`](../../docs/CIKM-2026-RELEASE-NOTES.md).
-
-## Cite
-
-Evaluated on Open SBB tag `cikm-2026`; see the result artifacts in this folder. Do not report an unofficial aggregate “Open-SBB score.”
+`outputs/pilot_v2/` on this tag is **historical**. Do not treat it as the CIKM default.

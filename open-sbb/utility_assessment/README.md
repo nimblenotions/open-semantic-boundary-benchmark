@@ -1,5 +1,7 @@
 # Utility assessment
 
+> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+
 ## What this module is
 
 **Utility assessment** — `assess_utility(T, z)` → \(U(T,z)\) on the held-out split.
@@ -9,9 +11,7 @@
 
 ## Paper connection
 
-Maps to **§4.4 Utility and Linkage Assessment** (utility half) and headline results tables.
-
-Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Purpose-specific utility in the CIKM paper (§3–§5). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
 ## Current implementation
 

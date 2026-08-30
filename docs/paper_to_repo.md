@@ -1,13 +1,13 @@
 # Paper to repository map
 
-Maps **CIKM 2026** paper 4405
-([*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076))
-to this repository.
+You read the CIKM 2026 paper. This page says where each piece lives in the artifact.
 
-**Cite surface (start here):** [`../releases/cikm-2026/`](../releases/cikm-2026/).  
-A longer technical report remains forthcoming; it does **not** replace the CIKM paper as the canonical cite.
+**Science:** [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076) (paper **4405**).  
+**Start here:** [`../releases/cikm-2026/`](../releases/cikm-2026/).
 
-## Results (CIKM §§5–6)
+Section numbers below are those of the **CIKM short paper**, not an older long manuscript.
+
+## Results (§5)
 
 | Paper asset | Open here |
 |-------------|-----------|
@@ -17,9 +17,9 @@ A longer technical report remains forthcoming; it does **not** replace the CIKM 
 | Fig. 4 cross-purpose regret | [`../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
 | Protocol assertion | [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
 
-Canonical metric trees (implementation detail): `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/` (purpose-specific linkage + Track C Ta-5 snapshot).
+The metric trees behind those files are `outputs/pilot_v2_camera_ready/` (train-only TF-IDF, purpose-specific linkage) and `outputs/post_acceptance_experiments/` (Track C Ta-5). You do not need them to read the paper.
 
-## Reproduction
+## Verify
 
 ```bash
 uv venv && source .venv/bin/activate
@@ -27,38 +27,36 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-That command verifies Table 3 at \(R_{\max}=0.45\), the `red_tokenize` token vs persona bite, and SHA256 of Figs. 2–4. **No Ollama.**
+No Ollama. That command checks Table 3 at \(R_{\max}=0.45\), tokenize vs persona on `redact_tokenize`, and SHA256 of Figs. 2–4.
 
-Optional paper-protocol replay (writes only under `outputs/post_acceptance_experiments/`):
+Optional replay (writes only under `outputs/post_acceptance_experiments/`):
 
 ```bash
 python eval/run_purpose_specific_linkage_audit.py
 python eval/run_ta5_cohort_audit.py --score-track-c-only
 ```
 
-### Historical v0.1.1 / Zenodo
+## Framework and protocol (§2–§4)
 
-`outputs/pilot_v2/` and `make repro-smoke` audit the **pre-repair** snapshot (transductive TF-IDF, mixed Ta-5, shared observability \(R\)). Same bundle: Zenodo [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). **Not** the CIKM default.
+The short paper compresses the protocol. The folders below are the full detail that would not fit in four pages.
 
-## Section index (framework ↔ protocol folders)
-
-Section numbers below follow the forthcoming long-form write-up (same framework as the CIKM short paper).
-
-| Topic | Protocol folder | Primary artifacts |
-|-------|-----------------|-------------------|
-| Export lattice | [`open-sbb/export_lattice/`](../open-sbb/export_lattice/README.md) | `data/transformed/` |
-| Registered consumers & policies | [`open-sbb/policies/`](../open-sbb/policies/README.md), [`open-sbb/consumers/`](../open-sbb/consumers/README.md) | `data/policies/`, `data/schemas/`, `data/eval_cache*` |
+| In the paper | Protocol folder | On disk |
+|--------------|-----------------|--------|
+| Export conditions / lattice | [`open-sbb/export_lattice/`](../open-sbb/export_lattice/README.md) | `data/transformed/` |
+| Purposes, policies, consumers | [`open-sbb/policies/`](../open-sbb/policies/README.md), [`open-sbb/consumers/`](../open-sbb/consumers/README.md) | `data/policies/`, `data/schemas/`, `data/eval_cache*` |
 | Synthetic pilot | [`open-sbb/synthetic_pilot_data/`](../open-sbb/synthetic_pilot_data/README.md) | `data/raw/`, `data/ground_truth/`, seed 42 |
-| Utility & linkage | [`open-sbb/utility_assessment/`](../open-sbb/utility_assessment/README.md), [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md) | camera-ready + post-acceptance metrics; Figs. 2–3 |
+| Utility and linkage | [`open-sbb/utility_assessment/`](../open-sbb/utility_assessment/README.md), [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md) | camera-ready + post-acceptance metrics; Figs. 2–3 |
 | Operative selection | [`open-sbb/operative_selection/`](../open-sbb/operative_selection/README.md) | Table 3, Fig. 4 |
-| Transformation provenance | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md) | `verify`, `boundary_bundle_v0.json` |
+| Provenance / verify | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md) | `verify`, `boundary_bundle_v0.json` |
 
-## What the paper is vs what the repo is
+## Paper vs this repo
 
-| | Paper | Repo |
-|---|-------|------|
-| Role | Explains protocol & pilot findings | Runnable benchmark + frozen artifacts |
-| LaTeX | Yes | **Not included** |
-| Product / Policy Studio | Mentioned as future | **Out of scope** |
+| | Paper | This repo |
+|---|-------|-----------|
+| Role | Explains the protocol and the pilot findings | Runnable benchmark plus frozen artifacts |
+| LaTeX | Yes | Not included |
+| Product / Policy Studio | Mentioned as future | Out of scope |
 
-See [`adoption_path.md`](adoption_path.md) for practitioner onboarding.
+`outputs/pilot_v2/` is the **pre-repair** snapshot (older TF-IDF fit, mixed Ta-5, shared observability linkage). Same bundle: Zenodo [v0.1.2](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). Do not quote it as the CIKM result.
+
+To run or extend the harness, see [`adoption_path.md`](adoption_path.md).

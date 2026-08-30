@@ -1,6 +1,8 @@
 # Protocol map
 
-This folder maps the Open-SBB **benchmark protocol** to module READMEs. Implementation stays at the repo root (`src/`, `data/`, `eval/`).
+Exact protocol detail for people who already know what Open-SBB is testing.
+
+CIKM paper numbers and figures live in [`../releases/cikm-2026/`](../releases/cikm-2026/). Implementation stays at the repo root (`src/`, `data/`, `eval/`).
 
 ```text
 Synthetic pilot data
@@ -27,4 +29,5 @@ Transformation provenance (τ, verify)
 | Operative selection | [`operative_selection/`](operative_selection/README.md) |
 | Transformation provenance | [`transformation_provenance/`](transformation_provenance/README.md) |
 
-[Paper-to-repo map →](../docs/paper_to_repo.md) · [Reproduce CIKM →](../releases/cikm-2026/) (`make repro-cikm-2026`)
+Where the paper maps onto these folders: [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md).  
+Verify: `make repro-cikm-2026`.

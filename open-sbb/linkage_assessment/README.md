@@ -1,5 +1,7 @@
 # Linkage assessment
 
+> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+
 ## What this module is
 
 **Linkage assessment** — `assess_risk` → \(R(z)\) under closed-world adversaries. Combined index:
@@ -12,9 +14,7 @@ Token recovery is separate (text arms) and **excluded** from \(R(z)\).
 
 ## Paper connection
 
-Maps to **§4.4 Utility and Linkage Assessment** (linkage half): persona top-1, attribute macro-F1, longitudinal linkage AUC.
-
-Section numbers refer to the companion technical report (forthcoming); see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Residual linkage \(R(z)\) in the CIKM paper (§3–§5). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
 ## Current implementation
 

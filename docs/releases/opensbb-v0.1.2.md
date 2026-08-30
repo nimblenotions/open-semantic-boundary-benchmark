@@ -1,6 +1,8 @@
-## Open Semantic Boundary Benchmark v0.1.2
+## Open Semantic Boundary Benchmark v0.1.2 (historical)
 
-**Zenodo archive release** for the frozen medication-adherence pilot bundle. Benchmark artifacts are unchanged from v0.1.1.
+**Pre-camera-ready** Zenodo archive. Not the CIKM 2026 default. For the paper artifact see git tag `cikm-2026` and [`opensbb-cikm-2026.md`](opensbb-cikm-2026.md).
+
+Benchmark artifacts in this version are unchanged from v0.1.1.
 
 ### What's in this release
 
@@ -12,7 +14,7 @@
 
 ### Changes since v0.1.1
 
-- Companion-paper status: *technical report forthcoming*
+- Citation wording as of June 2026 (later retired as an active deliverable)
 - `CITATION.cff` bumped to **0.1.2** for Zenodo DOI
 - Zenodo DOI published: [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088)
 

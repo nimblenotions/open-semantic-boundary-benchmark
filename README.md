@@ -1,20 +1,15 @@
 # Open Semantic Boundary Benchmark
 
-**CIKM 2026 artifact** for
+This is the **CIKM 2026 artifact** for
 [Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure](https://doi.org/10.1145/3799682.3840076)
 (paper **4405**).
 
-## What Open-SBB evaluates
+Sensitive traces are often useful to more than one downstream team, and those teams do not need the same information. **Open-SBB** holds the underlying events fixed and scores candidate **exports** on two axes: how well a purpose can still do its job (\(U\)), and how much residual linkage remains (\(R\)).
 
-**Open-SBB** is the evaluation instrument for that paper. It holds sensitive events fixed and scores candidate **information exports** for different downstream purposes on two axes:
-
-- purpose-specific utility \(U(T,z)\)
-- residual linkage risk \(R(z)\)
-
-The CIKM 2026 pilot uses synthetic medication-adherence journals, observability and analytics consumers, and nine reference export conditions.
+The paper studies a synthetic medication-adherence pilot: 100 personas, 630 held-out events, observability and analytics consumers, and nine reference export methods.
 
 ```text
-Sensitive source event x
+Sensitive source event
         │
         ├── raw
         ├── bracket redaction
@@ -29,45 +24,22 @@ Sensitive source event x
          ┌──────┴───────┐
          ▼              ▼
       utility         linkage
-      U(T,z)           R(z)
          │              │
          └──────┬───────┘
                 ▼
-     feasible winner @ Rmax
+     feasible winner at a linkage ceiling
 ```
 
-**Headline findings**
+**What this study found**
 
 - Different downstream purposes can prefer different exports.
 - Removing recoverable tokens does not necessarily remove linkage risk.
 - Semantic exports are not universally better than redaction.
-- A single global export can incur substantial cross-purpose regret.
+- A single global export can cost a lot of utility for some purposes.
 
-## Paper in 60 seconds
+There is no unofficial aggregate “Open-SBB score.” Cite the paper for the science, and this tag for the exact code and numbers.
 
-**Problem.** Sensitive traces may be useful to several downstream consumers, but they do not necessarily require the same information.
-
-**Benchmark.** Open-SBB holds the underlying events fixed and evaluates nine candidate export conditions for purpose-specific utility and residual linkage risk.
-
-**Pilot.** Synthetic medication-adherence journals; 100 personas; 630 held-out events; observability and analytics consumers.
-
-**Selection.** At each declared linkage ceiling \(R_{\max}\), select the feasible export with the best utility for each purpose.
-
-**Result.** Winners differ across purposes; surface redaction can outperform richer exports under tight constraints, while semantic exports can dominate for other tasks. Token removal alone does not eliminate persona linkage.
-
-## Table 3 and figures
-
-| From the paper | Open here |
-|----------------|-----------|
-| **Table 3 — operative winners** | [`releases/cikm-2026/table3_operative_grid.md`](releases/cikm-2026/table3_operative_grid.md) |
-| **Figure 2 — linkage decomposition** | [`figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf) |
-| **Figure 3 — utility matrix** | [`figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
-| **Figure 4 — cross-purpose regret** | [`figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
-| **Camera-ready protocol** | [`CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
-
-Cite: evaluated on Open SBB tag `cikm-2026`; see [`releases/cikm-2026/`](releases/cikm-2026/). Do not report an unofficial aggregate “Open-SBB score.”
-
-## Reproduce
+## Try it
 
 ```bash
 uv venv
@@ -76,35 +48,38 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-No Ollama. That command checks Table 3 at \(R_{\max}=0.45\), the `red_tokenize` token vs persona bite, and the three figure checksums.
+No Ollama. That check confirms Table 3 at \(R_{\max}=0.45\), the tokenize-vs-persona result, and the three figure checksums.
 
-For deeper rescoring and full regeneration, see the [adoption guide](docs/adoption_path.md).
+## Paper assets
 
-## Reference baselines
+| From the paper | Open here |
+|----------------|-----------|
+| **Table 3 — operative winners** | [`releases/cikm-2026/table3_operative_grid.md`](releases/cikm-2026/table3_operative_grid.md) |
+| **Figure 2 — linkage decomposition** | [`releases/cikm-2026/figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf) |
+| **Figure 3 — utility matrix** | [`releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
+| **Figure 4 — cross-purpose regret** | [`releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
+| **Camera-ready protocol** | [`releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
 
-The nine lattice conditions are **reference baselines** for this pilot:
+The nine reference baselines are `raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogate`, `sem_coarse`, `sem_medium`, `sem_fine`, `redact_llm_substitute`, and `redact_llm_rephrase`.
 
-`raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogate`, `sem_coarse`, `sem_medium`, `sem_fine`, `redact_llm_substitute`, `redact_llm_rephrase`
+## What to cite
 
-## Understand / go deeper
+| | |
+|--|--|
+| **Science** | The CIKM 2026 paper ([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)) |
+| **This artifact** | Git tag `cikm-2026`, folder [`releases/cikm-2026/`](releases/cikm-2026/). A Zenodo version of this tag is the archival copy (see [`docs/releases/opensbb-cikm-2026.md`](docs/releases/opensbb-cikm-2026.md)). |
+| **Older software** | Zenodo [v0.1.2](https://doi.org/10.5281/zenodo.21071088) and `outputs/pilot_v2/` are the **pre-camera-ready** snapshot. They are not the paper default. |
 
-| Goal | Read |
-|------|------|
-| **Understand Semantic Boundary / Open-SBB** | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
-| **Reproduce the CIKM paper** | [`releases/cikm-2026/`](releases/cikm-2026/) |
-| **Map paper concepts to code/data** | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
-| **Go deeper / contribute** | [`docs/adoption_path.md`](docs/adoption_path.md) |
+## Read next
 
-## Historical note
+| If you want to… | Read |
+|-----------------|------|
+| Understand the idea | [`docs/what-is-semantic-boundary.md`](docs/what-is-semantic-boundary.md) |
+| Find paper tables and code | [`docs/paper_to_repo.md`](docs/paper_to_repo.md) |
+| Reproduce more deeply, or extend | [`docs/adoption_path.md`](docs/adoption_path.md) |
 
-`outputs/pilot_v2/` and Zenodo [v0.1.2](https://doi.org/10.5281/zenodo.21071088) preserve the pre-camera-ready snapshot and are **not** the CIKM 2026 default. See [`outputs/pilot_v2/HISTORICAL.md`](outputs/pilot_v2/HISTORICAL.md).
+A later release will add a plug-in interface so you can score an external disclosure method without forking this experiment. That work is not on this frozen tag. ([Issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues).)
 
-## What comes next
-
-Future Open-SBB releases will add a lightweight canonical suite and a plug-in interface for evaluating external disclosure methods. Those changes are intentionally not part of this frozen CIKM artifact. ([Issues #1–#6](https://github.com/nimblenotions/open-semantic-boundary-benchmark/issues).)
-
-## License & citation
+## License
 
 Apache-2.0 — [`LICENSE`](LICENSE). [`CITATION.cff`](CITATION.cff).
-
-**Paper:** Gaurav Baruah. *Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure.* CIKM 2026. DOI [10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076).

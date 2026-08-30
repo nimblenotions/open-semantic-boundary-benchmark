@@ -1,6 +1,9 @@
 cff-version: 1.2.0
-title: "Open Semantic Boundary Benchmark (Open SBB-Obs)"
-message: "If you use this tag to reproduce CIKM 2026 paper 4405, please cite the paper DOI. The Zenodo DOI archives the earlier v0.1.2 frozen bundle."
+title: "Open Semantic Boundary Benchmark"
+message: >-
+  Cite the CIKM 2026 paper for the science. Cite this software version
+  (git tag cikm-2026 / v0.1.3) for the exact artifact. Zenodo
+  10.5281/zenodo.21071088 is the earlier v0.1.2 snapshot, not the paper default.
 type: software
 authors:
   - family-names: Baruah
@@ -8,13 +11,15 @@ authors:
     email: gb@nimblenotions.ca
 repository-code: "https://github.com/nimblenotions/open-semantic-boundary-benchmark"
 license: Apache-2.0
-version: "cikm-2026"
-date-released: 2026-08-28
+version: "0.1.3"
+date-released: 2026-08-30
 identifiers:
   - type: url
     value: "https://github.com/nimblenotions/open-semantic-boundary-benchmark/tree/cikm-2026"
+    description: "Browsable source for git tag/branch cikm-2026"
   - type: doi
     value: 10.5281/zenodo.21071088
+    description: "Historical v0.1.2 software archive (pre-camera-ready). Not the CIKM 2026 artifact."
 preferred-citation:
   type: conference-paper
   authors:
