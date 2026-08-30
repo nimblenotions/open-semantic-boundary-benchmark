@@ -20,9 +20,7 @@ Software identity for the **CIKM 2026** artifact (git tag `cikm-2026`). Same fro
 - `outputs/pilot_v2/` labeled **historical** (pre-camera-ready)
 - `CITATION.cff` title and version (`0.1.3`); preferred citation is the ACM paper
 
-This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on this tag.
-
-A **new Zenodo version** of this tag is the planned archival DOI. Until that deposit exists, cite the git tag and the ACM paper. Do not reuse [v0.1.2](https://doi.org/10.5281/zenodo.21071088) as the CIKM artifact. Deposit notes: [`docs/releases/opensbb-cikm-2026.md`](docs/releases/opensbb-cikm-2026.md).
+This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on this tag. Cite git tag `cikm-2026` and the ACM paper. Do not treat v0.1.2 as the CIKM artifact.
 
 ## [0.1.2] — 2026-06-30
 
