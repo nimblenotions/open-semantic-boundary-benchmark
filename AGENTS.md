@@ -43,7 +43,7 @@ No marketing superlatives. No claims the paper does not make. Do not “improve 
 | Provenance \(r\) | Evidence of the contract’s execution, not a general operational log |
 | Operative selection | Risk-constrained choice among lattice conditions under \(R_{\max}\) (C3) |
 
-**Do not use in reader-facing prose** (development jargon): downstream *team*; unofficial “Open-SBB score”; “bite”; “dumb redactor”; “hero question”; “Track C” (keep that identifier in protocol/release files where it names a scoring path); forthcoming technical report; EasyChair/Sheridan paper id **4405** (leave it in maintainer archaeology such as [`docs/CIKM-2026-RELEASE-NOTES.md`](docs/CIKM-2026-RELEASE-NOTES.md) and research Sheridan filenames).
+**Do not use in reader-facing prose** (development jargon): downstream *team*; unofficial “Open-SBB score”; “bite”; “dumb redactor”; “hero question”; “Track C” (keep that identifier in protocol/release files where it names a scoring path); forthcoming technical report; EasyChair/Sheridan paper id **4405** (leave it in research-repo archaeology such as `docs/cikm-2026-release-notes.md` and Sheridan filenames; do not recreate that inventory in this public clone).
 
 Prefer **purpose / consumer / task** over organizational “team.” Prefer **lattice condition** or **transformation** over vague “method.” Prefer the paper’s **forcing one condition across consumers** over a newly coined “global export.”
 
@@ -74,4 +74,4 @@ Also: Semantic Boundary and SBB are a disclosure framework and a benchmark for c
 
 Do not triplicate the findings (no “what we evaluate” + “headline findings” + “paper in 60 seconds”).
 
-[`docs/CIKM-2026-RELEASE-NOTES.md`](docs/CIKM-2026-RELEASE-NOTES.md) is maintainer archaeology. Do not link it from the README.
+Camera-ready export inventory lives in the research repo (`docs/cikm-2026-release-notes.md`), not in this public clone. Do not recreate it here or link it from the README.
