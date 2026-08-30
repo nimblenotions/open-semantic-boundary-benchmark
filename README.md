@@ -62,7 +62,7 @@ The `cikm-2026` tag freezes the code, protocol, and reported results associated 
 | **Figure 2 — linkage decomposition**   | [`releases/cikm-2026/figures/linkage_decomposition.pdf`](releases/cikm-2026/figures/linkage_decomposition.pdf)             |
 | **Figure 3 — utility matrix**          | [`releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](releases/cikm-2026/figures/utility_matrix_heatmap.pdf)           |
 | **Figure 4 — cross-task regret** | [`releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
-| **Camera-ready protocol**              | [`releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](releases/cikm-2026/CAMERA_READY_PROTOCOL.md)                               |
+| **Experimental protocol**              | [`releases/cikm-2026/experimental_protocol.md`](releases/cikm-2026/experimental_protocol.md)                               |
 
 The paper-to-repository map in [`docs/paper_to_repo.md`](docs/paper_to_repo.md) links the experimental components described in the paper to their corresponding configurations, code, data, and frozen outputs.
 

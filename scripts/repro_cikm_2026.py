@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE = ROOT / "releases" / "cikm-2026"
-PROTOCOL_JSON = RELEASE / "CAMERA_READY_PROTOCOL.json"
+PROTOCOL_JSON = RELEASE / "experimental_protocol.json"
 CHECKSUMS = RELEASE / "checksums.sha256"
 CONFIG = ROOT / "configs" / "cikm_v0.1.yaml"
 TABLE3 = (
@@ -27,8 +27,8 @@ REQUIRED_PATHS = [
     "configs/cikm_v0.1.yaml",
     "src/eval/paper_protocol.py",
     "tests/test_paper_protocol.py",
-    "releases/cikm-2026/CAMERA_READY_PROTOCOL.json",
-    "releases/cikm-2026/CAMERA_READY_PROTOCOL.md",
+    "releases/cikm-2026/experimental_protocol.json",
+    "releases/cikm-2026/experimental_protocol.md",
     "releases/cikm-2026/table3_operative_grid.md",
     "releases/cikm-2026/checksums.sha256",
     "releases/cikm-2026/figures/linkage_decomposition.pdf",
@@ -131,11 +131,11 @@ def main() -> int:
     cite = json.loads(PROTOCOL_JSON.read_text(encoding="utf-8"))
     ver = cite.get("verification", {})
     if ver.get("tfidf_fit_scope") != "train_only":
-        errors.append("cite CAMERA_READY_PROTOCOL.json: tfidf_fit_scope != train_only")
+        errors.append("cite experimental_protocol.json: tfidf_fit_scope != train_only")
     if ver.get("risk_surface") != "purpose_specific":
-        errors.append("cite CAMERA_READY_PROTOCOL.json: risk_surface != purpose_specific")
+        errors.append("cite experimental_protocol.json: risk_surface != purpose_specific")
     if ver.get("ta5_cohort") != "track_c_assessor_symmetric":
-        errors.append("cite CAMERA_READY_PROTOCOL.json: ta5_cohort != track_c_assessor_symmetric")
+        errors.append("cite experimental_protocol.json: ta5_cohort != track_c_assessor_symmetric")
 
     table3_cite = ver.get("table3_at_0_45") or {}
     for key, expected in TABLE3_AT_045.items():

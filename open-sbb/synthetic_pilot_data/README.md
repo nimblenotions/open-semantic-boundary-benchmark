@@ -24,7 +24,7 @@ Data:
 
 - `data/raw/events.jsonl`
 - `data/ground_truth/splits.json`
-- `data/ground_truth/split_manifest_v0.json` — frozen audit manifest (persona counts, 630 test events; SHA256 in [`../../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../../releases/cikm-2026/CAMERA_READY_PROTOCOL.md))
+- `data/ground_truth/split_manifest_v0.json` — frozen audit manifest (persona counts, 630 test events; SHA256 in [`../../releases/cikm-2026/experimental_protocol.md`](../../releases/cikm-2026/experimental_protocol.md))
 - `data/ground_truth/persona_table.jsonl`
 - `data/ground_truth/labels.jsonl`
 - `data/ground_truth/provenance_targets.jsonl`

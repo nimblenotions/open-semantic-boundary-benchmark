@@ -15,7 +15,7 @@ make repro-cikm-2026
 
 That is the supported reproduction path: Table 3 at \(R_{\max}=0.45\), token recovery versus persona linkage on the tokenize condition, and figure checksums. No Ollama.
 
-Then read [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md). Paths from the PDF: [`paper_to_repo.md`](paper_to_repo.md). Framework: [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
+Then read [`../releases/cikm-2026/experimental_protocol.md`](../releases/cikm-2026/experimental_protocol.md). Paths from the PDF: [`paper_to_repo.md`](paper_to_repo.md). Framework: [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
 
 ## Inspect one export (~1–2 hours)
 

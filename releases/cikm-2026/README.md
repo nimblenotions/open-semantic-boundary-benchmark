@@ -9,8 +9,8 @@ For a broader map from the paper to the repository implementation, see [`../../d
 
 | Artifact | Description |
 |---|---|
-| [`CAMERA_READY_PROTOCOL.md`](CAMERA_READY_PROTOCOL.md) | Human-readable description of the experimental protocol and focal reported results |
-| [`CAMERA_READY_PROTOCOL.json`](CAMERA_READY_PROTOCOL.json) | Machine-readable form of the frozen protocol |
+| [`experimental_protocol.md`](experimental_protocol.md) | Human-readable description of the experimental protocol and focal reported results |
+| [`experimental_protocol.json`](experimental_protocol.json) | Machine-readable form of the frozen protocol |
 | [`table3_operative_grid.md`](table3_operative_grid.md) | Cohort-task audit comparing alternative evaluation paths used during validation |
 | [`figures/`](figures/) | Frozen copies of Figures 2–4 |
 | [`checksums.sha256`](checksums.sha256) | SHA-256 checksums for the frozen figure files |
@@ -40,7 +40,7 @@ The check uses committed evaluation artifacts and does not regenerate the LLM-ba
 ### Table 3
 
 The focal reported results at \(R_{\max}=0.45\) are reproduced in
-[`CAMERA_READY_PROTOCOL.md`](CAMERA_READY_PROTOCOL.md).
+[`experimental_protocol.md`](experimental_protocol.md).
 
 The file [`table3_operative_grid.md`](table3_operative_grid.md) preserves
 the cohort-task audit used to validate the adopted evaluation path; it should

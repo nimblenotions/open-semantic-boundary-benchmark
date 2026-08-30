@@ -14,7 +14,7 @@ Section numbers are those of the short paper.
 | Figure 2 — linkage decomposition | [`../releases/cikm-2026/figures/linkage_decomposition.pdf`](../releases/cikm-2026/figures/linkage_decomposition.pdf) |
 | Figure 3 — utility matrix | [`../releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](../releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
 | Figure 4 — cross-task regret | [`../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
-| Protocol used for those numbers | [`../releases/cikm-2026/CAMERA_READY_PROTOCOL.md`](../releases/cikm-2026/CAMERA_READY_PROTOCOL.md) |
+| Protocol used for those numbers | [`../releases/cikm-2026/experimental_protocol.md`](../releases/cikm-2026/experimental_protocol.md) |
 
 Implementation trees (not required to read the paper): `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`.
 
