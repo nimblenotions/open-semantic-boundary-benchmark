@@ -1,10 +1,12 @@
-# Inspecting and extending this artifact
+# Working with the CIKM 2026 artifact
 
-This page is for researchers who have the paper (or the README) and want to **work with the frozen SBB pilot** — not for a vendor plug-in workflow. There is no `opensbb run` on this tag. A later release on `main` is intended to make external transformations first-class; this branch is the scientific artifact.
+This guide is for researchers who want to inspect, verify, or extend the frozen Semantic Boundary Benchmark (SBB) artifact corresponding to the CIKM 2026 paper.
 
-Times are wall-clock for someone new to the repository.
+The `cikm-2026` release preserves the experimental setup reported in the paper. It supports verification of the published artifact, inspection of the exported representations and assessment components, and controlled extensions to the benchmark. A general interface for evaluating arbitrary external disclosure strategies is outside the scope of this frozen release.
 
-## Reproduce the reported check (~15–30 minutes)
+## Verify the reported artifact
+
+From the repository root:
 
 ```bash
 uv venv
@@ -13,43 +15,59 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-That is the supported reproduction path: Table 3 at \(R_{\max}=0.45\), token recovery versus persona linkage on the tokenize condition, and figure checksums. No Ollama.
+This is the supported verification path for the CIKM 2026 artifact. It checks:
 
-Then read [`../releases/cikm-2026/experimental_protocol.md`](../releases/cikm-2026/experimental_protocol.md). Paths from the PDF: [`paper_to_repo.md`](paper_to_repo.md). Framework: [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
+1. the frozen experimental protocol;
+2. the focal Table 3 result at \(R_{\max}=0.45\);
+3. the reported contrast between token recovery and persona linkage for the `red_tokenize` condition; and
+4. the checksums of Figures 2–4.
 
-## Inspect one export (~1–2 hours)
+The verification command uses committed evaluation artifacts and does not regenerate the LLM-based transformation outputs.
 
-1. Read [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md) (lattice \(\mathcal{C}\)) and [`../open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md).
-2. Look at a single purpose-conditioned export:
+For the frozen protocol, see [`../releases/cikm-2026/experimental_protocol.md`](../releases/cikm-2026/experimental_protocol.md). For a map from the paper to the repository implementation, see [`paper_to_repo.md`](paper_to_repo.md). For the conceptual framework, see [`what-is-semantic-boundary.md`](what-is-semantic-boundary.md).
+
+## Inspect an exported representation
+
+The benchmark evaluates a fixed export lattice \(\mathcal{C}\): a set of alternative transformation conditions applied to the same source events.
+
+Start with the export-lattice documentation:
+
+* [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md)
+
+You can then inspect an individual exported event, for example:
 
 ```bash
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 ```
 
-(`redact_bracket` is `red_bracket` in the paper.)
+The repository condition identifier `redact_bracket` corresponds to `red_bracket` in the paper.
 
-3. Open Figures 2–4 under [`../releases/cikm-2026/figures/`](../releases/cikm-2026/figures/).
+To understand how exported representations are evaluated, continue with:
 
-## Rescore with committed caches (~2–3 hours)
+* [`../open-sbb/utility_assessment/README.md`](../open-sbb/utility_assessment/README.md)
+* [`../open-sbb/linkage_assessment/README.md`](../open-sbb/linkage_assessment/README.md)
 
-To rerun registered assessors rather than only verify frozen files:
+## Reproducing versus regenerating
+
+The supported CIKM 2026 reproduction path is `make repro-cikm-2026`.
+
+Other evaluation and pipeline targets in this repository include machinery retained from earlier stages of the benchmark and should not be assumed to reproduce the published CIKM protocol. In particular, the historical `outputs/pilot_v2/` pipeline uses earlier evaluation choices that differ from the frozen paper protocol.
+
+The purpose-specific linkage and cohort-task evaluations used for the CIKM paper are preserved under `outputs/post_acceptance_experiments/` and are checked by the reproduction workflow.
+
+Full regeneration of the benchmark, including corpus generation and LLM-based transformations, is a broader development workflow rather than the supported paper-verification path. It requires the corresponding local model dependencies and may traverse historical pipeline components retained in this release for provenance.
+
+## Extend the benchmark
+
+[`extension_points.md`](extension_points.md) documents the components frozen for the CIKM 2026 artifact—including data splits, assessor definitions, and transformation-condition identifiers—and describes where new transformation conditions, purposes, or linkage assessments can be added.
+
+The experimental example in [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) documents an on-disk `events.jsonl` format for exploring external transformations. It is not part of the CIKM 2026 evaluation protocol.
+
+Before contributing changes, run:
 
 ```bash
-make eval                 # default config is configs/cikm_v0.1.yaml
-make eval-analytics
-make cohort-tier1         # after eval-analytics, before regenerating figures
+make test
+make lint
 ```
 
-No Ollama if `data/eval_cache*` is present. Do not overwrite `outputs/pilot_v2/`. Regenerating lattice text from scratch is `make pipeline` (needs Ollama and `qwen3:8b`).
-
-## Extend
-
-[`extension_points.md`](extension_points.md) lists what is frozen (splits, assessor definitions, condition IDs) and where a new lattice condition, purpose, or adversary would land. Open an issue before changing those.
-
-[`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) documents an experimental on-disk `events.jsonl` shape. It is **not** part of the CIKM evaluation.
-
-Then `make test`, `make lint`, and [`CONTRIBUTING.md`](../CONTRIBUTING.md).
-
-## Pre-camera-ready snapshot
-
-`make repro-smoke` and `outputs/pilot_v2/` audit an earlier published run. Same bundle: [Zenodo v0.1.2](https://doi.org/10.5281/zenodo.21071088). See [`../outputs/pilot_v2/HISTORICAL.md`](../outputs/pilot_v2/HISTORICAL.md). That snapshot is not the CIKM default.
+and review [`CONTRIBUTING.md`](../CONTRIBUTING.md).
