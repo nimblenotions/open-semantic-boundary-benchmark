@@ -1,37 +1,53 @@
-# CIKM 2026 cite surface
+# CIKM 2026 Supporting Artifact
 
-Frozen numbers and figures for the CIKM 2026 paper
-([DOI 10.1145/3799682.3840076](https://doi.org/10.1145/3799682.3840076)).
+This directory contains the frozen results and protocol materials corresponding to the CIKM 2026 short paper [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076).
 
-Cite the paper for the science. Cite git tag `cikm-2026` (and the Zenodo version of this tag, when published) for this folder.
+It provides a compact path from the published paper to the reported results, figures, protocol declaration, and verification artifacts used for the reported experiments.
+For a broader map from the paper to the repository implementation, see [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
-## Verify (no Ollama)
+## Contents
+
+| Artifact | Description |
+|---|---|
+| [`CAMERA_READY_PROTOCOL.md`](CAMERA_READY_PROTOCOL.md) | Human-readable description of the experimental protocol and focal reported results |
+| [`CAMERA_READY_PROTOCOL.json`](CAMERA_READY_PROTOCOL.json) | Machine-readable form of the frozen protocol |
+| [`table3_operative_grid.md`](table3_operative_grid.md) | Cohort-task audit comparing alternative evaluation paths used during validation |
+| [`figures/`](figures/) | Frozen copies of Figures 2–4 |
+| [`checksums.sha256`](checksums.sha256) | SHA-256 checksums for the frozen figure files |
+
+## Verify the reported artifact
 
 From the repository root:
 
 ```bash
-uv venv && source .venv/bin/activate
+uv venv
+source .venv/bin/activate
 uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-That command checks:
+The reproduction check verifies:
 
-1. Protocol locks (train-only TF-IDF, purpose-specific \(R\), Track C Ta-5)
-2. Table 3 winners at \(R_{\max}=0.45\)
-3. Token vs persona on `redact_tokenize`
-4. SHA256 of the three paper figure PDFs
+1. the frozen experimental protocol;
+2. the Table 3 results at the focal linkage tolerance \(R_{\max}=0.45\);
+3. the reported contrast between token recovery and persona linkage for the `red_tokenize` condition; and
+4. the checksums of Figures 2–4.
 
-## Contents
+The check uses committed evaluation artifacts and does not regenerate the LLM-based transformation outputs.
 
-| File | Role |
-|------|------|
-| [`CAMERA_READY_PROTOCOL.md`](CAMERA_READY_PROTOCOL.md) | Human-readable protocol statement |
-| [`CAMERA_READY_PROTOCOL.json`](CAMERA_READY_PROTOCOL.json) | Machine-checked assertion |
-| [`table3_operative_grid.md`](table3_operative_grid.md) | Frozen Track A vs adopted Track C |
-| [`checksums.sha256`](checksums.sha256) | Figure PDF digests (repo-relative) |
-| [`figures/`](figures/) | Flattened Fig. 2–4 PDFs |
+## Paper results
 
-Protocol-referenced originals remain under `outputs/pilot_v2_camera_ready/` and `outputs/post_acceptance_experiments/`.
+### Table 3
 
-`outputs/pilot_v2/` on this tag is **historical**. Do not treat it as the CIKM default.
+The focal reported results at \(R_{\max}=0.45\) are reproduced in
+[`CAMERA_READY_PROTOCOL.md`](CAMERA_READY_PROTOCOL.md).
+
+The file [`table3_operative_grid.md`](table3_operative_grid.md) preserves
+the cohort-task audit used to validate the adopted evaluation path; it should
+not be treated as a standalone reproduction of the full published Table 3.
+
+### Figures
+
+* **Figure 2 — linkage decomposition:** [`figures/linkage_decomposition.pdf`](figures/linkage_decomposition.pdf)
+* **Figure 3 — utility matrix:** [`figures/utility_matrix_heatmap.pdf`](figures/utility_matrix_heatmap.pdf)
+* **Figure 4 — cross-task regret:** [`figures/cross_purpose_regret_matrix.pdf`](figures/cross_purpose_regret_matrix.pdf)
