@@ -31,8 +31,6 @@ At the focal linkage tolerance \(R_{\max}=0.45\), the reported operative selecti
 | -------------- | ---------------- | ------------- | ------------- | ---------------- |
 | bracket (0.67) | surrogate (0.45) | coarse (1.00) | coarse (1.00) | surrogate (0.26) |
 
-The cohort-task validation used to confirm the \(T_a\)-5 evaluation path is preserved separately in [`table3_operative_grid.md`](table3_operative_grid.md).
-
 The paper is the authoritative source for the complete Table 3 across all reported linkage tolerances.
 
 ## Token recovery and persona linkage

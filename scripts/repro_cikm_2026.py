@@ -29,7 +29,6 @@ REQUIRED_PATHS = [
     "tests/test_paper_protocol.py",
     "releases/cikm-2026/experimental_protocol.json",
     "releases/cikm-2026/experimental_protocol.md",
-    "releases/cikm-2026/table3_operative_grid.md",
     "releases/cikm-2026/checksums.sha256",
     "releases/cikm-2026/figures/linkage_decomposition.pdf",
     "releases/cikm-2026/figures/utility_matrix_heatmap.pdf",

@@ -8,7 +8,7 @@ Software identity for the **CIKM 2026** artifact (git tag `cikm-2026`). Same fro
 
 ### Added
 
-- Cite surface [`releases/cikm-2026/`](releases/cikm-2026/) — protocol assertion, Table 3 grid, Fig. 2–4 PDFs, checksums
+- Cite surface [`releases/cikm-2026/`](releases/cikm-2026/) — protocol assertion, focal Table 3 result, Fig. 2–4 PDFs, checksums
 - `make repro-cikm-2026` — verify protocol + figure checksums **without Ollama**
 - Camera-ready and post-acceptance metric trees used by the submitted paper
 - [`docs/DOCUMENTATION.md`](docs/DOCUMENTATION.md) — voice, page jobs, and citation hierarchy for later edits

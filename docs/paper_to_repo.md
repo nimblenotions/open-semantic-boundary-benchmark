@@ -10,7 +10,7 @@ Section numbers are those of the short paper.
 
 | Paper | This artifact |
 |-------|----------------|
-| Table 3 — risk-constrained winners | [`../releases/cikm-2026/table3_operative_grid.md`](../releases/cikm-2026/table3_operative_grid.md) |
+| Table 3 — risk-constrained winners | [`../releases/cikm-2026/experimental_protocol.md`](../releases/cikm-2026/experimental_protocol.md) |
 | Figure 2 — linkage decomposition | [`../releases/cikm-2026/figures/linkage_decomposition.pdf`](../releases/cikm-2026/figures/linkage_decomposition.pdf) |
 | Figure 3 — utility matrix | [`../releases/cikm-2026/figures/utility_matrix_heatmap.pdf`](../releases/cikm-2026/figures/utility_matrix_heatmap.pdf) |
 | Figure 4 — cross-task regret | [`../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf`](../releases/cikm-2026/figures/cross_purpose_regret_matrix.pdf) |
