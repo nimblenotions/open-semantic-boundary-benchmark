@@ -19,7 +19,7 @@ The CIKM study evaluates a fixed export lattice over synthetic medication-adhere
 | Residual linkage       | Evaluated for the purpose-conditioned export \(R(z_{c,T})\)      |
 | Cohort task \(T_a\)-5  | Assessor-symmetric persona-level cohort evaluation               |
 
-For a registered purpose \(T\) and transformation condition \(c\), the benchmark evaluates the utility preserved in the exported representation, \(U(T,z_{c,T})\), together with its residual linkage, \(R(z_{c,T})\). Under a declared linkage tolerance \(R_{\max}\), an operative condition must satisfy the linkage constraint and is selected according to the utility objective for the task under evaluation.
+For a registered purpose \(T\) and transformation condition \(c\), the benchmark evaluates the utility preserved in the exported representation, \(U(T,z_{c,T})\), together with its residual linkage, \(R(z_{c,T})\). Under a declared linkage tolerance \(R_{\max}\), the operative condition is the feasible condition with the highest utility \(U(T,z_{c,T})\) among those satisfying \(R(z_{c,T}) \le R_{\max}\).
 
 For \(T_a\)-5, both training and test cohort features are constructed from persona-level aggregates of assessor predictions for medication class, side effect, and adherence.
 
@@ -62,7 +62,8 @@ The frozen train/test split is recorded in:
 
 `data/ground_truth/split_manifest_v0.json`
 
-Its SHA-256 digest is:
+The file on disk is pretty-printed. The SHA-256 digest of the canonical JSON
+(`sort_keys=True`, compact separators) is:
 
 `b15f4cebc5570a36171eb18ddca5d65d109ad18cb334268d45f43f84e15cfac0`
 
