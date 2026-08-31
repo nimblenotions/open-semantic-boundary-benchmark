@@ -2,7 +2,7 @@ name: test
 
 on:
   push:
-    branches: [main, feature/*]
+    branches: [main, cikm-2026, feature/*]
   pull_request:
 
 jobs:
