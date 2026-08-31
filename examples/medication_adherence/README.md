@@ -1,33 +1,32 @@
-# Medication adherence pilot (shipped)
+# Medication adherence (CIKM 2026 study)
 
-This is the **frozen v0.1.1 pilot** described in the paper: synthetic medication-adherence journaling with dual-purpose observability + analytics evaluation.
+This folder is the **published evaluation** in this artifact: the synthetic medication-adherence pilot in the CIKM 2026 paper.
+
+The corpus, purpose-conditioned exports, and frozen assessor caches live under [`../../data/`](../../data/README.md). Protocol and figures: [`../../releases/cikm-2026/`](../../releases/cikm-2026/).
 
 ## What is included
 
 | Asset | Location |
 |-------|----------|
-| Corpus + split | `data/raw/`, `data/ground_truth/` (100 personas, seed 42, 630 test events) |
-| Nine export conditions | `data/transformed/`, `data/transformed_analytics/` |
-| Published metrics | `outputs/pilot_v2/metrics.json`, `analytics_metrics.json` |
-| Paper figures | `outputs/pilot_v2/figures/` |
+| Corpus and split | `data/raw/`, `data/ground_truth/` (100 personas, seed 42, 630 test events) |
+| Nine lattice conditions | `data/transformed/` (observability), `data/transformed_analytics/` (analytics) |
+| Frozen protocol and figures | [`../../releases/cikm-2026/`](../../releases/cikm-2026/) |
 
-## Reproduce
-
-```bash
-make repro-smoke
-make figures
-```
-
-Full pipeline regen (optional):
+## Verify
 
 ```bash
-make pipeline CONFIG=configs/cikm_v0.1.yaml
+make repro-cikm-2026
 ```
+
+That command uses committed artifacts. It does not regenerate LLM transformations or assessor inference.
+
+Regenerating the corpus or lattice is development work, not reproduction of the published study. See [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Protocol map
 
-See [`../open-sbb/synthetic_pilot_data/README.md`](../open-sbb/synthetic_pilot_data/README.md) and [`../open-sbb/export_lattice/README.md`](../open-sbb/export_lattice/README.md).
+- [`../../open-sbb/synthetic_pilot_data/README.md`](../../open-sbb/synthetic_pilot_data/README.md)
+- [`../../open-sbb/export_lattice/README.md`](../../open-sbb/export_lattice/README.md)
 
 ## Not claimed
 
-Synthetic personas are not real patients. Oracle semantic exports are upper bounds, not clinical deployment recommendations.
+Synthetic personas are not real patients. Oracle semantic exports are representation upper bounds, not production extraction estimates or clinical recommendations.

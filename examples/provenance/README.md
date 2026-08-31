@@ -1,28 +1,21 @@
-# Provenance examples — audit evidence (illustrative)
+# Provenance examples
 
-**Status:** Synthetic illustrations only. **Not** legal templates, compliance certifications, or production policies.
+**Status:** Synthetic illustrations only. These files are not legal templates, compliance certifications, production policies, or schema-valid instances of the CIKM provenance contract.
 
-These examples show how transformation provenance `r` supports **governance and audit** alongside export `z`. Provenance does **not** make an organization HIPAA-, FINRA-, GDPR-, or SOC2-compliant; it provides **evidence** that stated controls were applied consistently.
+They exist so that provenance \(r\) is tangible: an export can suppress identifiers, release permitted semantic categories, and record which policy, schema, and transformation were used. They do not establish regulatory compliance and do not define a product interface.
 
-Schema: [`data/schemas/provenance_v1.json`](../data/schemas/provenance_v1.json)
+The CIKM contract is [`../../data/schemas/provenance_v1.json`](../../data/schemas/provenance_v1.json). Committed pilot records use that schema under `data/transformed/` and `data/transformed_analytics/`.
 
 ## Files
 
-| File | Sector | Scenario |
-|------|--------|----------|
-| [`hipaa_phi_export.json`](hipaa_phi_export.json) | HIPAA | PHI removed/generalized before LLM egress |
-| [`finra_advisor_export.json`](finra_advisor_export.json) | FINRA | Client note abstracted for AI supervision |
-| [`gdpr_minimization_export.json`](gdpr_minimization_export.json) | GDPR | Age bucketed under minimization rule |
-| [`middleware_audit_record.json`](middleware_audit_record.json) | Product | Per-request audit trail (middleware shape) |
+Filenames retain historical labels. The rows are **illustrative contexts**, not implementations of those regimes.
 
-## Evaluation stack
+| File | Illustrative context | What the record shows |
+|------|----------------------|------------------------|
+| [`hipaa_phi_export.json`](hipaa_phi_export.json) | health-data disclosure | identifiers suppressed; medication class exported; policy/transform/schema recorded |
+| [`finra_advisor_export.json`](finra_advisor_export.json) | financial-advice supervision | client and holding literals suppressed; coarse intent exported |
+| [`gdpr_minimization_export.json`](gdpr_minimization_export.json) | data-minimization scenario | exact age and city suppressed; bucketed fields exported |
 
-```text
-Typical benchmark:     input x  →  output z     (utility U, leakage R)
+## Not claimed
 
-Open SBB:              input x  →[π cross]  (z, r)   (U, R, governance τ)
-```
-
-## Safe claim
-
-> Semantic Boundary provenance provides **auditable evidence** of policy-constrained semantic transformations and may **assist** organizations in demonstrating practices related to auditability, accountability, and data minimization—not regulatory compliance by itself.
+These examples do not establish GDPR, HIPAA, FINRA, or other regulatory compliance.

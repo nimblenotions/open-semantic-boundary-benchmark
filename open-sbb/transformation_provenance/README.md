@@ -27,7 +27,7 @@ python -m json.tool data/schemas/provenance_v1.json | head -30
 
 ## Extend
 
-BYO exports that use repository tooling should attach \(r\) matching `provenance_v1.json`. See [`../../examples/bring_your_own/README.md`](../../examples/bring_your_own/README.md) (experimental; not part of the CIKM evaluation).
+Pilot records attach \(r\) matching `provenance_v1.json`. Illustrative sketches (not CIKM evaluation): [`../../examples/provenance/`](../../examples/provenance/README.md).
 
 ## Not claimed
 

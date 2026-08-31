@@ -1,33 +1,9 @@
 # Financial chatbot (conceptual)
 
-## Use case
+A financial-advice transcript may contain client identifiers, account detail, and proposed actions. A supervision or analytics consumer may need risk stage or intent without receiving names, exact holdings, or other identifiers.
 
-Regulated financial chatbots must abstract **client identifiers** and **account detail** before LLM supervision or analytics — while preserving enough semantics for compliance review tasks.
+Candidate exports include leaving the transcript as written, replacing identifiers (tokens or surrogates), or releasing permitted semantic fields. A Semantic Boundary evaluation could compare those alternatives by utility for the registered review purpose, residual linkage on the released representation, and provenance completeness.
 
-## Related artifact in repo
+This is an illustrative application of the framework. The CIKM 2026 artifact does not include a financial-chatbot corpus or results. A tiny synthetic provenance sketch is [`../provenance/finra_advisor_export.json`](../provenance/finra_advisor_export.json); it does not establish FINRA compliance.
 
-Illustrative provenance (synthetic, not legal advice):
-
-- [`../provenance/finra_advisor_export.json`](../provenance/finra_advisor_export.json)
-- [`../provenance/README.md`](../provenance/README.md)
-
-## Open SBB angle
-
-Score competing export strategies (tokenize vs surrogate vs semantic JSON) on:
-
-- Utility: can a supervisor consumer still classify risk stage?
-- Linkage: persona re-identification under tokenization stress tests
-- Provenance: auditable transform lineage via `verify`
-
-## Shipped pilot analogue
-
-`redact_surrogate` (surrogate replacement) and `redact_tokenize` (tokenization) in the medication pilot mirror **replacement** vs **token** strategies:
-
-```bash
-make repro-smoke
-python -c "import json; m=json.load(open('outputs/pilot_v2/metrics.json')); c=m['conditions']; print('tokenize R', c['redact_tokenize']['trial4_adversary']['combined_linkage_score'])"
-```
-
-## Not claimed
-
-Not FINRA-compliant tooling. JSON examples assist **governance storytelling**, not regulatory certification.
+The published lattice includes analogous surface strategies (`redact_tokenize`, `redact_surrogate`) in the medication-adherence study: [`../medication_adherence/`](../medication_adherence/README.md).

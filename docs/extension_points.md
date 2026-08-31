@@ -17,7 +17,7 @@ Changes to frozen assessors, data splits, or reported protocol definitions shoul
 | New linkage assessment            | `src/eval/adversary*.py` and the corresponding evaluation runner                                                                 | [`open-sbb/linkage_assessment/`](../open-sbb/linkage_assessment/README.md)                                          |
 | New operative-selection rule      | `src/eval/operative_selection.py`                                                                                                | [`open-sbb/operative_selection/`](../open-sbb/operative_selection/README.md)                                        |
 | New domain corpus                 | `examples/<domain>/` together with a generator or compatible input data                                                          | [`examples/README.md`](../examples/README.md)                                                                       |
-| External exported representations | [`examples/bring_your_own/`](../examples/bring_your_own/README.md)                                                               | Experimental interface; not part of the CIKM 2026 evaluation                                                        |
+| External exported representations | [`examples/bring_your_own/`](../examples/bring_your_own/README.md)                                                               | Inspect the \(z,r\) shape; scoring remains coupled to the frozen pilot                                              |
 | Provenance or verification        | `src/boundary/verify.py`, `data/schemas/provenance_v1.json`                                                                      | [`open-sbb/transformation_provenance/`](../open-sbb/transformation_provenance/README.md)                            |
 
 ## What is frozen for CIKM 2026
@@ -37,9 +37,7 @@ If an extension changes one of these elements, document the change explicitly an
 
 ## Extending with external exports
 
-The experimental bring-your-own example under [`examples/bring_your_own/`](../examples/bring_your_own/README.md) shows how an externally produced `events.jsonl` representation can be shaped for inspection by repository tooling.
-
-This interface is experimental and is not part of the CIKM 2026 evaluation protocol. Compatibility with the same schema does not, by itself, imply that an external transformation reproduces the reported experiment; the applicable purpose, assessors, linkage evaluations, and protocol settings must also be held fixed.
+[`examples/bring_your_own/`](../examples/bring_your_own/README.md) shows the on-disk \(z,r\) shape of committed pilot records. External exports can in principle use that structure, but evaluating a new domain or purpose requires explicit protocol extension and is outside the frozen CIKM artifact.
 
 ## Contributor workflow
 

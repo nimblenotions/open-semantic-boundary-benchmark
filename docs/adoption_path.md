@@ -61,7 +61,7 @@ Full regeneration of the benchmark, including corpus generation and LLM-based tr
 
 [`extension_points.md`](extension_points.md) documents the components frozen for the CIKM 2026 artifact—including data splits, assessor definitions, and transformation-condition identifiers—and describes where new transformation conditions, purposes, or linkage assessments can be added.
 
-The experimental example in [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) documents an on-disk `events.jsonl` format for exploring external transformations. It is not part of the CIKM 2026 evaluation protocol.
+The experimental example in [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) shows the on-disk \(z,r\) shape and a tiny sample. An external transform can use that structure, but scoring remains coupled to the frozen pilot; this is not a general evaluation interface.
 
 Before contributing changes, run:
 

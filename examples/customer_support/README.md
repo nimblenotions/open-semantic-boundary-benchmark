@@ -1,32 +1,9 @@
 # Customer support (conceptual)
 
-## Use case
+A support ticket may contain customer identifiers, quoted messages, and operational notes. Those records often leave a trusted workspace toward an observability consumer (failure triage) and an analytics consumer (topic or service-quality reporting). The two purposes can require different information from the same incident.
 
-Support platforms export **ticket text**, **intent labels**, and **routing outcomes** to separate observability (failure triage) and analytics (topic/adherence cohorts) teams — often with conflicting disclosure needs.
+Candidate exports include raw ticket text, surface redaction, or a structured semantic representation. A Semantic Boundary evaluation could compare those alternatives by task utility for each registered purpose, residual linkage on the corresponding export, and provenance completeness.
 
-Open SBB compares export conditions on **the same incidents** so you can see when a sanitizer that helps triage destroys analytics utility (cross-purpose regret).
+This is an illustrative application of the framework. The CIKM 2026 artifact does not include a customer-support corpus or results.
 
-## Map to protocol
-
-| Need | Open SBB module |
-|------|-----------------|
-| Compare redaction vs semantic JSON | [`open-sbb/export_lattice/`](../../open-sbb/export_lattice/README.md) |
-| Separate obs vs analytics policies | [`open-sbb/policies/`](../../open-sbb/policies/README.md) |
-| Pick arm under \(R_{\max}\) | [`open-sbb/operative_selection/`](../../open-sbb/operative_selection/README.md) |
-
-## Try on shipped pilot first
-
-The medication pilot demonstrates the **same structural conflict** (bracket helps obs, hurts analytics med-class):
-
-```bash
-make repro-smoke
-# bracket redaction (redact_bracket): observability utility ↑, analytics utility ↓ vs raw
-```
-
-## BYO
-
-When you have ticket exports, follow [`bring_your_own/README.md`](../bring_your_own/README.md).
-
-## Not claimed
-
-No customer-support corpus ships in v0.1.1. This example frames **applicability**, not benchmark numbers.
+The published demonstration of purpose-specific utility and linkage on shared events is the medication-adherence pilot: [`../medication_adherence/`](../medication_adherence/README.md).
