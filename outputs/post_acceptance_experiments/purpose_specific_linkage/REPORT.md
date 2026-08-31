@@ -1,15 +1,14 @@
-# Purpose-specific linkage audit (candidate-corrected experiment)
+# Purpose-specific linkage audit
 
 **Question.** What happens if linkage is evaluated on the same purpose-specific export that is scored for utility, rather than pairing purpose-specific \(U(T,z_{c,T})\) with observability-only \(R(z_{c,T_o})\)?
 
-**Status.** Audit / sensitivity experiment. Pre-publication. This run does **not** assume that purpose-specific linkage must replace the existing protocol.
+**Status.** Supporting audit for the final CIKM 2026 protocol. The published protocol adopts purpose-specific linkage \(R(z_{c,T})\); this report records the audit that established its material effects.
 
-**Branch.** `feature/post-acceptance-experiments`  
 **Commit at run.** `985295c`  
 **Outputs.** `outputs/post_acceptance_experiments/purpose_specific_linkage/`  
-**Frozen artifacts not modified.** `main.tex`, `outputs/pilot_v2/`, policies, schemas, transforms, utility caches, existing linkage JSON.
+**Historical artifacts not modified.** `outputs/pilot_v2/`, policies, schemas, transforms, utility caches.
 
-**Protocol.** Corrected train-only character n-gram TF-IDF (`char_wb`, 1–3, max 5,000 features), fitted on training export strings only, applied unchanged to held-out exports. Same Trial4 adversaries as frozen observability (attribute LR, persona leave-one-out cosine top-1, longitudinal pair AUC). Combined
+**Protocol.** Train-only character n-gram TF-IDF (`char_wb`, 1–3, max 5,000 features), fitted on training export strings only, applied unchanged to held-out exports. Same Trial4 adversaries as the observability instrument (attribute LR, persona leave-one-out cosine top-1, longitudinal pair AUC). Combined
 
 \[
 R(z)=\frac{R_{\mathrm{persona}}+R_{\mathrm{attribute}}+R_{\mathrm{longitudinal}}}{3}.
@@ -17,9 +16,9 @@ R(z)=\frac{R_{\mathrm{persona}}+R_{\mathrm{attribute}}+R_{\mathrm{longitudinal}}
 
 Token recovery is reported separately and is **not** a fourth term in \(R\).
 
-**Utility.** Frozen Qwen scores reused. No new inference. \(T_a\)-5 uses corrected Track C (assessor/assessor), not mixed Track A.
+**Utility.** Frozen Qwen scores reused. No new inference. \(T_a\)-5 uses the published assessor-symmetric construction, not mixed export-train / assessor-test scoring.
 
-**Schema JSON note.** The first Trial4 dump wrote empty `ana_only_fields` because of a set-difference typo (`ana_k - ana_k`). That field was regenerated from the frozen exports without rerunning Trial4. The corrected file is `semantic_schemas.json`.
+**Schema JSON note.** The first Trial4 dump wrote empty `ana_only_fields` because of a set-difference typo (`ana_k - ana_k`). That field was regenerated from the frozen exports without rerunning Trial4. The file is `semantic_schemas.json`.
 
 ---
 
@@ -27,9 +26,9 @@ Token recovery is reported separately and is **not** a fourth term in \(R\).
 
 For each lattice condition \(c\) and purpose \(T\), evaluate \((U(T,z_{c,T}), R(z_{c,T}))\).
 
-Compare existing corrected observability linkage \(R(z_{c,T_o})\) with a new analytics-surface evaluation \(R(z_{c,T_a})\).
+Compare train-only observability linkage \(R(z_{c,T_o})\) with analytics-surface evaluation \(R(z_{c,T_a})\).
 
-Do not treat purpose-specific linkage as preferable a priori. The question is whether the distinction is **material** and whether paper conclusions **change**.
+The question is whether the distinction is **material**. The published protocol uses purpose-specific \(R(z_{c,T})\); the measurements below record where the two surfaces diverge.
 
 ---
 
@@ -66,7 +65,7 @@ For every text arm (`raw`, `redact_bracket`, `redact_tokenize`, `redact_surrogat
 - Provenance \(r\) is **not** identical: `consumer_id` and `purpose_id` differ. That is expected and is **not** an input to Trial4 text.
 - Train-only linkage is **identical** on all four channels, including token recovery (`text_linkage_identical: true`, \(\Delta R = 0\)).
 
-**Stop rule.** Text-arm linkage matched. Semantic \(\Delta R\) can be interpreted as a payload difference, not as a silent protocol bug.
+**Control check.** Text-arm linkage matched. Semantic \(\Delta R\) can be interpreted as a payload difference, not as a silent protocol bug.
 
 ---
 
@@ -107,7 +106,7 @@ Analytics medium adds a time bucket and drops observability failure-mode fields.
 
 Analytics fine uniquely releases `cohort_segment` (and `engagement_trend`). Observability fine uniquely releases occupation / specific-medication / symptom strings that Trial4's **attribute** heads are defined on.
 
-**Unexpected channel mix, not repaired.** Analytics `sem_fine` **attribute** F1 *falls* (0.843 → 0.600) while persona *rises* (0.641 → 0.808) and longitudinal *rises* (0.773 → 0.876). Combined \(R\) barely moves (\(+0.009\)). The adversary was **not** retargeted onto `cohort_segment`; that would have been a protocol change. The drop is consistent with scoring observability-contracted attribute heads against an analytics JSON that does not contain those fields.
+**Channel mix, left as measured.** Analytics `sem_fine` **attribute** F1 *falls* (0.843 → 0.600) while persona *rises* (0.641 → 0.808) and longitudinal *rises* (0.773 → 0.876). Combined \(R\) barely moves (\(+0.009\)). The adversary was **not** retargeted onto `cohort_segment`; that would have been a protocol change. The drop is consistent with scoring observability-contracted attribute heads against an analytics JSON that does not contain those fields.
 
 ---
 
@@ -159,7 +158,7 @@ Only `sem_medium`:
 
 ## 6. Purpose-specific operative selection
 
-Utility held fixed. Winners below use the **mixed protocol the question asked for**:
+Utility held fixed. Winners below use purpose-specific residual linkage as in the published protocol:
 
 - \(c^*(T_o)=\arg\max_c U(T_o,z_{c,T_o})\) s.t. \(R(z_{c,T_o})\le R_{\max}\)
 - \(c^*(T_a)=\arg\max_c U(T_a,z_{c,T_a})\) s.t. \(R(z_{c,T_a})\le R_{\max}\)
@@ -180,9 +179,9 @@ Machine-readable: `mixed_protocol_winners.json`.
 
 **At 0.50 / 0.55: material.** Shared obs \(R\) lets `sem_medium` in, so \(T_a\)-1 winner is `sem_medium` (\(U=1.0\)). Purpose-specific analytics \(R\) keeps medium out, so \(T_a\)-1 winner is `raw` (\(U=0.547\)). \(T_o\)-1 remains `sem_medium` because observability \(R\) is unchanged for that purpose.
 
-This also changes the short-paper sentence that risk-constrained winners **agree** at \(0.50\) and \(0.55\). Under purpose-specific \(R\), \(T_o\)-1 and \(T_a\)-1 **diverge** at those looser budgets (medium vs raw).
+This also means that, under purpose-specific \(R\), risk-constrained winners **diverge** at \(0.50\) and \(0.55\) (\(T_o\)-1 medium vs \(T_a\)-1 raw). They still **agree** at \(0.40\) and still **diverge** at the focal \(0.45\).
 
-**Not caused by this audit.** Published \(T_a\)-5 at 0.45 is `redact_bracket` (mixed Track A, 0.39). Track C at the same feasible set picks `redact_surrogate` (0.264 vs bracket 0.261). That is the prior cohort-pipeline correction, not the linkage-surface change.
+The published \(T_a\)-5 path is assessor-symmetric. This audit consumes those scores; the linkage-surface change is separate from the cohort-construction choice. At the same 0.45 feasible set, assessor-symmetric scoring selects `redact_surrogate` (0.264 vs bracket 0.261).
 
 ---
 
@@ -276,101 +275,27 @@ Distinguish: unchanged / numeric only / winner-ranking / weakened / invalidated 
 | # | Question | Answer | Status |
 |---|---|---|---|
 | 1 | Do observability and analytics still prefer different conditions? | Yes. \(T_o\)-1 = `redact_bracket`, Ta-1 = `redact_surrogate`, Ta-2/3 = `sem_coarse`. | **Unchanged** |
-| 2 | Do different analytics tasks still prefer different conditions? | Yes. Med-class/cohort (Track C) vs side/adherence. | **Unchanged** (Ta-5 vs published table is Track C, not this audit) |
+| 2 | Do different analytics tasks still prefer different conditions? | Yes. Med-class/cohort (assessor-symmetric) vs side/adherence. | **Unchanged** |
 | 3 | Does `red_tokenize` still show near-zero token recovery with high persona linkage? | Yes. Token 0.008, persona 0.837. Identical on both surfaces. | **Unchanged** |
 | 4 | Does a single condition still fail the illustrative dual-purpose bundle? | Yes at 0.45. | **Unchanged** |
 | 5 | Is measurable cross-purpose utility regret still present? | Yes. Forcing bracket onto Ta-1 ≈ 0.25 F1; onto Ta-3 ≈ 0.28 F1. Well-defined at 0.45. | **Unchanged** |
-| 6 | Do semantic conditions remain competitive for some analytics tasks? | Yes. `sem_coarse` still saturates Ta-2/Ta-3 at every listed \(R_{\max}\). `sem_medium` remains an unconstrained Pareto point for med-class / \(T_o\), but is **not** analytics-feasible at 0.50/0.55. | **Unchanged at 0.45**; **changed winner/ranking at 0.50–0.55** if purpose-specific \(R\) is adopted |
+| 6 | Do semantic conditions remain competitive for some analytics tasks? | Yes. `sem_coarse` still saturates Ta-2/Ta-3 at every listed \(R_{\max}\). `sem_medium` remains an unconstrained Pareto point for med-class / \(T_o\), but is **not** analytics-feasible at 0.50/0.55. | **Unchanged at 0.45**; **changed winner/ranking at 0.50–0.55** under purpose-specific \(R\) |
 | 7 | Does any one condition now dominate the registered tasks? | No. | **Unchanged** |
-| 8 | Does the central conclusion still hold (optimal disclosure depends on downstream purpose and linkage tolerance)? | Yes at 0.45. If purpose-specific \(R\) is adopted, the 0.50/0.55 “winners agree” sentence is **false** (To=medium, Ta-1=raw), which **strengthens** purpose-dependence at looser budgets rather than weakening it. | **Unchanged at focal 0.45**; **changed numeric/feasibility at 0.50–0.55** |
+| 8 | Does the central conclusion still hold (optimal disclosure depends on downstream purpose and linkage tolerance)? | Yes at 0.45. Under purpose-specific \(R\), the 0.50/0.55 winners **diverge** (To=medium, Ta-1=raw), which **strengthens** purpose-dependence at looser budgets. | **Unchanged at focal 0.45**; **changed numeric/feasibility at 0.50–0.55** |
 
-The distinction **is material** (`sem_medium` \(\Delta R=+0.125\), persona 0.167→0.489, rank change vs LLM arms). It does **not** overturn the 0.45 camera-ready headlines.
+The distinction **is material** (`sem_medium` \(\Delta R=+0.125\), persona 0.167→0.489, rank change vs LLM arms). It does **not** overturn the focal 0.45 published results.
 
 ---
 
-## 11. Camera-ready impact
+## 11. Implications for the published protocol
 
-### A. Recommended scientific protocol
+Shared observability \(R(c)\), purpose-specific \(R(z_{c,T})\), and a dual-purpose bundle that requires both purpose-conditioned exports to meet \(R_{\max}\) answer different questions. The published CIKM protocol uses purpose-specific residual linkage \(R(z_{c,T})\) as the risk of the representation each consumer actually receives.
 
-Three questions are being conflated in current notation \(R(z_c)\):
+At focal \(R_{\max}=0.45\) the shared and purpose-specific grids **agree**. The distinction is localized to semantic payloads, especially `sem_medium` (\(\Delta R=+0.125\)). Under purpose-specific \(R\), \(T_a\)-1 at \(0.50/0.55\) is `raw` rather than `sem_medium`, and the 0.50 dual-purpose bundle retains `{raw}` rather than `{raw, sem_medium}`.
 
-1. **Shared observability \(R(c)\).** Score Trial4 on \(z_{c,T_o}\) for every purpose. Answers: “If we pick one lattice **condition ID** and treat observability as the canonical risk surface, which \(c\) is feasible?” This is the locked dual-purpose x-axis after SBB-Obs. It is a legitimate *condition*-level comparison. It is **not** `assess_risk` on the analytics consumer's actual \(z\).
-2. **Purpose-specific \(R(z_{c,T})\).** Score Trial4 on the export that consumer \(T\) actually receives. Answers: “What linkage does each registered release carry?” This is what the Semantic Boundary `assess_risk(z)` slot **says**. The text-arm control shows that this only diverges where the payloads actually fork.
-3. **Dual-purpose bundle.** One condition ID whose **both** projections independently meet \(R_{\max}\) and the registered \(U_{\min}\). This is the right “can one pipeline serve both stakeholders?” test once \(z\) forks. It is stricter than (1) and is what this audit used in §8.
+The 0.45 operative winners, token-recovery contrast, dual-purpose failure at 0.45, and the central conclusion (purpose and \(R_{\max}\) jointly determine the winner) are unchanged. Utility scores were not rerun.
 
-**Recommendation: option 3 in the brief — both answer legitimately different questions.**
-
-- Do **not** switch the reported 0.45 grid solely because purpose-specific \(R\) is prettier or uglier. At 0.45 the two protocols **agree**.
-- Align the **framework text** with `assess_risk(z)`: write \(R(z_{c,T})\) and \(U(T,z_{c,T})\), and stop saying “the same released exports” for semantic arms.
-- Keep **shared observability \(R(c)\)** as the reported dual-purpose x-axis *if* the paper's claim is about choosing a **condition** under a single locked risk instrument (historical SBB-Obs Trial4). Disclose purpose-specific \(R\) as **sensitivity**: material for `sem_medium`; 0.45 headlines robust; 0.50/0.55 Ta-1 winner and the “winners agree at 0.50/0.55” sentence are **not** robust.
-- If the paper's claim is that `assess_risk` scores the **released representation the consumer sees**, then purpose-specific \(R\) should become primary and shared obs \(R\) the sensitivity. That is the framework-true choice. It does not change 0.45 winners; it does change Table-3 / Results wording at 0.50/0.55 and the 0.50 bundle exemplar (`sem_medium` drops out).
-
-This audit does **not** choose a camera-ready protocol by which table looks better. It records that the scientific distinction is real, localized to semantic (especially medium) payloads, and that **focal 0.45 conclusions survive either choice**.
-
-A minimal-diff prose plan should wait until that protocol choice is made. This report does not rewrite `main.tex`.
-
-### B. Required artifact changes (if purpose-specific \(R\) is adopted as primary)
-
-Do not apply these yet.
-
-**Tables / numbers**
-
-- Linkage decomposition table / Figure `linkage_decomposition` / `linkage_channels_dual`: need an analytics-surface companion or paired bars for `sem_*`.
-- Operative grid (Table 3 / `tab:operative-grid`): at 0.50/0.55, Ta-1 winner `sem_medium` → `raw`. Feasible-set footnotes must drop medium from the analytics column.
-- Dual-purpose bundle at registry \(R_{\max}=0.50\): `{raw, sem_medium}` → `{raw}`.
-- Combined \(R\) for `sem_medium` if any table currently shows ~0.48 as “the” risk of that condition: analytics is 0.612.
-- Token-recovery table: no change (text arms identical; semantic 0).
-
-**Figures**
-
-- `unified_task_risk_scatter`, `dual_pareto_*`, `task_risk_small_multiples_*`: x-coordinate of `sem_medium` (and slightly `sem_fine` / `sem_coarse`) moves for analytics panels.
-- `cross_purpose_regret_matrix` / `operative_regret_focal`: 0.45 numeric matrix can stay; caption must not imply a single shared \(\mathcal{F}\) as a general definition. 0.50 reuse of medium onto analytics is infeasible, not regret 0.
-- `operative_winner_mismatch`: still true at 0.45; **also** true at 0.50/0.55 under purpose-specific \(R\) (currently drawn as agreement).
-
-**Results sentences (CIKM short, current wording)**
-
-- “Risk-constrained winners agree at \(R_{\max}\in\{0.40,0.50,0.55\}\) but diverge at 0.45” → **invalidated** if purpose-specific \(R\) is primary (diverge at 0.45 **and** 0.50/0.55). Unchanged if shared obs \(R\) remains primary.
-- Span-mislead / tokenize claim: unchanged.
-- Dual-purpose bundle fails at 0.45: unchanged.
-- `sem_medium` saturates headline event tasks once \(R_{\max}\ge 0.50\): **weakened / ranking change** for analytics (infeasible under \(R(z_{c,T_a})\)). Still true for \(T_o\).
-- Central conclusion (purpose + \(R_{\max}\) determine the winner): unchanged at 0.45; **strengthened** at 0.50/0.55 under purpose-specific \(R\).
-
-**Discussion / C3 / SBB definition / operative equation**
-
-- C3 operative selection: change \(R(z_c)\) to \(R(z_{c,T})\) if purpose-specific is primary; or keep \(R(c)\) and add one sentence that the locked instrument is observability Trial4.
-- SBB definition currently: “joint assessment of \(U(T,z)\) and \(R(z)\)” and lattice “each yields counterfactual export \(z_c\)”. Semantic arms yield **two** exports. Notation should become \(z_{c,T}\).
-- Operative equation: \(c^*(T)=\arg\max_c U(T,z_{c,T})\) s.t. \(R(z_{c,T})\le R_{\max}\) (purpose-specific) **or** s.t. \(R(z_{c,T_o})\le R_{\max}\) (shared instrument). These are different constraints.
-- Limitation: there is no documented ex ante rationale for privileging observability as the canonical risk surface after the analytics fork. Either choice should be stated as a design decision, not as “the same released exports.”
-- Experimental Design already claims train-only TF-IDF; frozen `pilot_v2` is still transductive. This audit implements the paper's stated embedder. Switching published numbers to train-only obs \(R\) is a **separate**, small numeric patch (no 0.45 winner change).
-
-**Not affected at 0.45**
-
-- Utility matrix (Qwen, not rerun).
-- Token-recovery / span-mislead paragraph.
-- C1 governance prose.
-- Policies, schemas, transforms, `cohort_segment`.
-
-### C. Regeneration commands (do not overwrite frozen/camera-ready yet)
-
-```bash
-cd /path/to/open-semantic-boundary-benchmark
-# Declared in configs/cikm_v0.1.yaml → paper_protocol. No Qwen. Does not write pilot_v2.
-make paper-protocol-linkage
-```
-
-Does **not** write `outputs/pilot_v2/`, `data/`, or `main.tex`. `make eval` / `make eval-linkage` still target the frozen transductive observability tree and must not be used to “refresh” these numbers.
-
-If `semantic_schemas.json` is regenerated by that script, confirm `ana_only_fields` is `ana_k - obs_k` (fixed in the runner).
-
-Related prior audit (Track C scores consumed, not rerun here):
-
-```bash
-make paper-protocol-ta5
-```
-
-Camera-ready figure/table overwrite (pilot_v2, paper PDF) is **out of scope** until a protocol is chosen.
-
-### D. Reproducibility
+### Reproducibility
 
 | Item | Location |
 |---|---|
@@ -378,24 +303,23 @@ Camera-ready figure/table overwrite (pilot_v2, paper PDF) is **out of scope** un
 | Snapshot | `paper_protocol_snapshot.json` (this directory) |
 | Seed | 42 |
 | TF-IDF | `char_wb`, ngram (1,3), max_features 5000, fit = train export strings only |
-| Adversary | `evaluate_trial4_adversary` + `train_only_tfidf_embedder` (frozen `evaluate_trial4_adversary` default remains transductive) |
+| Adversary | `evaluate_trial4_adversary` + `train_only_tfidf_embedder` |
 | Obs exports | `data/transformed/{c}` |
 | Ana exports | `data/transformed_analytics/{c}` |
-| Utility | `outputs/pilot_v2/metrics.json`, `outputs/pilot_v2/analytics_metrics.json` |
-| Ta-5 Track C | `outputs/post_acceptance_experiments/ta5_cohort_audit/track_c_scores.json` |
+| Utility | `outputs/pilot_v2/metrics.json`, `outputs/pilot_v2/analytics_metrics.json` (copied, not recomputed) |
+| Assessor-symmetric \(T_a\)-5 | `outputs/post_acceptance_experiments/ta5_cohort_audit/track_c_scores.json` |
 | Runner | `eval/run_purpose_specific_linkage_audit.py` |
-| Replay | `make paper-protocol-linkage` / `make paper-protocol-ta5` |
-| Git | `c3b432f` (+ protocol lock commit) on `feature/post-acceptance-experiments` |
+| Verification | `make repro-cikm-2026` |
 | Manifest | `run_manifest.json` (`text_z_embed_identical`, `text_linkage_identical`, `instrument_counts_match` all true) |
 
 Machine-readable outputs in this directory: `instrument.json`, `identity.json`, `text_z_equality.json`, `text_linkage_sanity.json`, `semantic_schemas.json`, `linkage_train_only.json`, `linkage_comparison.{csv,json}`, `ranks.json`, `threshold_crossings.json`, `operative_selection.json`, `mixed_protocol_winners.json`, `pareto.json`, `dual_purpose_bundle.json`, `regret_purpose_specific.json`, `run_manifest.json`.
 
 ---
 
-## 12. Unexpected inconsistencies (reported, not silently repaired)
+## 12. Recorded inconsistencies
 
 1. **First-run `ana_only_fields` empty.** Typo in schema helper; regenerated. Trial4 numbers were not recomputed for that fix.
 2. **Provenance \(r\) differs on text arms** (`consumer_id`, `purpose_id`) while \(z\) and embed text do not. Expected. Not a linkage bug.
-3. **Analytics `sem_fine` attribute F1 drops** while persona/longitudinal rise. Combined \(R\) hides a channel swap. Adversary heads were left on the observability attribute contract by instruction.
-4. **Paper Experimental Design already claims train-only TF-IDF**; frozen `pilot_v2` linkage is still transductive. This audit is the claimed protocol, not the frozen JSON.
-5. **Pareto IDs unchanged** even though `sem_medium` analytics \(R\) moves by 0.125. Do not read empty enter/leave as “the distinction is immaterial”; operative feasibility at 0.50/0.55 is where it matters.
+3. **Analytics `sem_fine` attribute F1 drops** while persona/longitudinal rise. Combined \(R\) hides a channel swap. Adversary heads were left on the observability attribute contract.
+4. **Historical `outputs/pilot_v2` linkage** used train-and-test TF-IDF fitting. This audit implements the published train-only embedder.
+5. **Pareto IDs unchanged** even though `sem_medium` analytics \(R\) moves by 0.125. Empty enter/leave does not mean the distinction is immaterial; operative feasibility at 0.50/0.55 is where it matters.

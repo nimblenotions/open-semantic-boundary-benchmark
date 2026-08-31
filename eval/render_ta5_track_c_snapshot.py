@@ -197,13 +197,9 @@ def main() -> int:
         + "\n",
         encoding="utf-8",
     )
-    (snap_dir / "table3_operative_grid.md").write_text(
-        _table3_md(frozen_rows, "Table 3 frozen Track A (do not adopt)")
-        + _table3_md(track_c_rows, "Table 3 if Track C is adopted")
-        + "Non-cohort columns are unchanged. Only $T_a$-5 moves: "
-        "0.40 stays bracket; 0.45/0.50/0.55 become surrogate (~0.26).\n",
-        encoding="utf-8",
-    )
+    # Committed table3_operative_grid.md is the published purpose-specific
+    # grid (analytics sem_medium infeasible at 0.50/0.55). This renderer uses
+    # shared observability R and must not overwrite that file.
 
     frozen_hash_after = _sha256(frozen_analytics_path)
     if frozen_hash_after != frozen_hash_before:
