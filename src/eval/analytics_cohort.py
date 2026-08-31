@@ -1,13 +1,15 @@
-"""Opt 5: persona-level cohort analytics (Ta-5) from 30-day event aggregates.
+"""Persona-level cohort analytics (Ta-5) from 30-day event aggregates.
 
-Cohort evaluation modes (post-acceptance audit; frozen paper uses mixed_frozen):
+Cohort evaluation modes. The published CIKM protocol is assessor-symmetric
+(``paper_protocol.ta5_cohort.primary`` = ``track_c_assessor_symmetric``).
+The other modes remain for audit comparison; they are not the paper result.
 
-* ``mixed_frozen`` — train on export aggregates, test on assessor aggregates
-  (``evaluate_cohort_from_tier1_predictions``; reported ``tier1_cohort``).
+* ``assessor_symmetric`` — train and test on analytics-assessor aggregates
+  (``evaluate_cohort_from_assessor_predictions``). Published Ta-5.
 * ``export_symmetric`` — train and test on export aggregates
   (``evaluate_cohort_tasks``; reported ``cohort``).
-* ``assessor_symmetric`` — train and test on analytics-assessor aggregates
-  (``evaluate_cohort_from_assessor_predictions``).
+* ``mixed_frozen`` — train on export aggregates, test on assessor aggregates
+  (``evaluate_cohort_from_tier1_predictions``). Historical comparison path.
 """
 
 from __future__ import annotations

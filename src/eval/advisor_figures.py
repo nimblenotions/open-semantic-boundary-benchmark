@@ -1,4 +1,7 @@
-"""Advisor-consolidation figures: utility matrix, linkage decomposition, regret matrix."""
+"""Paper Figures 2–4 (utility matrix, linkage decomposition, regret matrix).
+
+Module name is historical; camera-ready renderers import this file.
+"""
 
 from __future__ import annotations
 

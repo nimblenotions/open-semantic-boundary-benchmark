@@ -1,12 +1,11 @@
-"""Trial4-style adversary: persona match, attribute inference, longitudinal linkage.
+"""Linkage adversary: persona match, attribute inference, longitudinal linkage.
 
-Attack families (paper Trial4 §Re-identification risk):
-  1. Persona / membership inference — cosine NN against train persona profiles
-  2. Sensitive-attribute inference — embedding + logistic regression
-  3. Longitudinal linkage — pairwise same-persona discrimination (AUC)
+Filename ``adversary_trial4`` is historical. Combined R is the unweighted
+mean of persona top-1, attribute macro-F1, and longitudinal AUC. Token recovery
+is scored separately.
 
-Combined linkage score (Pareto x-axis):
-  mean(persona_top1, attribute_combined_macro_f1, longitudinal_linkage_auc)
+Default ``tfidf_fit_scope`` is ``train_only`` (published protocol).
+``train_test`` is the superseded transductive fit, retained for audit only.
 """
 
 from __future__ import annotations

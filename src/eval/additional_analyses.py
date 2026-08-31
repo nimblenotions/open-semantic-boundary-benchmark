@@ -1,4 +1,7 @@
-"""Post-hoc pilot_v2 analyses from existing metrics, operative CSVs, and Tier-1 caches."""
+"""Post-hoc analyses from existing metrics, operative CSVs, and Tier-1 caches.
+
+Not the CIKM reproduction entry point (``make repro-cikm-2026``).
+"""
 
 from __future__ import annotations
 
