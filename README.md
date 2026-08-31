@@ -111,6 +111,7 @@ If you are approaching the repository from the paper, the following paths are th
 | **Find the implementation of something described in the paper** | [`docs/paper_to_repo.md`](docs/paper_to_repo.md)                         |
 | **Inspect, reproduce, rescore, or extend the artifact**         | [`docs/adoption_path.md`](docs/adoption_path.md)                         |
 | **Inspect the frozen CIKM results directly**                    | [`releases/cikm-2026/`](releases/cikm-2026/)                             |
+| **See how committed evaluation outputs are labeled**            | [`outputs/README.md`](outputs/README.md)                                 |
 
 The `open-sbb/` directory provides a more detailed protocol map for readers who want to inspect individual components of the benchmark.
 

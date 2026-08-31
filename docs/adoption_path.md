@@ -51,9 +51,7 @@ To understand how exported representations are evaluated, continue with:
 
 The supported CIKM 2026 reproduction path is `make repro-cikm-2026`.
 
-Other evaluation and pipeline targets in this repository include machinery retained from earlier stages of the benchmark and should not be assumed to reproduce the published CIKM protocol. In particular, the historical `outputs/pilot_v2/` pipeline uses earlier evaluation choices that differ from the frozen paper protocol.
-
-The purpose-specific linkage and cohort-task evaluations used for the CIKM paper are preserved under `outputs/post_acceptance_experiments/` and are checked by the reproduction workflow.
+Other evaluation and pipeline targets in this repository include machinery retained from earlier stages of the benchmark and should not be assumed to reproduce the published CIKM protocol. [`../outputs/README.md`](../outputs/README.md) labels the published result snapshot, the supporting protocol audits, and the historical development snapshot.
 
 Full regeneration of the benchmark, including corpus generation and LLM-based transformations, is a broader development workflow rather than the supported paper-verification path. It requires the corresponding local model dependencies and may traverse historical pipeline components retained in this release for provenance.
 

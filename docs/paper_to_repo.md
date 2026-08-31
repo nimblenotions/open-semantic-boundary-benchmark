@@ -56,6 +56,8 @@ The frozen release contains the protocol statement and figure assets correspondi
 
 The paper remains the authoritative source for the complete presentation and interpretation of the reported results.
 
+Committed evaluation directories under [`outputs/`](../outputs/README.md) hold the underlying result snapshot, supporting protocol audits, and a historical development snapshot. They are not independently canonical.
+
 ## Verify the frozen artifact
 
 The supported verification path for the CIKM 2026 artifact is:

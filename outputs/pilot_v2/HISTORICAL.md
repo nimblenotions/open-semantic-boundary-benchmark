@@ -1,11 +1,15 @@
-# Historical frozen run (not the CIKM 2026 default)
+# Historical development snapshot — not the CIKM 2026 protocol
 
-`outputs/pilot_v2/` is the **pre-repair** published snapshot:
+This directory preserves an earlier experimental run used during development of the benchmark. It is retained for provenance and regression/audit purposes and is not the result set reported by the final CIKM 2026 paper.
 
-- TF-IDF linkage fit on **train+test** (transductive)
-- shared observability risk surface \(R(z_{c,T_o})\)
-- mixed Track A Ta-5 cohort scoring
+The final CIKM protocol and citeable supporting artifact are documented under [`../../releases/cikm-2026/`](../../releases/cikm-2026/). The corresponding result snapshot is under [`../pilot_v2_camera_ready/`](../pilot_v2_camera_ready/).
 
-It remains on this tag so `make repro-smoke` can audit the older v0.1.1 headlines.
+Relative to the published protocol, this snapshot used:
 
-Canonical CIKM 2026 protocol lives in `configs/cikm_v0.1.yaml` → `paper_protocol`, with cite artifacts under `releases/cikm-2026/` and metrics under `outputs/pilot_v2_camera_ready/` plus `outputs/post_acceptance_experiments/`. This tree matches git tag `opensbb-v0.1.2`. The CIKM artifact is a later software version (`cikm-2026` / v0.1.3).
+* TF-IDF fitted on train and test export strings together, rather than train-only fitting;
+* a shared observability linkage surface, rather than purpose-specific residual linkage \(R(z_{c,T})\);
+* mixed \(T_a\)-5 cohort scoring (export features on train, assessor outputs on test), rather than assessor-symmetric cohort features.
+
+Utility scores stored here were copied, not recomputed, when assembling the result snapshot under `outputs/pilot_v2_camera_ready/`. Linkage and cohort-task numbers in this directory are not those of the published paper.
+
+This tree matches git tag `opensbb-v0.1.2`. `make repro-smoke` checks numbers from this earlier snapshot. The CIKM artifact is a later software version (`cikm-2026` / v0.1.3).

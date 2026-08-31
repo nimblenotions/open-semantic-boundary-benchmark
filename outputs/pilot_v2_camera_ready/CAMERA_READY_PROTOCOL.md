@@ -1,12 +1,11 @@
-# Camera-ready train-only TF-IDF linkage protocol
+# CIKM 2026 result snapshot
 
 Generated: 2026-08-19T06:52:08.265026+00:00
 Git commit: `b2a9c0d09d62d7dd0abd9a761fae35ed8fda7a8b`
 
-Canonical CIKM setting: `eval.trial4.tfidf_fit_scope: train_only`.
-Utility scores copied from frozen `outputs/pilot_v2`; no LLM inference.
-The earlier train+test (transductive) fit was incorrect; those numbers stay in
-`outputs/pilot_v2` and `outputs/pilot_v2_tfidf_train_test` for audit only.
+This directory is the result snapshot underlying the CIKM 2026 paper. The citeable protocol, Table 3 excerpt, and Figures 2–4 live under `releases/cikm-2026/`.
+
+The snapshot uses train-only TF-IDF fitting as specified by the published protocol. Utility scores were copied from the historical development snapshot under `outputs/pilot_v2/` and were not recomputed with new LLM inference. Earlier development runs that fitted TF-IDF on train and test together are retained separately for provenance and are not part of the published result set.
 
 ## Paper figures
 

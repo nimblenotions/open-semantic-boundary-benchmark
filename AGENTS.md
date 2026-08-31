@@ -71,6 +71,7 @@ Also: Semantic Boundary and SBB are a disclosure framework and a benchmark for c
 | [`docs/adoption_path.md`](docs/adoption_path.md) | Researcher journeys: inspect, reproduce, extend |
 | [`open-sbb/`](open-sbb/README.md) | Protocol detail (may be dry) |
 | [`releases/cikm-2026/`](releases/cikm-2026/README.md) | Frozen numbers and figures |
+| [`outputs/README.md`](outputs/README.md) | Labels committed evaluation snapshots; does not compete with `releases/cikm-2026/` |
 
 Do not triplicate the findings (no “what we evaluate” + “headline findings” + “paper in 60 seconds”).
 
