@@ -48,10 +48,12 @@ def test_split_manifest_v0_regeneration_is_stable():
     assert rebuilt == committed
 
 
-def test_readme_lists_split_manifest_sha256():
-    readme = (repo_root() / "README.md").read_text(encoding="utf-8")
-    assert EXPECTED_SPLIT_MANIFEST_SHA256 in readme
-    assert "split_manifest_v0.json" in readme
+def test_cikm_release_lists_split_manifest_sha256():
+    protocol = (
+        repo_root() / "releases" / "cikm-2026" / "experimental_protocol.md"
+    ).read_text(encoding="utf-8")
+    assert EXPECTED_SPLIT_MANIFEST_SHA256 in protocol
+    assert "split_manifest_v0.json" in protocol
 
 
 def test_boundary_bundle_v0_validates_against_schema():
