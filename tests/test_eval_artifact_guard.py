@@ -51,3 +51,9 @@ def test_run_cohort_tier1_missing_noncommitted_output_is_not_a_force_block(
 def test_promote_camera_ready_refuses_committed_default() -> None:
     mod = _load_runner("promote_camera_ready_tfidf_train_only.py")
     assert mod.main([]) == 2
+
+
+def test_run_obs_study_linkage_refuses_transductive_pilot_v2() -> None:
+    """Historical study runner must not overwrite committed transductive Trial4 scores."""
+    mod = _load_runner("run_obs_study.py")
+    assert mod.main(["--tier", "linkage"]) == 2

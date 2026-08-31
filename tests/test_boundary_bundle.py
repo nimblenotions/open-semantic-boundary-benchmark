@@ -53,6 +53,7 @@ def test_pilot_v2_obs_bundle_recommendation(pilot_v2_metrics, cfg):
     assert bundle["recommended_condition"] == "redact_bracket"
     assert bundle["export_kind"] == "text_redaction"
     assert bundle["schema"] is None
+    # Schema field on the historical snapshot, not the CIKM software version.
     assert bundle["sbb_version"] == "0.1.1"
     assert bundle["transform_ladder"] == cfg["lattice"]["conditions"]
     assert bundle["i1_metrics_ref"] == "outputs/pilot_v2/metrics.json"

@@ -1,4 +1,4 @@
-"""Phase 4 figure generation tests."""
+"""Historical figure-generation tests (legacy pilot_v1 metrics when present)."""
 
 from __future__ import annotations
 

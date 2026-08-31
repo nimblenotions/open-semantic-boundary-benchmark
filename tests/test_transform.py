@@ -1,4 +1,4 @@
-"""Phase 2 transform lattice tests."""
+"""Phase 2 transform lattice tests (unit checks; full regen is opt-in)."""
 
 from __future__ import annotations
 

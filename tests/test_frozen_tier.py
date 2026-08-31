@@ -1,4 +1,4 @@
-"""Frozen release artifact checks (split manifest v0, boundary bundle schema)."""
+"""Frozen split-manifest digest and historical boundary-bundle schema check."""
 
 from __future__ import annotations
 
@@ -57,6 +57,7 @@ def test_cikm_release_lists_split_manifest_sha256():
 
 
 def test_boundary_bundle_v0_validates_against_schema():
+    """Schema regression for the historical development snapshot, not the published metrics path."""
     root = repo_root()
     schema_path = root / BOUNDARY_BUNDLE_SCHEMA
     bundle_path = root / "outputs" / "pilot_v2" / "boundary_bundle_v0.json"

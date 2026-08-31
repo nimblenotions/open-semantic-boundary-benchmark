@@ -1,4 +1,8 @@
-"""Tests for Trial4-style adversary evaluation."""
+"""Tests for Trial4-style adversary evaluation.
+
+Includes a historical train+test (transductive) comparison. The published
+CIKM protocol uses train-only fitting (`test_tfidf_fit_scope_from_config_defaults_to_train_only`).
+"""
 
 from __future__ import annotations
 

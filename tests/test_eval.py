@@ -1,4 +1,4 @@
-"""Phase 3 eval harness tests."""
+"""Observability eval harness tests (historical study machinery, not CIKM verification)."""
 
 from __future__ import annotations
 
@@ -40,6 +40,7 @@ def test_lattice_has_nine_primary_conditions(cfg):
 
 
 def test_config_pilot_v2_split(cfg):
+    """Frozen corpus split and utility-cache directory (not the published metrics path)."""
     assert cfg["corpus"]["persona_count"] == 100
     assert cfg["corpus"]["train_ratio"] == 0.70
     assert cfg["corpus"]["test_ratio"] == 0.20
@@ -120,6 +121,7 @@ def test_run_study_linkage_tier(cfg):
     assert "tier1" not in raw
     assert "trial4_adversary" in raw
     assert "combined_linkage_score" in raw["trial4_adversary"]
+    assert raw["trial4_adversary"].get("tfidf_fit_scope") == "train_only"
     assert "token_recovery_rate" in raw["trial4_adversary"]
     assert "transfer" in raw
     assert "H4" in result["hypotheses"]

@@ -1,4 +1,9 @@
-"""Tests for advisor-consolidation paper figures."""
+"""Tests for advisor-consolidation paper figures.
+
+Uses historical `outputs/pilot_v2` metrics. At R_max=0.45 the winners match
+the published grid; this is not a substitute for the purpose-specific Table 3
+check.
+"""
 
 from __future__ import annotations
 
