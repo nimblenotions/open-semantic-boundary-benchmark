@@ -1,4 +1,10 @@
-"""Run H1–H4 observability study (Phase 3)."""
+"""Observability study runner (historical H1–H4 / Phase 3).
+
+Not the CIKM verification entry point (make repro-cikm-2026). Default output
+is outputs/pilot_v2/metrics.json. Linkage tiers refuse to overwrite committed
+transductive Trial4 scores when the config is train_only; pass --output to
+write elsewhere.
+"""
 
 from __future__ import annotations
 

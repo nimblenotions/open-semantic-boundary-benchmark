@@ -2,6 +2,10 @@
 
 Writes only under outputs/post_acceptance_experiments/ta5_cohort_audit/.
 Does not modify outputs/pilot_v2, data/eval_cache_analytics, or the manuscript.
+
+Compares historical cohort modes (mixed, export-symmetric) with the published
+CIKM protocol (assessor-symmetric; paper_protocol.ta5_cohort.primary =
+track_c_assessor_symmetric). Not invoked by make repro-cikm-2026.
 """
 
 from __future__ import annotations
@@ -145,6 +149,11 @@ def _rank(scores: dict[str, float]) -> list[dict[str, Any]]:
 
 
 def reconstruct(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Describe the mixed pipeline recorded in frozen pilot_v2 analytics metrics.
+
+    That mixed path (export features on train, assessor features on test) is
+    historical. It is not the published CIKM Ta-5 protocol.
+    """
     root: Path = ctx["root"]
     cfg = ctx["cfg"]
     persona_table = ctx["persona_table"]
@@ -188,6 +197,11 @@ def reconstruct(ctx: dict[str, Any]) -> dict[str, Any]:
             "note": "Non-overlapping ranges; event_count identifies logging_propensity exactly.",
         },
         "frozen_pipeline": {
+            "note": (
+                "Historical mixed path stored in outputs/pilot_v2/analytics_metrics.json "
+                "(export z on train, Tier-1 assessor outputs on test). "
+                "Not the published CIKM Ta-5 protocol, which is assessor-symmetric."
+            ),
             "track_a_function": "evaluate_cohort_from_tier1_predictions",
             "track_a_field": "conditions.*.tier1_cohort.cohort_segment_macro_f1",
             "track_b_function": "evaluate_cohort_tasks",

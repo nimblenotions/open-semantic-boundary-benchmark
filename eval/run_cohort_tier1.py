@@ -1,4 +1,9 @@
-"""Compute Tier-1-derived cohort metrics from analytics eval cache; merge into analytics_metrics.json."""
+"""Merge mixed (export-train / assessor-test) cohort scores into analytics_metrics.json.
+
+Historical Ta-5 helper, not the published assessor-symmetric protocol.
+Default output is outputs/pilot_v2/analytics_metrics.json. Not invoked by
+make repro-cikm-2026.
+"""
 
 from __future__ import annotations
 

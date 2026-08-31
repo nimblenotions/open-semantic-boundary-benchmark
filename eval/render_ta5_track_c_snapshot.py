@@ -1,4 +1,8 @@
-"""Render Track C Ta-5 charts into a new snapshot. Does not write frozen artifacts."""
+"""Render Track C (assessor-symmetric Ta-5) charts into a new snapshot.
+
+Writes under outputs/post_acceptance_experiments/ta5_cohort_audit/snapshot_track_c/.
+Does not write frozen pilot_v2 artifacts. Not invoked by make repro-cikm-2026.
+"""
 
 from __future__ import annotations
 

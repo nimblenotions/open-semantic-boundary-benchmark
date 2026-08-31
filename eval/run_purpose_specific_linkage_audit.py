@@ -1,13 +1,16 @@
 """Purpose-specific linkage audit (post-acceptance).
 
-Does not modify main.tex, pilot_v2, policies, schemas, transforms, caches,
-or existing linkage JSON. Writes only under
-outputs/post_acceptance_experiments/purpose_specific_linkage/.
+Writes only under outputs/post_acceptance_experiments/purpose_specific_linkage/.
+Does not modify pilot_v2, policies, schemas, transforms, caches, or
+releases/cikm-2026/.
 
-Uses the existing Trial4 adversary with a train-only TF-IDF fit declared in
-configs/cikm_v0.1.yaml → paper_protocol. The default evaluate_trial4_adversary
-path (make eval) still fits on train+test and writes pilot_v2; this runner
-does not call that path.
+Fits Trial4 TF-IDF on training export strings only (paper_protocol.linkage.fit
+= train_only) and scores observability and analytics surfaces separately.
+Not invoked by make repro-cikm-2026.
+
+make eval / run_obs_study.py is a separate historical study runner. With the
+current config it also defaults to train_only, but it is not the published
+verification path and it refuses to overwrite transductive pilot_v2 linkage.
 """
 
 from __future__ import annotations

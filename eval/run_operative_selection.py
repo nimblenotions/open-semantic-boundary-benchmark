@@ -1,4 +1,9 @@
-"""Run Tier-A operative selection analyses on pilot_v2 metrics."""
+"""Operative selection on a metrics JSON (historical helper).
+
+Not the CIKM verification entry point. Default reads and writes under
+outputs/pilot_v2. Published Table 3 comes from the Ta-5 Track C snapshot
+under outputs/post_acceptance_experiments/.
+"""
 
 from __future__ import annotations
 

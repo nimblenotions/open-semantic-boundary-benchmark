@@ -1,4 +1,9 @@
-"""Generate Phase 4 figures and boundary bundle from eval metrics."""
+"""Generate figures from a metrics JSON (historical Phase 4 helper).
+
+Not the CIKM verification entry point. Default writes under the configured
+pilot_dir (outputs/pilot_v2). Paper Figures 2–4 live in releases/cikm-2026/
+and outputs/pilot_v2_camera_ready/. Warns if metrics are not train-only TF-IDF.
+"""
 
 from __future__ import annotations
 

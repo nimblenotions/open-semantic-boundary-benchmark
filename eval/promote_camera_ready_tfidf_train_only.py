@@ -1,8 +1,12 @@
-"""Promote train-only TF-IDF linkage to the camera-ready paper results directory.
+"""Promote train-only TF-IDF linkage into outputs/pilot_v2_camera_ready.
 
-Does not overwrite outputs/pilot_v2 (legacy transductive linkage + frozen utilities).
-Does not rerun LLM utility inference or regenerate lattice exports.
-Reuses the train-only linkage already computed in outputs/pilot_v2_tfidf_train_only.
+One-shot historical promotion after the train-only audit. Does not overwrite
+outputs/pilot_v2 (legacy transductive linkage + frozen utilities). Does not
+rerun LLM utility inference or regenerate lattice exports. Reuses linkage
+already computed in outputs/pilot_v2_tfidf_train_only.
+
+Not invoked by make repro-cikm-2026. Re-running this can rewrite committed
+camera-ready files; do not use it as ordinary verification.
 """
 
 from __future__ import annotations

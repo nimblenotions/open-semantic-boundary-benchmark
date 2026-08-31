@@ -1,4 +1,9 @@
-"""Run analytics-purpose Tier-0/1 study (RQ-F1 appendix)."""
+"""Analytics-purpose study runner (historical appendix path).
+
+Not the CIKM verification entry point. Cohort scoring here uses export-symmetric
+aggregates (evaluate_cohort_tasks), not the published assessor-symmetric Ta-5
+protocol. Default output is outputs/pilot_v2/analytics_metrics.json.
+"""
 
 from __future__ import annotations
 
