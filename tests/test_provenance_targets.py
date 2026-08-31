@@ -16,7 +16,7 @@ from transform.io import load_jsonl
 
 @pytest.fixture
 def cfg():
-    return load_config(repo_root() / "configs" / "pilot_v0.1.1.yaml")
+    return load_config(repo_root() / "configs" / "cikm_v0.1.yaml")
 
 
 def test_build_provenance_row_evt_000010(cfg):

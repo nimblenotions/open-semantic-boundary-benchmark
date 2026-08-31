@@ -3,7 +3,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 export PYTHONPATH="${ROOT}/src:${PYTHONPATH:-}"
-CONFIG="${CONFIG:-configs/pilot_v0.1.1.yaml}"
+CONFIG="${CONFIG:-configs/cikm_v0.1.yaml}"
 
 echo "== generate =="
 python -m generate.generate_corpus --config "$CONFIG"

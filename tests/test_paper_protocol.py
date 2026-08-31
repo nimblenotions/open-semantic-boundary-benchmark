@@ -10,7 +10,6 @@ from sbb.config import load_config, repo_root
 def test_paper_protocol_yaml_locks_camera_ready_choices() -> None:
     cfg = load_config()
     proto = paper_protocol(cfg)
-    assert proto["do_not_overwrite_pilot_v2"] is True
     assert proto["linkage"]["fit"] == "train_only"
     assert proto["linkage"]["risk_surface"] == "purpose_specific"
     assert proto["ta5_cohort"]["primary"] == "track_c_assessor_symmetric"

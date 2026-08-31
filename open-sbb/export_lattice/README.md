@@ -50,13 +50,13 @@ Outputs:
 
 ```bash
 make repro-smoke
-make transform CONFIG=configs/pilot_v0.1.1.yaml
+make transform CONFIG=configs/cikm_v0.1.yaml
 head -1 data/transformed/redact_bracket/events.jsonl | python -m json.tool
 ```
 
 ## Extend
 
-Add condition ID in `configs/pilot_v0.1.1.yaml` → implement in `src/transform/` → materialize under `data/transformed/{condition}/`. See [`../../docs/extension_points.md`](../../docs/extension_points.md).
+Add condition ID in `configs/cikm_v0.1.yaml` → implement in `src/transform/` → materialize under `data/transformed/{condition}/`. See [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Not claimed
 

@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 export PYTHONPATH="$ROOT/src:${PYTHONPATH:-}"
 
-CONFIG="${CONFIG:-configs/pilot_v0.1.1.yaml}"
+CONFIG="${CONFIG:-configs/cikm_v0.1.yaml}"
 LOG="${LOG:-outputs/pilot_v1/tier1_run.log}"
 TIER1_OUT="${TIER1_OUT:-outputs/pilot_v1/metrics_tier1.json}"
 METRICS="${METRICS:-outputs/pilot_v1/metrics.json}"
@@ -23,7 +23,7 @@ from pathlib import Path
 import yaml
 
 root = Path(".")
-cfg_path = Path("configs/pilot_v0.1.1.yaml")
+cfg_path = Path("configs/cikm_v0.1.yaml")
 cfg = yaml.safe_load(cfg_path.read_text())
 cfg = copy.deepcopy(cfg)
 cfg["eval"]["tier1"]["sensitivity_models"] = []

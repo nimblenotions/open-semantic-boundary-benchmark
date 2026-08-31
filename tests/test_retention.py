@@ -21,7 +21,7 @@ from sbb.config import load_config, repo_root
 
 @pytest.fixture
 def cfg():
-    return load_config(repo_root() / "configs" / "pilot_v0.1.1.yaml")
+    return load_config(repo_root() / "configs" / "cikm_v0.1.yaml")
 
 
 @pytest.fixture
@@ -158,7 +158,7 @@ def test_run_retention_cli_mock(cfg, tmp_path):
     rc = mod.main(
         [
             "--config",
-            str(root / "configs" / "pilot_v0.1.1.yaml"),
+            str(root / "configs" / "cikm_v0.1.yaml"),
             "--output",
             str(out),
             "--mock",

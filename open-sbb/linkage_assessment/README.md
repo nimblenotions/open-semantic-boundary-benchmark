@@ -45,8 +45,8 @@ Outputs:
 
 ```bash
 make repro-smoke
-make eval-linkage CONFIG=configs/pilot_v0.1.1.yaml
-make figures CONFIG=configs/pilot_v0.1.1.yaml
+make eval-linkage CONFIG=configs/cikm_v0.1.yaml
+make figures CONFIG=configs/cikm_v0.1.yaml
 ```
 
 Persona top-1 on `redact_tokenize` (≈ 0.87 linkage stress test):

@@ -1,4 +1,4 @@
-# CIKM SBB-Obs v0.1.1 — tunable without code changes
+# Semantic Boundary Benchmark — CIKM 2026 frozen protocol
 study:
   name: sbb-obs-v0.1.1
   purpose_id: observability
@@ -79,8 +79,6 @@ analytics_study:
 eval:
   primary_metric: failure_mode_macro_f1
   trial4:
-    # CIKM camera-ready: fit char_wb TF-IDF on that condition's train exports only.
-    # train_test is the superseded transductive fit (audit only; do not use for the paper).
     tfidf_fit_scope: train_only
   tier0:
     random_seed: 42
@@ -99,18 +97,14 @@ metrics:
   primary: failure_mode_macro_f1
 
 outputs:
+  # Frozen utility caches for the reported pilot. Paper linkage/figures live under
+  # camera_ready_dir and outputs/post_acceptance_experiments/.
   pilot_dir: outputs/pilot_v2
-  # CIKM paper linkage + figures (train-only TF-IDF). Utilities remain in pilot_dir; do not use
-  # pilot_v2/metrics.json trial4_adversary for the paper (that block is the old transductive fit).
   camera_ready_dir: outputs/pilot_v2_camera_ready
 
-# Camera-ready scientific protocol (locked 2026-08-19).
-# Frozen historical numbers remain in outputs/pilot_v2 (transductive TF-IDF,
-# shared observability R, mixed Track A Ta-5). `make eval` still writes that
-# tree; do not overwrite it when replaying the paper protocol below.
+# Locked 2026-08-19. Paths below are consumed by verification and audit runners.
 paper_protocol:
   locked_on: "2026-08-19"
-  do_not_overwrite_pilot_v2: true
   linkage:
     embedder: tfidf_char_wb
     analyzer: char_wb
@@ -122,17 +116,7 @@ paper_protocol:
     risk_surface: purpose_specific
   ta5_cohort:
     primary: track_c_assessor_symmetric
-    historical: mixed_track_a_tier1_test_qwen
     outputs: outputs/post_acceptance_experiments/ta5_cohort_audit
     scores: outputs/post_acceptance_experiments/ta5_cohort_audit/track_c_scores.json
-    runner: eval/run_ta5_cohort_audit.py
-    replay: python eval/run_ta5_cohort_audit.py --score-track-c-only
   purpose_specific_linkage:
-    runner: eval/run_purpose_specific_linkage_audit.py
     outputs: outputs/post_acceptance_experiments/purpose_specific_linkage
-    replay: MPLCONFIGDIR=/tmp/mpl-sbb python eval/run_purpose_specific_linkage_audit.py
-  frozen_historical:
-    outputs: outputs/pilot_v2
-    tfidf_fit: transductive_train_and_test
-    risk_surface: shared_observability
-    ta5: mixed_track_a

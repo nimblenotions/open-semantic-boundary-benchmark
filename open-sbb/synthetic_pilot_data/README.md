@@ -40,8 +40,8 @@ Outputs:
 
 ```bash
 make repro-smoke
-make generate CONFIG=configs/pilot_v0.1.1.yaml
-make validate CONFIG=configs/pilot_v0.1.1.yaml
+make generate CONFIG=configs/cikm_v0.1.yaml
+make validate CONFIG=configs/cikm_v0.1.yaml
 python -c "import json; s=json.load(open('data/ground_truth/splits.json')); print(len(s.get('test',[])), 'test personas')"
 ```
 

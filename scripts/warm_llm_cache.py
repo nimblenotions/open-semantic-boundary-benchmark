@@ -129,7 +129,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    cfg = load_config(Path("configs/pilot_v0.1.1.yaml"))
+    cfg = load_config(Path("configs/cikm_v0.1.yaml"))
     root = repo_root()
     events = load_jsonl(root / cfg["paths"]["raw"] / "events.jsonl")
     batch_size = _llm_cfg(cfg)["batch_size"]

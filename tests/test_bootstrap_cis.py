@@ -23,7 +23,7 @@ def test_bootstrap_cis_smoke(pilot_ready):
     import shutil
 
     root = pilot_ready
-    cfg = load_config(root / "configs" / "pilot_v0.1.1.yaml")
+    cfg = load_config(root / "configs" / "cikm_v0.1.yaml")
     cfg = dict(cfg)
     out_rel = "outputs/_test_bootstrap_tmp"
     cfg["outputs"] = {"pilot_dir": out_rel}

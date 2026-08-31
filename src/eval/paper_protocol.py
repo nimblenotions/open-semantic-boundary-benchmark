@@ -1,8 +1,8 @@
-"""Camera-ready paper protocol declared in configs/cikm_v0.1.yaml.
+"""Paper protocol declared in configs/cikm_v0.1.yaml.
 
-Frozen historical numbers stay in outputs/pilot_v2. Replay of train-only
-TF-IDF, Track C Ta-5, and purpose-specific linkage writes only under
-outputs/post_acceptance_experiments/.
+Replay of train-only TF-IDF, assessor-symmetric Ta-5, and purpose-specific
+linkage writes under outputs/post_acceptance_experiments/. Frozen utility
+caches remain in outputs/pilot_v2.
 """
 
 from __future__ import annotations
@@ -43,10 +43,5 @@ def ta5_output_dir(cfg: dict[str, Any], root: Path) -> Path:
 
 
 def frozen_pilot_dir(cfg: dict[str, Any], root: Path) -> Path:
-    rel = (
-        paper_protocol(cfg)
-        .get("frozen_historical", {})
-        .get("outputs")
-        or cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")
-    )
+    rel = cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")
     return root / rel

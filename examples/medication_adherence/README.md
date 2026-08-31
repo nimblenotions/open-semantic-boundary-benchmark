@@ -21,7 +21,7 @@ make figures
 Full pipeline regen (optional):
 
 ```bash
-make pipeline CONFIG=configs/pilot_v0.1.1.yaml
+make pipeline CONFIG=configs/cikm_v0.1.yaml
 ```
 
 ## Protocol map

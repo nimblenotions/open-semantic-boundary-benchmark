@@ -12,7 +12,7 @@ PILOT = ROOT / "outputs" / "pilot_v2"
 TOL = 0.02
 
 REQUIRED_PATHS = [
-    "configs/pilot_v0.1.1.yaml",
+    "outputs/pilot_v2/config_snapshot/pilot_v0.1.1.yaml",
     "data/ground_truth/splits.json",
     "data/transformed/raw/events.jsonl",
     "data/policies/obs_policy_v1.json",

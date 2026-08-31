@@ -10,7 +10,7 @@ from sbb.config import load_config, repo_root
 
 @pytest.fixture
 def cfg():
-    return load_config(repo_root() / "configs" / "pilot_v0.1.1.yaml")
+    return load_config(repo_root() / "configs" / "cikm_v0.1.yaml")
 
 
 def test_plan_tier1_jobs_obs_primary(cfg):

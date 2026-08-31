@@ -84,8 +84,8 @@ Outputs (see [Paper ↔ code naming](#paper--code-naming) above):
 
 ```bash
 make repro-smoke
-make eval CONFIG=configs/pilot_v0.1.1.yaml
-make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
+make eval CONFIG=configs/cikm_v0.1.yaml
+make eval-analytics CONFIG=configs/cikm_v0.1.yaml
 ```
 
 ## Extend

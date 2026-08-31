@@ -42,8 +42,8 @@ Outputs:
 
 ```bash
 make repro-smoke
-make operative-selection CONFIG=configs/pilot_v0.1.1.yaml
-make figures CONFIG=configs/pilot_v0.1.1.yaml
+make operative-selection CONFIG=configs/cikm_v0.1.yaml
+make figures CONFIG=configs/cikm_v0.1.yaml
 ```
 
 Verify cross-purpose regret artifact:

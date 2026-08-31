@@ -45,9 +45,9 @@ Outputs:
 
 ```bash
 make repro-smoke
-make eval CONFIG=configs/pilot_v0.1.1.yaml
-make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
-make bootstrap-cis CONFIG=configs/pilot_v0.1.1.yaml
+make eval CONFIG=configs/cikm_v0.1.yaml
+make eval-analytics CONFIG=configs/cikm_v0.1.yaml
+make bootstrap-cis CONFIG=configs/cikm_v0.1.yaml
 ```
 
 Headline spot-check (`raw` observability failure_mode macro-F1 ≈ 0.63; JSON key `tier1` in metrics):

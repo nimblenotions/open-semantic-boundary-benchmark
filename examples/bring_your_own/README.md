@@ -74,7 +74,7 @@ Each line in `data/transformed/{condition}/events.jsonl` is one scored export. M
 }
 ```
 
-**Condition IDs** in this repo use `redact_bracket` (paper shorthand: `red_bracket`). Match frozen IDs in `configs/pilot_v0.1.1.yaml` → `lattice.conditions`.
+**Condition IDs** in this repo use `redact_bracket` (paper shorthand: `red_bracket`). Match frozen IDs in `configs/cikm_v0.1.yaml` → `lattice.conditions`.
 
 Verify against a real committed line:
 
@@ -116,8 +116,8 @@ opensbb evaluate \
 4. Run assessors:
 
 ```bash
-make eval CONFIG=configs/pilot_v0.1.1.yaml
-make eval-analytics CONFIG=configs/pilot_v0.1.1.yaml
+make eval CONFIG=configs/cikm_v0.1.yaml
+make eval-analytics CONFIG=configs/cikm_v0.1.yaml
 ```
 
 5. Compare to `outputs/pilot_v2/metrics.json` or your own baseline.

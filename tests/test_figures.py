@@ -21,7 +21,7 @@ def metrics():
 
 @pytest.fixture
 def cfg():
-    return load_config(repo_root() / "configs" / "pilot_v0.1.1.yaml")
+    return load_config(repo_root() / "configs" / "cikm_v0.1.yaml")
 
 
 def test_choose_recommended_condition(metrics):
@@ -125,7 +125,7 @@ def test_run_figures_cli(tmp_path):
     rc = mod.main(
         [
             "--config",
-            str(root / "configs" / "pilot_v0.1.1.yaml"),
+            str(root / "configs" / "cikm_v0.1.yaml"),
             "--metrics",
             str(pilot / "metrics.json"),
             "--output-dir",

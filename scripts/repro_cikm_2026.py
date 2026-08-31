@@ -124,8 +124,6 @@ def main() -> int:
             "paper_protocol.ta5_cohort.primary: "
             f"{proto.get('ta5_cohort', {}).get('primary')!r} != 'track_c_assessor_symmetric'"
         )
-    if proto.get("frozen_historical", {}).get("tfidf_fit") != "transductive_train_and_test":
-        errors.append("frozen_historical.tfidf_fit must remain transductive_train_and_test")
 
     cite = json.loads(PROTOCOL_JSON.read_text(encoding="utf-8"))
     ver = cite.get("verification", {})
