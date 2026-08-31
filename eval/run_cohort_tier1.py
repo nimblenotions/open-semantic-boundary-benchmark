@@ -1,8 +1,8 @@
 """Merge mixed (export-train / assessor-test) cohort scores into analytics_metrics.json.
 
 Historical Ta-5 helper, not the published assessor-symmetric protocol.
-Default output is outputs/pilot_v2/analytics_metrics.json. Not invoked by
-make repro-cikm-2026.
+Default output is outputs/pilot_v2/analytics_metrics.json. Writing there
+requires --force. Not invoked by make repro-cikm-2026.
 """
 
 from __future__ import annotations
@@ -16,6 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from eval.analytics_cohort import evaluate_cohort_from_tier1_predictions  # noqa: E402
+from eval.artifact_guard import refuse_committed_write  # noqa: E402
 from eval.io import join_eval_rows, load_labels, load_splits  # noqa: E402
 from eval.study import resolve_eval_conditions  # noqa: E402
 from eval.tier1_analytics_consumer import (  # noqa: E402
@@ -41,12 +42,21 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Cohort Tier-1 from analytics Tier-1 cache")
     parser.add_argument("--config", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Allow writing into committed artifact directories",
+    )
     args = parser.parse_args(argv)
 
     root = repo_root()
     cfg = load_config(args.config)
     out_dir = root / cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")
     out_path = args.output or (out_dir / "analytics_metrics.json")
+    blocked = refuse_committed_write(root, out_path, force=args.force)
+    if blocked:
+        print(blocked, file=sys.stderr)
+        return 2
     if not out_path.is_file():
         print(f"Missing {out_path}", file=sys.stderr)
         return 1

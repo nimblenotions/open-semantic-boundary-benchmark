@@ -6,7 +6,8 @@ rerun LLM utility inference or regenerate lattice exports. Reuses linkage
 already computed in outputs/pilot_v2_tfidf_train_only.
 
 Not invoked by make repro-cikm-2026. Re-running this can rewrite committed
-camera-ready files; do not use it as ordinary verification.
+camera-ready files; writing there requires --force. Do not use it as
+ordinary verification.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from eval.advisor_figures import run_advisor_figures  # noqa: E402
+from eval.artifact_guard import refuse_committed_write  # noqa: E402
 from eval.dual_purpose import run_dual_purpose  # noqa: E402
 from eval.figures import PRIMARY_LATTICE  # noqa: E402
 from eval.operative_figures import generate_operative_figures  # noqa: E402
@@ -161,6 +163,17 @@ def verify_operative(selection: dict[str, Any], frozen_sel: dict[str, Any]) -> d
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Promote train-only TF-IDF to camera-ready outputs")
     parser.add_argument("--config", type=Path, default=None)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Camera-ready directory (default: config outputs.camera_ready_dir)",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Allow writing into committed camera-ready artifacts",
+    )
     args = parser.parse_args(argv)
 
     root = repo_root()
@@ -168,7 +181,15 @@ def main(argv: list[str] | None = None) -> int:
     frozen = root / FROZEN_DIR
     sensitivity = root / SENSITIVITY_DIR
     archive = root / TRANSDUCTIVE_ARCHIVE
-    camera = root / cfg.get("outputs", {}).get("camera_ready_dir", "outputs/pilot_v2_camera_ready")
+    camera = args.output or (
+        root / cfg.get("outputs", {}).get("camera_ready_dir", "outputs/pilot_v2_camera_ready")
+    )
+    if not camera.is_absolute():
+        camera = root / camera
+    blocked = refuse_committed_write(root, camera, force=args.force)
+    if blocked:
+        print(blocked, file=sys.stderr)
+        return 2
 
     frozen_metrics = frozen / "metrics.json"
     frozen_analytics = frozen / "analytics_metrics.json"

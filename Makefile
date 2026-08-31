@@ -64,8 +64,9 @@ eval-analytics-tier0:
 eval-analytics-tier1:
 	$(PYTHON) eval/run_analytics_study.py --config $(CONFIG) --tier 1
 
+# Historical mixed Ta-5 merge; mutates outputs/pilot_v2/analytics_metrics.json.
 cohort-tier1:
-	$(PYTHON) eval/run_cohort_tier1.py --config $(CONFIG)
+	$(PYTHON) eval/run_cohort_tier1.py --config $(CONFIG) --force
 
 additional-analyses:
 	$(PYTHON) eval/run_additional_analyses.py --config $(CONFIG)
