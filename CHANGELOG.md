@@ -24,16 +24,11 @@ This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on
 
 ## [0.1.2] — 2026-06-30
 
-### Added
-
-- Zenodo archive: [10.5281/zenodo.21071088](https://doi.org/10.5281/zenodo.21071088) (`opensbb-v0.1.2`)
+Git tag `opensbb-v0.1.2`. No change to frozen pilot artifacts vs v0.1.1. **This version is not the CIKM 2026 default.**
 
 ### Changed
 
 - Citation and docs pointed at a then-planned longer write-up (since retired as an active deliverable)
-- `CITATION.cff` and docs updated with Zenodo DOI
-
-No change to frozen pilot artifacts vs v0.1.1. **This version is not the CIKM 2026 default.**
 
 ## [0.1.1] — 2026-06-26
 
