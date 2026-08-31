@@ -1,62 +1,33 @@
 # Operative selection
 
-> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+Under a declared linkage tolerance \(R_{\max}\), a lattice condition is **feasible** when \(R(z_{c,T}) \le R_{\max}\). The **risk-constrained winner** for a registered task is the feasible condition with the highest task utility. That is the rule behind paper Table 3.
 
-## What this module is
+Purpose \(T\) determines the export and its linkage; utility is task-specific. A condition that wins one task under a given \(R_{\max}\) may lose another even under the same purpose.
 
-**Operative selection** applies Pareto deprioritization, risk-constrained winners (\(R \leq R_{\max}\)), and dual-purpose bundles. **Cross-purpose regret** quantifies utility loss when one purpose's winner is reused for another.
+The paper also defines Pareto deprioritization (dominated conditions) and bundle feasibility (whether one condition can serve several purposes). In this pilot, provenance completeness is \(\tau = 1\) for the scored conditions, so Table 3 varies only utility and linkage; no numerical utility floors are declared.
 
-## Paper connection
+**Cross-task regret** (paper Figure 4) measures utility lost on task \(j\) when the winner for task \(i\) is reused. Repository filenames keep the older `cross_purpose_regret_*` stem.
 
-Risk-constrained winners and cross-purpose regret in the CIKM paper (Table 3, Fig. 4). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+## Implementation
 
-## Current implementation
+- `src/eval/operative_selection.py`
+- `src/eval/advisor_figures.py` — `cross_purpose_regret_matrix` helpers (Figure 4)
+- `src/eval/dual_purpose.py`
 
-Code:
+Published results: Table 3 (focal \(R_{\max}=0.45\)) and Figure 4 under [`../../releases/cikm-2026/`](../../releases/cikm-2026/). Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
-- `src/eval/operative_selection.py` — Pareto, risk-constrained, bundle selectors
-- `src/eval/dual_purpose.py` — dual-purpose bundles; `plot_operative_regret_focal()` (purpose regret at \(R_{\max}\))
-- `src/eval/advisor_figures.py` — `build_cross_purpose_regret_matrix()`, `plot_cross_purpose_regret_matrix()`, `write_cross_purpose_regret_table()`
-- `src/eval/operative_figures.py` — operative figure helpers
-- `eval/run_operative_selection.py` — CLI entrypoint
-- `eval/run_figures.py` — invokes regret matrix generation
-
-Data:
-
-- `outputs/pilot_v2/metrics.json` (input)
-- `outputs/pilot_v2/analytics_metrics.json` (input)
-
-Outputs:
-
-- `outputs/pilot_v2/operative_selection/operative_selection.json`
-- `outputs/pilot_v2/operative_selection/risk_constrained.csv`
-- `outputs/pilot_v2/operative_selection/operative_selection_report.md`
-- `outputs/pilot_v2/operative_selection/operative_boundary_bundle_v0.json`
-- `outputs/pilot_v2/figures/cross_purpose_regret_matrix.png`
-- `outputs/pilot_v2/figures/tables/cross_purpose_regret_matrix.csv`
-- `outputs/pilot_v2/figures/tables/cross_purpose_regret_meta.json`
-- `outputs/pilot_v2/figures/operative_regret_focal.png`
-- `outputs/pilot_v2/dual_purpose_snapshot.json`
-
-## Reproduce
+## Verify
 
 ```bash
-make repro-smoke
-make operative-selection CONFIG=configs/cikm_v0.1.yaml
-make figures CONFIG=configs/cikm_v0.1.yaml
+make repro-cikm-2026
 ```
 
-Verify cross-purpose regret artifact:
-
-```bash
-test -f outputs/pilot_v2/figures/cross_purpose_regret_matrix.png && echo OK
-head -3 outputs/pilot_v2/figures/tables/cross_purpose_regret_matrix.csv
-```
+That command checks the focal Table 3 row. The paper remains authoritative for the full table across linkage tolerances.
 
 ## Extend
 
-New selector rule → `src/eval/operative_selection.py`. New regret visualization → `src/eval/advisor_figures.py` or `dual_purpose.py`.
+New selection rule: [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Not claimed
 
-Automated selectors are exploratory; purpose-split exports may be the honest deployment path.
+Operative selection compares lattice conditions under a declared \(R_{\max}\) in this protocol. It is not a prescription of a production sanitizer or a regulatory decision procedure.

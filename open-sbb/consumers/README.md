@@ -1,97 +1,47 @@
 # Consumers
 
-> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+**Consumers** are registered downstream workflows that receive a verified export under a declared purpose. **Assessors** are frozen scoring procedures that evaluate that export on the held-out split; they never see the raw observation \(x\).
 
-## What this module is
+This artifact registers two purposes:
 
-**Consumers** are downstream workflows that receive a verified export under a declared purpose. **Assessors** are frozen scoring procedures that benchmark each released export on a held-out split — they never see the raw observation.
+| Purpose | Role | Policy | Assessor |
+|---------|------|--------|----------|
+| Observability \(T_o\) | Triage-style monitoring | `data/policies/obs_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_consumer.py` (`PROMPT_VERSION = "triage_v1"`) |
+| Analytics \(T_a\) | Pharmacologic analytics | `data/policies/analytics_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_analytics_consumer.py` (`PROMPT_VERSION = "analytics_triage_v1"`) |
 
-This artifact registers two consumer families:
+The observability prompt predicts `failure_mode` and `error_stage`. The analytics prompt predicts medication class, side-effect, and adherence from the fixed vocabularies. Predictions are scored against simulator ground truth. The model and prompts proxy registered consumers; they are not the boundary transformer.
 
-| Family | Role | Primary implementation |
-|--------|------|------------------------|
-| **Frozen LLM utility consumer** | Headline \(U(T,z)\) via frozen prompts on export \(z\) | `qwen3:8b` (Ollama); alternate open-weight models for sensitivity |
-| **Classical baselines** | Diagnostic sklearn/TF-IDF pipelines (not headline paper numbers) | `tier0_consumer.py` |
+The same `qwen3:8b` tag is also used for LLM lattice conditions. That is a separate protocol choice from the utility assessor.
 
-Headline utility scores are **not recomputed from live inference** in the default repro path. The repo commits an **evaluation registry** — pre-computed LLM predictions keyed by model, lattice condition, and event — so audits run instantly without Ollama or API cost.
+## Implementation
 
-### Paper ↔ code naming
+- `src/eval/tier1_consumer.py` — observability utility assessor
+- `src/eval/tier1_analytics_consumer.py` — analytics utility assessor
+- `src/eval/observability_task.py`, `src/eval/analytics_task.py`, `src/eval/analytics_cohort.py`
+- Vocabularies: `data/schemas/obs_labels_v1.json`, `data/ground_truth/labels.jsonl`
 
-The paper calls the headline assessor the **frozen `qwen3:8b` utility consumer**. In repo code and frozen outputs, the same consumer appears under legacy labels:
+Committed assessor predictions (not live inference):
 
-| Paper | Repo (code / committed artifacts) |
-|-------|-------------------------------------|
-| Frozen `qwen3:8b` utility consumer | `data/eval_cache/qwen3_8b/` |
-| Headline \(U(T,z)\) scores | `metrics.json` → `conditions[*].tier1` (legacy JSON key) |
-| Sensitivity narrative | `outputs/pilot_v2/sensitivity_report.md` |
+- `data/eval_cache/qwen3_8b/`
+- `data/eval_cache_analytics/qwen3_8b/`
 
-Alternate open-weight models (`llama3.1:8b`, `gemma4:latest`) use the same prompt contracts under their own cache dirs.
+Classical sklearn pipelines in `src/eval/tier0_consumer.py` are diagnostics. They are not the published utility numbers.
 
-## Paper connection
+Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md). Task list: [`../utility_assessment/README.md`](../utility_assessment/README.md).
 
-Registered purposes and frozen utility consumers in the CIKM paper (§3–§4). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
-
-## Current implementation
-
-Code (module filenames use legacy `tier*` prefixes):
-
-- `src/eval/tier0_consumer.py` — classical baselines
-- `src/eval/tier1_consumer.py` — observability LLM consumer (`failure_mode`, `error_stage`)
-- `src/eval/tier1_analytics_consumer.py` — analytics LLM consumer
-- `src/eval/observability_task.py`
-- `src/eval/analytics_task.py`
-- `src/eval/analytics_cohort.py`
-- `eval/run_obs_study.py`
-- `eval/run_analytics_study.py`
-- `eval/run_cohort_tier1.py`
-
-Data:
-
-- `data/eval_cache/qwen3_8b/raw/predictions.jsonl` (and per-condition dirs)
-- `data/eval_cache/qwen3_8b/redact_bracket/predictions.jsonl`
-- `data/eval_cache_analytics/qwen3_8b/sem_coarse/predictions.jsonl`
-- `data/eval_cache/llama3.1_8b/` — sensitivity models
-- `data/eval_cache/gemma4_latest/` — sensitivity models
-
-### How the evaluation registry works
-
-```text
-Lattice export z  ──►  frozen LLM consumer prompt  ──►  prediction JSONL  ──►  metric (F1, etc.)
-                              ▲
-                              │
-                    data/eval_cache/{model}/{condition}/predictions.jsonl
-                    (committed at release — v0.1.1 primary: qwen3_8b)
-```
-
-- **`make eval`** loads observability caches from `data/eval_cache/` when present; scoring is deterministic given the same exports in `data/transformed/`.
-- **`make eval-analytics`** uses `data/eval_cache_analytics/` the same way.
-- **Cache miss** → study runner may attempt live Ollama inference (not required for v0.1.1 repro).
-- **`make repro-smoke`** does not read caches; it validates committed `outputs/pilot_v2/metrics.json` only.
-
-Inspect one row:
+## Verify
 
 ```bash
+make repro-cikm-2026
 head -1 data/eval_cache/qwen3_8b/raw/predictions.jsonl | python -m json.tool
 ```
 
-Outputs (see [Paper ↔ code naming](#paper--code-naming) above):
-
-- `outputs/pilot_v2/metrics.json` → `conditions[*].tier1`
-- `outputs/pilot_v2/analytics_metrics.json` → `conditions[*].tier1`
-- `outputs/pilot_v2/sensitivity_report.md`
-
-## Reproduce
-
-```bash
-make repro-smoke
-make eval CONFIG=configs/cikm_v0.1.yaml
-make eval-analytics CONFIG=configs/cikm_v0.1.yaml
-```
+`make repro-cikm-2026` uses committed artifacts and does not call Ollama. Re-running live assessor inference is development, not CIKM verification.
 
 ## Extend
 
-New task → add prompt/vocab in `src/eval/` + hook in `eval/run_*_study.py`.
+New purpose or assessor: [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Not claimed
 
-Frozen LLM utility consumers are benchmark instruments, not production model recommendations.
+Frozen LLM assessors are benchmark instruments, not production model recommendations.

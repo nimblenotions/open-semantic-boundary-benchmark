@@ -1,51 +1,36 @@
 # Policies
 
-> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+Disclosure policy \(\pi\) is the versioned contract registered with a purpose \(T\). In this artifact it records prohibited export fields, prohibited field combinations, granularity caps that select a schema family, and required provenance fields. Permitted semantic fields for a given granularity live in the corresponding schema files, not as a separate “allowed fields” list in the policy JSON.
 
-## What this module is
+`verify` checks the declared provenance fields (and, when raw strings are supplied, verbatim replay of source text). Field and combination prohibitions are applied by `policy_check` during `cross`.
 
-**Policy** \(\pi\) is the versioned disclosure bundle: prohibited fields, allowed semantic fields, combination guards, granularity caps, and required provenance fields.
+## Implementation
 
-## Paper connection
-
-Disclosure policy in the CIKM paper (§2–§3). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
-
-## Current implementation
-
-Code:
-
-- `src/boundary/policy_check.py` — policy validation helpers
-- `src/boundary/cross.py` — materialize \((z,r)\) under \(\pi\)
+- `src/boundary/policy_check.py` — prohibited fields, combination guards, granularity-cap lookup
+- `src/boundary/cross.py` — emit \((z, r)\) under \(\pi\)
+- `src/boundary/verify.py` — provenance completeness and optional raw-substring check
 
 Data:
 
 - `data/policies/obs_policy_v1.json`
 - `data/policies/analytics_policy_v1.json`
-- `data/schemas/obs_schema_coarse.json`
-- `data/schemas/obs_schema_medium.json`
-- `data/schemas/obs_schema_fine.json`
-- `data/schemas/analytics_schema_coarse.json`
-- `data/schemas/analytics_schema_medium.json`
-- `data/schemas/analytics_schema_fine.json`
+- `data/schemas/obs_schema_{coarse,medium,fine}.json`
+- `data/schemas/analytics_schema_{coarse,medium,fine}.json`
 - `data/schemas/provenance_v1.json`
-- `data/schemas/obs_labels_v1.json`
 
-Outputs:
+Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
-- `outputs/pilot_v2/config_snapshot/pilot_v0.1.1.yaml`
-- `outputs/pilot_v2/config_snapshot/manifest.json`
-
-## Reproduce
+## Verify
 
 ```bash
-make repro-smoke
+make repro-cikm-2026
 python -m json.tool data/policies/obs_policy_v1.json | head -40
 ```
 
 ## Extend
 
-Add policy JSON under `data/policies/` + matching schemas under `data/schemas/`. Wire purpose in config and utility tasks.
+Add policy JSON under `data/policies/` and matching schemas under `data/schemas/`. See [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Not claimed
 
-Policy JSON is a **benchmark contract**, not legal advice or compliance certification.
+Policy JSON is a **benchmark contract**. Verification of that contract does not establish GDPR, HIPAA, or other regulatory compliance.

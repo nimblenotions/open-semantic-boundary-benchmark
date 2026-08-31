@@ -1,64 +1,41 @@
 # Linkage assessment
 
-> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
-
-## What this module is
-
-**Linkage assessment** — `assess_risk` → \(R(z)\) under closed-world adversaries. Combined index:
+Residual linkage \(R(z_{c,T})\) is scored on the purpose-conditioned export under declared closed-world adversaries. Combined \(R\) is the unweighted mean of three channels:
 
 \[
-R(z) = \tfrac{1}{3}(\text{persona\_top1} + \text{attribute\_macro\_F1} + \text{longitudinal\_AUC})
+R(z_{c,T}) = \tfrac{1}{3}(\text{persona top-1} + \text{attribute macro-F1} + \text{longitudinal AUC}).
 \]
 
-Token recovery is separate (text arms) and **excluded** from \(R(z)\).
+**Token recovery is separate.** It measures the fraction of sensitive surface forms from raw \(x\) that reappear in text-like \(z_{c,T}\). It is not a fourth term in \(R\). Low token recovery does not, by itself, imply low residual linkage.
 
-## Paper connection
+The published protocol uses TF-IDF with `char_wb` character n-grams \(1\)–\(3\) and 5,000 features, **fit on training export strings only** and applied unchanged to held-out exports. Linkage is **purpose-specific**: \(R(z_{c,T_o})\) and \(R(z_{c,T_a})\) can differ, especially for semantic conditions.
 
-Residual linkage \(R(z)\) in the CIKM paper (§3–§5). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+Persona re-identification matches each held-out event to mean profiles of the 20 test personas, excluding the query event from its own profile. Attribute inference uses logistic regression trained on train-split event vectors. Longitudinal linkage is same-versus-different-persona AUC from cosine similarities over the 30-day traces.
 
-## Current implementation
+Combined \(R\) is a reporting convenience for operative selection, not a calibrated re-identification probability.
 
-Code:
+## Implementation
 
-- `src/eval/adversary_trial4.py` — primary linkage adversary suite (persona, attribute, longitudinal channels)
-- `src/eval/adversary.py` — adversary helpers
-- `src/eval/embeddings.py` — vector encoding (TF-IDF char_wb, sentence-transformers path)
-- `src/eval/retention.py` — token recovery diagnostics
-- `eval/run_obs_study.py` — merges linkage into metrics (tier `linkage` or full run)
+- `src/eval/adversary_trial4.py` — persona, attribute, and longitudinal channels
+- `src/eval/adversary.py` — helpers including token recovery
+- `src/eval/retention.py` — token-recovery diagnostic
+- `src/eval/embeddings.py` — TF-IDF encoding
+- `configs/cikm_v0.1.yaml` → `paper_protocol.linkage` (`fit: train_only`, `risk_surface: purpose_specific`)
 
-Data:
+Published decomposition: Figure 2 under [`../../releases/cikm-2026/`](../../releases/cikm-2026/). Focal `red_tokenize` contrast (token recovery vs persona top-1): [`../../releases/cikm-2026/experimental_protocol.md`](../../releases/cikm-2026/experimental_protocol.md). Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
-- `data/transformed/raw/events.jsonl` … `data/transformed/sem_fine/events.jsonl` (export inputs)
-
-Outputs:
-
-- `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary.persona_top1`
-- `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary.attribute_combined_macro_f1`
-- `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary.longitudinal_linkage_auc`
-- `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary.combined_linkage_score`
-- `outputs/pilot_v2/metrics.json` → `conditions[*].trial4_adversary.token_recovery_rate`
-- `outputs/pilot_v2/figures/linkage_decomposition.png`
-- `outputs/pilot_v2/figures/linkage_channels_dual.png`
-- `outputs/pilot_v2/figures/tables/linkage_decomposition.csv`
-
-## Reproduce
+## Verify
 
 ```bash
-make repro-smoke
-make eval-linkage CONFIG=configs/cikm_v0.1.yaml
-make figures CONFIG=configs/cikm_v0.1.yaml
+make repro-cikm-2026
 ```
 
-Persona top-1 on `redact_tokenize` (≈ 0.87 linkage stress test):
-
-```bash
-python -c "import json; m=json.load(open('outputs/pilot_v2/metrics.json')); print(m['conditions']['redact_tokenize']['trial4_adversary']['persona_top1'])"
-```
+That command checks the locked linkage protocol and the reported `red_tokenize` recovery-versus-persona contrast. It does not re-fit the adversary from scratch.
 
 ## Extend
 
-New adversary → `src/eval/adversary_trial4.py` or sibling module + protocol note.
+New adversary: [`../../docs/extension_points.md`](../../docs/extension_points.md).
 
 ## Not claimed
 
-\(R(z)\) is a diagnostic benchmark index, not a calibrated re-identification probability or regulatory threshold.
+\(R(z_{c,T})\) is a diagnostic benchmark index, not a calibrated re-identification probability or a regulatory threshold.

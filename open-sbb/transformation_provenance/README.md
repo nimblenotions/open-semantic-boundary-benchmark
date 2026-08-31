@@ -1,52 +1,34 @@
 # Transformation provenance
 
-> **CIKM numbers:** [`releases/cikm-2026/`](../../releases/cikm-2026/). Paths under `outputs/pilot_v2/` below are the pre-repair snapshot. Do not quote them as paper results.
+Provenance \(r\) accompanies export \(z\) as evidence that the declared `declare`–`cross`–`verify` contract was executed. It is not a general operational log.
 
-## What this module is
+In this artifact, \(r\) records `policy_id`, `policy_version`, `schema_id`, `transform_id`, `event_id`, and `verify_outcome`, and may list `fields_suppressed`. Completeness \(\tau(z,r)\) is the fraction of exports whose required provenance fields are present.
 
-**Provenance** \(r\) records policy version, transform identity, and field lineage. **Completeness** \(\tau(z,r)\) gates operative feasibility. `verify` checks completeness and raw-substring replay.
+`src/boundary/verify.py` checks that the policy’s required provenance fields are present on \(r\) and, when raw source strings are supplied, that those strings are not replayed verbatim in \(z\). Prohibited fields and combinations are checked by `src/boundary/policy_check.py` during `cross`, not inside `verify.py`.
 
-## Paper connection
+The paper includes \(\tau \ge \tau_{\min}\) in the operative-selection constraint. In this pilot, scored conditions have complete provenance (\(\tau = 1\)), so Table 3 is determined by utility and \(R \le R_{\max}\) only.
 
-Provenance and the verify gate in the CIKM paper (§2–§3). Paths: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
+## Implementation
 
-## Current implementation
-
-Code:
-
-- `src/boundary/verify.py` — `verify` gate
-- `src/boundary/cross.py` — crossing with provenance emission
-- `src/eval/provenance_score.py` — completeness scoring
-- `src/generate/provenance_targets.py` — target generation for pilot
-
-Data:
-
+- `src/boundary/cross.py` — emit \((z, r)\)
+- `src/boundary/verify.py` — provenance fields and optional raw-substring check
+- `src/boundary/policy_check.py` — field and combination prohibitions
+- `src/eval/provenance_score.py` — completeness \(\tau\)
 - `data/schemas/provenance_v1.json`
-- `data/schemas/boundary_bundle_v0.schema.json`
-- `examples/provenance/hipaa_phi_export.json`
-- `examples/provenance/finra_advisor_export.json`
-- `examples/provenance/gdpr_minimization_export.json`
-- `examples/provenance/middleware_audit_record.json`
 
-Outputs:
+Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).
 
-- `outputs/pilot_v2/boundary_bundle_v0.json`
-- `outputs/pilot_v2/metrics.json` → `conditions[*].provenance.completeness`
-- `outputs/pilot_v2/operative_selection/provenance_gate_ablation.json`
-- `outputs/pilot_v2/operative_selection/provenance_gate_ablation.png`
-
-## Reproduce
+## Verify
 
 ```bash
-make repro-smoke
-python -c "import json; print(json.load(open('outputs/pilot_v2/metrics.json'))['conditions']['raw']['provenance'])"
-ls examples/provenance/
+make repro-cikm-2026
+python -m json.tool data/schemas/provenance_v1.json | head -30
 ```
 
 ## Extend
 
-BYO exports must attach `r` matching `provenance_v1.json`. See [`../../examples/bring_your_own/README.md`](../../examples/bring_your_own/README.md).
+BYO exports that use repository tooling should attach \(r\) matching `provenance_v1.json`. See [`../../examples/bring_your_own/README.md`](../../examples/bring_your_own/README.md) (experimental; not part of the CIKM evaluation).
 
 ## Not claimed
 
-Provenance assists auditability; it does not imply HIPAA, FINRA, GDPR, or SOC2 compliance.
+Provenance supports auditability of the declared contract. It does not establish GDPR, HIPAA, or other regulatory compliance.

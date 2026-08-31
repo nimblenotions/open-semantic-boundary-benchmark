@@ -5,13 +5,13 @@ Protocol modules for the Semantic Boundary Benchmark (SBB) as instantiated in th
 ```text
 Synthetic pilot corpus
         ↓
-Export lattice  (policy π materializes each condition c)
+Registered purpose + disclosure policy
         ↓
-Utility U(T, z_{c,T})  +  linkage R(z_{c,T})
+Export lattice → purpose-conditioned export z + provenance r
+        ↓
+Utility U(T, z) + linkage R(z) + verification
         ↓
 Operative selection under R_max
-        ↓
-Provenance r and verify
 ```
 
 ## Modules
@@ -27,5 +27,5 @@ Provenance r and verify
 | Operative selection | [`operative_selection/`](operative_selection/README.md) |
 | Transformation provenance | [`transformation_provenance/`](transformation_provenance/README.md) |
 
-Paper → paths: [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md).  
-Verify: `make repro-cikm-2026`.
+Paper → paths: [`../docs/paper_to_repo.md`](../docs/paper_to_repo.md).
+Verify the frozen artifact: `make repro-cikm-2026`.
