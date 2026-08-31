@@ -35,7 +35,6 @@ htmlcov/
 *.pdf
 # CIKM 2026 paper figures (cite surface + protocol-referenced sources)
 !releases/cikm-2026/**/*.pdf
-!outputs/pilot_v2_camera_ready/figures/*.pdf
 !outputs/post_acceptance_experiments/**/*.pdf
 
 # Eval / pipeline write locks
