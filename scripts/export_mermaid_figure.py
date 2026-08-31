@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export a .mmd diagram to PNG, SVG, and PDF."""
+"""Local convenience: export a .mmd diagram to PNG, SVG, and PDF."""
 
 from __future__ import annotations
 

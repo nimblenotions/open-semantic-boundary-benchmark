@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Pre-warm LLM transform cache using batch journal then assistant sanitization."""
+"""Historical development helper: pre-warm LLM transform cache.
+
+Writes data/llm_transform_cache/. Not the CIKM 2026 reproduction path.
+"""
 
 from __future__ import annotations
 

@@ -74,9 +74,27 @@ def test_generate_provenance_targets_row_count(cfg):
     assert e3_row["exemplar_id"] == "E3"
 
 
-def test_write_provenance_targets_creates_files(cfg):
+def test_write_provenance_targets_creates_files(cfg, tmp_path):
     root = repo_root()
-    stats = write_provenance_targets(cfg, root)
+    stats = write_provenance_targets(cfg, root, output_dir=tmp_path)
     assert stats["row_count"] == 3894
-    assert (root / stats["provenance_targets"]).is_file()
-    assert (root / stats["exemplars_path"]).is_file()
+    assert (tmp_path / "provenance_targets.jsonl").is_file()
+    assert (tmp_path / "exemplars.json").is_file()
+
+
+def test_committed_provenance_targets_match_generator_sets(cfg):
+    """Committed JSONL must match generator content; list order of case variants is ignored."""
+    root = repo_root()
+    rows, _ = generate_provenance_targets(cfg, root)
+    committed = load_jsonl(root / cfg["paths"]["ground_truth"] / "provenance_targets.jsonl")
+    assert [r["event_id"] for r in committed] == [r["event_id"] for r in rows]
+    for got, want in zip(committed, rows, strict=True):
+        got_forms = got["leakage_oracle"]["raw_surface_forms"]
+        want_forms = want["leakage_oracle"]["raw_surface_forms"]
+        assert set(got_forms) == set(want_forms), got["event_id"]
+        got_rest = {k: v for k, v in got.items() if k != "leakage_oracle"}
+        want_rest = {k: v for k, v in want.items() if k != "leakage_oracle"}
+        assert got_rest == want_rest, got["event_id"]
+        got_leak = {k: v for k, v in got["leakage_oracle"].items() if k != "raw_surface_forms"}
+        want_leak = {k: v for k, v in want["leakage_oracle"].items() if k != "raw_surface_forms"}
+        assert got_leak == want_leak, got["event_id"]

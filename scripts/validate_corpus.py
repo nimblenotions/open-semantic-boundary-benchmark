@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CLI wrapper for corpus validation."""
+"""Artifact-generation utility: CLI wrapper for corpus validation."""
 
 from __future__ import annotations
 

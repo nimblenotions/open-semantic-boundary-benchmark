@@ -1,4 +1,7 @@
-"""Consolidate Tier-1 eval per-event cache sprawl into predictions.jsonl."""
+"""Local cache convenience: merge eval evt_*.json into predictions.jsonl.
+
+Does not write the CIKM cite surface. Not the reproduction path.
+"""
 
 from __future__ import annotations
 

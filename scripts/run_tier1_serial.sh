@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Observability Tier-1 primary (qwen, 7 conditions), then analytics Tier-1 (qwen).
-# One Ollama consumer at a time — see docs/cikm-protocol.md §4.
+# Historical development helper: observability then analytics Tier-1 (serial).
+# One Ollama consumer at a time. Not the CIKM 2026 reproduction path.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"

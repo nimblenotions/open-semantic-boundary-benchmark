@@ -57,3 +57,4 @@ def test_run_obs_study_linkage_refuses_transductive_pilot_v2() -> None:
     """Historical study runner must not overwrite committed transductive Trial4 scores."""
     mod = _load_runner("run_obs_study.py")
     assert mod.main(["--tier", "linkage"]) == 2
+    assert mod.main(["--tier", "all"]) == 2

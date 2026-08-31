@@ -91,14 +91,16 @@ ollama-parallel:
 retention:
 	$(PYTHON) eval/run_retention.py --config $(CONFIG) --figure
 
-pipeline: generate transform eval figures
-	bash scripts/run_pipeline.sh
+# Development regeneration (corpus + transforms + historical eval). Not CIKM
+# reproduction — use `make repro-cikm-2026`. Requires FORCE=1.
+pipeline:
+	FORCE=$(FORCE) bash scripts/run_pipeline.sh
 
 test:
 	$(PYTEST) tests/ -q
 
 repro-smoke:
-	@echo "Checking historical v0.1.1 headline metrics (no Ollama)..."
+	@echo "Checking historical v0.1.1 regression reference (not the CIKM protocol)..."
 	@$(PYTHON) scripts/repro_smoke.py
 
 repro-cikm-2026:

@@ -1,4 +1,7 @@
-"""Consolidate LLM per-event cache sprawl into cache.jsonl."""
+"""Local cache convenience: merge LLM evt_*.json into cache.jsonl.
+
+Does not write the CIKM cite surface. Not the reproduction path.
+"""
 
 from __future__ import annotations
 

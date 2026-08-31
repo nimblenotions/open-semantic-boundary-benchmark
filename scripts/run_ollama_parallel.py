@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Run up to N parallel Tier-1 Ollama jobs on disjoint cache targets."""
+"""Historical development helper: parallel Tier-1 Ollama jobs.
+
+Not the CIKM 2026 reproduction path (`make repro-cikm-2026`).
+"""
 
 from __future__ import annotations
 

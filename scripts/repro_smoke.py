@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Fast repro smoke: verify frozen artifacts and headline metrics (no Ollama)."""
+"""Historical v0.1.1 regression smoke test; not the CIKM 2026 protocol.
+
+Checks retained pilot_v2 artifacts against the v0.1.1 reference numbers.
+For the published CIKM artifact, use `make repro-cikm-2026`.
+"""
 
 from __future__ import annotations
 
@@ -22,8 +26,8 @@ REQUIRED_PATHS = [
     "outputs/pilot_v2/boundary_bundle_v0.json",
 ]
 
-# Paper headline table (obs + analytics primary-consumer F1, combined linkage R)
-HEADLINE = {
+# Retained v0.1.1 regression reference (obs + analytics F1, combined linkage R)
+HISTORICAL_REFERENCE = {
     "raw": {"obs_tier1_f1": 0.63, "analytics_tier1_f1": 0.55, "linkage_r": 0.48},
     "redact_bracket": {"obs_tier1_f1": 0.67, "analytics_tier1_f1": 0.20, "linkage_r": 0.36},
     "redact_tokenize": {"obs_tier1_f1": 0.66, "analytics_tier1_f1": 0.23, "linkage_r": 0.66},
@@ -50,7 +54,7 @@ def main() -> int:
     obs = json.loads((PILOT / "metrics.json").read_text())
     ana = json.loads((PILOT / "analytics_metrics.json").read_text())
 
-    for cond, exp in HEADLINE.items():
+    for cond, exp in HISTORICAL_REFERENCE.items():
         o = obs["conditions"][cond]
         a = ana["conditions"][cond]
         obs_f1 = o["tier1"]["failure_mode_macro_f1"]
@@ -70,14 +74,14 @@ def main() -> int:
             )
 
     if errors:
-        print("repro-smoke: headline metrics out of tolerance", file=sys.stderr)
+        print("repro-smoke: historical v0.1.1 reference out of tolerance", file=sys.stderr)
         for e in errors:
             print(f"  - {e}", file=sys.stderr)
         return 1
 
-    print("repro-smoke: OK (artifacts present, headline metrics within tolerance)")
-    print("SUCCESS: Local artifacts match published Open SBB v0.1.1 headline metrics.")
-    print("  pilot alias: outputs/pilot_v2/ = frozen v0.1.1 published run")
+    print("repro-smoke: OK (artifacts present, historical v0.1.1 reference within tolerance)")
+    print("Historical pilot_v2 artifacts match the retained v0.1.1 regression reference.")
+    print("  Published artifact: make repro-cikm-2026")
     return 0
 
 

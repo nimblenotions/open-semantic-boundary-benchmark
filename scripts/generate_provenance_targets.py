@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate provenance_targets.jsonl and exemplars.json for Sikkim reviewers."""
+"""Generate provenance target and exemplar artifacts used by the benchmark."""
 
 from __future__ import annotations
 

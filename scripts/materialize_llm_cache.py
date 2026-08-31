@@ -1,4 +1,7 @@
-"""Materialize LLM cache into observability and analytics events.jsonl bundles."""
+"""Historical development helper: materialize LLM cache into events.jsonl bundles.
+
+Writes data/transformed{,_analytics}/. Not the CIKM 2026 reproduction path.
+"""
 
 from __future__ import annotations
 

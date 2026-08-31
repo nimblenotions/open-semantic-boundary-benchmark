@@ -1,4 +1,4 @@
-"""Build per-event provenance oracle rows for Sikkim / Trial4 alignment."""
+"""Build per-event provenance oracle rows used by the benchmark (Trial4 map)."""
 
 from __future__ import annotations
 
@@ -98,7 +98,8 @@ def raw_surface_forms_for_event(
         if token:
             surfaces.add(token)
 
-    return sorted(surfaces, key=str.lower)
+    # Case variants (Prozac / prozac) must not inherit set-iteration order.
+    return sorted(surfaces, key=lambda s: (s.lower(), s))
 
 
 def build_linkage_oracle(
@@ -308,8 +309,9 @@ def write_provenance_targets(
     *,
     rows: list[dict[str, Any]] | None = None,
     exemplars: dict[str, dict[str, Any]] | None = None,
+    output_dir: Path | None = None,
 ) -> dict[str, Any]:
-    gt_root = root / cfg["paths"]["ground_truth"]
+    gt_root = output_dir if output_dir is not None else (root / cfg["paths"]["ground_truth"])
     if rows is None or exemplars is None:
         rows, exemplars = generate_provenance_targets(cfg, root)
 
@@ -323,9 +325,15 @@ def write_provenance_targets(
     write_jsonl_bundle(targets_path, rows)
     exemplars_path.write_text(json.dumps(exemplars, indent=2) + "\n", encoding="utf-8")
 
+    def _rel(path: Path) -> str:
+        try:
+            return str(path.relative_to(root))
+        except ValueError:
+            return str(path)
+
     return {
-        "provenance_targets": str(targets_path.relative_to(root)),
-        "exemplars_path": str(exemplars_path.relative_to(root)),
+        "provenance_targets": _rel(targets_path),
+        "exemplars_path": _rel(exemplars_path),
         "row_count": len(rows),
         "exemplars": exemplars,
         "ok": True,

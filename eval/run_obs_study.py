@@ -1,9 +1,9 @@
 """Observability study runner (historical H1–H4 / Phase 3).
 
 Not the CIKM verification entry point (make repro-cikm-2026). Default output
-is outputs/pilot_v2/metrics.json. Linkage tiers refuse to overwrite committed
-transductive Trial4 scores when the config is train_only; pass --output to
-write elsewhere.
+is outputs/pilot_v2/metrics.json. Linkage tiers (including --tier all) refuse
+to overwrite committed transductive Trial4 scores when the config is
+train_only; pass --output to write elsewhere.
 """
 
 from __future__ import annotations
@@ -65,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
     out_dir = root / cfg.get("outputs", {}).get("pilot_dir", "outputs/pilot_v2")
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = args.output or (out_dir / "metrics.json")
-    if args.output is None and args.tier in ("linkage", "1-linkage"):
+    if args.output is None and args.tier in ("linkage", "1-linkage", "all"):
         from eval.adversary_trial4 import tfidf_fit_scope_from_config
 
         if _would_overwrite_legacy_transductive(out_path) and (

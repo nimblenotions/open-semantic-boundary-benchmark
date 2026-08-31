@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Tier-1 primary (qwen3:8b) eval with cache resume; sensitivity deferred.
+# Historical development helper: Tier-1 primary eval with cache resume.
+# Defaults write under outputs/pilot_v1/. Not the CIKM 2026 reproduction path.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"

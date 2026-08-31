@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Poll obs Tier-1 primary PIDs; run analytics tier1 when done.
+# Historical development helper: poll obs Tier-1 PIDs, then analytics tier1.
+# Writes outputs/pilot_v1/. Not the CIKM 2026 reproduction path.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
