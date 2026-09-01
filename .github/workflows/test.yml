@@ -15,5 +15,6 @@ jobs:
           python-version: "3.11"
       - run: pip install -e ".[dev]"
       - run: make lint
-      - run: pytest tests/ -q
+      - run: make test
+      - run: make repro-cikm-2026
       - run: make repro-smoke

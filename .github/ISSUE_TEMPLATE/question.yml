@@ -14,7 +14,7 @@ body:
       label: Topic
       options:
         - Getting started / installation
-        - Reproducing paper numbers (`make repro-smoke`)
+        - Reproducing paper numbers (`make repro-cikm-2026`)
         - Understanding metrics (utility, linkage, provenance)
         - Bring-your-own exports
         - Policies, schemas, or export conditions
@@ -40,5 +40,5 @@ body:
     attributes:
       label: Confirm
       options:
-        - label: This is a question, not a request to add a new feature to the frozen v0.1.1 release
+        - label: This is a question, not a request to add a new feature to the frozen CIKM 2026 artifact
           required: true

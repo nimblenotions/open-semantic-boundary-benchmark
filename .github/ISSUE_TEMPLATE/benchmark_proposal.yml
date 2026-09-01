@@ -1,19 +1,21 @@
 name: Benchmark proposal
-description: Propose a new export condition, scenario pack, or protocol extension
+description: Propose a new transformation condition, scenario pack, or protocol extension
 title: "[Proposal]: "
 labels: ["export condition"]
 body:
   - type: markdown
     attributes:
       value: |
-        v0.1.1 is a **frozen reference release**. Proposals that change assessors, splits, or committed transform IDs need a semver plan. See [`docs/extension_points.md`](https://github.com/nimblenotions/open-semantic-boundary-benchmark/blob/main/docs/extension_points.md).
+        The CIKM 2026 artifact is frozen. Proposals that change published splits, assessor definitions, or reported condition identities should be treated as extensions rather than edits to the published artifact.
+
+        See [`CONTRIBUTING.md`](https://github.com/nimblenotions/open-semantic-boundary-benchmark/blob/cikm-2026/CONTRIBUTING.md) and [`docs/extension_points.md`](https://github.com/nimblenotions/open-semantic-boundary-benchmark/blob/cikm-2026/docs/extension_points.md).
 
   - type: dropdown
     id: proposal_type
     attributes:
       label: Proposal type
       options:
-        - New export condition (transform arm)
+        - New transformation condition
         - New scenario pack / domain corpus
         - New purpose or consumer task
         - New linkage or utility assessor
@@ -41,21 +43,21 @@ body:
   - type: dropdown
     id: semver
     attributes:
-      label: Expected semver impact
+      label: Expected impact
       options:
-        - Patch to frozen v0.1.1 (needs strong justification)
-        - New minor release (v0.2.x) — preferred for extensions
-        - Major / breaking change
-        - Unsure — need maintainer guidance
+        - Documentation / non-scientific change
+        - Extension that preserves the CIKM artifact
+        - Breaking protocol change
+        - Unsure
     validations:
       required: true
 
   - type: checkboxes
     id: frozen_check
     attributes:
-      label: Frozen release checklist
+      label: Frozen artifact checklist
       options:
-        - label: I understand v0.1.1 split seed, nine primary condition IDs, and assessor definitions should not change without a migration note
+        - label: I understand that published splits, assessor definitions, and reported condition identities should not change without treating the work as an extension
           required: true
         - label: I am willing to discuss in this issue before opening a PR
           required: true

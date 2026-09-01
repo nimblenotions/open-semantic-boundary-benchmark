@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Help us reproduce the problem. For headline metric mismatches, run `make repro-smoke` first and paste the output.
+        Help us reproduce the problem. For mismatches against the published CIKM 2026 artifact, run `make repro-cikm-2026` first and paste the output. `make repro-smoke` is only for the retained historical v0.1.1 snapshot.
 
   - type: input
     id: os
@@ -32,7 +32,7 @@ body:
       placeholder: |
         git clone ...
         uv pip install -e ".[dev]"
-        make repro-smoke
+        make repro-cikm-2026
     validations:
       required: true
 

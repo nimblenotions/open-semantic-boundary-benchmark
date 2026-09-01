@@ -1,4 +1,4 @@
-.PHONY: install generate provenance-targets validate transform eval figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis eval-analytics figures-all repro-smoke repro-cikm-2026 byo-smoke
+.PHONY: install generate provenance-targets validate transform transform-analytics bundle-transforms eval eval-linkage eval-tier1 eval-tier0 eval-analytics eval-analytics-tier0 eval-analytics-tier1 figures pipeline test lint consolidate-llm-cache materialize-llm consolidate-eval-cache ollama-parallel operative-selection merge-sensitivity additional-analyses bootstrap-cis figures-all repro-smoke repro-cikm-2026 byo-smoke cohort-tier1 retention
 
 ROOT := $(shell pwd)
 export PYTHONPATH := $(ROOT)/src:$(PYTHONPATH)
@@ -41,6 +41,8 @@ materialize-llm:
 consolidate-eval-cache:
 	$(PYTHON) scripts/consolidate_eval_cache.py
 
+# Development/historical evaluation. Not the CIKM verification path
+# (`make repro-cikm-2026`).
 TIER ?= 1-linkage
 
 eval:
