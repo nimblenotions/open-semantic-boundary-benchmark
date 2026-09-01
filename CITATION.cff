@@ -3,7 +3,7 @@ title: "Open Semantic Boundary Benchmark"
 message: >-
   Cite the CIKM 2026 paper for the framework, benchmark methodology,
   experiments, and scientific findings. Cite this software version
-  (git tag cikm-2026 / v0.1.3) for the exact supporting artifact.
+  (branch cikm-2026 / v0.1.3) for the exact supporting artifact.
 type: software
 
 authors:

@@ -54,7 +54,7 @@ For a more detailed introduction to the framework and terminology, see [`docs/wh
 
 ## Paper artifacts
 
-The `cikm-2026` tag freezes the code, protocol, and reported results associated with the CIKM 2026 short paper.
+The `cikm-2026` branch freezes the code, protocol, and reported results associated with the CIKM 2026 short paper. The software identity of this artifact is **v0.1.3**.
 
 | In the paper                           | In this artifact                                                                                                           |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -129,9 +129,9 @@ experiments, and scientific findings:
 
 ### Supporting artifact
 
-The frozen supporting artifact for the CIKM 2026 paper corresponds to the
-`cikm-2026` tag in this repository. Citation metadata is provided in
-[`CITATION.cff`](CITATION.cff).
+The frozen supporting artifact for the CIKM 2026 paper is branch
+`cikm-2026` in this repository, software version **v0.1.3**. Citation
+metadata is provided in [`CITATION.cff`](CITATION.cff).
 
 ## License
 

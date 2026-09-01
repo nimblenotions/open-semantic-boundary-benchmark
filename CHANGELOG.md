@@ -4,7 +4,7 @@ All notable changes to the Open Semantic Boundary Benchmark follow [Semantic Ver
 
 ## [0.1.3] / cikm-2026 — 2026-08-30
 
-Software identity for the **CIKM 2026** artifact (git tag `cikm-2026`). Same frozen experiment as the 2026-08-28 export; documentation and citation metadata now treat the CIKM paper as the canonical scientific record.
+Software identity for the **CIKM 2026** artifact (branch `cikm-2026`, software **v0.1.3**). Same frozen experiment as the 2026-08-28 export; documentation and citation metadata now treat the CIKM paper as the canonical scientific record.
 
 ### Added
 
@@ -14,13 +14,13 @@ Software identity for the **CIKM 2026** artifact (git tag `cikm-2026`). Same fro
 
 ### Changed
 
-- Default config is `configs/cikm_v0.1.yaml` on this tag
+- Default config is `configs/cikm_v0.1.yaml` on this branch
 - README and user-facing docs explain the paper; they do not maintain a parallel “forthcoming technical report”
 - Contributor documentation style lives in [`CONTRIBUTING.md`](CONTRIBUTING.md); agent documentation rules live in [`AGENTS.md`](AGENTS.md)
 - `outputs/pilot_v2/` labeled **historical** (pre-camera-ready)
 - `CITATION.cff` title and version (`0.1.3`); preferred citation is the ACM paper
 
-This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on this tag. Cite git tag `cikm-2026` and the ACM paper. Do not treat v0.1.2 as the CIKM artifact.
+This is not a Core / v0.2 harness inversion. `opensbb run` is not implemented on this branch. Cite branch `cikm-2026` (software v0.1.3) and the ACM paper. Do not treat v0.1.2 as the CIKM artifact.
 
 ## [0.1.2] — 2026-06-30
 
