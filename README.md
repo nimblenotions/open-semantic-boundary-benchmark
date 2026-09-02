@@ -129,9 +129,10 @@ experiments, and scientific findings:
 
 ### Supporting artifact
 
-The frozen supporting artifact for the CIKM 2026 paper is branch
-`cikm-2026` in this repository, software version **v0.1.3**. Citation
-metadata is provided in [`CITATION.cff`](CITATION.cff).
+The frozen supporting artifact is git tag `opensbb-v0.1.3` (also on
+branch `cikm-2026`), archived on Zenodo as
+[10.5281/zenodo.22241387](https://doi.org/10.5281/zenodo.22241387).
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff).
 
 ## License
 
