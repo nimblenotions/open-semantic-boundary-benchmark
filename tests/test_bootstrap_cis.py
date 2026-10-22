@@ -4,10 +4,63 @@ from __future__ import annotations
 
 import json
 
+import numpy as np
 import pytest
 
-from eval.bootstrap_cis import run_bootstrap_cis
+from eval.bootstrap_cis import _persona_block_bootstrap_linkage, run_bootstrap_cis
 from sbb.config import load_config, repo_root
+
+
+def _export_row(event_id: str, persona_id: str, text: str) -> dict:
+    return {
+        "event_id": event_id,
+        "persona_id": persona_id,
+        "export": {
+            "condition_id": "raw",
+            "z": {"journal_text": text, "assistant_text": ""},
+        },
+    }
+
+
+def test_persona_block_bootstrap_fits_tfidf_on_train_only(monkeypatch):
+    seen: dict[str, object] = {}
+
+    def fake_fit(train_texts, test_texts, *, tfidf_fit_scope="train_only"):
+        seen["scope"] = tfidf_fit_scope
+        seen["n_train"] = len(train_texts)
+        seen["n_test"] = len(test_texts)
+
+        class _Embedder:
+            def embed(self, texts):
+                return np.zeros((len(texts), 2), dtype=np.float64)
+
+        return _Embedder(), {"tfidf_fit_scope": tfidf_fit_scope}
+
+    monkeypatch.setattr("eval.bootstrap_cis.fit_trial4_tfidf_embedder", fake_fit)
+    monkeypatch.setattr(
+        "eval.bootstrap_cis._linkage_score_on_test_rows",
+        lambda *args, **kwargs: 0.1,
+    )
+
+    samples = _persona_block_bootstrap_linkage(
+        [_export_row("e0", "p0", "training export")],
+        [
+            _export_row("e1", "p1", "held out one"),
+            _export_row("e2", "p2", "held out two"),
+        ],
+        {},
+        {},
+        seed=0,
+        n_bootstrap=2,
+        rng=np.random.default_rng(0),
+        tfidf_fit_scope="train_only",
+    )
+
+    assert seen["scope"] == "train_only"
+    assert seen["n_train"] == 1
+    assert seen["n_test"] == 2
+    assert samples.shape == (2,)
+    assert np.all(samples == 0.1)
 
 
 @pytest.fixture
