@@ -17,7 +17,8 @@ from eval.adversary_trial4 import (
     _longitudinal_linkage_auc,
     _persona_inference,
     combined_linkage_score,
-    resolve_embedder,
+    fit_trial4_tfidf_embedder,
+    tfidf_fit_scope_from_config,
 )
 from eval.analytics_task import ground_truth_medication_class
 from eval.eval_cache_io import load_eval_cache_entries
@@ -138,6 +139,7 @@ def _persona_block_bootstrap_linkage(
     seed: int,
     n_bootstrap: int,
     rng: np.random.Generator,
+    tfidf_fit_scope: str = "train_only",
 ) -> np.ndarray:
     by_persona: dict[str, list[dict[str, Any]]] = {}
     for row in test_rows:
@@ -146,9 +148,12 @@ def _persona_block_bootstrap_linkage(
     if not persona_ids:
         return np.zeros(n_bootstrap)
 
-    all_texts = _export_texts(train_rows) + _export_texts(test_rows)
-    resolved = resolve_embedder(None, fit_texts=all_texts)
-    embeddings_train = resolved.embed(_export_texts(train_rows))
+    train_texts = _export_texts(train_rows)
+    test_texts = _export_texts(test_rows)
+    resolved, _meta = fit_trial4_tfidf_embedder(
+        train_texts, test_texts, tfidf_fit_scope=tfidf_fit_scope
+    )
+    embeddings_train = resolved.embed(train_texts)
 
     samples = np.empty(n_bootstrap, dtype=np.float64)
     for b in range(n_bootstrap):
@@ -239,6 +244,7 @@ def run_bootstrap_cis(
             seed=eval_seed,
             n_bootstrap=link_n,
             rng=rng,
+            tfidf_fit_scope=tfidf_fit_scope_from_config(cfg),
         )
         link_mean, link_lo, link_hi = _percentile_ci(link_samples)
 
