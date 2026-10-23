@@ -6,9 +6,9 @@ The **Semantic Boundary Benchmark (SBB)** evaluates what representation should c
 
 In practice, raw traces are often transformed before they leave a trusted context to suppress, replace, or abstract private and sensitive information. A transformation that is appropriate for one downstream purpose, however, may remove information needed by another or retain information that the other does not need. The question is therefore not only whether a trace should be transformed, but **which representation should cross for a particular purpose**.
 
-SBB makes this trade-off measurable. For a registered purpose \(T\) and candidate export \(z_{c,T}\), SBB evaluates the utility preserved for that purpose, \(U(T,z_{c,T})\), together with the residual linkage associated with the exported representation, \(R(z_{c,T})\). Candidate transformations can then be compared under a declared linkage ceiling \(R_{\max}\).
+SBB makes this trade-off measurable. For a registered purpose $T$ and candidate export $z_{c,T}$, SBB evaluates the utility preserved for that purpose, $U(T,z_{c,T})$, together with the residual linkage associated with the exported representation, $R(z_{c,T})$. Candidate transformations can then be compared under a declared linkage ceiling $R_{\max}$.
 
-The CIKM 2026 study instantiates this framework using synthetic medication-adherence journals and two downstream consumer families: observability and analytics. It evaluates a fixed **export lattice** \(\mathcal{C}\): nine alternative transformation conditions applied to the same underlying events, ranging from raw text and surface redaction to surrogate replacement, LLM-based transformations, and semantic exports at different granularities.
+The CIKM 2026 study instantiates this framework using synthetic medication-adherence journals and two downstream consumer families: observability and analytics. It evaluates a fixed **export lattice** $\mathcal{C}$: nine alternative transformation conditions applied to the same underlying events, ranging from raw text and surface redaction to surrogate replacement, LLM-based transformations, and semantic exports at different granularities.
 
 The experiments show that the preferred transformation can change with both purpose and linkage constraint. Surface transformations can be competitive under tight linkage ceilings, while richer semantic exports can better support some analytics tasks. Removing recoverable sensitive tokens does not necessarily prevent persona linkage, and applying a single privacy-transformed export across purposes can incur substantial utility regret.
 
@@ -26,9 +26,9 @@ The experiments show that the preferred transformation can change with both purp
 
 ## How the benchmark works
 
-**Semantic Boundary** models disclosure as a governed crossing from a trusted collection context to a registered downstream consumer. An observation \(x\) is transformed under a declared purpose \(T\) and disclosure policy \(\pi\), into an export \(z\), accompanied by provenance \(r\), before release to the consumer.
+**Semantic Boundary** models disclosure as a governed crossing from a trusted collection context to a registered downstream consumer. An observation $x$ is transformed under a declared purpose $T$ and disclosure policy $\pi$, into an export $z$, accompanied by provenance $r$, before release to the consumer.
 
-SBB evaluates alternative ways of performing that crossing. Each condition \(c \in \mathcal{C}\) defines a candidate transformation in the export lattice. Applying a condition for purpose \(T\) produces the purpose-conditioned export \(z_{c,T}\). The benchmark measures the utility and residual linkage of that exported representation and, for a declared linkage ceiling \(R_{\max}\), identifies the feasible condition that best preserves task utility.
+SBB evaluates alternative ways of performing that crossing. Each condition $c \in \mathcal{C}$ defines a candidate transformation in the export lattice. Applying a condition for purpose $T$ produces the purpose-conditioned export $z_{c,T}$. The benchmark measures the utility and residual linkage of that exported representation and, for a declared linkage ceiling $R_{\max}$, identifies the feasible condition that best preserves task utility.
 
 ```text
 source observation x
@@ -77,13 +77,13 @@ uv pip install -e ".[dev]"
 make repro-cikm-2026
 ```
 
-This check uses the committed evaluation artifacts; it does **not** regenerate the LLM-based transformations. It verifies the focal Table 3 results at \(R_{\max}=0.45\), the reported contrast between token recovery and persona linkage for the tokenization condition, and the checksums of Figures 2–4.
+This check uses the committed evaluation artifacts; it does **not** regenerate the LLM-based transformations. It verifies the focal Table 3 results at $R_{\max}=0.45$, the reported contrast between token recovery and persona linkage for the tokenization condition, and the checksums of Figures 2–4.
 
 For rescoring, full regeneration, and other ways to inspect or extend the artifact, see [`docs/adoption_path.md`](docs/adoption_path.md).
 
 ## Reference transformations
 
-The CIKM pilot compares nine frozen transformation conditions. Together, these form the export lattice \(\mathcal{C}\) used in the reported experiments.
+The CIKM pilot compares nine frozen transformation conditions. Together, these form the export lattice $\mathcal{C}$ used in the reported experiments.
 
 | Paper condition      | Repository identifier   | Transformation                                                               |
 | -------------------- | ----------------------- | ---------------------------------------------------------------------------- |
