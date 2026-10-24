@@ -2,6 +2,8 @@
 
 *Supporting artifact for the CIKM 2026 short paper [**Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure**](https://doi.org/10.1145/3799682.3840076).*
 
+For a public-facing introduction to the framework, examples, and research context, visit [SemanticBoundary.ai](https://semanticboundary.ai/).
+
 The **Semantic Boundary Benchmark (SBB)** evaluates what representation should cross a system boundary for a declared purpose. Sensitive user and operational traces — such as journals, conversations, tool-use records, and logs — can support several downstream purposes, but those purposes may require different information to perform their respective tasks.
 
 In practice, raw traces are often transformed before they leave a trusted context to suppress, replace, or abstract private and sensitive information. A transformation that is appropriate for one downstream purpose, however, may remove information needed by another or retain information that the other does not need. The question is therefore not only whether a trace should be transformed, but **which representation should cross for a particular purpose**.

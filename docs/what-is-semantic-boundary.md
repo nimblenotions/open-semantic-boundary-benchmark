@@ -4,6 +4,8 @@ This page expands the **framework** in the CIKM 2026 paper
 [*Semantic Boundary: A Framework and Benchmark for Policy-Constrained Semantic Disclosure*](https://doi.org/10.1145/3799682.3840076)
 (§1–§2). It is not a second summary of the empirical findings; those stay in the paper and the [root README](../README.md).
 
+For a public-facing overview and examples, visit [SemanticBoundary.ai](https://semanticboundary.ai/). For a plain-language walkthrough of the study, read [*Semantic Boundary, What We Built, Tested, and Learned*](https://semanticboundary.ai/notes/what-we-built-tested-learned/).
+
 ## The disclosure problem
 
 Consider a medication-adherence app. Patients journal how a new prescription is going; an assistant replies in plain language. Those interaction traces may go to a triage consumer for monitoring and to an analytics pipeline. To protect privacy, traces may be transformed before export using bracket placeholders, vault tokens, LLM rewrites, or combinations thereof. Such transformations control the representation that crosses the boundary, but they do not by themselves express which semantic content should be disclosed for each registered downstream purpose.
