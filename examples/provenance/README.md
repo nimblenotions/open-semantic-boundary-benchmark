@@ -2,7 +2,7 @@
 
 **Status:** Synthetic illustrations only. These files are not legal templates, compliance certifications, production policies, or schema-valid instances of the CIKM provenance contract.
 
-They exist so that provenance \(r\) is tangible: an export can suppress identifiers, release permitted semantic categories, and record which policy, schema, and transformation were used. They do not establish regulatory compliance and do not define a product interface.
+They exist so that provenance $r$ is tangible: an export can suppress identifiers, release permitted semantic categories, and record which policy, schema, and transformation were used. They do not establish regulatory compliance and do not define a product interface.
 
 The CIKM contract is [`../../data/schemas/provenance_v1.json`](../../data/schemas/provenance_v1.json). Committed pilot records use that schema under `data/transformed/` and `data/transformed_analytics/`.
 

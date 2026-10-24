@@ -28,7 +28,7 @@ make repro-cikm-2026
 The reproduction check verifies:
 
 1. the frozen experimental protocol;
-2. the Table 3 results at the focal linkage tolerance \(R_{\max}=0.45\);
+2. the Table 3 results at the focal linkage tolerance $R_{\max}=0.45$;
 3. the reported contrast between token recovery and persona linkage for the `red_tokenize` condition; and
 4. the checksums of Figures 2–4.
 
@@ -38,7 +38,7 @@ The check uses committed evaluation artifacts and does not regenerate the LLM-ba
 
 ### Table 3
 
-The focal reported results at \(R_{\max}=0.45\) are reproduced in
+The focal reported results at $R_{\max}=0.45$ are reproduced in
 [`experimental_protocol.md`](experimental_protocol.md).
 
 The published paper is the authoritative source for the complete Table 3

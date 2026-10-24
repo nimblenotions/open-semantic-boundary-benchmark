@@ -7,8 +7,8 @@ The final CIKM protocol and citeable supporting artifact are documented under [`
 Relative to the published protocol, this snapshot used:
 
 * TF-IDF fitted on train and test export strings together, rather than train-only fitting;
-* a shared observability linkage surface, rather than purpose-specific residual linkage \(R(z_{c,T})\);
-* mixed \(T_a\)-5 cohort scoring (export features on train, assessor outputs on test), rather than assessor-symmetric cohort features.
+* a shared observability linkage surface, rather than purpose-specific residual linkage $R(z_{c,T})$;
+* mixed $T_a$-5 cohort scoring (export features on train, assessor outputs on test), rather than assessor-symmetric cohort features.
 
 Utility scores stored here were copied, not recomputed, when assembling the result snapshot under `outputs/pilot_v2_camera_ready/`. Linkage and cohort-task numbers in this directory are not those of the published paper.
 

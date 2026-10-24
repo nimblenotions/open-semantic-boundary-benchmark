@@ -1,13 +1,13 @@
 # Consumers
 
-**Consumers** are registered downstream workflows that receive a verified export under a declared purpose. **Assessors** are frozen scoring procedures that evaluate that export on the held-out split; they never see the raw observation \(x\).
+**Consumers** are registered downstream workflows that receive a verified export under a declared purpose. **Assessors** are frozen scoring procedures that evaluate that export on the held-out split; they never see the raw observation $x$.
 
 This artifact registers two purposes:
 
 | Purpose | Role | Policy | Assessor |
 |---------|------|--------|----------|
-| Observability \(T_o\) | Triage-style monitoring | `data/policies/obs_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_consumer.py` (`PROMPT_VERSION = "triage_v1"`) |
-| Analytics \(T_a\) | Pharmacologic analytics | `data/policies/analytics_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_analytics_consumer.py` (`PROMPT_VERSION = "analytics_triage_v1"`) |
+| Observability $T_o$ | Triage-style monitoring | `data/policies/obs_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_consumer.py` (`PROMPT_VERSION = "triage_v1"`) |
+| Analytics $T_a$ | Pharmacologic analytics | `data/policies/analytics_policy_v1.json` | Frozen `qwen3:8b` prompt in `src/eval/tier1_analytics_consumer.py` (`PROMPT_VERSION = "analytics_triage_v1"`) |
 
 The observability prompt predicts `failure_mode` and `error_stage`. The analytics prompt predicts medication class, side-effect, and adherence from the fixed vocabularies. Predictions are scored against simulator ground truth. The model and prompts proxy registered consumers; they are not the boundary transformer.
 

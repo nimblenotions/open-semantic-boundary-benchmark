@@ -9,7 +9,7 @@ The three subdirectories here have distinct roles. Their filesystem names are hi
 | Directory | Role |
 | --- | --- |
 | [`pilot_v2_camera_ready/`](pilot_v2_camera_ready/) | **Published result snapshot.** Train-only TF-IDF linkage and the paper figure sources underlying [`../releases/cikm-2026/`](../releases/cikm-2026/). |
-| [`post_acceptance_experiments/`](post_acceptance_experiments/) | **Supporting protocol audits.** Purpose-specific linkage and assessor-symmetric \(T_a\)-5 evaluations used in the published protocol. |
+| [`post_acceptance_experiments/`](post_acceptance_experiments/) | **Supporting protocol audits.** Purpose-specific linkage and assessor-symmetric $T_a$-5 evaluations used in the published protocol. |
 | [`pilot_v2/`](pilot_v2/) | **Historical development snapshot.** An earlier experimental run retained for provenance. Not the published protocol. See [`pilot_v2/HISTORICAL.md`](pilot_v2/HISTORICAL.md). |
 
 Do not treat any of these directories as independently canonical. The published protocol is declared in `configs/cikm_v0.1.yaml` (`paper_protocol`) and documented under `releases/cikm-2026/`.

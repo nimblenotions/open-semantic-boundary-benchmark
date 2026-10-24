@@ -16,18 +16,18 @@ The CIKM study evaluates a fixed export lattice over synthetic medication-adhere
 | ---------------------- | ---------------------------------------------------------------- |
 | Linkage representation | TF-IDF with `char_wb` 1–3 character n-grams and 5,000 features   |
 | TF-IDF fitting         | Fit on the training split only for each transformation condition |
-| Residual linkage       | Evaluated for the purpose-conditioned export \(R(z_{c,T})\)      |
-| Cohort task \(T_a\)-5  | Assessor-symmetric persona-level cohort evaluation               |
+| Residual linkage       | Evaluated for the purpose-conditioned export $R(z_{c,T})$      |
+| Cohort task $T_a$-5  | Assessor-symmetric persona-level cohort evaluation               |
 
-For a registered purpose \(T\) and transformation condition \(c\), the benchmark evaluates the utility preserved in the exported representation, \(U(T,z_{c,T})\), together with its residual linkage, \(R(z_{c,T})\). Under a declared linkage tolerance \(R_{\max}\), the operative condition is the feasible condition with the highest utility \(U(T,z_{c,T})\) among those satisfying \(R(z_{c,T}) \le R_{\max}\).
+For a registered purpose $T$ and transformation condition $c$, the benchmark evaluates the utility preserved in the exported representation, $U(T,z_{c,T})$, together with its residual linkage, $R(z_{c,T})$. Under a declared linkage tolerance $R_{\max}$, the operative condition is the feasible condition with the highest utility $U(T,z_{c,T})$ among those satisfying $R(z_{c,T}) \le R_{\max}$.
 
-For \(T_a\)-5, both training and test cohort features are constructed from persona-level aggregates of assessor predictions for medication class, side effect, and adherence.
+For $T_a$-5, both training and test cohort features are constructed from persona-level aggregates of assessor predictions for medication class, side effect, and adherence.
 
 ## Focal Table 3 result
 
-At the focal linkage tolerance \(R_{\max}=0.45\), the reported operative selections are:
+At the focal linkage tolerance $R_{\max}=0.45$, the reported operative selections are:
 
-| \(T_o\)-1      | \(T_a\)-1        | \(T_a\)-2     | \(T_a\)-3     | \(T_a\)-5        |
+| $T_o$-1      | $T_a$-1        | $T_a$-2     | $T_a$-3     | $T_a$-5        |
 | -------------- | ---------------- | ------------- | ------------- | ---------------- |
 | bracket (0.67) | surrogate (0.45) | coarse (1.00) | coarse (1.00) | surrogate (0.26) |
 
@@ -67,4 +67,4 @@ The file on disk is pretty-printed. The SHA-256 digest of the canonical JSON
 
 `b15f4cebc5570a36171eb18ddca5d65d109ad18cb334268d45f43f84e15cfac0`
 
-The reproduction workflow verifies the frozen protocol, the focal Table 3 result at \(R_{\max}=0.45\), the reported `red_tokenize` recovery-versus-linkage contrast, and the figure checksums using committed evaluation artifacts. It does not regenerate the LLM-based transformation outputs.
+The reproduction workflow verifies the frozen protocol, the focal Table 3 result at $R_{\max}=0.45$, the reported `red_tokenize` recovery-versus-linkage contrast, and the figure checksums using committed evaluation artifacts. It does not regenerate the LLM-based transformation outputs.

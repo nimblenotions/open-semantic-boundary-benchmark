@@ -2,7 +2,7 @@
 
 > **Experimental.** This folder is not part of the CIKM 2026 evaluation and does not provide a general external-evaluation interface.
 
-You can represent an external transform using the same export \(z\) and provenance \(r\) structure as the frozen pilot. [`sample_events.jsonl`](sample_events.jsonl) is a tiny copy of committed observability `sem_medium` records so you can inspect that shape.
+You can represent an external transform using the same export $z$ and provenance $r$ structure as the frozen pilot. [`sample_events.jsonl`](sample_events.jsonl) is a tiny copy of committed observability `sem_medium` records so you can inspect that shape.
 
 The current scoring code remains coupled to the frozen pilot's purposes, labels, split, assessors, and linkage protocol. Matching this shape does not make a result comparable to the published benchmark. Evaluating a new domain or purpose requires explicit protocol extension; see [`../../docs/extension_points.md`](../../docs/extension_points.md).
 

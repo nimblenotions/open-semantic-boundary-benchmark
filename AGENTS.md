@@ -28,20 +28,20 @@ No marketing superlatives. No claims the paper does not make. Do not “improve 
 | Concept | Canonical wording (from the paper) |
 | --- | --- |
 | Overall problem | What **representation** should cross a system boundary for a particular **downstream purpose**; which **meanings** each **registered consumer** will receive |
-| Source | Observation \(x\) in a trusted collection context; **sensitive inputs**; **interaction traces**; **operational traces** (conversations, tool use, logs, reports); **longitudinal behavioural traces** |
-| Destination | **Registered downstream consumer**; **purpose** \(T\) |
-| What crosses | **Export** \(z\); **policy-governed export**; **representation**; purpose-conditioned export \(z_{c,T}\) |
-| \(T\) | **Purpose**. A purpose may contain multiple **utility tasks** (e.g. \(T_o\)-1, \(T_a\)-1) |
-| \(z\) | **Export** |
-| \(c\) | **Lattice condition** (a transformation in the frozen set \(\mathcal{C}\)) |
-| \(\pi\) | **Disclosure policy** |
-| \(R_{\max}\) | **Linkage tolerance**; maximum acceptable assessed linkage |
+| Source | Observation $x$ in a trusted collection context; **sensitive inputs**; **interaction traces**; **operational traces** (conversations, tool use, logs, reports); **longitudinal behavioural traces** |
+| Destination | **Registered downstream consumer**; **purpose** $T$ |
+| What crosses | **Export** $z$; **policy-governed export**; **representation**; purpose-conditioned export $z_{c,T}$ |
+| $T$ | **Purpose**. A purpose may contain multiple **utility tasks** (e.g. $T_o$-1, $T_a$-1) |
+| $z$ | **Export** |
+| $c$ | **Lattice condition** (a transformation in the frozen set $\mathcal{C}$) |
+| $\pi$ | **Disclosure policy** |
+| $R_{\max}$ | **Linkage tolerance**; maximum acceptable assessed linkage |
 | Semantic Boundary | The **framework** (C1) |
 | SBB | **Semantic Boundary Benchmark** (C2). This repository is the public artifact of the reported SBB pilot. The GitHub project name is Open Semantic Boundary Benchmark; do not treat “Open-SBB” as a different scientific object |
-| Utility \(U(T,z_{c,T})\) | Task utility of the representation released for purpose \(T\) |
-| Linkage \(R(z_{c,T})\) | Residual linkage on that same export. Combined \(R\) is an unweighted mean of persona, attribute, and longitudinal channels — a **reporting convenience**, not a calibrated re-identification probability |
-| Provenance \(r\) | Evidence of the contract’s execution, not a general operational log |
-| Operative selection | Risk-constrained choice among lattice conditions under \(R_{\max}\) (C3) |
+| Utility $U(T,z_{c,T})$ | Task utility of the representation released for purpose $T$ |
+| Linkage $R(z_{c,T})$ | Residual linkage on that same export. Combined $R$ is an unweighted mean of persona, attribute, and longitudinal channels — a **reporting convenience**, not a calibrated re-identification probability |
+| Provenance $r$ | Evidence of the contract’s execution, not a general operational log |
+| Operative selection | Risk-constrained choice among lattice conditions under $R_{\max}$ (C3) |
 
 **Do not use in reader-facing prose** (development jargon): downstream *team*; unofficial “Open-SBB score”; “bite”; “dumb redactor”; “hero question”; “Track C” (keep that identifier in protocol/release files where it names a scoring path); forthcoming technical report; EasyChair/Sheridan paper id **4405**.
 

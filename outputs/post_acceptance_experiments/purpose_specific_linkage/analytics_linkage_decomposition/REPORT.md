@@ -11,14 +11,14 @@ Audit artifact only. Paper Fig 2 remains the observability-surface heatmap under
 
 ## Figures
 
-| surface | tasks sharing this \(R(z_{c,T})\) | files |
+| surface | tasks sharing this $R(z_{c,T})$ | files |
 | --- | --- | --- |
 | observability | $T_o$-1, $T_o$-2 | `linkage_decomposition_observability_surface.{pdf,png}` |
 | analytics | $T_a$-1, $T_a$-2, $T_a$-3, $T_a$-5 | `linkage_decomposition_analytics_surface.{pdf,png}` |
 
 ## Text / LLM conditions (six arms)
 
-All six text/LLM conditions are **obs–ana identical** for every linkage channel and combined \(R(z)\). Byte-identical \(z\) and embed text on the shared event corpus (`text_z_equality.json`); per-channel equality confirmed in `text_linkage_sanity.json`.
+All six text/LLM conditions are **obs–ana identical** for every linkage channel and combined $R(z)$. Byte-identical $z$ and embed text on the shared event corpus (`text_z_equality.json`); per-channel equality confirmed in `text_linkage_sanity.json`.
 
 | condition | ΔR | z identical | embed identical |
 | --- | ---: | :---: | :---: |

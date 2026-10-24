@@ -18,7 +18,7 @@ make repro-cikm-2026
 This is the supported verification path for the CIKM 2026 artifact. It checks:
 
 1. the frozen experimental protocol;
-2. the focal Table 3 result at \(R_{\max}=0.45\);
+2. the focal Table 3 result at $R_{\max}=0.45$;
 3. the reported contrast between token recovery and persona linkage for the `red_tokenize` condition; and
 4. the checksums of Figures 2–4.
 
@@ -28,7 +28,7 @@ For the frozen protocol, see [`../releases/cikm-2026/experimental_protocol.md`](
 
 ## Inspect an exported representation
 
-The benchmark evaluates a fixed export lattice \(\mathcal{C}\): a set of alternative transformation conditions applied to the same source events.
+The benchmark evaluates a fixed export lattice $\mathcal{C}$: a set of alternative transformation conditions applied to the same source events.
 
 Start with the export-lattice documentation:
 
@@ -59,7 +59,7 @@ Full regeneration of the benchmark, including corpus generation and LLM-based tr
 
 [`extension_points.md`](extension_points.md) documents the components frozen for the CIKM 2026 artifact—including data splits, assessor definitions, and transformation-condition identifiers—and describes where new transformation conditions, purposes, or linkage assessments can be added.
 
-The experimental example in [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) shows the on-disk \(z,r\) shape and a tiny sample. An external transform can use that structure, but scoring remains coupled to the frozen pilot; this is not a general evaluation interface.
+The experimental example in [`../examples/bring_your_own/README.md`](../examples/bring_your_own/README.md) shows the on-disk $z,r$ shape and a tiny sample. An external transform can use that structure, but scoring remains coupled to the frozen pilot; this is not a general evaluation interface.
 
 Before contributing changes, run:
 

@@ -1,6 +1,6 @@
 # Export lattice
 
-The **export lattice** \(\mathcal{C}\) is a finite, frozen set of transformation conditions. Each condition produces a purpose-conditioned export \(z_{c,T}\) (with provenance \(r\)) from the same trusted observation \(x\).
+The **export lattice** $\mathcal{C}$ is a finite, frozen set of transformation conditions. Each condition produces a purpose-conditioned export $z_{c,T}$ (with provenance $r$) from the same trusted observation $x$.
 
 This artifact instantiates **nine** primary conditions. Paper Table 2 uses a `red_` prefix where this repository uses `redact_`:
 
@@ -28,8 +28,8 @@ Semantic conditions use simulator fields rather than learned extraction. They is
 
 Committed exports:
 
-- `data/transformed/` — observability-purpose \(z_{c,T_o}\)
-- `data/transformed_analytics/` — analytics-purpose \(z_{c,T_a}\)
+- `data/transformed/` — observability-purpose $z_{c,T_o}$
+- `data/transformed_analytics/` — analytics-purpose $z_{c,T_a}$
 - `data/llm_transform_cache/` — cached LLM substitute and rephrase outputs
 
 Paper map: [`../../docs/paper_to_repo.md`](../../docs/paper_to_repo.md).

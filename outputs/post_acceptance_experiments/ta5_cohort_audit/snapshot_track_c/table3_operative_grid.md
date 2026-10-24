@@ -1,6 +1,6 @@
 ## Published CIKM 2026 operative grid
 
-Assessor-symmetric \(T_a\)-5 and purpose-specific residual linkage \(R(z_{c,T})\). At \(R_{\max}\in\{0.50,0.55\}\), analytics `sem_medium` is infeasible (\(R\approx 0.612\)); \(T_a\)-1 is `raw`.
+Assessor-symmetric $T_a$-5 and purpose-specific residual linkage $R(z_{c,T})$. At $R_{\max}\in\{0.50,0.55\}$, analytics `sem_medium` is infeasible ($R\approx 0.612$); $T_a$-1 is `raw`.
 
 | $R_{max}$ | $T_o$-1 | $T_a$-1 | $T_a$-2 | $T_a$-3 | $T_a$-5 |
 | ---: | --- | --- | --- | --- | --- |
