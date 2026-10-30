@@ -52,3 +52,8 @@ def test_advisor_figures_generate(pilot_v2_paths, tmp_path):
     winners = result["regret_winners"]
     assert winners["observability"] == "redact_bracket"
     assert winners["analytics_med"] == "redact_surrogate"
+    import csv
+
+    with (table_dir / "cross_purpose_regret_matrix.csv").open(encoding="utf-8") as f:
+        regret_rows = {row["winner_for"]: row for row in csv.DictReader(f)}
+    assert regret_rows["observability"]["winner_for_label"] == "T_o-1\nfailure mode"

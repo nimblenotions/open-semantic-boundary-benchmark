@@ -63,9 +63,11 @@ LINKAGE_COLUMNS: list[tuple[str, str]] = [
     ("Token", "token_recovery_rate"),
 ]
 
-# Registered purposes for cross-task regret (risk-constrained winners per task).
+# Cross-task regret axes. The observability column is task T_o-1
+# (failure mode). T_o-2 error stage is not in this grid. Dict keys stay
+# purpose ids so selection is unchanged.
 REGRET_PURPOSES: list[tuple[str, str]] = [
-    ("observability", "T_o"),
+    ("observability", "T_o-1\nfailure mode"),
     ("analytics_med", "T_a-1\nmedication class"),
     ("analytics_side", "T_a-2\nside effect"),
     ("analytics_adherence", "T_a-3\nadherence"),
