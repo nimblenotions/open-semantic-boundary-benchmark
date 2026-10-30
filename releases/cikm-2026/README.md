@@ -11,7 +11,7 @@ For a broader map from the paper to the repository implementation, see [`../../d
 |---|---|
 | [`experimental_protocol.md`](experimental_protocol.md) | Human-readable description of the experimental protocol and focal reported results |
 | [`experimental_protocol.json`](experimental_protocol.json) | Machine-readable form of the frozen protocol |
-| [`figures/`](figures/) | Frozen copies of Figures 2–4 |
+| [`figures/`](figures/) | Figures 2 and 3 match the published paper. Figure 4 is regenerated so the failure-mode axis reads \(T_o\)-1 |
 | [`checksums.sha256`](checksums.sha256) | SHA-256 checksums for the frozen figure files |
 
 ## Verify the reported artifact
@@ -48,4 +48,4 @@ across the reported linkage tolerances.
 
 * **Figure 2 — linkage decomposition:** [`figures/linkage_decomposition.pdf`](figures/linkage_decomposition.pdf)
 * **Figure 3 — utility matrix:** [`figures/utility_matrix_heatmap.pdf`](figures/utility_matrix_heatmap.pdf)
-* **Figure 4 — cross-task regret:** [`figures/cross_purpose_regret_matrix.pdf`](figures/cross_purpose_regret_matrix.pdf)
+* **Figure 4 — cross-task regret:** [`figures/cross_purpose_regret_matrix.pdf`](figures/cross_purpose_regret_matrix.pdf). The published camera-ready labels the failure-mode axis \(T_o\). This file labels that row and column \(T_o\)-1, failure mode. The cell values are unchanged.
